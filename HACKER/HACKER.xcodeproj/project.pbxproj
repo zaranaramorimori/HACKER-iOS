@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4DF9C98561EC2F27F7534FAA /* Pods_HACKER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3688101E3DA8D36A7C338B83 /* Pods_HACKER.framework */; };
+		E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119727A0395D00D238B3 /* UIView+Extension.swift */; };
+		E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119927A0396D00D238B3 /* UILabel+Extension.swift */; };
+		E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119B27A0397700D238B3 /* UIColor+Extension.swift */; };
+		E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119D27A0398000D238B3 /* UIFont+Extension.swift */; };
+		E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119F27A0398B00D238B3 /* UIButton+Extension.swift */; };
 		E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477C279EF6E900D5A482 /* AppDelegate.swift */; };
 		E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */; };
 		E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E84780279EF6E900D5A482 /* ViewController.swift */; };
@@ -18,6 +23,11 @@
 /* Begin PBXFileReference section */
 		3688101E3DA8D36A7C338B83 /* Pods_HACKER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97ECD0DFD14355F5280BAC8 /* Pods-HACKER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKER.debug.xcconfig"; path = "Target Support Files/Pods-HACKER/Pods-HACKER.debug.xcconfig"; sourceTree = "<group>"; };
+		E876119727A0395D00D238B3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E876119927A0396D00D238B3 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		E876119B27A0397700D238B3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		E876119D27A0398000D238B3 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		E876119F27A0398B00D238B3 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		E8E84779279EF6E900D5A482 /* HACKER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HACKER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E8477C279EF6E900D5A482 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +56,6 @@
 				A97ECD0DFD14355F5280BAC8 /* Pods-HACKER.debug.xcconfig */,
 				FC711BE443EBF0C55099756A /* Pods-HACKER.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -90,6 +99,11 @@
 		E8761192279EFEC700D238B3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E876119727A0395D00D238B3 /* UIView+Extension.swift */,
+				E876119927A0396D00D238B3 /* UILabel+Extension.swift */,
+				E876119B27A0397700D238B3 /* UIColor+Extension.swift */,
+				E876119D27A0398000D238B3 /* UIFont+Extension.swift */,
+				E876119F27A0398B00D238B3 /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -233,8 +247,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
 				E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */,
+				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
+				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
+				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
+				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
