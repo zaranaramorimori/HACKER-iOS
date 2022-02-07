@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C4C05B48E05749AF8AC87FED /* Pods_HACKER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */; };
 		E87580A727B15FFD00C7E7E2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */; };
+		E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */; };
+		E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */; };
 		E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119727A0395D00D238B3 /* UIView+Extension.swift */; };
 		E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119927A0396D00D238B3 /* UILabel+Extension.swift */; };
 		E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119B27A0397700D238B3 /* UIColor+Extension.swift */; };
@@ -26,6 +28,8 @@
 		D43D251F9FBD31ADDBC63F1C /* Pods-HACKER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKER.debug.xcconfig"; path = "Target Support Files/Pods-HACKER/Pods-HACKER.debug.xcconfig"; sourceTree = "<group>"; };
 		D64BBA392CA295A2C82DAB1C /* Pods-HACKER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKER.release.xcconfig"; path = "Target Support Files/Pods-HACKER/Pods-HACKER.release.xcconfig"; sourceTree = "<group>"; };
 		E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		E876119727A0395D00D238B3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E876119927A0396D00D238B3 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		E876119B27A0397700D238B3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -69,6 +73,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E87580A827B16EB200C7E7E2 /* SignupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */,
+			);
+			path = SignupViewController;
+			sourceTree = "<group>";
+		};
+		E87580A927B16EBC00C7E7E2 /* NicknameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */,
+			);
+			path = NicknameViewController;
+			sourceTree = "<group>";
+		};
 		E876118E279EFE4B00D238B3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +113,8 @@
 		E8761190279EFE7C00D238B3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E87580A927B16EBC00C7E7E2 /* NicknameViewController */,
+				E87580A827B16EB200C7E7E2 /* SignupViewController */,
 				E8E84780279EF6E900D5A482 /* ViewController.swift */,
 			);
 			path = ViewControllers;
@@ -290,11 +312,13 @@
 			files = (
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
 				E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */,
+				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
 				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
+				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
