@@ -21,6 +21,11 @@
 		E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E84780279EF6E900D5A482 /* ViewController.swift */; };
 		E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8E84785279EF6EC00D5A482 /* Assets.xcassets */; };
 		E8E84789279EF6EC00D5A482 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8E84787279EF6EC00D5A482 /* LaunchScreen.storyboard */; };
+		E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FF04F527B2111C00C7C3E5 /* SignupPopUpViewController.swift */; };
+		E8FF04FA27B212C000C7C3E5 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8FF04F727B212C000C7C3E5 /* NotoSansKR-Medium.otf */; };
+		E8FF04FB27B212C000C7C3E5 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8FF04F827B212C000C7C3E5 /* NotoSansKR-Bold.otf */; };
+		E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8FF04F927B212C000C7C3E5 /* NotoSansKR-Regular.otf */; };
+		E8FF04FE27B212CB00C7C3E5 /* KCC-Jeongbeom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8FF04FD27B212CB00C7C3E5 /* KCC-Jeongbeom.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +47,11 @@
 		E8E84785279EF6EC00D5A482 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8E84788279EF6EC00D5A482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8E8478A279EF6EC00D5A482 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8FF04F527B2111C00C7C3E5 /* SignupPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPopUpViewController.swift; sourceTree = "<group>"; };
+		E8FF04F727B212C000C7C3E5 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		E8FF04F827B212C000C7C3E5 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		E8FF04F927B212C000C7C3E5 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
+		E8FF04FD27B212CB00C7C3E5 /* KCC-Jeongbeom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KCC-Jeongbeom.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */,
+				E8FF04F527B2111C00C7C3E5 /* SignupPopUpViewController.swift */,
 			);
 			path = SignupViewController;
 			sourceTree = "<group>";
@@ -135,6 +146,10 @@
 		E8761193279EFECF00D238B3 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				E8FF04FD27B212CB00C7C3E5 /* KCC-Jeongbeom.ttf */,
+				E8FF04F827B212C000C7C3E5 /* NotoSansKR-Bold.otf */,
+				E8FF04F727B212C000C7C3E5 /* NotoSansKR-Medium.otf */,
+				E8FF04F927B212C000C7C3E5 /* NotoSansKR-Regular.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -237,9 +252,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8FF04FA27B212C000C7C3E5 /* NotoSansKR-Medium.otf in Resources */,
 				E87580A727B15FFD00C7E7E2 /* .swiftlint.yml in Resources */,
+				E8FF04FE27B212CB00C7C3E5 /* KCC-Jeongbeom.ttf in Resources */,
 				E8E84789279EF6EC00D5A482 /* LaunchScreen.storyboard in Resources */,
 				E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */,
+				E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */,
+				E8FF04FB27B212C000C7C3E5 /* NotoSansKR-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
 				E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,

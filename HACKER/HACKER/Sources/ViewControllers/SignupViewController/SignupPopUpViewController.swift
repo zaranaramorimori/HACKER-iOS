@@ -1,5 +1,5 @@
 //
-//  NicknameViewController.swift
+//  SignupPopUpViewController.swift
 //  HACKER
 //
 //  Created by 김지수 on 2022/02/08.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NicknameViewController: UIViewController {
+class SignupPopUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +15,7 @@ class NicknameViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+
     /*
     // MARK: - Navigation
 
