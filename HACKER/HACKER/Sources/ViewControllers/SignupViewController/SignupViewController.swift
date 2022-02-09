@@ -28,7 +28,7 @@ class SignupViewController: UIViewController {
     self.view.backgroundColor = .white
     layout()
     attribute()
-    setKeyboardObserver()
+//    setKeyboardObserver()
   }
 }
 
@@ -48,7 +48,7 @@ extension SignupViewController {
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
-      $0.image = UIImage(named: "nextBtn")
+      $0.image = UIImage(named: "logoIcon")
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(32)
         $0.centerX.equalToSuperview()
@@ -94,17 +94,18 @@ extension SignupViewController {
       $0.textColor = .darkGray
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
+      $0.setClearButton(with: UIImage(named: "cancelBtn_white") ?? UIImage.checkmark, mode: .whileEditing)
       $0.snp.makeConstraints {
         $0.centerY.equalTo(self.textBorderView)
         $0.leading.equalTo(self.textBorderView.snp.leading).offset(16)
-        $0.width.equalTo(218)
+        $0.trailing.equalTo(self.textBorderView.snp.trailing).offset(-8)
         $0.height.equalTo(23)
       }
     }
   }
   func layoutClearButton() {
     self.textBorderView.add(clearButton) {
-      $0.setImage(UIImage(named: "nextBtn"), for: .normal)
+      $0.setImage(UIImage(named: "cancelBtn_black"), for: .normal)
       $0.snp.makeConstraints {
         $0.centerY.equalToSuperview()
         $0.trailing.equalToSuperview().offset(-8)
@@ -117,6 +118,7 @@ extension SignupViewController {
     self.view.add(nextButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
       $0.setupButton(title: "다음", color: .darkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.titleLabel?.textAlignment = .center
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
@@ -126,39 +128,41 @@ extension SignupViewController {
   }
 }
 
-// MARK: - Extension
-extension SignupViewController {
-  func setKeyboardObserver() {
-    NotificationCenter.default.addObserver(
-          self,
-          selector: #selector(keyboardWillShow),
-          name: UIResponder.keyboardWillShowNotification,
-          object: nil
-        )
-        
-        NotificationCenter.default.addObserver(
-          self,
-          selector: #selector(keyboardWillHide),
-          name: UIResponder.keyboardWillHideNotification,
-          object: nil
-        )
-  }
-  @objc private func keyboardWillShow(_ notification: Notification) {
-    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let keybaordRectangle = keyboardFrame.cgRectValue
-      let keyboardHeight = keybaordRectangle.height
-      self.nextButton.frame.origin.y -= keyboardHeight
-    }
-  }
-    
-  @objc private func keyboardWillHide(_ notification: Notification) {
-    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let keybaordRectangle = keyboardFrame.cgRectValue
-      let keyboardHeight = keybaordRectangle.height
-      self.nextButton.frame.origin.y += keyboardHeight
-    }
-  }
-}
+//// MARK: - Extension
+//extension SignupViewController {
+//  /// Keyboard가 올라올 때 버튼도 함께 올라가도록
+//  func setKeyboardObserver() {
+//    NotificationCenter.default.addObserver(
+//      self,
+//      selector: #selector(keyboardWillShow),
+//      name: UIResponder.keyboardWillShowNotification,
+//      object: nil
+//    )
+//
+//    NotificationCenter.default.addObserver(
+//      self,
+//      selector: #selector(keyboardWillHide),
+//      name: UIResponder.keyboardWillHideNotification,
+//      object: nil
+//    )
+//  }
+//  @objc private func keyboardWillShow(_ notification: Notification) {
+//    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//      let keybaordRectangle = keyboardFrame.cgRectValue
+//      let keyboardHeight = keybaordRectangle.height
+//      self.nextButton.frame.origin.y -= keyboardHeight
+//      print(self.nextButton.frame.origin.y)
+//    }
+//  }
+//  @objc private func keyboardWillHide(_ notification: Notification) {
+//    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//      let keybaordRectangle = keyboardFrame.cgRectValue
+//      let keyboardHeight = keybaordRectangle.height
+//      self.nextButton.frame.origin.y += keyboardHeight
+//      print(self.nextButton.frame.origin.y)
+//    }
+//  }
+//}
 
 // MARK: - UITextFieldDelegate
 extension SignupViewController: UITextFieldDelegate {
@@ -168,13 +172,39 @@ extension SignupViewController: UITextFieldDelegate {
     textField.resignFirstResponder()
     return true
   }
-  
+  /// TextField 활성화 되었을 때
   func textFieldDidBeginEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .black
     textField.textColor = .white
+    clearButton.setBackgroundImage(UIImage(named: "cancelBtn_white"), for: .normal)
+    nextButton.setupButton(title: "다음", color: .darkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setBackgroundImage(UIImage(named: "nextBtn_black"), for: .normal)
   }
+  /// TextField 비활성화 되었을 때
   func textFieldDidEndEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .white
     textField.textColor = .black
+    clearButton.setBackgroundImage(UIImage(named: "cancelBtn_black"), for: .normal)
+    nextButton.setupButton(title: "다음", color: .darkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+  }
+}
+
+//MARK: - UITextField
+extension UITextField {
+  /// 클리어 버튼 클릭 시 텍스트필드 내용 삭제
+  func setClearButton(with image: UIImage, mode: UITextField.ViewMode) {
+    let clearButton = UIButton(type: .custom)
+    clearButton.setImage(image, for: .normal)
+    clearButton.frame = CGRect(x: 0, y: 0, width: 35, height: 34)
+    clearButton.contentMode = .scaleAspectFit
+    clearButton.addTarget(self, action: #selector(UITextField.clear(sender:)), for: .touchUpInside)
+    self.rightView = clearButton
+    self.rightViewMode = mode
+  }
+  
+  @objc
+  private func clear(sender: AnyObject) {
+    self.text = ""
   }
 }
