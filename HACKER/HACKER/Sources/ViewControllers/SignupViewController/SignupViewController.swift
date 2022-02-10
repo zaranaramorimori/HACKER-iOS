@@ -28,7 +28,7 @@ class SignupViewController: UIViewController {
     self.view.backgroundColor = .white
     layout()
     attribute()
-//    setKeyboardObserver()
+    setKeyboardObserver()
   }
 }
 
@@ -128,41 +128,41 @@ extension SignupViewController {
   }
 }
 
-//// MARK: - Extension
-//extension SignupViewController {
-//  /// Keyboard가 올라올 때 버튼도 함께 올라가도록
-//  func setKeyboardObserver() {
-//    NotificationCenter.default.addObserver(
-//      self,
-//      selector: #selector(keyboardWillShow),
-//      name: UIResponder.keyboardWillShowNotification,
-//      object: nil
-//    )
-//
-//    NotificationCenter.default.addObserver(
-//      self,
-//      selector: #selector(keyboardWillHide),
-//      name: UIResponder.keyboardWillHideNotification,
-//      object: nil
-//    )
-//  }
-//  @objc private func keyboardWillShow(_ notification: Notification) {
-//    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-//      let keybaordRectangle = keyboardFrame.cgRectValue
-//      let keyboardHeight = keybaordRectangle.height
-//      self.nextButton.frame.origin.y -= keyboardHeight
-//      print(self.nextButton.frame.origin.y)
-//    }
-//  }
-//  @objc private func keyboardWillHide(_ notification: Notification) {
-//    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-//      let keybaordRectangle = keyboardFrame.cgRectValue
-//      let keyboardHeight = keybaordRectangle.height
-//      self.nextButton.frame.origin.y += keyboardHeight
-//      print(self.nextButton.frame.origin.y)
-//    }
-//  }
-//}
+// MARK: - Extension
+extension SignupViewController {
+  /// Keyboard가 올라올 때 버튼도 함께 올라가도록
+  func setKeyboardObserver() {
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(keyboardWillShow),
+      name: UIResponder.keyboardWillShowNotification,
+      object: nil
+    )
+    
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(keyboardWillHide),
+      name: UIResponder.keyboardWillHideNotification,
+      object: nil
+    )
+  }
+  @objc private func keyboardWillShow(_ notification: Notification) {
+    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+      let keybaordRectangle = keyboardFrame.cgRectValue
+      let keyboardHeight = keybaordRectangle.height
+      self.nextButton.frame.origin.y -= keyboardHeight
+      print(self.nextButton.frame.origin.y)
+    }
+  }
+  @objc private func keyboardWillHide(_ notification: Notification) {
+    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+      let keybaordRectangle = keyboardFrame.cgRectValue
+      let keyboardHeight = keybaordRectangle.height
+      self.nextButton.frame.origin.y += keyboardHeight
+      print(self.nextButton.frame.origin.y)
+    }
+  }
+}
 
 // MARK: - UITextFieldDelegate
 extension SignupViewController: UITextFieldDelegate {
