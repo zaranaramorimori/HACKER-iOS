@@ -22,6 +22,8 @@ class SignupViewController: UIViewController {
   let clearButton = UIButton()
   let nextButton = UIButton()
   
+  var nextButtonYValue = CGFloat(0)
+  
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -128,39 +130,23 @@ extension SignupViewController {
   }
 }
 
-// MARK: - Extension
+// MARK: - Keyboard Extension
 extension SignupViewController {
-  /// Keyboard가 올라올 때 버튼도 함께 올라가도록
+  /// 키보드가 올라오면 버튼도 따라서 올라오게
   func setKeyboardObserver() {
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(keyboardWillShow),
-      name: UIResponder.keyboardWillShowNotification,
-      object: nil
-    )
-    
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(keyboardWillHide),
-      name: UIResponder.keyboardWillHideNotification,
-      object: nil
-    )
+    NotificationCenter.default.addObserver(self, selector: #selector(textViewMoveUp), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(textViewMoveDown), name: UIResponder.keyboardWillHideNotification, object: nil)
   }
-  @objc private func keyboardWillShow(_ notification: Notification) {
-    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let keybaordRectangle = keyboardFrame.cgRectValue
-      let keyboardHeight = keybaordRectangle.height
-      self.nextButton.frame.origin.y -= keyboardHeight
-      print(self.nextButton.frame.origin.y)
+  
+  @objc func textViewMoveUp(_ notification: NSNotification) {
+    if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      UIView.animate(withDuration: 0.3, animations: {
+        self.nextButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+      })
     }
   }
-  @objc private func keyboardWillHide(_ notification: Notification) {
-    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-      let keybaordRectangle = keyboardFrame.cgRectValue
-      let keyboardHeight = keybaordRectangle.height
-      self.nextButton.frame.origin.y += keyboardHeight
-      print(self.nextButton.frame.origin.y)
-    }
+  @objc func textViewMoveDown(_ notification: NSNotification) {
+    self.nextButton.transform = .identity
   }
 }
 
