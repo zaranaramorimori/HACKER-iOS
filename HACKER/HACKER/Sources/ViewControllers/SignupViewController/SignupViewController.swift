@@ -96,7 +96,7 @@ extension SignupViewController {
       $0.textColor = .darkGray
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
-      $0.setClearButton(with: UIImage(named: "cancelBtn_white") ?? UIImage.checkmark, mode: .whileEditing)
+      $0.setClearButton(with: UIImage(named: "xWhite") ?? UIImage.checkmark, mode: .whileEditing)
       $0.snp.makeConstraints {
         $0.centerY.equalTo(self.textBorderView)
         $0.leading.equalTo(self.textBorderView.snp.leading).offset(16)
@@ -107,7 +107,7 @@ extension SignupViewController {
   }
   func layoutClearButton() {
     self.textBorderView.add(clearButton) {
-      $0.setImage(UIImage(named: "cancelBtn_black"), for: .normal)
+      $0.setImage(UIImage(named: "xBlack"), for: .normal)
       $0.snp.makeConstraints {
         $0.centerY.equalToSuperview()
         $0.trailing.equalToSuperview().offset(-8)
@@ -162,15 +162,15 @@ extension SignupViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .black
     textField.textColor = .white
-    clearButton.setBackgroundImage(UIImage(named: "cancelBtn_white"), for: .normal)
+    clearButton.setBackgroundImage(UIImage(named: "xWhite"), for: .normal)
     nextButton.setupButton(title: "다음", color: .darkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
-    nextButton.setBackgroundImage(UIImage(named: "nextBtn_black"), for: .normal)
+    nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
   }
   /// TextField 비활성화 되었을 때
   func textFieldDidEndEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .white
     textField.textColor = .black
-    clearButton.setBackgroundImage(UIImage(named: "cancelBtn_black"), for: .normal)
+    clearButton.setBackgroundImage(UIImage(named: "xBlack"), for: .normal)
     nextButton.setupButton(title: "다음", color: .darkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
   }
