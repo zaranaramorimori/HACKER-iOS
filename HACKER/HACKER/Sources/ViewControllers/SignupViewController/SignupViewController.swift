@@ -61,7 +61,7 @@ extension SignupViewController {
   }
   func layoutHelloLabel() {
     self.view.add(helloLabel) {
-      $0.setupLabel(text: "안녕하세요!", color: .black, font: .titleBold24)
+      $0.setupLabel(text: "안녕하세요!", color: .hackerBlack, font: .titleBold24)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.hackerImageView.snp.bottom).offset(16)
         $0.centerX.equalToSuperview()
@@ -70,7 +70,7 @@ extension SignupViewController {
   }
   func layoutExplainLabel() {
     self.view.add(explainLabel) {
-      $0.setupLabel(text: "Github 유저 네임을 적어주세요", color: .black, font: .subtitleMedium16)
+      $0.setupLabel(text: "Github 유저 네임을 적어주세요", color: .hackerBlack, font: .subtitleMedium16)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.helloLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
@@ -93,7 +93,7 @@ extension SignupViewController {
   func layoutUserNameTextField() {
     self.view.add(usernameTextField) {
       $0.placeholder = "Github 유저 네임을 적어주세요."
-      $0.textColor = .darkGray
+      $0.textColor = .hackerDarkGray
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
       $0.setClearButton(with: UIImage(named: "xWhite") ?? UIImage.checkmark, mode: .whileEditing)
@@ -119,7 +119,7 @@ extension SignupViewController {
   func layoutNextButton() {
     self.view.add(nextButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-      $0.setupButton(title: "다음", color: .darkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
       $0.snp.makeConstraints {
@@ -162,17 +162,17 @@ extension SignupViewController: UITextFieldDelegate {
   /// TextField 활성화 되었을 때
   func textFieldDidBeginEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .black
-    textField.textColor = .white
+    textField.textColor = .hackerWhite
     clearButton.setBackgroundImage(UIImage(named: "xWhite"), for: .normal)
-    nextButton.setupButton(title: "다음", color: .darkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
   }
   /// TextField 비활성화 되었을 때
   func textFieldDidEndEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .white
-    textField.textColor = .black
+    textField.textColor = .hackerBlack
     clearButton.setBackgroundImage(UIImage(named: "xBlack"), for: .normal)
-    nextButton.setupButton(title: "다음", color: .darkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
   }
 }
