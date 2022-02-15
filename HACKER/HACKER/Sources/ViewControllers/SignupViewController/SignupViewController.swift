@@ -121,6 +121,7 @@ extension SignupViewController {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
       $0.setupButton(title: "다음", color: .darkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
+      $0.addTextSpacing(10)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)

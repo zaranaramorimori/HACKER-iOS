@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C4C05B48E05749AF8AC87FED /* Pods_HACKER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */; };
+		E8547B9227BC085D0078EEA8 /* KCC-Kimhwanki.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8547B9127BC085D0078EEA8 /* KCC-Kimhwanki.otf */; };
 		E87580A727B15FFD00C7E7E2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */; };
 		E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */; };
 		E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */; };
@@ -25,13 +26,13 @@
 		E8FF04FA27B212C000C7C3E5 /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8FF04F727B212C000C7C3E5 /* NotoSansKR-Medium.otf */; };
 		E8FF04FB27B212C000C7C3E5 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8FF04F827B212C000C7C3E5 /* NotoSansKR-Bold.otf */; };
 		E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8FF04F927B212C000C7C3E5 /* NotoSansKR-Regular.otf */; };
-		E8FF04FE27B212CB00C7C3E5 /* KCC-Jeongbeom.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E8FF04FD27B212CB00C7C3E5 /* KCC-Jeongbeom.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43D251F9FBD31ADDBC63F1C /* Pods-HACKER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKER.debug.xcconfig"; path = "Target Support Files/Pods-HACKER/Pods-HACKER.debug.xcconfig"; sourceTree = "<group>"; };
 		D64BBA392CA295A2C82DAB1C /* Pods-HACKER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKER.release.xcconfig"; path = "Target Support Files/Pods-HACKER/Pods-HACKER.release.xcconfig"; sourceTree = "<group>"; };
+		E8547B9127BC085D0078EEA8 /* KCC-Kimhwanki.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KCC-Kimhwanki.otf"; sourceTree = "<group>"; };
 		E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 		E8FF04F727B212C000C7C3E5 /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		E8FF04F827B212C000C7C3E5 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		E8FF04F927B212C000C7C3E5 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
-		E8FF04FD27B212CB00C7C3E5 /* KCC-Jeongbeom.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KCC-Jeongbeom.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,7 +146,7 @@
 		E8761193279EFECF00D238B3 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				E8FF04FD27B212CB00C7C3E5 /* KCC-Jeongbeom.ttf */,
+				E8547B9127BC085D0078EEA8 /* KCC-Kimhwanki.otf */,
 				E8FF04F827B212C000C7C3E5 /* NotoSansKR-Bold.otf */,
 				E8FF04F727B212C000C7C3E5 /* NotoSansKR-Medium.otf */,
 				E8FF04F927B212C000C7C3E5 /* NotoSansKR-Regular.otf */,
@@ -253,8 +253,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8FF04FA27B212C000C7C3E5 /* NotoSansKR-Medium.otf in Resources */,
+				E8547B9227BC085D0078EEA8 /* KCC-Kimhwanki.otf in Resources */,
 				E87580A727B15FFD00C7E7E2 /* .swiftlint.yml in Resources */,
-				E8FF04FE27B212CB00C7C3E5 /* KCC-Jeongbeom.ttf in Resources */,
 				E8E84789279EF6EC00D5A482 /* LaunchScreen.storyboard in Resources */,
 				E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */,
 				E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */,

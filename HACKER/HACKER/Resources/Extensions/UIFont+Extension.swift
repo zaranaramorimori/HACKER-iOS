@@ -39,6 +39,6 @@ extension UIFont {
   }
   
   class var btnText: UIFont {
-    return UIFont(name: "KCC-Jeongbeom", size: 28.0)!
+    return UIFont(name: "KCC-Kimhwanki", size: 32.0)!
   }
 }
