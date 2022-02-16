@@ -19,5 +19,12 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSansKR-Medium.otf</string>
+		<string>NotoSansKR-Bold.otf</string>
+		<string>NotoSansKR-Regular.otf</string>
+		<string>KCC-Kimhwanki.otf</string>
+	</array>
 </dict>
 </plist>
