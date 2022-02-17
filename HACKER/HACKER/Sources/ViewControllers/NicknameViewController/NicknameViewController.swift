@@ -49,7 +49,7 @@ extension NicknameViewController {
     layoutTextBorderview()
     layoutUserNameTextField()
     layoutClearButton()
-    layoutCountTextField()
+    layoutCountTextLabel()
     layoutNextButton()
   }
   func attribute() {
@@ -123,7 +123,7 @@ extension NicknameViewController {
       }
     }
   }
-  func layoutCountTextField() {
+  func layoutCountTextLabel() {
     self.view.add(countTextLabel) {
       $0.setupLabel(text: "0/6", color: .hackerBlack, font: .bodyRegular14)
       $0.textColor = .clear
@@ -226,7 +226,7 @@ extension UITextField {
   /// 클리어 버튼 클릭 시 텍스트필드 내용 삭제
   func setClearNickNameButton(with image: UIImage, mode: UITextField.ViewMode) {
     let clearButton = UIButton(type: .custom)
-    clearButton.setImage(image, for: .normal)
+    clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
     clearButton.frame = CGRect(x: 0, y: 0, width: 35, height: 34)
     clearButton.contentMode = .scaleAspectFit
     clearButton.addTarget(self, action: #selector(UITextField.clear(sender:)), for: .touchUpInside)
@@ -235,6 +235,12 @@ extension UITextField {
   }
   
   @objc private func clear(sender: AnyObject) {
-    self.text = ""    
+    self.text = ""
+    let nicknameVC = NicknameViewController()
+    DispatchQueue.main.async {
+      nicknameVC.countTextLabel.text = "0/6"
+      print(nicknameVC.countTextLabel.text)
+      print("어쩔티비")
+    }
   }
 }

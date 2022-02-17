@@ -193,9 +193,7 @@ extension UITextField {
     self.rightView = clearButton
     self.rightViewMode = mode
   }
-  
-  @objc
-  private func clear(sender: AnyObject) {
+  @objc private func clear(sender: AnyObject) {
     self.text = ""
   }
 }
