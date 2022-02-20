@@ -10,6 +10,8 @@
 		C4C05B48E05749AF8AC87FED /* Pods_HACKER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */; };
 		E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF027C2479C00107741 /* LoginViewController.swift */; };
 		E833EEF327C247A400107741 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF227C247A400107741 /* SplashViewController.swift */; };
+		E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */; };
+		E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF627C24D9000107741 /* NickNameCheckPopUpViewController.swift */; };
 		E8547B9227BC085D0078EEA8 /* KCC-Kimhwanki.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8547B9127BC085D0078EEA8 /* KCC-Kimhwanki.otf */; };
 		E87580A727B15FFD00C7E7E2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */; };
 		E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */; };
@@ -36,6 +38,8 @@
 		D64BBA392CA295A2C82DAB1C /* Pods-HACKER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKER.release.xcconfig"; path = "Target Support Files/Pods-HACKER/Pods-HACKER.release.xcconfig"; sourceTree = "<group>"; };
 		E833EEF027C2479C00107741 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E833EEF227C247A400107741 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownUserPopUpViewController.swift; sourceTree = "<group>"; };
+		E833EEF627C24D9000107741 /* NickNameCheckPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameCheckPopUpViewController.swift; sourceTree = "<group>"; };
 		E8547B9127BC085D0078EEA8 /* KCC-Kimhwanki.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KCC-Kimhwanki.otf"; sourceTree = "<group>"; };
 		E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 			isa = PBXGroup;
 			children = (
 				E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */,
+				E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */,
+				E833EEF627C24D9000107741 /* NickNameCheckPopUpViewController.swift */,
 			);
 			path = NicknameViewController;
 			sourceTree = "<group>";
@@ -354,7 +360,9 @@
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
 				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
+				E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */,
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
+				E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */,
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
