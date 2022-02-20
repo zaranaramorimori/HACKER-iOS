@@ -32,8 +32,10 @@ extension SplashViewController {
     self.view.add(logoImageView) {
       $0.image = UIImage(named: "200")
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(246)
+        $0.top.equalToSuperview().offset(246)
         $0.centerX.equalToSuperview()
+        $0.width.equalTo(200)
+        $0.height.equalTo(200)
       }
     }
   }
