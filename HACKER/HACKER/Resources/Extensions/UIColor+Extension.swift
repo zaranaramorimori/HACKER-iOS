@@ -24,10 +24,16 @@ extension UIColor {
   @nonobjc class var hackerWhite: UIColor {
     return UIColor(red: 255.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
   }
+  
   @nonobjc class var hackerRed: UIColor {
     return UIColor(red: 255.0 / 255.0, green: 0.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
   }
+  
   @nonobjc class var hackerBlue: UIColor {
     return UIColor(red: 82.0 / 255.0, green: 184.0 / 255.0, blue: 228.0 / 255.0, alpha: 1.0)
+  }
+  
+  @nonobjc class var hackerBackgroundBlack: UIColor {
+    return UIColor(red: 0.0 / 255.0, green: 0.0 / 255.0, blue: 0.0 / 255.0, alpha: 0.4)
   }
 }

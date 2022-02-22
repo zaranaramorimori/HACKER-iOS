@@ -22,8 +22,6 @@ class SignupViewController: UIViewController {
   let clearButton = UIButton()
   let nextButton = UIButton()
   
-  var nextButtonYValue = CGFloat(0)
-  
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -92,7 +90,7 @@ extension SignupViewController {
   }
   func layoutUserNameTextField() {
     self.view.add(usernameTextField) {
-      $0.placeholder = "Github 유저 네임을 적어주세요."
+      $0.placeholder = "유저 네임을 정확하게 입력해주세요"
       $0.textColor = .hackerDarkGray
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
@@ -122,6 +120,7 @@ extension SignupViewController {
       $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
+      $0.addTarget(self, action: #selector(self.touchNextButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
@@ -131,7 +130,7 @@ extension SignupViewController {
   }
 }
 
-// MARK: - Keyboard Extension
+// MARK: - Extension
 extension SignupViewController {
   /// 키보드가 올라오면 버튼도 따라서 올라오게
   func setKeyboardObserver() {
@@ -148,6 +147,11 @@ extension SignupViewController {
   }
   @objc func textViewMoveDown(_ notification: NSNotification) {
     self.nextButton.transform = .identity
+  }
+  /// 화면전환
+  @objc func touchNextButton() {
+    let nickNameVC = NicknameViewController()
+    self.navigationController?.pushViewController(nickNameVC, animated: false)
   }
 }
 
@@ -177,7 +181,7 @@ extension SignupViewController: UITextFieldDelegate {
   }
 }
 
-//MARK: - UITextField
+// MARK: - UITextField
 extension UITextField {
   /// 클리어 버튼 클릭 시 텍스트필드 내용 삭제
   func setClearButton(with image: UIImage, mode: UITextField.ViewMode) {
@@ -189,9 +193,7 @@ extension UITextField {
     self.rightView = clearButton
     self.rightViewMode = mode
   }
-  
-  @objc
-  private func clear(sender: AnyObject) {
+  @objc private func clear(sender: AnyObject) {
     self.text = ""
   }
 }
