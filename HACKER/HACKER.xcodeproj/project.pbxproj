@@ -21,6 +21,7 @@
 		E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119B27A0397700D238B3 /* UIColor+Extension.swift */; };
 		E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119D27A0398000D238B3 /* UIFont+Extension.swift */; };
 		E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119F27A0398B00D238B3 /* UIButton+Extension.swift */; };
+		E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */; };
 		E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477C279EF6E900D5A482 /* AppDelegate.swift */; };
 		E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */; };
 		E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E84780279EF6E900D5A482 /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 		E876119B27A0397700D238B3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E876119D27A0398000D238B3 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E876119F27A0398B00D238B3 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		E8E84779279EF6E900D5A482 /* HACKER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HACKER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E8477C279EF6E900D5A482 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				E876119B27A0397700D238B3 /* UIColor+Extension.swift */,
 				E876119D27A0398000D238B3 /* UIFont+Extension.swift */,
 				E876119F27A0398B00D238B3 /* UIButton+Extension.swift */,
+				E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
 				E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
+				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
 				E833EEF327C247A400107741 /* SplashViewController.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,

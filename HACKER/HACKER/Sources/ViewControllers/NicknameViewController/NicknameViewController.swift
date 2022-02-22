@@ -29,8 +29,7 @@ class NicknameViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .white
-    self.navigationController?.navigationBar.isHidden = true
+    setUI()
     layout()
     attribute()
     setKeyboardObserver()
@@ -55,6 +54,10 @@ extension NicknameViewController {
   }
   func attribute() {
     self.usernameTextField.delegate = self
+  }
+  func setUI() {
+    self.view.backgroundColor = .white
+    self.navigationController?.navigationBar.isHidden = true
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
@@ -104,7 +107,7 @@ extension NicknameViewController {
       $0.textColor = .hackerDarkGray
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
-      $0.setClearButton(with: UIImage(named: "xWhite") ?? UIImage.checkmark, mode: .whileEditing)
+      $0.setClearNickNameButton(with: UIImage(named: "xWhite") ?? UIImage.checkmark, mode: .whileEditing)
       $0.snp.makeConstraints {
         $0.centerY.equalTo(self.textBorderView)
         $0.leading.equalTo(self.textBorderView.snp.leading).offset(16)
@@ -219,29 +222,6 @@ extension NicknameViewController: UITextFieldDelegate {
           countTextLabel.text = "\(countNum)/6"
         }
       }
-    }
-  }
-}
-// MARK: - UITextField
-extension UITextField {
-  /// 클리어 버튼 클릭 시 텍스트필드 내용 삭제
-  func setClearNickNameButton(with image: UIImage, mode: UITextField.ViewMode) {
-    let clearButton = UIButton(type: .custom)
-    clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
-    clearButton.frame = CGRect(x: 0, y: 0, width: 35, height: 34)
-    clearButton.contentMode = .scaleAspectFit
-    clearButton.addTarget(self, action: #selector(UITextField.clear(sender:)), for: .touchUpInside)
-    self.rightView = clearButton
-    self.rightViewMode = mode
-  }
-  
-  @objc private func clear(sender: AnyObject) {
-    self.text = ""
-    let nicknameVC = NicknameViewController()
-    DispatchQueue.main.async {
-      nicknameVC.countTextLabel.text = "0/6"
-      print(nicknameVC.countTextLabel.text)
-      print("어쩔티비")
     }
   }
 }

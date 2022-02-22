@@ -25,7 +25,7 @@ class SignupViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .white
+    setUI()
     layout()
     attribute()
     setKeyboardObserver()
@@ -45,6 +45,9 @@ extension SignupViewController {
   }
   func attribute() {
     self.usernameTextField.delegate = self
+  }
+  func setUI() {
+    self.view.backgroundColor = .hackerWhite
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
@@ -181,19 +184,3 @@ extension SignupViewController: UITextFieldDelegate {
   }
 }
 
-// MARK: - UITextField
-extension UITextField {
-  /// 클리어 버튼 클릭 시 텍스트필드 내용 삭제
-  func setClearButton(with image: UIImage, mode: UITextField.ViewMode) {
-    let clearButton = UIButton(type: .custom)
-    clearButton.setImage(image, for: .normal)
-    clearButton.frame = CGRect(x: 0, y: 0, width: 35, height: 34)
-    clearButton.contentMode = .scaleAspectFit
-    clearButton.addTarget(self, action: #selector(UITextField.clear(sender:)), for: .touchUpInside)
-    self.rightView = clearButton
-    self.rightViewMode = mode
-  }
-  @objc private func clear(sender: AnyObject) {
-    self.text = ""
-  }
-}

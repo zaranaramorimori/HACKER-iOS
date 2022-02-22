@@ -22,7 +22,7 @@ class UnknownUserPopUpViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .white
+    setUI()
     layout()
   }
   
@@ -34,6 +34,9 @@ extension UnknownUserPopUpViewController {
     layoutRectangleBackground()
     layoutUnknownUserLabel()
     layoutTryAgainButton()
+  }
+  func setUI() {
+    self.view.backgroundColor = .hackerWhite
   }
   func layoutBackGroundView() {
     self.view.add(backgroundView) {

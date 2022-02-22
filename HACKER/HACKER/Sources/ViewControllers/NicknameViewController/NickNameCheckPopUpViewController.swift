@@ -27,7 +27,7 @@ class NickNameCheckPopUpViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .hackerWhite
+    setUI()
     layout()
   }
 }
@@ -43,6 +43,9 @@ extension NickNameCheckPopUpViewController {
     layoutButtonContainerView()
     layoutYesButton()
     layoutNoButton()
+  }
+  func setUI() {
+    self.view.backgroundColor = .hackerWhite
   }
   func layoutBackGroundView() {
     self.view.add(backgroundView) {
