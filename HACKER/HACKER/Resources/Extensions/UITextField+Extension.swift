@@ -37,8 +37,7 @@ extension UITextField {
     let nicknameVC = NicknameViewController()
     DispatchQueue.main.async {
       nicknameVC.countTextLabel.text = "0/6"
-      print(nicknameVC.countTextLabel.text)
-      print("어쩔티비")
+      
     }
   }
 }

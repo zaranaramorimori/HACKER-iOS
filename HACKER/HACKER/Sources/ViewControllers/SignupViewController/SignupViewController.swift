@@ -48,6 +48,7 @@ extension SignupViewController {
   }
   func setUI() {
     self.view.backgroundColor = .hackerWhite
+    self.navigationController?.navigationBar.isHidden = true
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
