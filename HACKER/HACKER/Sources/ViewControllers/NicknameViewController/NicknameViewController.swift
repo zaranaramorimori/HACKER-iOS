@@ -140,7 +140,7 @@ extension NicknameViewController {
   func layoutNextButton() {
     self.view.add(nextButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-      $0.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText32, backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
       $0.snp.makeConstraints {
@@ -185,7 +185,7 @@ extension NicknameViewController: UITextFieldDelegate {
     textBorderView.backgroundColor = .black
     textField.textColor = .hackerWhite
     clearButton.setBackgroundImage(UIImage(named: "xWhite"), for: .normal)
-    nextButton.setupButton(title: "시작!", color: .hackerWhite, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setupButton(title: "시작!", color: .hackerWhite, font: .btnText32, backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
     countTextLabel.textColor = .hackerBlack
   }
@@ -194,7 +194,7 @@ extension NicknameViewController: UITextFieldDelegate {
     textBorderView.backgroundColor = .white
     textField.textColor = .hackerBlack
     clearButton.setBackgroundImage(UIImage(named: "xBlack"), for: .normal)
-    nextButton.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText32, backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
   }
   /// nameTextField 글자수 세기, 제한
