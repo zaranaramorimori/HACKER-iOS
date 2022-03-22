@@ -95,6 +95,7 @@ extension SignupViewController {
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
       $0.setClearButton(with: UIImage(named: "xWhite") ?? UIImage.checkmark, mode: .whileEditing)
+      $0.accessibilityIdentifier = NicknameVCIdentifier.usernameTextField
       $0.snp.makeConstraints {
         $0.centerY.equalTo(self.textBorderView)
         $0.leading.equalTo(self.textBorderView.snp.leading).offset(16)
@@ -106,6 +107,7 @@ extension SignupViewController {
   func layoutClearButton() {
     self.textBorderView.add(clearButton) {
       $0.setImage(UIImage(named: "xBlack"), for: .normal)
+      $0.accessibilityIdentifier = NicknameVCIdentifier.clearButton
       $0.snp.makeConstraints {
         $0.centerY.equalToSuperview()
         $0.trailing.equalToSuperview().offset(-8)
@@ -120,6 +122,7 @@ extension SignupViewController {
       $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
+      $0.accessibilityIdentifier = NicknameVCIdentifier.nextButton
       $0.addTarget(self, action: #selector(self.touchNextButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
