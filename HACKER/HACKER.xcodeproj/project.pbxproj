@@ -24,7 +24,6 @@
 		E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119F27A0398B00D238B3 /* UIButton+Extension.swift */; };
 		E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477C279EF6E900D5A482 /* AppDelegate.swift */; };
 		E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */; };
-		E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E84780279EF6E900D5A482 /* ViewController.swift */; };
 		E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8E84785279EF6EC00D5A482 /* Assets.xcassets */; };
 		E8E84789279EF6EC00D5A482 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8E84787279EF6EC00D5A482 /* LaunchScreen.storyboard */; };
 		E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FF04F527B2111C00C7C3E5 /* SignupPopUpViewController.swift */; };
@@ -54,7 +53,6 @@
 		E8E84779279EF6E900D5A482 /* HACKER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HACKER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E8477C279EF6E900D5A482 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E8E84780279EF6E900D5A482 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E8E84785279EF6EC00D5A482 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8E84788279EF6EC00D5A482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8E8478A279EF6EC00D5A482 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 				E833EEEE27C2477900107741 /* LoginViewController */,
 				E87580A927B16EBC00C7E7E2 /* NicknameViewController */,
 				E87580A827B16EB200C7E7E2 /* SignupViewController */,
-				E8E84780279EF6E900D5A482 /* ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -363,7 +360,6 @@
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
-				E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
 				E833EEF327C247A400107741 /* SplashViewController.swift in Sources */,
