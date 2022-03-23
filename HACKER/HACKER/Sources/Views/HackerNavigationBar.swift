@@ -59,7 +59,7 @@ class HackerNavigationBar: UIView {
   }
   
   private func setupAutoLayout() {
-    addSubviews([backButton, logoButton])
+    addSubviews([backButton, logoButton, rightButton])
     
     backButton.snp.makeConstraints { make in
       make.leading.equalToSuperview().inset(18)
@@ -78,7 +78,7 @@ class HackerNavigationBar: UIView {
     }
   }
   
-  func iconLayout(logoImage: UIImage, rightImage: UIImage) {
+  func iconLayout(logoImage: UIImage?, rightImage: UIImage?) {
     logoButton.setImage(logoImage, for: .normal)
     rightButton.setImage(rightImage, for: .normal)
   }
