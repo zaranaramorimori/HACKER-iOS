@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		3A3D50C1AFB4489BB093B1EB /* Pods_HACKERUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */; };
 		8648AD9727E8D417009F5C7A /* HACKERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8648AD9627E8D417009F5C7A /* HACKERTests.swift */; };
+		86DF9A7427EB37CA00C7D493 /* SignupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7327EB37C900C7D493 /* SignupUITests.swift */; };
 		86F9EB2327E8D51100E1FEFD /* HACKERUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */; };
-		86F9EB2527E8D51100E1FEFD /* HACKERUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2427E8D51100E1FEFD /* HACKERUITestsLaunchTests.swift */; };
 		86F9EB2C27E9CDF000E1FEFD /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86F9EB2F27E9D62F00E1FEFD /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86F9EB3027E9D63000E1FEFD /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
@@ -68,9 +68,9 @@
 		834AE9E2D5646B5161A239D4 /* Pods-HACKERUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8648AD9427E8D417009F5C7A /* HACKERTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8648AD9627E8D417009F5C7A /* HACKERTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERTests.swift; sourceTree = "<group>"; };
+		86DF9A7327EB37C900C7D493 /* SignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUITests.swift; sourceTree = "<group>"; };
 		86F9EB2027E8D51100E1FEFD /* HACKERUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERUITests.swift; sourceTree = "<group>"; };
-		86F9EB2427E8D51100E1FEFD /* HACKERUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetIdentifier.swift; sourceTree = "<group>"; };
 		86F9EB3427E9DBAE00E1FEFD /* TestErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestErrorMessage.swift; sourceTree = "<group>"; };
 		A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */,
-				86F9EB2427E8D51100E1FEFD /* HACKERUITestsLaunchTests.swift */,
+				86DF9A7327EB37C900C7D493 /* SignupUITests.swift */,
 			);
 			path = HACKERUITests;
 			sourceTree = "<group>";
@@ -588,7 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				86F9EB3727E9DBB400E1FEFD /* TestErrorMessage.swift in Sources */,
-				86F9EB2527E8D51100E1FEFD /* HACKERUITestsLaunchTests.swift in Sources */,
+				86DF9A7427EB37CA00C7D493 /* SignupUITests.swift in Sources */,
 				86F9EB3027E9D63000E1FEFD /* TargetIdentifier.swift in Sources */,
 				86F9EB2327E8D51100E1FEFD /* HACKERUITests.swift in Sources */,
 			);
@@ -654,7 +654,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J92QJ4K4KU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danna.HACKERTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -674,7 +674,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J92QJ4K4KU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danna.HACKERTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -693,7 +693,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J92QJ4K4KU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danna.HACKERUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -712,7 +712,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J92QJ4K4KU;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danna.HACKERUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -847,7 +847,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9P444U7TM8;
+				DEVELOPMENT_TEAM = J92QJ4K4KU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HACKER/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -860,7 +860,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jisoo.HACKER;
+				PRODUCT_BUNDLE_IDENTIFIER = TeamZZONG.HACKER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -876,7 +876,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9P444U7TM8;
+				DEVELOPMENT_TEAM = J92QJ4K4KU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HACKER/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -889,7 +889,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jisoo.HACKER;
+				PRODUCT_BUNDLE_IDENTIFIER = TeamZZONG.HACKER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
