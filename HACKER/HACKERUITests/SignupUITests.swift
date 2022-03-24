@@ -9,9 +9,10 @@ import XCTest
 
 class SignupUITests: XCTestCase {
   
+  let app = XCUIApplication()
   
   override func setUpWithError() throws {
-    continueAfterFailure = false
+    continueAfterFailure = true
   }
   
   override func tearDownWithError() throws {
@@ -20,18 +21,24 @@ class SignupUITests: XCTestCase {
   
   /// 깃허브 아이디 입력받는 텍스트필드 테스트
   func testGithubIDTextfieldInput() {
-    let app = XCUIApplication()
-    app.launch()
+    UITestsUtils.launchApplication(app)
     
     let textField = app.textFields[NicknameVCIdentifier.usernameTextField]
+    let nextButton = app.buttons[NicknameVCIdentifier.nextButton]
     
     // 텍스트필드에 올바른 닉네임 입력 테스트
     textField.tap()
     textField.typeText("Daeun-Danna-Lee")
     XCTAssertNotNil(textField.value, TestErrorMessage.textfieldInputOutputMismatch)
     XCTAssertEqual(textField.value as? String, "Daeun-Danna-Lee", TestErrorMessage.textfieldInputOutputMismatch)
+    XCTAssertTrue(nextButton.isEnabled, TestErrorMessage.buttonDisabled)
+  }
+  
+  /// 입력한 텍스트 모두 지우는 테스트
+  func testGithubIDTextFieldDelete() {
+    let textField = app.textFields[NicknameVCIdentifier.usernameTextField]
+    let nextButton = app.buttons[NicknameVCIdentifier.nextButton]
     
-    // 입력한 텍스트 모두 지우는 테스트
     guard let stringValue = textField.value as? String else {
       return
     }
@@ -41,14 +48,14 @@ class SignupUITests: XCTestCase {
     }
     textField.typeText(deleteString)
     XCTAssertEqual(textField.value as? String, textField.placeholderValue, TestErrorMessage.textFieldNotEmpty)
+    XCTAssertFalse(nextButton.isEnabled, TestErrorMessage.buttonEnabled)
   }
   
+  /// 텍스트필드 클리어 버튼 눌렀을 때 테스트
   func testClearButton() {
-    let app = XCUIApplication()
-    app.launch()
-    
     let textField = app.textFields[NicknameVCIdentifier.usernameTextField]
     let clearButton = app.buttons[NicknameVCIdentifier.clearButton]
+    let nextButton = app.buttons[NicknameVCIdentifier.nextButton]
     
     // 텍스트필드에 더미값 입력
     textField.tap()
@@ -58,7 +65,6 @@ class SignupUITests: XCTestCase {
     XCTAssertTrue(clearButton.isHittable, TestErrorMessage.buttonNotHittable)
     clearButton.tap()
     XCTAssertEqual(textField.value as? String, "", TestErrorMessage.textFieldNotEmpty)
-    
-    
+    XCTAssertFalse(nextButton.isEnabled, TestErrorMessage.buttonEnabled)
   }
 }

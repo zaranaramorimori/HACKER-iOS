@@ -7,8 +7,11 @@
 
 import XCTest
 import HACKER
+import SwiftUI
 
 class HACKERUITests: XCTestCase {
+  
+  let app = XCUIApplication()
   
   override func setUpWithError() throws {
     continueAfterFailure = false
@@ -19,7 +22,6 @@ class HACKERUITests: XCTestCase {
   }
   
   func testLaunch() throws {
-    let app = XCUIApplication()
-    app.launch()
+    UITestsUtils.launchApplication(app)
   }
 }
