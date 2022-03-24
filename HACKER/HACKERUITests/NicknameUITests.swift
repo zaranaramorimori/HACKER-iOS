@@ -41,14 +41,8 @@ class NicknameUITests: XCTestCase {
     let nextButton = app.buttons[NicknameVCIdentifier.nextButton]
     let countLabel = app.staticTexts[NicknameVCIdentifier.countTextLabel]
     
-    guard let stringValue = textField.value as? String else {
-      return
-    }
-    var deleteString = String()
-    for _ in stringValue {
-      deleteString += XCUIKeyboardKey.delete.rawValue
-    }
-    textField.typeText(deleteString)
+    textField.clearText()
+    
     XCTAssertEqual(textField.value as? String, textField.placeholderValue, TestErrorMessage.textFieldNotEmpty)
     XCTAssertFalse(nextButton.isEnabled, TestErrorMessage.nextButtonEnabled)
     XCTAssertEqual(countLabel.label, "0/6", TestErrorMessage.wrongCountText)
