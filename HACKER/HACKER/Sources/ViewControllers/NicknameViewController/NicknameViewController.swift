@@ -55,6 +55,7 @@ extension NicknameViewController {
   }
   func attribute() {
     self.usernameTextField.delegate = self
+    self.view.accessibilityIdentifier = NicknameVCIdentifier.view
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
@@ -105,6 +106,7 @@ extension NicknameViewController {
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
       $0.setClearButton(with: UIImage(named: "xWhite") ?? UIImage.checkmark, mode: .whileEditing)
+      $0.accessibilityIdentifier = NicknameVCIdentifier.usernameTextField
       $0.snp.makeConstraints {
         $0.centerY.equalTo(self.textBorderView)
         $0.leading.equalTo(self.textBorderView.snp.leading).offset(16)
@@ -116,6 +118,7 @@ extension NicknameViewController {
   func layoutClearButton() {
     self.textBorderView.add(clearButton) {
       $0.setImage(UIImage(named: "xBlack"), for: .normal)
+      $0.accessibilityIdentifier = NicknameVCIdentifier.clearButton
       $0.snp.makeConstraints {
         $0.centerY.equalToSuperview()
         $0.trailing.equalToSuperview().offset(-8)
@@ -128,6 +131,7 @@ extension NicknameViewController {
     self.view.add(countTextLabel) {
       $0.setupLabel(text: "0/6", color: .hackerBlack, font: .bodyRegular14)
       $0.textColor = .clear
+      $0.accessibilityIdentifier = NicknameVCIdentifier.countTextLabel
       $0.snp.makeConstraints {
         $0.top.equalTo(self.textBorderView.snp.bottom).offset(5)
         $0.centerX.equalTo(self.clearButton.snp.centerX)
@@ -138,6 +142,7 @@ extension NicknameViewController {
     self.view.add(nextButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
       $0.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.accessibilityIdentifier = NicknameVCIdentifier.nextButton
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
       $0.snp.makeConstraints {

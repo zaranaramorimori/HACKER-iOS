@@ -15,4 +15,13 @@ class UITestsUtils {
   static func launchApplication(_ app: XCUIApplication) {
     app.launch()
   }
+  
+  static func goToNicknameVC(_ app: XCUIApplication) {
+    app.launch()
+    sleep(1)
+    
+    XCTAssertTrue(app.isDisplayingSignUpVC)
+    let nextButton = app.buttons[SignupVCIdentifier.nextButton]
+    nextButton.tap()
+  }
 }
