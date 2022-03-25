@@ -27,12 +27,15 @@ class NickNameCheckPopUpViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    setUI()
+    setBackground()
     layout()
   }
 }
 // MARK: - Extensions
 extension NickNameCheckPopUpViewController {
+  func setBackground() {
+    self.view.backgroundColor = .hackerWhite
+  }
   func layout() {
     layoutBackGroundView()
     layoutRectangleBackgroundView()
@@ -43,9 +46,6 @@ extension NickNameCheckPopUpViewController {
     layoutButtonContainerView()
     layoutYesButton()
     layoutNoButton()
-  }
-  func setUI() {
-    self.view.backgroundColor = .hackerWhite
   }
   func layoutBackGroundView() {
     self.view.add(backgroundView) {
@@ -124,7 +124,7 @@ extension NickNameCheckPopUpViewController {
   func layoutYesButton() {
     self.buttonContainerView.add(yesButton) {
       $0.setBackgroundImage(UIImage(named: "yesnoButton"), for: .normal)
-      $0.setupButton(title: "네", color: .hackerWhite, font: .btnText32, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: "네", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.snp.makeConstraints {
         $0.top.leading.equalToSuperview()
         $0.width.equalTo(120)
@@ -135,7 +135,7 @@ extension NickNameCheckPopUpViewController {
   func layoutNoButton() {
     self.buttonContainerView.add(noButton) {
       $0.setBackgroundImage(UIImage(named: "yesnoButton"), for: .normal)
-      $0.setupButton(title: "아니요", color: .hackerWhite, font: .btnText32, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: "아니요", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.snp.makeConstraints {
         $0.top.trailing.equalToSuperview()
         $0.width.equalTo(120)

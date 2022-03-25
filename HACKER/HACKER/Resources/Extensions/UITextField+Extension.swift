@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 // MARK: - UITextField
 extension UITextField {
@@ -34,10 +35,5 @@ extension UITextField {
   }
   @objc private func clearText(sender: AnyObject) {
     self.text = ""
-    let nicknameVC = NicknameViewController()
-    DispatchQueue.main.async {
-      nicknameVC.countTextLabel.text = "0/6"
-      
-    }
   }
 }

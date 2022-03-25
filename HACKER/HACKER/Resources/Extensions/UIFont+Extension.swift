@@ -50,11 +50,7 @@ extension UIFont {
     return UIFont(name: "NotoSansKR-Regular", size: 14.0)!
   }
   
-  class var btnText32: UIFont {
-    return UIFont(name: "KCC-Kimhwanki", size: 32.0)!
-  }
-  
-  class var btnText40: UIFont {
-    return UIFont(name: "KCC-Kimhwanki", size: 40.0)!
+  class func btnText(ofSize: CGFloat) -> UIFont {
+      return UIFont(name: "KCC-Kimhwanki", size: ofSize)!
   }
 }

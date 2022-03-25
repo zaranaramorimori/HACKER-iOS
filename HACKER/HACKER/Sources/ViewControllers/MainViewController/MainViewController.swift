@@ -24,15 +24,25 @@ class MainViewController: UIViewController {
   let refreshButton = UIButton()
   let progressBackgroundView = UIView()
   let progressFrontView = UIView()
-  let attackContainerView = UIView()
+  let attackContainerView = UIStackView()
   let attackTicket = UIImageView()
   let attackNum = UILabel()
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .hackerWhite
+    setBackgrund()
     layout()
+    setImageViewTap()
+  }
+}
+// MARK: - Extension
+extension MainViewController {
+  func setBackgrund() {
+    self.view.backgroundColor = .hackerWhite
+    self.navigationController?.navigationBar.isHidden = true
+  }
+  func setImageViewTap() {
     self.navigationController?.navigationBar.isHidden = true
     /// 이미지뷰 클릭시 상세 프로필화면으로
     let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.userCharacterViewTapped))
@@ -42,9 +52,6 @@ class MainViewController: UIViewController {
     self.userCharacterImage.isUserInteractionEnabled = true
     self.userCharacterImage.addGestureRecognizer(tapGestureRecognizer)
   }
-}
-// MARK: - Extension
-extension MainViewController {
   func layout() {
     layoutNickNameLabel()
     layoutAlarmButton()
@@ -107,7 +114,7 @@ extension MainViewController {
         $0.top.equalTo(self.settingsButton.snp.bottom).offset(13)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo((UIScreen.main.bounds.width-48)*1.1)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
       }
     }
   }
@@ -119,7 +126,7 @@ extension MainViewController {
         $0.top.equalTo(self.userCharacterImage.snp.top)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo((UIScreen.main.bounds.width-48)*1.1)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
       }
     }
   }
@@ -179,34 +186,24 @@ extension MainViewController {
     }
   }
   func layoutAttackContainerView() {
+    attackContainerView.alignment = .trailing
+    attackContainerView.spacing = 7
     view.add(attackContainerView) {
       $0.backgroundColor = .clear
       $0.snp.makeConstraints {
         $0.top.equalTo(self.progressBackgroundView.snp.bottom).offset(10)
         $0.trailing.equalToSuperview().offset(-24)
-        $0.width.equalTo(106)
         $0.height.equalTo(35)
       }
     }
   }
   func layoutAttackTicket() {
-    attackContainerView.add(attackTicket) {
-      $0.image = UIImage(named: "attackTicketIcon")
-      $0.snp.makeConstraints {
-        $0.top.leading.bottom.equalToSuperview()
-        $0.width.equalTo(72)
-        $0.height.equalTo(35)
-      }
-    }
+    attackContainerView.addArrangedSubview(attackTicket)
+    attackTicket.image = UIImage(named: "attackTicketIcon")
   }
   func layoutAttackNum() {
-    attackContainerView.add(attackNum) {
-      $0.setupLabel(text: "x1", color: .hackerBlack, font: .btnText32)
-      $0.snp.makeConstraints {
-        $0.trailing.equalToSuperview()
-        $0.centerY.equalToSuperview()
-      }
-    }
+    attackContainerView.addArrangedSubview(attackNum)
+    attackNum.setupLabel(text: "x1123124", color: .hackerBlack, font: .btnText(ofSize: 32))
   }
   @objc func userCharacterViewTapped() {
     let mainProfileVC = MainProfileViewController()

@@ -13,14 +13,16 @@ class TabBarViewController: UITabBarController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .hackerWhite
+    setBackground()
     setTabbarUI()
     setTabbarProperty()
   }
 }
-
 // MARK: - Extension
 extension TabBarViewController {
+  func setBackground() {
+    self.view.backgroundColor = .hackerWhite
+  }
   private func setTabbarUI() {
     /// TabBar 설정
     let tabBar: UITabBar = self.tabBar
