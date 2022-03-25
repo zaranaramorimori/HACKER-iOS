@@ -14,12 +14,24 @@ extension UIFont {
     return UIFont(name: "NotoSansKR-Bold", size: 24.0)!
   }
   
+  class var titleBold30: UIFont {
+    return UIFont(name: "NotoSansKR-Bold", size: 30.0)!
+  }
+  
   class var titleBold16: UIFont {
     return UIFont(name: "NotoSansKR-Bold", size: 16.0)!
+  }
+  
+  class var subtitleMedium30: UIFont {
+    return UIFont(name: "NotoSansKR-Medium", size: 30.0)!
   }
 
   class var subtitleMedium20: UIFont {
     return UIFont(name: "NotoSansKR-Medium", size: 20.0)!
+  }
+  
+  class var subtitleMedium24: UIFont {
+    return UIFont(name: "NotoSansKR-Medium", size: 24.0)!
   }
   
   class var subtitleMedium16: UIFont {
@@ -38,7 +50,11 @@ extension UIFont {
     return UIFont(name: "NotoSansKR-Regular", size: 14.0)!
   }
   
-  class var btnText: UIFont {
+  class var btnText32: UIFont {
     return UIFont(name: "KCC-Kimhwanki", size: 32.0)!
+  }
+  
+  class var btnText40: UIFont {
+    return UIFont(name: "KCC-Kimhwanki", size: 40.0)!
   }
 }

@@ -19,7 +19,7 @@ class SplashViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .hackerWhite
+    setUI()
     layout()
   }
 }
@@ -27,6 +27,9 @@ class SplashViewController: UIViewController {
 extension SplashViewController {
   func layout() {
     layoutLogoImageView()
+  }
+  func setUI() {
+    self.view.backgroundColor = .hackerWhite
   }
   func layoutLogoImageView() {
     self.view.add(logoImageView) {

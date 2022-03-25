@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .hackerWhite
+    setUI()
     layout()
   }
 }
@@ -29,6 +29,9 @@ extension LoginViewController {
   func layout() {
     layoutLogoImageView()
     layoutHackerLetter()
+  }
+  func setUI() {
+    self.view.backgroundColor = .hackerWhite
   }
   func layoutLogoImageView() {
     self.view.add(logoImageView) {

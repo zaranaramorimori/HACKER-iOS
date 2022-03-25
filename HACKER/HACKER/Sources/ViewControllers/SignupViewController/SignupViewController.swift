@@ -25,7 +25,7 @@ class SignupViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .white
+    setUI()
     layout()
     attribute()
     setKeyboardObserver()
@@ -45,6 +45,10 @@ extension SignupViewController {
   }
   func attribute() {
     self.usernameTextField.delegate = self
+  }
+  func setUI() {
+    self.view.backgroundColor = .hackerWhite
+    self.navigationController?.navigationBar.isHidden = true
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
@@ -117,7 +121,7 @@ extension SignupViewController {
   func layoutNextButton() {
     self.view.add(nextButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-      $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText32, backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
       $0.addTarget(self, action: #selector(self.touchNextButton), for: .touchUpInside)
@@ -168,7 +172,7 @@ extension SignupViewController: UITextFieldDelegate {
     textBorderView.backgroundColor = .black
     textField.textColor = .hackerWhite
     clearButton.setBackgroundImage(UIImage(named: "xWhite"), for: .normal)
-    nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText32, backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
   }
   /// TextField 비활성화 되었을 때
@@ -176,24 +180,7 @@ extension SignupViewController: UITextFieldDelegate {
     textBorderView.backgroundColor = .white
     textField.textColor = .hackerBlack
     clearButton.setBackgroundImage(UIImage(named: "xBlack"), for: .normal)
-    nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText32, backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-  }
-}
-
-// MARK: - UITextField
-extension UITextField {
-  /// 클리어 버튼 클릭 시 텍스트필드 내용 삭제
-  func setClearButton(with image: UIImage, mode: UITextField.ViewMode) {
-    let clearButton = UIButton(type: .custom)
-    clearButton.setImage(image, for: .normal)
-    clearButton.frame = CGRect(x: 0, y: 0, width: 35, height: 34)
-    clearButton.contentMode = .scaleAspectFit
-    clearButton.addTarget(self, action: #selector(UITextField.clear(sender:)), for: .touchUpInside)
-    self.rightView = clearButton
-    self.rightViewMode = mode
-  }
-  @objc private func clear(sender: AnyObject) {
-    self.text = ""
   }
 }
