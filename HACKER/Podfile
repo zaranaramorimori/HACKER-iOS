@@ -1,15 +1,25 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'HACKER' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+use_frameworks!
 
-  # Pods for HACKER
-pod 'Moya', '~> 14.0'
-pod 'Kingfisher', '~> 7.0'
-pod 'SnapKit', '~> 5.0.0'
-pod 'Then'
-pod 'SwiftGen', '~> 6.0'
-pod 'SwiftLint'
+def pods
+  pod 'Moya', '~> 14.0'
+  pod 'Kingfisher', '~> 7.0'
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'Then'
+  pod 'SwiftGen', '~> 6.0'
+  pod 'SwiftLint'
+end
+
+target 'HACKER' do
+  pods
+end
+
+target 'HACKERTests' do
+  pods
+end
+
+target 'HACKERUITests' do
+  pods
 end
