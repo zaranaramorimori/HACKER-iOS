@@ -43,6 +43,7 @@ extension MainViewController {
     self.navigationController?.navigationBar.isHidden = true
   }
   func setImageViewTap() {
+    self.navigationController?.navigationBar.isHidden = true
     /// 이미지뷰 클릭시 상세 프로필화면으로
     let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.userCharacterViewTapped))
     tapGestureRecognizer.isEnabled = true

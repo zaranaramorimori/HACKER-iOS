@@ -161,8 +161,8 @@ extension NicknameViewController {
     self.nextButton.transform = .identity
   }
   @objc func nextButtonClicked() {
-    let mainVC = MainViewController()
-    self.navigationController?.pushViewController(mainVC, animated: false)
+    let tabBarVC = TabBarViewController()
+    self.navigationController?.pushViewController(tabBarVC, animated: false)
   }
 }
 
