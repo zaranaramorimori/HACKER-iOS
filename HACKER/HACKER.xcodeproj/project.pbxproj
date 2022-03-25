@@ -67,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		775BA15627E7783700A43516 /* HACKER.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HACKER.entitlements; sourceTree = "<group>"; };
 		179B89A19054060BF06216B1 /* Pods-HACKERTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERTests.release.xcconfig"; path = "Target Support Files/Pods-HACKERTests/Pods-HACKERTests.release.xcconfig"; sourceTree = "<group>"; };
 		2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKERUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BDBABACCF0BB55F93813D2 /* Pods-HACKERUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.release.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +336,7 @@
 		E8E8477B279EF6E900D5A482 /* HACKER */ = {
 			isa = PBXGroup;
 			children = (
+				775BA15627E7783700A43516 /* HACKER.entitlements */,
 				E8E8478A279EF6EC00D5A482 /* Info.plist */,
 				E876118E279EFE4B00D238B3 /* Resources */,
 				E876118F279EFE5500D238B3 /* Sources */,
@@ -897,10 +899,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_ENTITLEMENTS = HACKER/HACKER.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J92QJ4K4KU;
+				DEVELOPMENT_TEAM = T3VFJ764ZC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HACKER/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -913,7 +915,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TeamZZONG.HACKER;
+				PRODUCT_BUNDLE_IDENTIFIER = "YJC.HACKER-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -928,10 +930,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_ENTITLEMENTS = HACKER/HACKER.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J92QJ4K4KU;
+				DEVELOPMENT_TEAM = T3VFJ764ZC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HACKER/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -944,7 +946,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TeamZZONG.HACKER;
+				PRODUCT_BUNDLE_IDENTIFIER = "YJC.HACKER-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
