@@ -24,13 +24,16 @@ class MainProfileViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .hackerWhite
-    self.navigationController?.navigationBar.isHidden = true
+    setBackground()
     layout()
   }
 }
 // MARK: - Extensions
 extension MainProfileViewController {
+  func setBackground() {
+    self.view.backgroundColor = .hackerWhite
+    self.navigationController?.navigationBar.isHidden = true
+  }
   func layout() {
     layoutBackButton()
     layoutUserCharacterImage()
@@ -59,7 +62,7 @@ extension MainProfileViewController {
         $0.top.equalTo(self.backButton.snp.bottom).offset(77)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo((UIScreen.main.bounds.width-48)*1.1)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
       }
     }
   }
@@ -71,7 +74,7 @@ extension MainProfileViewController {
         $0.top.equalTo(self.userCharacterImage.snp.top)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo((UIScreen.main.bounds.width-48)*1.1)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
       }
     }
   }
@@ -95,7 +98,7 @@ extension MainProfileViewController {
   }
   func layoutHairNumLabel() {
     view.add(hairNumLabel) {
-      $0.setupLabel(text: "360가닥", color: .hackerBlack, font: .btnText40)
+      $0.setupLabel(text: "360가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userGithubNameLabel.snp.bottom).offset(26)
         $0.centerX.equalToSuperview()

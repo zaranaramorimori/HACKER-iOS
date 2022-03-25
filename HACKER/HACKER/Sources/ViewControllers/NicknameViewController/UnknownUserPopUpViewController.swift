@@ -22,21 +22,21 @@ class UnknownUserPopUpViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    setUI()
+    setBackground()
     layout()
   }
   
 }
 // MARK: - Extensions
 extension UnknownUserPopUpViewController {
+  func setBackground() {
+    self.view.backgroundColor = .hackerWhite
+  }
   func layout() {
     layoutBackGroundView()
     layoutRectangleBackground()
     layoutUnknownUserLabel()
     layoutTryAgainButton()
-  }
-  func setUI() {
-    self.view.backgroundColor = .hackerWhite
   }
   func layoutBackGroundView() {
     self.view.add(backgroundView) {
@@ -70,7 +70,7 @@ extension UnknownUserPopUpViewController {
   func layoutTryAgainButton() {
     self.rectangleBackgroundView.add(tryagainButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
-      $0.setupButton(title: "다시 입력하기", color: .hackerWhite, font: .btnText32, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: "다시 입력하기", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.unknownUserLabel.snp.bottom).offset(51)
         $0.centerX.equalToSuperview()
