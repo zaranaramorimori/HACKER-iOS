@@ -9,87 +9,104 @@ import UIKit
 
 class RewardAdViewController: UIViewController {
   // MARK: - Properties
-  let coinCount: Int = 10
+  var coinCount: Int = 10
   
   // MARK: - Componenets
-  let coinStackView = UIStackView()
-  let coinImageView = UIImageView()
-  let coinCountLabel = UILabel()
-  let watchAdButton = UIButton()
-  let watchAdLabel = UILabel()
+  private lazy var coinStackView: UIStackView = { createCoinStackView() }()
+  private lazy var coinImageView: UIImageView = { createCoinImageView() }()
+  private lazy var coinCountLabel: UILabel = { createLabel(text: "x\(coinCount)", size: 32, color: .hackerBlack) }()
+  private lazy var watchAdButton: UIButton = { createWatchAdButton() }()
+  private lazy var watchAdLabel: UILabel = { createLabel(text: "코인 채굴", size: 25, color: .hackerWhite) }()
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
     setBackground()
+    setView()
     setLayout()
   }
 }
 
 // MARK: - UI
 extension RewardAdViewController {
-  func setBackground() {
-      view.backgroundColor = .white
-      navigationController?.navigationBar.isHidden = true
+  private func setBackground() {
+    view.backgroundColor = .white
+    navigationController?.navigationBar.isHidden = true
   }
   
-  func setLayout() {
+  private func setView() {
+    view.addSubviews([coinStackView, watchAdButton, watchAdLabel])
+    coinStackView.addArrangedSubview(coinImageView)
+    coinStackView.addArrangedSubview(coinCountLabel)
+  }
+  
+  private func setLayout() {
     layoutCoinStackView()
-    layoutCoinImageView()
-    layoutCoinCountLabel()
-    layoutWatchAdButton()
-    layoutWatchAdLabel()
+    layoutAdButton()
   }
   
-  func layoutCoinStackView() {
-    view.add(coinStackView) { stack in
-      stack.alignment = .center
-      stack.spacing = 7
-      stack.snp.makeConstraints { make in
-        make.centerX.equalToSuperview()
-        make.top.equalTo(self.view.safeAreaLayoutGuide).offset(100)
-        make.height.equalTo(35)
-      }
+  private func createCoinStackView() -> UIStackView {
+    let stack = UIStackView()
+    stack.alignment = .center
+    stack.spacing = 7
+    return stack
+  }
+  
+  private func createCoinImageView() -> UIImageView {
+    let imageView = UIImageView()
+    imageView.image = UIImage(named: "logoIcon")
+    imageView.contentMode = .scaleAspectFit
+    return imageView
+  }
+  
+  private func createLabel(text: String, size: CGFloat, color: UIColor) -> UILabel {
+    let label = UILabel()
+    label.setupLabel(text: text, color: color, font: .btnText(ofSize: size))
+    return label
+  }
+  
+  private func createWatchAdButton() -> UIButton {
+    let button = UIButton()
+    button.setImage(UIImage(named: "yesnoButton"), for: .normal)
+    return button
+  }
+  
+  private func createWatchAdLabel() -> UILabel {
+    view.add(watchAdLabel) { label in
+      label.text = "코인 채굴"
+      label.font = .btnText(ofSize: 25)
+      
     }
   }
   
-  func layoutCoinImageView() {
-    coinStackView.addArrangedSubview(coinImageView)
-    coinImageView.image = UIImage(named: "logoIcon")
-    coinImageView.contentMode = .scaleAspectFit
+  private func layoutCoinStackView() {
+    coinStackView.snp.makeConstraints { make in
+      make.centerX.equalToSuperview()
+      make.top.equalTo(view.safeAreaLayoutGuide).offset(100)
+      make.height.equalTo(35)
+    }
+    
     coinImageView.snp.makeConstraints { make in
       make.width.equalTo(35)
     }
   }
   
-  func layoutCoinCountLabel() {
-    coinStackView.addArrangedSubview(coinCountLabel)
-    coinCountLabel.setupLabel(text: "x\(coinCount)", color: .hackerBlack, font: .btnText(ofSize: 32))
-  }
-  
-  func layoutWatchAdButton() {
-    view.add(watchAdButton) { button in
-      button.setImage(UIImage(named: "yesnoButton"), for: .normal)
-      button.snp.makeConstraints { make in
-        make.centerX.equalToSuperview()
-        make.top.equalTo(self.coinStackView.snp.bottom).offset(20)
-      }
+  private func layoutAdButton() {
+    watchAdButton.snp.makeConstraints { make in
+      make.centerX.equalToSuperview()
+      make.top.equalTo(coinStackView.snp.bottom).offset(20)
     }
-  }
-  
-  func layoutWatchAdLabel() {
-    view.add(watchAdLabel) { label in
-      label.text = "코인 채굴"
-      label.font = .btnText(ofSize: 25)
-      label.snp.makeConstraints { make in
-        make.center.equalTo(self.watchAdButton)
-      }
+    
+    watchAdLabel.snp.makeConstraints { make in
+      make.center.equalTo(watchAdButton)
     }
   }
 }
 
 // MARK: - Actions
 extension RewardAdViewController {
-  
+  @objc private func watchAdButtonTapped() {
+    
+  }
 }
