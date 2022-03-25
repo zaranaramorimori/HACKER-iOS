@@ -73,6 +73,7 @@ extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier) as? SettingTableViewCell else { return UITableViewCell() }
         
+        cell.backgroundColor = .clear
         cell.selectionStyle = .none
         cell.titleLabel.text = settingTitles[indexPath.section]
         
@@ -80,7 +81,7 @@ extension SettingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
+        // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
         print(indexPath.section)
     }
 }
