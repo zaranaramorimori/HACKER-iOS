@@ -9,7 +9,6 @@ import UIKit
 
 import SnapKit
 import Then
-import MapKit
 
 // MARK: - NicknameViewController
 class NicknameViewController: UIViewController {
@@ -20,7 +19,6 @@ class NicknameViewController: UIViewController {
   let explainLabel = UILabel()
   let textBorderView = UIView()
   let usernameTextField = UITextField()
-  let clearButton = UIButton()
   let countTextLabel = UILabel()
   let nextButton = UIButton()
   
@@ -29,8 +27,7 @@ class NicknameViewController: UIViewController {
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .white
-    self.navigationController?.navigationBar.isHidden = true
+    setBackground()
     layout()
     attribute()
     setKeyboardObserver()
@@ -43,18 +40,22 @@ class NicknameViewController: UIViewController {
 
 // MARK: - Extensions
 extension NicknameViewController {
+  func setBackground() {
+      self.view.backgroundColor = .white
+      self.navigationController?.navigationBar.isHidden = true
+  }
   func layout() {
     layoutHackerImageView()
     layoutHelloLabel()
     layoutExplainLabel()
     layoutTextBorderview()
     layoutUserNameTextField()
-    layoutClearButton()
     layoutCountTextLabel()
     layoutNextButton()
   }
   func attribute() {
     self.usernameTextField.delegate = self
+    self.view.accessibilityIdentifier = NicknameVCIdentifier.view
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
@@ -104,7 +105,11 @@ extension NicknameViewController {
       $0.textColor = .hackerDarkGray
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
-      $0.setClearButton(with: UIImage(named: "xWhite") ?? UIImage.checkmark, mode: .whileEditing)
+      $0.clearButtonMode = .always
+      if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+        clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
+      }
+      $0.accessibilityIdentifier = NicknameVCIdentifier.usernameTextField
       $0.snp.makeConstraints {
         $0.centerY.equalTo(self.textBorderView)
         $0.leading.equalTo(self.textBorderView.snp.leading).offset(16)
@@ -113,33 +118,25 @@ extension NicknameViewController {
       }
     }
   }
-  func layoutClearButton() {
-    self.textBorderView.add(clearButton) {
-      $0.setImage(UIImage(named: "xBlack"), for: .normal)
-      $0.snp.makeConstraints {
-        $0.centerY.equalToSuperview()
-        $0.trailing.equalToSuperview().offset(-8)
-        $0.width.equalTo(35)
-        $0.height.equalTo(34)
-      }
-    }
-  }
   func layoutCountTextLabel() {
     self.view.add(countTextLabel) {
       $0.setupLabel(text: "0/6", color: .hackerBlack, font: .bodyRegular14)
       $0.textColor = .clear
+      $0.accessibilityIdentifier = NicknameVCIdentifier.countTextLabel
       $0.snp.makeConstraints {
         $0.top.equalTo(self.textBorderView.snp.bottom).offset(5)
-        $0.centerX.equalTo(self.clearButton.snp.centerX)
+        $0.trailing.equalToSuperview().offset(-38)
       }
     }
   }
   func layoutNextButton() {
     self.view.add(nextButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-      $0.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.accessibilityIdentifier = NicknameVCIdentifier.nextButton
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
+      $0.addTarget(self, action: #selector(self.nextButtonClicked), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
@@ -167,6 +164,10 @@ extension NicknameViewController {
   @objc func textViewMoveDown(_ notification: NSNotification) {
     self.nextButton.transform = .identity
   }
+  @objc func nextButtonClicked() {
+    let tabBarVC = TabBarViewController()
+    self.navigationController?.pushViewController(tabBarVC, animated: false)
+  }
 }
 
 // MARK: - UITextFieldDelegate
@@ -181,8 +182,7 @@ extension NicknameViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .black
     textField.textColor = .hackerWhite
-    clearButton.setBackgroundImage(UIImage(named: "xWhite"), for: .normal)
-    nextButton.setupButton(title: "시작!", color: .hackerWhite, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setupButton(title: "시작!", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
     countTextLabel.textColor = .hackerBlack
   }
@@ -190,8 +190,7 @@ extension NicknameViewController: UITextFieldDelegate {
   func textFieldDidEndEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .white
     textField.textColor = .hackerBlack
-    clearButton.setBackgroundImage(UIImage(named: "xBlack"), for: .normal)
-    nextButton.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
   }
   /// nameTextField 글자수 세기, 제한
@@ -219,29 +218,6 @@ extension NicknameViewController: UITextFieldDelegate {
           countTextLabel.text = "\(countNum)/6"
         }
       }
-    }
-  }
-}
-// MARK: - UITextField
-extension UITextField {
-  /// 클리어 버튼 클릭 시 텍스트필드 내용 삭제
-  func setClearNickNameButton(with image: UIImage, mode: UITextField.ViewMode) {
-    let clearButton = UIButton(type: .custom)
-    clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
-    clearButton.frame = CGRect(x: 0, y: 0, width: 35, height: 34)
-    clearButton.contentMode = .scaleAspectFit
-    clearButton.addTarget(self, action: #selector(UITextField.clear(sender:)), for: .touchUpInside)
-    self.rightView = clearButton
-    self.rightViewMode = mode
-  }
-  
-  @objc private func clear(sender: AnyObject) {
-    self.text = ""
-    let nicknameVC = NicknameViewController()
-    DispatchQueue.main.async {
-      nicknameVC.countTextLabel.text = "0/6"
-      print(nicknameVC.countTextLabel.text)
-      print("어쩔티비")
     }
   }
 }

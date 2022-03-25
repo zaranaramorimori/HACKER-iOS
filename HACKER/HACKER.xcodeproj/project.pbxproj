@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A3D50C1AFB4489BB093B1EB /* Pods_HACKERUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */; };
+		8648AD9727E8D417009F5C7A /* HACKERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8648AD9627E8D417009F5C7A /* HACKERTests.swift */; };
+		869B5AC127ECFFB500F2ACA7 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */; };
+		869B5AC327ED04D000F2ACA7 /* XCUIElement+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */; };
+		86DF9A7427EB37CA00C7D493 /* SignupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7327EB37C900C7D493 /* SignupUITests.swift */; };
+		86DF9A7727ECF1B500C7D493 /* UITestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7627ECF1B500C7D493 /* UITestUtils.swift */; };
+		86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
+		86DF9A7927ECF61E00C7D493 /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
+		86DF9A7B27ECF8EC00C7D493 /* NicknameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7A27ECF8EC00C7D493 /* NicknameUITests.swift */; };
+		86F9EB2327E8D51100E1FEFD /* HACKERUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */; };
+		86F9EB3027E9D63000E1FEFD /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
+		86F9EB3727E9DBB400E1FEFD /* TestErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB3427E9DBAE00E1FEFD /* TestErrorMessage.swift */; };
+		AE6014EE07B3BD5F1CED1FC6 /* Pods_HACKERTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79CD676A7BE0B5AFC5D6A3E /* Pods_HACKERTests.framework */; };
 		C4C05B48E05749AF8AC87FED /* Pods_HACKER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */; };
 		E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF027C2479C00107741 /* LoginViewController.swift */; };
 		E833EEF327C247A400107741 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF227C247A400107741 /* SplashViewController.swift */; };
@@ -21,6 +34,10 @@
 		E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119B27A0397700D238B3 /* UIColor+Extension.swift */; };
 		E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119D27A0398000D238B3 /* UIFont+Extension.swift */; };
 		E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119F27A0398B00D238B3 /* UIButton+Extension.swift */; };
+		E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3327E44A27009F65E3 /* MainViewController.swift */; };
+		E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */; };
+		E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */; };
+		E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */; };
 		E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477C279EF6E900D5A482 /* AppDelegate.swift */; };
 		E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */; };
 		E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E84780279EF6E900D5A482 /* ViewController.swift */; };
@@ -32,9 +49,43 @@
 		E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8FF04F927B212C000C7C3E5 /* NotoSansKR-Regular.otf */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8648AD9827E8D417009F5C7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8E84771279EF6E900D5A482 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8E84778279EF6E900D5A482;
+			remoteInfo = HACKER;
+		};
+		86F9EB2627E8D51100E1FEFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8E84771279EF6E900D5A482 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8E84778279EF6E900D5A482;
+			remoteInfo = HACKER;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		775BA15627E7783700A43516 /* HACKER.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HACKER.entitlements; sourceTree = "<group>"; };
+		179B89A19054060BF06216B1 /* Pods-HACKERTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERTests.release.xcconfig"; path = "Target Support Files/Pods-HACKERTests/Pods-HACKERTests.release.xcconfig"; sourceTree = "<group>"; };
+		2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKERUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41BDBABACCF0BB55F93813D2 /* Pods-HACKERUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.release.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6D722C98A0200948EF94743D /* Pods-HACKERTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERTests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERTests/Pods-HACKERTests.debug.xcconfig"; sourceTree = "<group>"; };
+		834AE9E2D5646B5161A239D4 /* Pods-HACKERUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8648AD9427E8D417009F5C7A /* HACKERTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8648AD9627E8D417009F5C7A /* HACKERTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERTests.swift; sourceTree = "<group>"; };
+		869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
+		869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extension.swift"; sourceTree = "<group>"; };
+		86DF9A7327EB37C900C7D493 /* SignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUITests.swift; sourceTree = "<group>"; };
+		86DF9A7627ECF1B500C7D493 /* UITestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUtils.swift; sourceTree = "<group>"; };
+		86DF9A7A27ECF8EC00C7D493 /* NicknameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameUITests.swift; sourceTree = "<group>"; };
+		86F9EB2027E8D51100E1FEFD /* HACKERUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERUITests.swift; sourceTree = "<group>"; };
+		86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetIdentifier.swift; sourceTree = "<group>"; };
+		86F9EB3427E9DBAE00E1FEFD /* TestErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestErrorMessage.swift; sourceTree = "<group>"; };
 		A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C79CD676A7BE0B5AFC5D6A3E /* Pods_HACKERTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKERTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43D251F9FBD31ADDBC63F1C /* Pods-HACKER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKER.debug.xcconfig"; path = "Target Support Files/Pods-HACKER/Pods-HACKER.debug.xcconfig"; sourceTree = "<group>"; };
 		D64BBA392CA295A2C82DAB1C /* Pods-HACKER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKER.release.xcconfig"; path = "Target Support Files/Pods-HACKER/Pods-HACKER.release.xcconfig"; sourceTree = "<group>"; };
 		E833EEF027C2479C00107741 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +101,10 @@
 		E876119B27A0397700D238B3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E876119D27A0398000D238B3 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E876119F27A0398B00D238B3 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		E88D4C3327E44A27009F65E3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileViewController.swift; sourceTree = "<group>"; };
+		E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		E8E84779279EF6E900D5A482 /* HACKER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HACKER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E8477C279EF6E900D5A482 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +119,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8648AD9127E8D417009F5C7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE6014EE07B3BD5F1CED1FC6 /* Pods_HACKERTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86F9EB1D27E8D51100E1FEFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A3D50C1AFB4489BB093B1EB /* Pods_HACKERUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8E84776279EF6E900D5A482 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -75,12 +146,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8648AD9527E8D417009F5C7A /* HACKERTests */ = {
+			isa = PBXGroup;
+			children = (
+				8648AD9627E8D417009F5C7A /* HACKERTests.swift */,
+			);
+			path = HACKERTests;
+			sourceTree = "<group>";
+		};
+		86DF9A7527ECF19900C7D493 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				86DF9A7627ECF1B500C7D493 /* UITestUtils.swift */,
+				86F9EB3427E9DBAE00E1FEFD /* TestErrorMessage.swift */,
+				869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */,
+				869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		86F7ADBA2E616E873EB7C0F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */,
+				C79CD676A7BE0B5AFC5D6A3E /* Pods_HACKERTests.framework */,
+				2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		86F9EB2127E8D51100E1FEFD /* HACKERUITests */ = {
+			isa = PBXGroup;
+			children = (
+				86DF9A7527ECF19900C7D493 /* Utils */,
+				86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */,
+				86DF9A7327EB37C900C7D493 /* SignupUITests.swift */,
+				86DF9A7A27ECF8EC00C7D493 /* NicknameUITests.swift */,
+			);
+			path = HACKERUITests;
 			sourceTree = "<group>";
 		};
 		C6B966991ABEEE5DCED8EA98 /* Pods */ = {
@@ -88,6 +191,10 @@
 			children = (
 				D43D251F9FBD31ADDBC63F1C /* Pods-HACKER.debug.xcconfig */,
 				D64BBA392CA295A2C82DAB1C /* Pods-HACKER.release.xcconfig */,
+				6D722C98A0200948EF94743D /* Pods-HACKERTests.debug.xcconfig */,
+				179B89A19054060BF06216B1 /* Pods-HACKERTests.release.xcconfig */,
+				834AE9E2D5646B5161A239D4 /* Pods-HACKERUITests.debug.xcconfig */,
+				41BDBABACCF0BB55F93813D2 /* Pods-HACKERUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -144,6 +251,8 @@
 		E8761190279EFE7C00D238B3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E88D4C3727E44AFD009F65E3 /* TabBarViewController */,
+				E88D4C3227E449D9009F65E3 /* MainViewController */,
 				E833EEEE27C2477900107741 /* LoginViewController */,
 				E87580A927B16EBC00C7E7E2 /* NicknameViewController */,
 				E87580A827B16EB200C7E7E2 /* SignupViewController */,
@@ -160,6 +269,7 @@
 				E876119B27A0397700D238B3 /* UIColor+Extension.swift */,
 				E876119D27A0398000D238B3 /* UIFont+Extension.swift */,
 				E876119F27A0398B00D238B3 /* UIButton+Extension.swift */,
+				E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -178,8 +288,26 @@
 		E8761194279EFEF900D238B3 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		E88D4C3227E449D9009F65E3 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E88D4C3327E44A27009F65E3 /* MainViewController.swift */,
+				E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		E88D4C3727E44AFD009F65E3 /* TabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */,
+			);
+			path = TabBarViewController;
 			sourceTree = "<group>";
 		};
 		E8E84770279EF6E900D5A482 = {
@@ -187,6 +315,8 @@
 			children = (
 				E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */,
 				E8E8477B279EF6E900D5A482 /* HACKER */,
+				8648AD9527E8D417009F5C7A /* HACKERTests */,
+				86F9EB2127E8D51100E1FEFD /* HACKERUITests */,
 				E8E8477A279EF6E900D5A482 /* Products */,
 				C6B966991ABEEE5DCED8EA98 /* Pods */,
 				86F7ADBA2E616E873EB7C0F1 /* Frameworks */,
@@ -197,6 +327,8 @@
 			isa = PBXGroup;
 			children = (
 				E8E84779279EF6E900D5A482 /* HACKER.app */,
+				8648AD9427E8D417009F5C7A /* HACKERTests.xctest */,
+				86F9EB2027E8D51100E1FEFD /* HACKERUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,6 +348,46 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8648AD9327E8D417009F5C7A /* HACKERTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8648AD9C27E8D417009F5C7A /* Build configuration list for PBXNativeTarget "HACKERTests" */;
+			buildPhases = (
+				5A6DD4C1BA5DFF378BF6A3E7 /* [CP] Check Pods Manifest.lock */,
+				8648AD9027E8D417009F5C7A /* Sources */,
+				8648AD9127E8D417009F5C7A /* Frameworks */,
+				8648AD9227E8D417009F5C7A /* Resources */,
+				C522486226FD67E71035C6E0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8648AD9927E8D417009F5C7A /* PBXTargetDependency */,
+			);
+			name = HACKERTests;
+			productName = HACKERTests;
+			productReference = 8648AD9427E8D417009F5C7A /* HACKERTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		86F9EB1F27E8D51100E1FEFD /* HACKERUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 86F9EB2A27E8D51100E1FEFD /* Build configuration list for PBXNativeTarget "HACKERUITests" */;
+			buildPhases = (
+				3836E34CFC28A6763ADC4713 /* [CP] Check Pods Manifest.lock */,
+				86F9EB1C27E8D51100E1FEFD /* Sources */,
+				86F9EB1D27E8D51100E1FEFD /* Frameworks */,
+				86F9EB1E27E8D51100E1FEFD /* Resources */,
+				C5B6EBEB0FDC993A88BB3373 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				86F9EB2727E8D51100E1FEFD /* PBXTargetDependency */,
+			);
+			name = HACKERUITests;
+			productName = HACKERUITests;
+			productReference = 86F9EB2027E8D51100E1FEFD /* HACKERUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		E8E84778279EF6E900D5A482 /* HACKER */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8E8478D279EF6EC00D5A482 /* Build configuration list for PBXNativeTarget "HACKER" */;
@@ -243,9 +415,17 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
+					8648AD9327E8D417009F5C7A = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = E8E84778279EF6E900D5A482;
+					};
+					86F9EB1F27E8D51100E1FEFD = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = E8E84778279EF6E900D5A482;
+					};
 					E8E84778279EF6E900D5A482 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -265,11 +445,27 @@
 			projectRoot = "";
 			targets = (
 				E8E84778279EF6E900D5A482 /* HACKER */,
+				8648AD9327E8D417009F5C7A /* HACKERTests */,
+				86F9EB1F27E8D51100E1FEFD /* HACKERUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8648AD9227E8D417009F5C7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86F9EB1E27E8D51100E1FEFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8E84777279EF6E900D5A482 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,6 +483,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3836E34CFC28A6763ADC4713 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HACKERUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4CDE49991AA512E7CF404C0F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -302,6 +520,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HACKER/Pods-HACKER-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A6DD4C1BA5DFF378BF6A3E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HACKERTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C522486226FD67E71035C6E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HACKERTests/Pods-HACKERTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HACKERTests/Pods-HACKERTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HACKERTests/Pods-HACKERTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5B6EBEB0FDC993A88BB3373 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D97F45656BAAD618823AD183 /* [CP] Check Pods Manifest.lock */ = {
@@ -347,6 +621,30 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8648AD9027E8D417009F5C7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8648AD9727E8D417009F5C7A /* HACKERTests.swift in Sources */,
+				86DF9A7927ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86F9EB1C27E8D51100E1FEFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				869B5AC127ECFFB500F2ACA7 /* XCUIApplication+Extension.swift in Sources */,
+				869B5AC327ED04D000F2ACA7 /* XCUIElement+Extension.swift in Sources */,
+				86F9EB3727E9DBB400E1FEFD /* TestErrorMessage.swift in Sources */,
+				86DF9A7727ECF1B500C7D493 /* UITestUtils.swift in Sources */,
+				86DF9A7427EB37CA00C7D493 /* SignupUITests.swift in Sources */,
+				86F9EB3027E9D63000E1FEFD /* TargetIdentifier.swift in Sources */,
+				86F9EB2327E8D51100E1FEFD /* HACKERUITests.swift in Sources */,
+				86DF9A7B27ECF8EC00C7D493 /* NicknameUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8E84775279EF6E900D5A482 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,20 +654,38 @@
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
 				E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
+				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
+				E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */,
 				E833EEF327C247A400107741 /* SplashViewController.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
 				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
+				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
+				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
 				E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */,
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
 				E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */,
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
+				E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8648AD9927E8D417009F5C7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8E84778279EF6E900D5A482 /* HACKER */;
+			targetProxy = 8648AD9827E8D417009F5C7A /* PBXContainerItemProxy */;
+		};
+		86F9EB2727E8D51100E1FEFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8E84778279EF6E900D5A482 /* HACKER */;
+			targetProxy = 86F9EB2627E8D51100E1FEFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E8E84787279EF6EC00D5A482 /* LaunchScreen.storyboard */ = {
@@ -383,6 +699,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8648AD9A27E8D417009F5C7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D722C98A0200948EF94743D /* Pods-HACKERTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J92QJ4K4KU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danna.HACKERTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HACKER.app/HACKER";
+			};
+			name = Debug;
+		};
+		8648AD9B27E8D417009F5C7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 179B89A19054060BF06216B1 /* Pods-HACKERTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J92QJ4K4KU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danna.HACKERTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HACKER.app/HACKER";
+			};
+			name = Release;
+		};
+		86F9EB2827E8D51100E1FEFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 834AE9E2D5646B5161A239D4 /* Pods-HACKERUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J92QJ4K4KU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danna.HACKERUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HACKER;
+			};
+			name = Debug;
+		};
+		86F9EB2927E8D51100E1FEFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41BDBABACCF0BB55F93813D2 /* Pods-HACKERUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J92QJ4K4KU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danna.HACKERUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = HACKER;
+			};
+			name = Release;
+		};
 		E8E8478B279EF6EC00D5A482 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -513,6 +907,7 @@
 				INFOPLIST_FILE = HACKER/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -522,6 +917,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "YJC.HACKER-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -542,6 +938,7 @@
 				INFOPLIST_FILE = HACKER/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -551,6 +948,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "YJC.HACKER-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -560,6 +958,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8648AD9C27E8D417009F5C7A /* Build configuration list for PBXNativeTarget "HACKERTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8648AD9A27E8D417009F5C7A /* Debug */,
+				8648AD9B27E8D417009F5C7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		86F9EB2A27E8D51100E1FEFD /* Build configuration list for PBXNativeTarget "HACKERUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86F9EB2827E8D51100E1FEFD /* Debug */,
+				86F9EB2927E8D51100E1FEFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E8E84774279EF6E900D5A482 /* Build configuration list for PBXProject "HACKER" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
