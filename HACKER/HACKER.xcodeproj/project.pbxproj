@@ -16,6 +16,8 @@
 		86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86DF9A7927ECF61E00C7D493 /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86DF9A7B27ECF8EC00C7D493 /* NicknameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7A27ECF8EC00C7D493 /* NicknameUITests.swift */; };
+		86F8CAC427EE40B100DB0E74 /* GoogleAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8CAC327EE40B100DB0E74 /* GoogleAds.swift */; };
+		86F8CAC727EE441700DB0E74 /* RewardAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8CAC627EE441700DB0E74 /* RewardAdViewController.swift */; };
 		86F9EB2327E8D51100E1FEFD /* HACKERUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */; };
 		86F9EB3027E9D63000E1FEFD /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86F9EB3727E9DBB400E1FEFD /* TestErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB3427E9DBAE00E1FEFD /* TestErrorMessage.swift */; };
@@ -79,6 +81,8 @@
 		86DF9A7327EB37C900C7D493 /* SignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUITests.swift; sourceTree = "<group>"; };
 		86DF9A7627ECF1B500C7D493 /* UITestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUtils.swift; sourceTree = "<group>"; };
 		86DF9A7A27ECF8EC00C7D493 /* NicknameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameUITests.swift; sourceTree = "<group>"; };
+		86F8CAC327EE40B100DB0E74 /* GoogleAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAds.swift; sourceTree = "<group>"; };
+		86F8CAC627EE441700DB0E74 /* RewardAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardAdViewController.swift; sourceTree = "<group>"; };
 		86F9EB2027E8D51100E1FEFD /* HACKERUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERUITests.swift; sourceTree = "<group>"; };
 		86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetIdentifier.swift; sourceTree = "<group>"; };
@@ -174,6 +178,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		86F8CAC527EE43FB00DB0E74 /* RewardAdViewController */ = {
+			isa = PBXGroup;
+			children = (
+				86F8CAC627EE441700DB0E74 /* RewardAdViewController.swift */,
+			);
+			path = RewardAdViewController;
+			sourceTree = "<group>";
+		};
 		86F9EB2127E8D51100E1FEFD /* HACKERUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +262,7 @@
 		E8761190279EFE7C00D238B3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				86F8CAC527EE43FB00DB0E74 /* RewardAdViewController */,
 				E88D4C3727E44AFD009F65E3 /* TabBarViewController */,
 				E88D4C3227E449D9009F65E3 /* MainViewController */,
 				E833EEEE27C2477900107741 /* LoginViewController */,
@@ -288,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */,
+				86F8CAC327EE40B100DB0E74 /* GoogleAds.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -659,6 +673,7 @@
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
 				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
+				86F8CAC427EE40B100DB0E74 /* GoogleAds.swift in Sources */,
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
 				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
 				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
@@ -666,6 +681,7 @@
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
 				E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */,
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
+				86F8CAC727EE441700DB0E74 /* RewardAdViewController.swift in Sources */,
 				E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
