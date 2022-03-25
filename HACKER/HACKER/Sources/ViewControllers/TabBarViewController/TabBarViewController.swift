@@ -15,12 +15,13 @@ class TabBarViewController: UITabBarController {
     super.viewDidLoad()
     self.view.backgroundColor = .hackerWhite
     setTabbarUI()
+    setTabbarProperty()
   }
 }
 
 // MARK: - Extension
 extension TabBarViewController {
-  func setTabbarUI() {
+  private func setTabbarUI() {
     /// TabBar 설정
     let tabBar: UITabBar = self.tabBar
     tabBar.backgroundColor = .hackerWhite
@@ -30,8 +31,13 @@ extension TabBarViewController {
     self.hidesBottomBarWhenPushed = false
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
+  private func setTabbarProperty() {
+    viewControllers = [createFirstTab(), createSecondTab(), createThirdTab()]
+    /// 처음 선택된 VC 설정
+    selectedIndex = 1
+  }
+  
+  private func createFirstTab() -> UINavigationController {
     let firstNavigationController = UINavigationController()
     let firstTabController = LoginViewController()
     firstNavigationController.addChild(firstTabController)
@@ -40,6 +46,10 @@ extension TabBarViewController {
     /// 선택되었을 때 보여질 이미지
     firstNavigationController.tabBarItem.selectedImage = UIImage(named: "fightIconActive")?.withRenderingMode(.alwaysOriginal)
     
+    return firstNavigationController
+  }
+  
+  private func createSecondTab() -> UINavigationController {
     let secondNavigationController = UINavigationController()
     let secondTabController = MainViewController()
     secondNavigationController.addChild(secondTabController)
@@ -48,6 +58,10 @@ extension TabBarViewController {
     /// 선택되었을 때 보여질 이미지
     secondNavigationController.tabBarItem.selectedImage = UIImage(named: "homeIconActive")?.withRenderingMode(.alwaysOriginal)
     
+    return secondNavigationController
+  }
+  
+  private func createThirdTab() -> UINavigationController {
     let thirdNavigationController = UINavigationController()
     let thirdTabController = LoginViewController()
     thirdNavigationController.addChild(thirdTabController)
@@ -56,9 +70,6 @@ extension TabBarViewController {
     /// 선택되었을 때 보여질 이미지
     thirdNavigationController.tabBarItem.selectedImage = UIImage(named: "myPageIconActive")?.withRenderingMode(.alwaysOriginal)
     
-    let viewControllers = [firstNavigationController, secondNavigationController, thirdNavigationController]
-    self.setViewControllers(viewControllers, animated: true)
-    /// 처음 선택된 VC 설정
-    self.selectedViewController = secondNavigationController
+    return thirdNavigationController
   }
 }
