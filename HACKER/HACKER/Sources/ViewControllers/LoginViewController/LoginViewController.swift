@@ -20,12 +20,15 @@ class LoginViewController: UIViewController {
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .hackerWhite
+    setBackground()
     layout()
   }
 }
 // MARK: - Extensions
 extension LoginViewController {
+  func setBackground() {
+      self.view.backgroundColor = .hackerWhite
+  }
   func layout() {
     layoutLogoImageView()
     layoutHackerLetter()

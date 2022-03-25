@@ -19,13 +19,12 @@ class SignupViewController: UIViewController {
   let explainLabel = UILabel()
   let textBorderView = UIView()
   let usernameTextField = UITextField()
-  let clearButton = UIButton()
   let nextButton = UIButton()
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.backgroundColor = .white
+    setBackground()
     layout()
     attribute()
     setKeyboardObserver()
@@ -34,13 +33,16 @@ class SignupViewController: UIViewController {
 
 // MARK: - Extensions
 extension SignupViewController {
+  func setBackground() {
+      self.view.backgroundColor = .hackerWhite
+      self.navigationController?.navigationBar.isHidden = true
+  }
   func layout() {
     layoutHackerImageView()
     layoutHelloLabel()
     layoutExplainLabel()
     layoutTextBorderview()
     layoutUserNameTextField()
-    layoutClearButton()
     layoutNextButton()
   }
   func attribute() {
@@ -90,12 +92,16 @@ extension SignupViewController {
     }
   }
   func layoutUserNameTextField() {
-    self.view.add(usernameTextField) {
+    self.textBorderView.add(usernameTextField) {
+      $0.translatesAutoresizingMaskIntoConstraints = false
       $0.placeholder = "유저 네임을 정확하게 입력해주세요"
       $0.textColor = .hackerDarkGray
       $0.autocorrectionType = .no
       $0.autocapitalizationType = .none
-      $0.setClearButton(with: UIImage(named: "xWhite") ?? UIImage.checkmark, mode: .whileEditing)
+      $0.clearButtonMode = .always
+      if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+        clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
+      }
       $0.accessibilityIdentifier = SignupVCIdentifier.usernameTextField
       $0.snp.makeConstraints {
         $0.centerY.equalTo(self.textBorderView)
@@ -105,22 +111,10 @@ extension SignupViewController {
       }
     }
   }
-  func layoutClearButton() {
-    self.textBorderView.add(clearButton) {
-      $0.setImage(UIImage(named: "xBlack"), for: .normal)
-      $0.accessibilityIdentifier = SignupVCIdentifier.clearButton
-      $0.snp.makeConstraints {
-        $0.centerY.equalToSuperview()
-        $0.trailing.equalToSuperview().offset(-8)
-        $0.width.equalTo(35)
-        $0.height.equalTo(34)
-      }
-    }
-  }
   func layoutNextButton() {
     self.view.add(nextButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-      $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
       $0.accessibilityIdentifier = SignupVCIdentifier.nextButton
@@ -171,33 +165,14 @@ extension SignupViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .black
     textField.textColor = .hackerWhite
-    clearButton.setBackgroundImage(UIImage(named: "xWhite"), for: .normal)
-    nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
   }
   /// TextField 비활성화 되었을 때
   func textFieldDidEndEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .white
     textField.textColor = .hackerBlack
-    clearButton.setBackgroundImage(UIImage(named: "xBlack"), for: .normal)
-    nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText, backgroundColor: .clear, state: .normal, radius: 0)
+    nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-  }
-}
-
-// MARK: - UITextField
-extension UITextField {
-  /// 클리어 버튼 클릭 시 텍스트필드 내용 삭제
-  func setClearButton(with image: UIImage, mode: UITextField.ViewMode) {
-    let clearButton = UIButton(type: .custom)
-    clearButton.setImage(image, for: .normal)
-    clearButton.frame = CGRect(x: 0, y: 0, width: 35, height: 34)
-    clearButton.contentMode = .scaleAspectFit
-    clearButton.addTarget(self, action: #selector(UITextField.clear(sender:)), for: .touchUpInside)
-    self.rightView = clearButton
-    self.rightViewMode = mode
-  }
-  @objc private func clear(sender: AnyObject) {
-    self.text = ""
   }
 }

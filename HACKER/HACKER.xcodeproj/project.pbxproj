@@ -34,6 +34,10 @@
 		E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119B27A0397700D238B3 /* UIColor+Extension.swift */; };
 		E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119D27A0398000D238B3 /* UIFont+Extension.swift */; };
 		E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119F27A0398B00D238B3 /* UIButton+Extension.swift */; };
+		E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3327E44A27009F65E3 /* MainViewController.swift */; };
+		E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */; };
+		E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */; };
+		E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */; };
 		E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477C279EF6E900D5A482 /* AppDelegate.swift */; };
 		E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */; };
 		E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E84780279EF6E900D5A482 /* ViewController.swift */; };
@@ -96,6 +100,10 @@
 		E876119B27A0397700D238B3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E876119D27A0398000D238B3 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E876119F27A0398B00D238B3 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		E88D4C3327E44A27009F65E3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileViewController.swift; sourceTree = "<group>"; };
+		E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		E8E84779279EF6E900D5A482 /* HACKER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HACKER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E8477C279EF6E900D5A482 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +250,8 @@
 		E8761190279EFE7C00D238B3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E88D4C3727E44AFD009F65E3 /* TabBarViewController */,
+				E88D4C3227E449D9009F65E3 /* MainViewController */,
 				E833EEEE27C2477900107741 /* LoginViewController */,
 				E87580A927B16EBC00C7E7E2 /* NicknameViewController */,
 				E87580A827B16EB200C7E7E2 /* SignupViewController */,
@@ -258,6 +268,7 @@
 				E876119B27A0397700D238B3 /* UIColor+Extension.swift */,
 				E876119D27A0398000D238B3 /* UIFont+Extension.swift */,
 				E876119F27A0398B00D238B3 /* UIButton+Extension.swift */,
+				E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -279,6 +290,23 @@
 				86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		E88D4C3227E449D9009F65E3 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E88D4C3327E44A27009F65E3 /* MainViewController.swift */,
+				E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		E88D4C3727E44AFD009F65E3 /* TabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */,
+			);
+			path = TabBarViewController;
 			sourceTree = "<group>";
 		};
 		E8E84770279EF6E900D5A482 = {
@@ -624,17 +652,21 @@
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
 				E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
+				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
+				E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */,
 				E833EEF327C247A400107741 /* SplashViewController.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
 				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
+				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
 				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
 				E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */,
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
 				E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */,
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
+				E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,6 +897,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J92QJ4K4KU;
@@ -882,6 +915,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = TeamZZONG.HACKER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -894,6 +928,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J92QJ4K4KU;
@@ -911,6 +946,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = TeamZZONG.HACKER;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
