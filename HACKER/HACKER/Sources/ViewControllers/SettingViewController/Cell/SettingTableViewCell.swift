@@ -15,14 +15,14 @@ class SettingTableViewCell: UITableViewCell {
     static let identifier = "SettingTableViewCell"
     
     // MARK: - UI
-    private let backgroundImage = UIImageView().then {
+    var backgroundImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
-        // TODO: 이미지 받으면 다운받아서 넣기
-        //        $0.image = UIImage(named: "")
+        $0.image = UIImage(named: "blackBox")
     }
-    
-    private let titleLabel = UILabel().then {
+        
+    var titleLabel = UILabel().then {
+        $0.textColor = .hackerWhite
         $0.font = .subtitleMedium16
     }
     
@@ -41,7 +41,7 @@ class SettingTableViewCell: UITableViewCell {
                      titleLabel])
         
         backgroundImage.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         titleLabel.snp.makeConstraints { make in
