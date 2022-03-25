@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class RewardAdViewController: UIViewController {
   // MARK: - Properties
   var coinCount: Int = 10
+  var rewardedAd: GADRewardedAd?
   
   // MARK: - Componenets
   private lazy var coinStackView: UIStackView = { createCoinStackView() }()
@@ -22,6 +24,7 @@ class RewardAdViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    loadRewardedAd()
     setBackground()
     setView()
     setLayout()
@@ -30,6 +33,7 @@ class RewardAdViewController: UIViewController {
 
 // MARK: - UI
 extension RewardAdViewController {
+  
   private func setBackground() {
     view.backgroundColor = .white
     navigationController?.navigationBar.isHidden = true
@@ -69,6 +73,7 @@ extension RewardAdViewController {
   private func createWatchAdButton() -> UIButton {
     let button = UIButton()
     button.setImage(UIImage(named: "yesnoButton"), for: .normal)
+    button.addTarget(self, action: #selector(watchAdButtonTapped), for: .touchUpInside)
     return button
   }
   
@@ -76,7 +81,6 @@ extension RewardAdViewController {
     view.add(watchAdLabel) { label in
       label.text = "코인 채굴"
       label.font = .btnText(ofSize: 25)
-      
     }
   }
   
@@ -104,9 +108,77 @@ extension RewardAdViewController {
   }
 }
 
+// MARK: - Functions
+extension RewardAdViewController {
+  func loadRewardedAd() -> GADRewardedAd? {
+    
+    let adUnitID = GoogleAds.sampleAdKey
+    let request = GADRequest()
+    
+    GADRewardedAd.load(withAdUnitID: adUnitID, request: request) { [weak self] rewardedAd, error in
+      if let error = error {
+        print("Failed to load rewarded ad with error: \(error.localizedDescription)")
+        return
+      }
+      self?.rewardedAd = rewardedAd
+      self?.rewardedAd?.fullScreenContentDelegate = self as? GADFullScreenContentDelegate
+//      self?.rewardedAd?.fullScreenContentDelegate = self
+    }
+    
+    return rewardedAd
+  }
+}
+
 // MARK: - Actions
 extension RewardAdViewController {
   @objc private func watchAdButtonTapped() {
-    
+    rewardedAd?.present(fromRootViewController: self) { [weak self] in
+      self?.coinCount += 5
+      if let count = self?.coinCount {
+        self?.coinCountLabel.text = "x\(count)"
+      }
+      self?.rewardedAd = self?.loadRewardedAd()
+    }
+  }
+}
+
+extension RewardAdViewController: GADMediationRewardedAdEventDelegate {
+  func didRewardUser(with reward: GADAdReward) {
+    print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+    coinCount += 5
+    coinCountLabel.text = "x\(coinCount)"
+  }
+  
+  func didStartVideo() {
+    print("Did start Video")
+  }
+  
+  func didEndVideo() {
+    print("Did end video")
+  }
+  
+  func reportImpression() {
+    print("report Impression")
+  }
+  
+  func reportClick() {
+    print("report click")
+  }
+  
+  func willPresentFullScreenView() {
+    print("Will present full screen view")
+  }
+  
+  func didFailToPresentWithError(_ error: Error) {
+    print("did fail to present with error")
+  }
+  
+  func willDismissFullScreenView() {
+    print("Will dismiss full screen view")
+  }
+  
+  func didDismissFullScreenView() {
+    print("did dismiss full screen view")
+    rewardedAd = loadRewardedAd()
   }
 }
