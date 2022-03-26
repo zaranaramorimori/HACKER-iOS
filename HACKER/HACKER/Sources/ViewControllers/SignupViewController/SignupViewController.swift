@@ -172,6 +172,9 @@ extension SignupViewController: UITextFieldDelegate {
   func textFieldDidEndEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .white
     textField.textColor = .hackerBlack
+    if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+      clearButton.setImage(UIImage(named: "xBlack"), for: .normal)
+    }
     nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
   }
