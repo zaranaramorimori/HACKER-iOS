@@ -84,7 +84,6 @@ extension ShoppingCollectionViewCell: UICollectionViewDataSource {
   }
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if indexPath.item == 0 {
-      print("얍")
       self.setupNewFriend()
     }
   }

@@ -33,6 +33,7 @@ extension MainProfileViewController {
   func setBackground() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
+    self.tabBarController?.tabBar.isHidden = true
   }
   func layout() {
     layoutBackButton()
