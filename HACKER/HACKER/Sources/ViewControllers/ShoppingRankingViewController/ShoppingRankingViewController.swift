@@ -55,6 +55,9 @@ class ShoppingRankingViewController: UIViewController {
     register()
     layout()
   }
+  override func viewWillAppear(_ animated: Bool) {
+    self.tabBarController?.tabBar.isHidden = false
+  }
 }
 // MARK: - Extensions
 extension ShoppingRankingViewController {
