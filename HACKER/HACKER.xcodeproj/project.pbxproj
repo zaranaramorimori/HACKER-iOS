@@ -20,6 +20,10 @@
 		86F9EB3027E9D63000E1FEFD /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86F9EB3727E9DBB400E1FEFD /* TestErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB3427E9DBAE00E1FEFD /* TestErrorMessage.swift */; };
 		AE6014EE07B3BD5F1CED1FC6 /* Pods_HACKERTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79CD676A7BE0B5AFC5D6A3E /* Pods_HACKERTests.framework */; };
+		77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */; };
+		77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC627EB90A2005AF6DA /* SettingViewController.swift */; };
+		77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */; };
+		77576ECC27ECDB26005AF6DA /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576ECB27ECDB26005AF6DA /* Const.swift */; };
 		C4C05B48E05749AF8AC87FED /* Pods_HACKER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */; };
 		E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF027C2479C00107741 /* LoginViewController.swift */; };
 		E833EEF327C247A400107741 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF227C247A400107741 /* SplashViewController.swift */; };
@@ -40,7 +44,6 @@
 		E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */; };
 		E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477C279EF6E900D5A482 /* AppDelegate.swift */; };
 		E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */; };
-		E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E84780279EF6E900D5A482 /* ViewController.swift */; };
 		E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8E84785279EF6EC00D5A482 /* Assets.xcassets */; };
 		E8E84789279EF6EC00D5A482 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8E84787279EF6EC00D5A482 /* LaunchScreen.storyboard */; };
 		E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FF04F527B2111C00C7C3E5 /* SignupPopUpViewController.swift */; };
@@ -84,6 +87,10 @@
 		86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERUITests.swift; sourceTree = "<group>"; };
 		86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetIdentifier.swift; sourceTree = "<group>"; };
 		86F9EB3427E9DBAE00E1FEFD /* TestErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestErrorMessage.swift; sourceTree = "<group>"; };
+		77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNavigationBar.swift; sourceTree = "<group>"; };
+		77576EC627EB90A2005AF6DA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		77576ECB27ECDB26005AF6DA /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79CD676A7BE0B5AFC5D6A3E /* Pods_HACKERTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKERTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D43D251F9FBD31ADDBC63F1C /* Pods-HACKER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKER.debug.xcconfig"; path = "Target Support Files/Pods-HACKER/Pods-HACKER.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,7 +115,6 @@
 		E8E84779279EF6E900D5A482 /* HACKER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HACKER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E8477C279EF6E900D5A482 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E8E84780279EF6E900D5A482 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E8E84785279EF6EC00D5A482 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8E84788279EF6EC00D5A482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8E8478A279EF6EC00D5A482 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,6 +169,31 @@
 				869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		77576EC227EB888E005AF6DA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		77576EC527EB908B005AF6DA /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				77576EC827ECDA95005AF6DA /* Cell */,
+				77576EC627EB90A2005AF6DA /* SettingViewController.swift */,
+			);
+			path = SettingViewController;
+			sourceTree = "<group>";
+		};
+		77576EC827ECDA95005AF6DA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		86F7ADBA2E616E873EB7C0F1 /* Frameworks */ = {
@@ -242,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				E8761190279EFE7C00D238B3 /* ViewControllers */,
+				77576EC227EB888E005AF6DA /* Views */,
 				E8E8477C279EF6E900D5A482 /* AppDelegate.swift */,
 				E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */,
 			);
@@ -256,7 +288,7 @@
 				E833EEEE27C2477900107741 /* LoginViewController */,
 				E87580A927B16EBC00C7E7E2 /* NicknameViewController */,
 				E87580A827B16EB200C7E7E2 /* SignupViewController */,
-				E8E84780279EF6E900D5A482 /* ViewController.swift */,
+				77576EC527EB908B005AF6DA /* SettingViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -289,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */,
+				77576ECB27ECDB26005AF6DA /* Const.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -652,14 +685,16 @@
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
-				E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */,
+				77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
 				E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */,
 				E833EEF327C247A400107741 /* SplashViewController.swift in Sources */,
+				77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
+				77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */,
 				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
 				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
@@ -669,6 +704,7 @@
 				E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */,
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
 				E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */,
+				77576ECC27ECDB26005AF6DA /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
