@@ -25,7 +25,7 @@ class HackerNavigationBar: UIView {
     var popViewController: (() -> Void)?
     
     private let backButton = UIButton().then {
-        $0.setImage(UIImage(named: "backBtn"), for: .normal)
+        $0.setImage(UIImage(named: "backButtonIcon"), for: .normal)
         $0.addTarget(self, action: #selector(touchBackButton(_:)), for: .touchUpInside)
         $0.isUserInteractionEnabled = true
     }

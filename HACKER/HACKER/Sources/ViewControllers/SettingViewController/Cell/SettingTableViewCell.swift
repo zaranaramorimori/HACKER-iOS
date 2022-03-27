@@ -18,7 +18,7 @@ class SettingTableViewCell: UITableViewCell {
     var backgroundImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
-        $0.image = UIImage(named: "blackBox")
+        $0.image = UIImage(named: "nextBtnBlack")
     }
         
     var titleLabel = UILabel().then {
