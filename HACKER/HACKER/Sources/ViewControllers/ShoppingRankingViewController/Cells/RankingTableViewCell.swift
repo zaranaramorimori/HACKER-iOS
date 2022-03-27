@@ -58,6 +58,7 @@ extension RankingTableViewCell {
       $0.spacing = 0
       $0.snp.makeConstraints { make in
         make.centerX.centerY.equalToSuperview()
+        make.width.equalTo(130)
         make.height.equalTo(40)
       }
     }
