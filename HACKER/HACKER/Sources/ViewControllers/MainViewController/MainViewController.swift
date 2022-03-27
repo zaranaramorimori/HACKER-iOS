@@ -35,6 +35,9 @@ class MainViewController: UIViewController {
     layout()
     setImageViewTap()
   }
+  override func viewWillAppear(_ animated: Bool) {
+    self.tabBarController?.tabBar.isHidden = false
+  }
 }
 // MARK: - Extension
 extension MainViewController {
