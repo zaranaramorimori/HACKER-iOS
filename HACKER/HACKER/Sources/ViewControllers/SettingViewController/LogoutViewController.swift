@@ -29,13 +29,15 @@ class LogoutViewController: UIViewController {
     }
     
     private let yesButton = UIButton().then {
-        $0.setImage(UIImage(named: "backBtn"), for: .normal)
+        $0.setBackgroundImage(UIImage(named: "yesnoButton"), for: .normal)
+        $0.setupButton(title: "네", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
         $0.addTarget(self, action: #selector(touchYesButton(_:)), for: .touchUpInside)
         $0.isUserInteractionEnabled = true
     }
     
     private let noButton = UIButton().then {
-        $0.setImage(UIImage(named: "backBtn"), for: .normal)
+        $0.setBackgroundImage(UIImage(named: "yesnoButton"), for: .normal)
+        $0.setupButton(title: "아니요", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
         $0.addTarget(self, action: #selector(touchNoButton(_:)), for: .touchUpInside)
         $0.isUserInteractionEnabled = true
     }
@@ -73,15 +75,17 @@ class LogoutViewController: UIViewController {
         }
         
         yesButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().inset(24)
+            make.leading.equalTo(self.popUpView).inset(24)
             make.bottom.equalTo(self.popUpView).inset(24)
+            make.width.equalTo(120)
+            make.height.equalTo(60)
         }
         
         noButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(24)
+            make.trailing.equalTo(self.popUpView).inset(24)
             make.bottom.equalTo(self.popUpView).inset(24)
+            make.width.equalTo(120)
+            make.height.equalTo(60)
         }
     }
     
