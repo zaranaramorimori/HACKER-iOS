@@ -45,8 +45,8 @@ class SettingTableViewCell: UITableViewCell {
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(backgroundImage.snp.centerY)
-            make.leading.equalToSuperview().inset(18)
+            make.centerY.equalTo(backgroundImage)
+            make.leading.trailing.equalToSuperview().inset(18)
         }
     }
 }
