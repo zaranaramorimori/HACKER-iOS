@@ -34,6 +34,7 @@
 		E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD3127EF422C003F3B34 /* AddFriendCollectionViewCell.swift */; };
 		E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD3327EF423D003F3B34 /* MyFriendsCollectionViewCell.swift */; };
 		E855DD3627EF4556003F3B34 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD3527EF4556003F3B34 /* AddFriendViewController.swift */; };
+		E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD3727EF65EB003F3B34 /* RankingTableViewCell.swift */; };
 		E87580A727B15FFD00C7E7E2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */; };
 		E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */; };
 		E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */; };
@@ -109,6 +110,7 @@
 		E855DD3127EF422C003F3B34 /* AddFriendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCollectionViewCell.swift; sourceTree = "<group>"; };
 		E855DD3327EF423D003F3B34 /* MyFriendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E855DD3527EF4556003F3B34 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		E855DD3727EF65EB003F3B34 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				E855DD2C27EF0AF5003F3B34 /* RankingCollectionViewCell.swift */,
 				E855DD3127EF422C003F3B34 /* AddFriendCollectionViewCell.swift */,
 				E855DD3327EF423D003F3B34 /* MyFriendsCollectionViewCell.swift */,
+				E855DD3727EF65EB003F3B34 /* RankingTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				E8E84781279EF6E900D5A482 /* ViewController.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
+				E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */,
 				E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */,
 				E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */,
 				E855DD3627EF4556003F3B34 /* AddFriendViewController.swift in Sources */,

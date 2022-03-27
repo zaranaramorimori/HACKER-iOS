@@ -71,11 +71,11 @@ extension MainViewController {
     view.add(nicknameLabel) {
       $0.setupLabel(text: "훈세 님\n오늘도 커밋하세요!",
                     color: .hackerBlack,
-                    font: .subtitleMedium24)
+                    font: .subtitleMedium(ofSize: 24))
       /// 훈세, 님 만 굵은 글씨로 변경하기
       let attributedStr = NSMutableAttributedString(string: self.nicknameLabel.text ?? "")
-      attributedStr.addAttribute(.font, value: UIFont.titleBold30, range: (self.nicknameLabel.text! as NSString).range(of: "훈세"))
-      attributedStr.addAttribute(.font, value: UIFont.subtitleMedium30, range: (self.nicknameLabel.text! as NSString).range(of: "님"))
+      attributedStr.addAttribute(.font, value: UIFont.titleBold(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "훈세"))
+      attributedStr.addAttribute(.font, value: UIFont.subtitleMedium(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "님"))
       self.nicknameLabel.attributedText = attributedStr
       $0.numberOfLines = 2
       $0.snp.makeConstraints {
@@ -132,7 +132,7 @@ extension MainViewController {
   }
   func layoutTodayCommitLabel() {
     view.add(todayCommitLabel) {
-      $0.setupLabel(text: "오늘 커밋 횟수", color: .hackerBlack, font: .subtitleMedium16)
+      $0.setupLabel(text: "오늘 커밋 횟수", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.bottom).offset(28)
         $0.leading.equalToSuperview().offset(24)
@@ -141,7 +141,7 @@ extension MainViewController {
   }
   func layoutTodayCommitNumLabel() {
     view.add(todayCommitNumLabel) {
-      $0.setupLabel(text: "(9/10)", color: .hackerBlack, font: .subtitleMedium16)
+      $0.setupLabel(text: "(9/10)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.todayCommitLabel.snp.top)
         $0.leading.equalTo(self.todayCommitLabel.snp.trailing).offset(4)

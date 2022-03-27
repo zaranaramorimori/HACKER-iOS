@@ -97,7 +97,7 @@ extension AddFriendViewController {
   }
   func layoutUserNickNameLabel() {
     view.add(userNicknameLabel) {
-      $0.setupLabel(text: "훈세", color: .hackerBlack, font: .titleBold24)
+      $0.setupLabel(text: "훈세", color: .hackerBlack, font: .titleBold(ofSize: 24))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.bottom).offset(20)
         $0.centerX.equalToSuperview()
@@ -106,7 +106,7 @@ extension AddFriendViewController {
   }
   func layoutUserGithubNameLabel() {
     view.add(userGithubNameLabel) {
-      $0.setupLabel(text: "devkwonsehoon", color: .hackerBlack, font: .subtitleMedium16)
+      $0.setupLabel(text: "devkwonsehoon", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userNicknameLabel.snp.bottom).offset(8)
         $0.centerX.equalToSuperview()

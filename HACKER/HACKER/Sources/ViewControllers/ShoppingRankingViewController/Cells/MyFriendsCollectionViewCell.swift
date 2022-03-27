@@ -55,7 +55,7 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserNameLabel() {
     self.lineborderView.add(userNameLabel) {
-      $0.setupLabel(text: "두두두두", color: .hackerBlack, font: .bodyRegular14)
+      $0.setupLabel(text: "두두두두", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
       $0.textAlignment = .center
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView.snp.bottom)

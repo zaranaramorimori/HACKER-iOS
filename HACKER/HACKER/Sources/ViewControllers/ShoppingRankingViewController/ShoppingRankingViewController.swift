@@ -118,7 +118,7 @@ extension ShoppingRankingViewController {
   }
   func layoutInfoLabel() {
     self.infoView.add(infoLabel) {
-      $0.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .clear, font: .titleBold16)
+      $0.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .clear, font: .titleBold(ofSize: 16))
       $0.numberOfLines = 2
       $0.snp.makeConstraints { make in
         make.centerX.centerY.equalToSuperview()
