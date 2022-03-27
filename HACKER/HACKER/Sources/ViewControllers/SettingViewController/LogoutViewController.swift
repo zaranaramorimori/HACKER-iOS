@@ -1,0 +1,97 @@
+//
+//  LogoutViewController.swift
+//  HACKER
+//
+//  Created by Yi Joon Choi on 2022/03/25.
+//
+
+import UIKit
+import SnapKit
+import Then
+
+class LogoutViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private let dimmedBackView = UIView().then {
+        $0.backgroundColor = .hackerBackgroundBlack
+    }
+    
+    private let popUpView = UIView().then {
+        $0.backgroundColor = .hackerWhite
+        $0.layer.cornerRadius = 40
+    }
+    
+    private let logoutLabel = UILabel().then {
+        $0.font = .subtitleMedium16
+        $0.textColor = .hackerBlack
+        $0.text = "로그아웃할까요?"
+    }
+    
+    private let yesButton = UIButton().then {
+        $0.setImage(UIImage(named: "backBtn"), for: .normal)
+        $0.addTarget(self, action: #selector(touchYesButton(_:)), for: .touchUpInside)
+        $0.isUserInteractionEnabled = true
+    }
+    
+    private let noButton = UIButton().then {
+        $0.setImage(UIImage(named: "backBtn"), for: .normal)
+        $0.addTarget(self, action: #selector(touchNoButton(_:)), for: .touchUpInside)
+        $0.isUserInteractionEnabled = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configUI()
+        setupAutoLayout()
+    }
+    
+    // MARK: - Custom Method
+    
+    private func configUI() {
+        view.backgroundColor = .hackerWhite
+    }
+    
+    private func setupAutoLayout() {
+        view.addSubviews([dimmedBackView, popUpView,
+                          logoutLabel,
+                          yesButton, noButton])
+        
+        dimmedBackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        popUpView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().inset(35)
+            make.centerX.centerY.equalToSuperview()
+            make.height.equalTo(212)
+        }
+        
+        logoutLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.popUpView).inset(58)
+            make.centerX.equalToSuperview()
+        }
+        
+        yesButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().inset(24)
+            make.bottom.equalTo(self.popUpView).inset(24)
+        }
+        
+        noButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().inset(24)
+            make.bottom.equalTo(self.popUpView).inset(24)
+        }
+    }
+    
+    // MARK: - @objc
+    
+    @objc func touchYesButton(_ sender: UIButton) {
+        print("touchYesButton")
+    }
+    
+    @objc func touchNoButton(_ sender: UIButton) {
+        print("touchNoButton")
+    }
+}
