@@ -74,8 +74,20 @@ class DeleteAccountViewController: UIViewController {
     }
     tearDropView.snp.makeConstraints { make in
       make.leading.trailing.bottom.equalToSuperview()
-      make.height.equalTo(350)
+      make.height.equalTo(42)
     }
+    deleteAccountButton.snp.makeConstraints { make in
+      make.bottom.equalTo(self.tearDropView.snp.top).offset(-10)
+      make.centerX.equalToSuperview()
+    }
+    backButton.snp.makeConstraints { make in
+      make.bottom.equalTo(self.deleteAccountButton.snp.top).offset(-12)
+      make.leading.equalToSuperview().inset(24)
+      make.centerX.equalToSuperview()
+    }
+  }
+  
+  private func tearViewAnimation() {
     UIView.animate(withDuration: 1.5,
                    delay: 0.1,
                    options: .curveEaseInOut,
@@ -84,15 +96,6 @@ class DeleteAccountViewController: UIViewController {
     },
                    completion: { (didFinish) -> Void in
     })
-    deleteAccountButton.snp.makeConstraints { make in
-      make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(10)
-      make.centerX.equalToSuperview()
-    }
-    backButton.snp.makeConstraints { make in
-      make.bottom.equalTo(self.deleteAccountButton.snp.top).offset(12)
-      make.leading.equalToSuperview().inset(24)
-      make.centerX.equalToSuperview()
-    }
   }
   
   // MARK: - @objc
