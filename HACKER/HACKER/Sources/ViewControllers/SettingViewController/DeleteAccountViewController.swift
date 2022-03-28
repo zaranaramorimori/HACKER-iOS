@@ -43,6 +43,7 @@ class DeleteAccountViewController: UIViewController {
     super.viewDidLoad()
     configUI()
     setupAutoLayout()
+    tearViewAnimation()
   }
   
   // MARK: - Custom Method
@@ -77,7 +78,7 @@ class DeleteAccountViewController: UIViewController {
       make.height.equalTo(42)
     }
     deleteAccountButton.snp.makeConstraints { make in
-      make.bottom.equalTo(self.tearDropView.snp.top).offset(-10)
+      make.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-10)
       make.centerX.equalToSuperview()
     }
     backButton.snp.makeConstraints { make in
@@ -88,14 +89,37 @@ class DeleteAccountViewController: UIViewController {
   }
   
   private func tearViewAnimation() {
-    UIView.animate(withDuration: 1.5,
-                   delay: 0.1,
-                   options: .curveEaseInOut,
-                   animations: { () -> Void in
-      self.tearDropView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 350)
-    },
-                   completion: { (didFinish) -> Void in
-    })
+//    let myViewHeightConstraint = NSLayoutConstraint(item: tearDropView, attribute: .height,
+//                                                    relatedBy: .equal, toItem: nil,
+//                                                    attribute: .notAnAttribute,
+//                                                    multiplier: 0.0, constant: 100)
+//    myViewHeightConstraint.isActive = true
+//    myViewHeightConstraint.constant = 300
+    
+//    tearDropView.snp.updateConstraints { make in
+//      make.height.equalTo(500)
+//    }
+    
+//    UIView.animate(withDuration: 2.5, animations: {
+//      self.tearDropView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+//      self.tearDropView.layoutIfNeeded()
+//    })
+    
+//    tearDropView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//    
+//    UIView.animate(withDuration: 1) {
+//      
+//      self.tearDropView.layoutIfNeeded()
+//    }
+    
+//    UIView.animate(withDuration: 1.5,
+//                   delay: 0.1,
+//                   options: .curveEaseInOut,
+//                   animations: { () -> Void in
+//      self.tearDropView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 350)
+//    },
+//                   completion: { (didFinish) -> Void in
+//    })
   }
   
   // MARK: - @objc
