@@ -17,6 +17,20 @@ class DeleteAccountViewController: UIViewController {
     $0.numberOfLines = 3
   }
   
+  private let backButton = UIButton().then {
+    $0.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
+    $0.setupButton(title: "돌아가기", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+    $0.addTarget(self, action: #selector(touchBackButton(_:)), for: .touchUpInside)
+    $0.isUserInteractionEnabled = true
+  }
+  
+  private let deleteAccountButton = UIButton().then {
+    $0.setupButton(title: "그래도 탈퇴하기", color: .hackerBlue, font: .btnText(ofSize: 18), backgroundColor: .clear, state: .normal, radius: 0)
+    $0.setUnderline()
+    $0.addTarget(self, action: #selector(touchDeleteAccountButton(_:)), for: .touchUpInside)
+    $0.isUserInteractionEnabled = true
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configUI()
@@ -31,7 +45,8 @@ class DeleteAccountViewController: UIViewController {
   }
   
   private func setupAutoLayout() {
-    view.addSubviews([navigationBar, goodbyeLabel])
+    view.addSubviews([navigationBar, goodbyeLabel,
+                      backButton, deleteAccountButton])
     navigationBar.iconLayout(logoImage: nil, rightImage: nil)
     navigationBar.popViewController = {
       self.navigationController?.popViewController(animated: true)
@@ -44,5 +59,25 @@ class DeleteAccountViewController: UIViewController {
       make.top.equalTo(self.navigationBar.snp.bottom).offset(9)
       make.leading.equalToSuperview().inset(24)
     }
+    deleteAccountButton.snp.makeConstraints { make in
+      make.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(10)
+      make.centerX.equalToSuperview()
+    }
+    backButton.snp.makeConstraints { make in
+      make.bottom.equalTo(self.deleteAccountButton.snp.top).offset(12)
+      make.leading.equalToSuperview().inset(24)
+      make.centerX.equalToSuperview()
+    }
+
+  }
+  
+  // MARK: - @objc
+  
+  @objc func touchBackButton(_ sender: UIButton) {
+    print("go back")
+  }
+  
+  @objc func touchDeleteAccountButton(_ sender: UIButton) {
+    print("deleteAccountButton")
   }
 }
