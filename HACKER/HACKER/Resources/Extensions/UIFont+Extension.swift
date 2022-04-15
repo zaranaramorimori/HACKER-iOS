@@ -10,44 +10,20 @@ import UIKit
 
 extension UIFont {
 
-  class var titleBold24: UIFont {
-    return UIFont(name: "NotoSansKR-Bold", size: 24.0)!
+  class func titleBold(ofSize: CGFloat) -> UIFont {
+    return UIFont(name: "NotoSansKR-Bold", size: ofSize)!
   }
   
-  class var titleBold30: UIFont {
-    return UIFont(name: "NotoSansKR-Bold", size: 30.0)!
+  class func subtitleMedium(ofSize: CGFloat) -> UIFont {
+    return UIFont(name: "NotoSansKR-Medium", size: ofSize)!
   }
   
-  class var titleBold16: UIFont {
-    return UIFont(name: "NotoSansKR-Bold", size: 16.0)!
+  class func subtitleRegular(ofSize: CGFloat) -> UIFont {
+    return UIFont(name: "NotoSansKR-Regular", size: ofSize)!
   }
   
-  class var subtitleMedium30: UIFont {
-    return UIFont(name: "NotoSansKR-Medium", size: 30.0)!
-  }
-
-  class var subtitleMedium20: UIFont {
-    return UIFont(name: "NotoSansKR-Medium", size: 20.0)!
-  }
-  
-  class var subtitleMedium24: UIFont {
-    return UIFont(name: "NotoSansKR-Medium", size: 24.0)!
-  }
-  
-  class var subtitleMedium16: UIFont {
-    return UIFont(name: "NotoSansKR-Medium", size: 16.0)!
-  }
-  
-  class var subtitleRegular18: UIFont {
-    return UIFont(name: "NotoSansKR-Regular", size: 18.0)!
-  }
-  
-  class var bodyRegular16: UIFont {
-    return UIFont(name: "NotoSansKR-Regular", size: 16.0)!
-  }
-  
-  class var bodyRegular14: UIFont {
-    return UIFont(name: "NotoSansKR-Regular", size: 14.0)!
+  class func bodyRegular(ofSize: CGFloat) -> UIFont {
+    return UIFont(name: "NotoSansKR-Regular", size: ofSize)!
   }
   
   class func btnText(ofSize: CGFloat) -> UIFont {
