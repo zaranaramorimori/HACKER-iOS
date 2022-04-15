@@ -77,6 +77,7 @@ extension RankingCollectionViewCell {
   }
   func layoutHeaderView() {
     headerView.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: 325)
+    headerView.backgroundColor = .hackerWhite
   }
   func layoutHeaderStackView() {
     headerStackView.distribution = .fillEqually

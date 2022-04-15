@@ -24,7 +24,6 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     return collectionView
   }()
-  var closure: (() -> Void)?
   
   // MARK: - LifeCycle
   override func awakeFromNib() {
@@ -53,7 +52,7 @@ extension ShoppingCollectionViewCell {
       $0.isUserInteractionEnabled = true
       $0.showsVerticalScrollIndicator = false
       $0.snp.makeConstraints { make in
-        make.top.equalToSuperview().offset(10)
+        make.top.equalToSuperview()
         make.leading.equalToSuperview().offset(24)
         make.trailing.equalToSuperview().offset(-24)
         make.bottom.equalToSuperview()
@@ -97,7 +96,7 @@ extension ShoppingCollectionViewCell: UICollectionViewDelegateFlowLayout {
     return CGSize(width: cellWidth, height: cellHeight)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets.zero
+    return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 12

@@ -43,7 +43,7 @@ class ShoppingRankingViewController: UIViewController {
     return collectionView
   }()
   
-  var buttonNum = 0
+  var isToolTipShown: Bool = false
   let screenWidth = UIScreen.main.bounds.width
   var trigger = true
   
@@ -64,6 +64,7 @@ extension ShoppingRankingViewController {
   func setBackground() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
+    self.infoView.isHidden = true
   }
   func attribute() {
     self.tabbarCollectionView.delegate = self
@@ -109,7 +110,7 @@ extension ShoppingRankingViewController {
   }
   func layoutInfoView() {
     self.view.add(infoView) {
-      $0.backgroundColor = .clear
+      $0.backgroundColor = .hackerBlack
       $0.setRounded(radius: 15)
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.infoButton.snp.bottom).offset(4)
@@ -121,7 +122,7 @@ extension ShoppingRankingViewController {
   }
   func layoutInfoLabel() {
     self.infoView.add(infoLabel) {
-      $0.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .clear, font: .titleBold(ofSize: 16))
+      $0.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .hackerWhite, font: .titleBold(ofSize: 16))
       $0.numberOfLines = 2
       $0.snp.makeConstraints { make in
         make.centerX.centerY.equalToSuperview()
@@ -172,15 +173,12 @@ extension ShoppingRankingViewController {
     self.pageCollectionView.scrollToItem(at: NSIndexPath(item: 0, section: 1) as IndexPath, at: .left, animated: true)
   }
   @objc func infoButtonClicked() {
-    if buttonNum == 0 {
-      self.infoView.backgroundColor = .hackerBlack
-      self.infoLabel.textColor = .hackerWhite
+    isToolTipShown = !isToolTipShown
+    if isToolTipShown {
+      self.infoView.isHidden = false
       self.view.bringSubviewToFront(infoView)
-      buttonNum = 1
     } else {
-      self.infoView.backgroundColor = .clear
-      self.infoLabel.textColor = .clear
-      buttonNum = 0
+      self.infoView.isHidden = true
     }
   }
 }
