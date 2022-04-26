@@ -12,6 +12,8 @@
 		77233E9228182649006B7903 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9128182649006B7903 /* NetworkResult.swift */; };
 		77233E9528182861006B7903 /* HowTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9428182861006B7903 /* HowTo.swift */; };
 		77233E97281828BF006B7903 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E96281828BF006B7903 /* URL.swift */; };
+		77233E9928182F69006B7903 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9828182F69006B7903 /* Header.swift */; };
+		77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9A281830FC006B7903 /* UserDefaultsKey.swift */; };
 		773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C727F09A2D0014DE3A /* LogoutViewController.swift */; };
 		773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C927F161300014DE3A /* DeleteAccountViewController.swift */; };
 		77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */; };
@@ -94,6 +96,8 @@
 		77233E9128182649006B7903 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		77233E9428182861006B7903 /* HowTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowTo.swift; sourceTree = "<group>"; };
 		77233E96281828BF006B7903 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		77233E9828182F69006B7903 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		77233E9A281830FC006B7903 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		773D93C727F09A2D0014DE3A /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		773D93C927F161300014DE3A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNavigationBar.swift; sourceTree = "<group>"; };
@@ -410,6 +414,8 @@
 				E87AA6952809C774008913AE /* Notification.swift */,
 				77576ECB27ECDB26005AF6DA /* Const.swift */,
 				77233E96281828BF006B7903 /* URL.swift */,
+				77233E9828182F69006B7903 /* Header.swift */,
+				77233E9A281830FC006B7903 /* UserDefaultsKey.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -770,6 +776,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77233E9928182F69006B7903 /* Header.swift in Sources */,
 				77233E902818250C006B7903 /* GenericResponse.swift in Sources */,
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
@@ -800,6 +807,7 @@
 				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
 				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
 				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
+				77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */,
 				773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */,
 				E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */,
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
