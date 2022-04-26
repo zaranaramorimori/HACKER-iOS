@@ -62,7 +62,7 @@ extension SignupViewController {
   }
   func layoutHelloLabel() {
     self.view.add(helloLabel) {
-      $0.setupLabel(text: "안녕하세요!", color: .hackerBlack, font: .titleBold24)
+      $0.setupLabel(text: "안녕하세요!", color: .hackerBlack, font: .titleBold(ofSize: 24))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.hackerImageView.snp.bottom).offset(16)
         $0.centerX.equalToSuperview()
@@ -71,7 +71,7 @@ extension SignupViewController {
   }
   func layoutExplainLabel() {
     self.view.add(explainLabel) {
-      $0.setupLabel(text: "Github 유저 네임을 적어주세요", color: .hackerBlack, font: .subtitleMedium16)
+      $0.setupLabel(text: "Github 유저 네임을 적어주세요", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.helloLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
@@ -172,6 +172,9 @@ extension SignupViewController: UITextFieldDelegate {
   func textFieldDidEndEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .white
     textField.textColor = .hackerBlack
+    if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+      clearButton.setImage(UIImage(named: "xBlack"), for: .normal)
+    }
     nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
   }

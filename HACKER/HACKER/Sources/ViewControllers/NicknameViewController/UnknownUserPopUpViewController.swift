@@ -60,7 +60,7 @@ extension UnknownUserPopUpViewController {
   }
   func layoutUnknownUserLabel() {
     self.rectangleBackgroundView.add(unknownUserLabel) {
-      $0.setupLabel(text: "존재하지 않는 유저입니다.", color: .hackerBlack, font: .subtitleMedium16)
+      $0.setupLabel(text: "존재하지 않는 유저입니다.", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(57)
         $0.centerX.equalToSuperview()

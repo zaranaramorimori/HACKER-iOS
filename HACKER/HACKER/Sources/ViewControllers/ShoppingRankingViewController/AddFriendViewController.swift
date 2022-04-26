@@ -1,8 +1,8 @@
 //
-//  MainProfileViewController.swift
+//  AddFriendViewController.swift
 //  HACKER
 //
-//  Created by 김지수 on 2022/03/18.
+//  Created by 김지수 on 2022/03/26.
 //
 
 import UIKit
@@ -10,16 +10,18 @@ import UIKit
 import SnapKit
 import Then
 
-// MARK: - MainProfileViewController
-class MainProfileViewController: UIViewController {
+// MARK: - AddFriendViewController
+class AddFriendViewController: UIViewController {
   
   // MARK: - Components
   let backButton = UIButton()
+  let addUserButton = UIButton()
   let userCharacterImage = UIImageView()
   let userHairImage = UIImageView()
   let userNicknameLabel = UILabel()
   let userGithubNameLabel = UILabel()
   let hairNumLabel = UILabel()
+  let attackButton = UIButton()
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -29,7 +31,7 @@ class MainProfileViewController: UIViewController {
   }
 }
 // MARK: - Extensions
-extension MainProfileViewController {
+extension AddFriendViewController {
   func setBackground() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
@@ -37,11 +39,13 @@ extension MainProfileViewController {
   }
   func layout() {
     layoutBackButton()
+    layoutAddUserButton()
     layoutUserCharacterImage()
     layoutUserHairImage()
     layoutUserNickNameLabel()
     layoutUserGithubNameLabel()
     layoutHairNumLabel()
+    layoutAttackButton()
   }
   func layoutBackButton() {
     view.add(backButton) {
@@ -52,6 +56,18 @@ extension MainProfileViewController {
         $0.leading.equalToSuperview().offset(24)
         $0.width.equalTo(40)
         $0.height.equalTo(40)
+      }
+    }
+  }
+  func layoutAddUserButton() {
+    view.add(addUserButton) {
+      $0.setImage(UIImage(named: "addUserIcon"), for: .normal)
+      $0.addTarget(self, action: #selector(self.adduserButtonClicked), for: .touchUpInside)
+      $0.snp.makeConstraints { make in
+        make.centerY.equalTo(self.backButton)
+        make.trailing.equalToSuperview().offset(-24)
+        make.width.equalTo(66)
+        make.height.equalTo(38)
       }
     }
   }
@@ -101,12 +117,32 @@ extension MainProfileViewController {
     view.add(hairNumLabel) {
       $0.setupLabel(text: "360가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.userGithubNameLabel.snp.bottom).offset(26)
+        $0.top.equalTo(self.userGithubNameLabel.snp.bottom).offset(38)
         $0.centerX.equalToSuperview()
+      }
+    }
+  }
+  func layoutAttackButton() {
+    view.add(attackButton) {
+      $0.setBackgroundImage(UIImage(named: "yesnoButton"), for: .normal)
+      $0.contentMode = .scaleAspectFit
+      $0.setupButton(title: "공격하기", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.addTarget(self, action: #selector(self.attackButtonClicked), for: .touchUpInside)
+      $0.snp.makeConstraints { make in
+        make.centerX.equalToSuperview()
+        make.bottom.equalToSuperview().offset(-68)
+        make.width.equalTo(181)
+        make.height.equalTo(54)
       }
     }
   }
   @objc func backButtonTapped() {
     self.navigationController?.popViewController(animated: false)
+  }
+  @objc func adduserButtonClicked() {
+    
+  }
+  @objc func attackButtonClicked() {
+    
   }
 }
