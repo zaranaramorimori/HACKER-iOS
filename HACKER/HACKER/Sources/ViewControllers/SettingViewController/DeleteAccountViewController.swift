@@ -89,37 +89,29 @@ class DeleteAccountViewController: UIViewController {
   }
   
   private func tearViewAnimation() {
-//    let myViewHeightConstraint = NSLayoutConstraint(item: tearDropView, attribute: .height,
-//                                                    relatedBy: .equal, toItem: nil,
-//                                                    attribute: .notAnAttribute,
-//                                                    multiplier: 0.0, constant: 100)
-//    myViewHeightConstraint.isActive = true
-//    myViewHeightConstraint.constant = 300
-    
-//    tearDropView.snp.updateConstraints { make in
-//      make.height.equalTo(500)
-//    }
-    
-//    UIView.animate(withDuration: 2.5, animations: {
-//      self.tearDropView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-//      self.tearDropView.layoutIfNeeded()
-//    })
-    
-//    tearDropView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-//    
-//    UIView.animate(withDuration: 1) {
-//      
-//      self.tearDropView.layoutIfNeeded()
-//    }
-    
-//    UIView.animate(withDuration: 1.5,
-//                   delay: 0.1,
-//                   options: .curveEaseInOut,
-//                   animations: { () -> Void in
-//      self.tearDropView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 350)
-//    },
-//                   completion: { (didFinish) -> Void in
-//    })
+    let tearMaxHeight: CGFloat = 350
+    UIView.animate(withDuration: 5.0,
+                   delay: 0.1,
+                   options: .curveEaseInOut,
+                   animations: {
+      self.tearDropView.snp.updateConstraints { make in
+        make.height.equalTo(tearMaxHeight)
+      }
+      self.tearDropView.frame = CGRect(x: self.tearDropView.frame.origin.x,
+                                       y: -tearMaxHeight,
+                                       width: self.tearDropView.frame.width,
+                                       height: tearMaxHeight)
+    }) { _ in
+      UIView.animate(withDuration: 1.5,
+                     delay: 0,
+                     options: [.autoreverse, .repeat],
+                     animations: {
+        self.tearDropView.frame = CGRect(x: self.tearDropView.frame.origin.x,
+                                         y: self.tearDropView.frame.origin.y + 50,
+                                         width: self.tearDropView.frame.width,
+                                         height: tearMaxHeight)
+      })
+    }
   }
   
   // MARK: - @objc
