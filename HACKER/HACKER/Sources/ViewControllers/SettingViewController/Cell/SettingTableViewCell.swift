@@ -23,7 +23,7 @@ class SettingTableViewCell: UITableViewCell {
         
     var titleLabel = UILabel().then {
         $0.textColor = .hackerWhite
-        $0.font = .subtitleMedium16
+      $0.font = .subtitleMedium(ofSize: 16)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

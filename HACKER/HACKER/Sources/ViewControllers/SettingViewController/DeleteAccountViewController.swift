@@ -13,7 +13,7 @@ class DeleteAccountViewController: UIViewController {
   private let navigationBar = HackerNavigationBar()
   
   private let goodbyeLabel = UILabel().then {
-    $0.setupLabel(text: "정말\n탈퇴하시겠어요..?\n진챠..? 날 두고..?", color: .hackerBlack, font: .titleBold24)
+    $0.setupLabel(text: "정말\n탈퇴하시겠어요..?\n진챠..? 날 두고..?", color: .hackerBlack, font: .titleBold(ofSize: 24))
     $0.numberOfLines = 3
   }
   
