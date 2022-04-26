@@ -92,7 +92,7 @@ extension NickNameCheckPopUpViewController {
   }
   func layoutUserNameLabel() {
     self.rectangleBackgroundView.add(userNameLabel) {
-      $0.setupLabel(text: "이준이가 다 해줘엉 해줘어엉", color: .hackerBlack, font: .bodyRegular14)
+      $0.setupLabel(text: "이준이가 다 해줘엉 해줘어엉", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
       $0.snp.makeConstraints {
         $0.bottom.equalTo(self.userNameLine.snp.bottom).offset(-5)
         $0.centerX.equalToSuperview()
@@ -101,7 +101,7 @@ extension NickNameCheckPopUpViewController {
   }
   func layoutCheckLabel() {
     self.rectangleBackgroundView.add(checkLabel) {
-      $0.setupLabel(text: "틀림없이 입력했나요?\n나중에 수정이 불가능해요!", color: .hackerBlack, font: .subtitleMedium16)
+      $0.setupLabel(text: "틀림없이 입력했나요?\n나중에 수정이 불가능해요!", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.numberOfLines = 2
       $0.textAlignment = .center
       $0.snp.makeConstraints {

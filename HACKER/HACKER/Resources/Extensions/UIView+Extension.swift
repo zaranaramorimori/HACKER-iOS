@@ -61,4 +61,15 @@ extension UIView {
       self.layer.borderWidth = 1.0
     }
   }
+  /// 부모뷰 찾기
+  var parentViewController: UIViewController? {
+      var parentResponder: UIResponder? = self
+      while parentResponder != nil {
+          parentResponder = parentResponder!.next
+          if let viewController = parentResponder as? UIViewController {
+              return viewController
+          }
+      }
+      return nil
+  }
 }

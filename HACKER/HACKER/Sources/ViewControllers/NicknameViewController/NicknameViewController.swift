@@ -70,7 +70,7 @@ extension NicknameViewController {
   }
   func layoutHelloLabel() {
     self.view.add(helloLabel) {
-      $0.setupLabel(text: "안녕하세요!", color: .hackerBlack, font: .titleBold24)
+      $0.setupLabel(text: "안녕하세요!", color: .hackerBlack, font: .titleBold(ofSize: 24))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.hackerImageView.snp.bottom).offset(16)
         $0.centerX.equalToSuperview()
@@ -79,7 +79,7 @@ extension NicknameViewController {
   }
   func layoutExplainLabel() {
     self.view.add(explainLabel) {
-      $0.setupLabel(text: "회원님을 뭐라고 부르면 좋을까요?", color: .hackerBlack, font: .subtitleMedium16)
+      $0.setupLabel(text: "회원님을 뭐라고 부르면 좋을까요?", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.helloLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
@@ -120,7 +120,7 @@ extension NicknameViewController {
   }
   func layoutCountTextLabel() {
     self.view.add(countTextLabel) {
-      $0.setupLabel(text: "0/6", color: .hackerBlack, font: .bodyRegular14)
+      $0.setupLabel(text: "0/6", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
       $0.textColor = .clear
       $0.accessibilityIdentifier = NicknameVCIdentifier.countTextLabel
       $0.snp.makeConstraints {
@@ -190,6 +190,9 @@ extension NicknameViewController: UITextFieldDelegate {
   func textFieldDidEndEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .white
     textField.textColor = .hackerBlack
+    if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+      clearButton.setImage(UIImage(named: "xBlack"), for: .normal)
+    }
     nextButton.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
   }

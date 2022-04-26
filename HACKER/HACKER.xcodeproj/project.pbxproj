@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A3D50C1AFB4489BB093B1EB /* Pods_HACKERUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */; };
+		773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C727F09A2D0014DE3A /* LogoutViewController.swift */; };
 		773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C927F161300014DE3A /* DeleteAccountViewController.swift */; };
 		77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */; };
 		77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC627EB90A2005AF6DA /* SettingViewController.swift */; };
@@ -31,6 +32,15 @@
 		E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */; };
 		E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF627C24D9000107741 /* NickNameCheckPopUpViewController.swift */; };
 		E8547B9227BC085D0078EEA8 /* KCC-Kimhwanki.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8547B9127BC085D0078EEA8 /* KCC-Kimhwanki.otf */; };
+		E855DD2627EF0AC4003F3B34 /* ShoppingRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD2527EF0AC4003F3B34 /* ShoppingRankingViewController.swift */; };
+		E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD2827EF0AE4003F3B34 /* TabbarCollectionViewCell.swift */; };
+		E855DD2B27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD2A27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift */; };
+		E855DD2D27EF0AF5003F3B34 /* RankingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD2C27EF0AF5003F3B34 /* RankingCollectionViewCell.swift */; };
+		E855DD3027EF1DC4003F3B34 /* identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD2F27EF1DC4003F3B34 /* identifiable.swift */; };
+		E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD3127EF422C003F3B34 /* AddFriendCollectionViewCell.swift */; };
+		E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD3327EF423D003F3B34 /* MyFriendsCollectionViewCell.swift */; };
+		E855DD3627EF4556003F3B34 /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD3527EF4556003F3B34 /* AddFriendViewController.swift */; };
+		E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD3727EF65EB003F3B34 /* RankingTableViewCell.swift */; };
 		E87580A727B15FFD00C7E7E2 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */; };
 		E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */; };
 		E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */; };
@@ -39,6 +49,7 @@
 		E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119B27A0397700D238B3 /* UIColor+Extension.swift */; };
 		E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119D27A0398000D238B3 /* UIFont+Extension.swift */; };
 		E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119F27A0398B00D238B3 /* UIButton+Extension.swift */; };
+		E87AA6962809C774008913AE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AA6952809C774008913AE /* Notification.swift */; };
 		E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3327E44A27009F65E3 /* MainViewController.swift */; };
 		E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */; };
 		E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */; };
@@ -75,6 +86,7 @@
 		2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKERUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BDBABACCF0BB55F93813D2 /* Pods-HACKERUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.release.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6D722C98A0200948EF94743D /* Pods-HACKERTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERTests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERTests/Pods-HACKERTests.debug.xcconfig"; sourceTree = "<group>"; };
+		773D93C727F09A2D0014DE3A /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		773D93C927F161300014DE3A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNavigationBar.swift; sourceTree = "<group>"; };
 		77576EC627EB90A2005AF6DA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +114,15 @@
 		E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownUserPopUpViewController.swift; sourceTree = "<group>"; };
 		E833EEF627C24D9000107741 /* NickNameCheckPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameCheckPopUpViewController.swift; sourceTree = "<group>"; };
 		E8547B9127BC085D0078EEA8 /* KCC-Kimhwanki.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KCC-Kimhwanki.otf"; sourceTree = "<group>"; };
+		E855DD2527EF0AC4003F3B34 /* ShoppingRankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingRankingViewController.swift; sourceTree = "<group>"; };
+		E855DD2827EF0AE4003F3B34 /* TabbarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCollectionViewCell.swift; sourceTree = "<group>"; };
+		E855DD2A27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCollectionViewCell.swift; sourceTree = "<group>"; };
+		E855DD2C27EF0AF5003F3B34 /* RankingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCollectionViewCell.swift; sourceTree = "<group>"; };
+		E855DD2F27EF1DC4003F3B34 /* identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = identifiable.swift; sourceTree = "<group>"; };
+		E855DD3127EF422C003F3B34 /* AddFriendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendCollectionViewCell.swift; sourceTree = "<group>"; };
+		E855DD3327EF423D003F3B34 /* MyFriendsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFriendsCollectionViewCell.swift; sourceTree = "<group>"; };
+		E855DD3527EF4556003F3B34 /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
+		E855DD3727EF65EB003F3B34 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		E87580A627B15FFD00C7E7E2 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +131,7 @@
 		E876119B27A0397700D238B3 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E876119D27A0398000D238B3 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E876119F27A0398B00D238B3 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		E87AA6952809C774008913AE /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		E88D4C3327E44A27009F65E3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileViewController.swift; sourceTree = "<group>"; };
 		E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +189,7 @@
 			children = (
 				77576EC827ECDA95005AF6DA /* Cell */,
 				77576EC627EB90A2005AF6DA /* SettingViewController.swift */,
+				773D93C727F09A2D0014DE3A /* LogoutViewController.swift */,
 				773D93C927F161300014DE3A /* DeleteAccountViewController.swift */,
 			);
 			path = SettingViewController;
@@ -242,6 +265,37 @@
 			path = LoginViewController;
 			sourceTree = "<group>";
 		};
+		E855DD2427EF0A6C003F3B34 /* ShoppingRankingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E855DD2727EF0ACA003F3B34 /* Cells */,
+				E855DD2527EF0AC4003F3B34 /* ShoppingRankingViewController.swift */,
+				E855DD3527EF4556003F3B34 /* AddFriendViewController.swift */,
+			);
+			path = ShoppingRankingViewController;
+			sourceTree = "<group>";
+		};
+		E855DD2727EF0ACA003F3B34 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E855DD2827EF0AE4003F3B34 /* TabbarCollectionViewCell.swift */,
+				E855DD2A27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift */,
+				E855DD2C27EF0AF5003F3B34 /* RankingCollectionViewCell.swift */,
+				E855DD3127EF422C003F3B34 /* AddFriendCollectionViewCell.swift */,
+				E855DD3327EF423D003F3B34 /* MyFriendsCollectionViewCell.swift */,
+				E855DD3727EF65EB003F3B34 /* RankingTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E855DD2E27EF1DB3003F3B34 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E855DD2F27EF1DC4003F3B34 /* identifiable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		E87580A827B16EB200C7E7E2 /* SignupViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +318,7 @@
 		E876118E279EFE4B00D238B3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E855DD2E27EF1DB3003F3B34 /* Protocols */,
 				E8761194279EFEF900D238B3 /* Constants */,
 				E8761193279EFECF00D238B3 /* Fonts */,
 				E8761192279EFEC700D238B3 /* Extensions */,
@@ -286,6 +341,7 @@
 		E8761190279EFE7C00D238B3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E855DD2427EF0A6C003F3B34 /* ShoppingRankingViewController */,
 				E88D4C3727E44AFD009F65E3 /* TabBarViewController */,
 				E88D4C3227E449D9009F65E3 /* MainViewController */,
 				E833EEEE27C2477900107741 /* LoginViewController */,
@@ -324,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */,
+				E87AA6952809C774008913AE /* Notification.swift */,
 				77576ECB27ECDB26005AF6DA /* Const.swift */,
 			);
 			path = Constants;
@@ -691,23 +748,34 @@
 				77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
+				E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */,
+				E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */,
+				E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */,
+				E855DD3627EF4556003F3B34 /* AddFriendViewController.swift in Sources */,
+				E855DD2B27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
+				E855DD3027EF1DC4003F3B34 /* identifiable.swift in Sources */,
 				E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */,
 				E833EEF327C247A400107741 /* SplashViewController.swift in Sources */,
 				77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
+				E855DD2D27EF0AF5003F3B34 /* RankingCollectionViewCell.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
 				77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */,
 				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
+				E855DD2627EF0AC4003F3B34 /* ShoppingRankingViewController.swift in Sources */,
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
 				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
 				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
+				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
 				773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */,
 				E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */,
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
+				E87AA6962809C774008913AE /* Notification.swift in Sources */,
 				E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */,
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
 				E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */,
+				773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */,
 				77576ECC27ECDB26005AF6DA /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
