@@ -23,7 +23,7 @@ class LogoutViewController: UIViewController {
     }
     
     private let logoutLabel = UILabel().then {
-        $0.font = .subtitleMedium16
+      $0.font = .subtitleMedium(ofSize: 16)
         $0.textColor = .hackerBlack
         $0.text = "로그아웃할까요?"
     }

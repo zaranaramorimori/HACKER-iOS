@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A3D50C1AFB4489BB093B1EB /* Pods_HACKERUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */; };
 		773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C727F09A2D0014DE3A /* LogoutViewController.swift */; };
+		773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C927F161300014DE3A /* DeleteAccountViewController.swift */; };
 		77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */; };
 		77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC627EB90A2005AF6DA /* SettingViewController.swift */; };
 		77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */; };
@@ -86,6 +87,7 @@
 		41BDBABACCF0BB55F93813D2 /* Pods-HACKERUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.release.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6D722C98A0200948EF94743D /* Pods-HACKERTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERTests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERTests/Pods-HACKERTests.debug.xcconfig"; sourceTree = "<group>"; };
 		773D93C727F09A2D0014DE3A /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		773D93C927F161300014DE3A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNavigationBar.swift; sourceTree = "<group>"; };
 		77576EC627EB90A2005AF6DA /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				77576EC827ECDA95005AF6DA /* Cell */,
 				77576EC627EB90A2005AF6DA /* SettingViewController.swift */,
 				773D93C727F09A2D0014DE3A /* LogoutViewController.swift */,
+				773D93C927F161300014DE3A /* DeleteAccountViewController.swift */,
 			);
 			path = SettingViewController;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
 				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
 				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
+				773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */,
 				E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */,
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
 				E87AA6962809C774008913AE /* Notification.swift in Sources */,
