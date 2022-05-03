@@ -12,6 +12,7 @@
 		77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EA028219AE4006B7903 /* FightTableViewCell.swift */; };
 		77233EA52821A8C2006B7903 /* FightTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EA42821A8C2006B7903 /* FightTableViewHeader.swift */; };
 		77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EA72821AEC3006B7903 /* RankingViewController.swift */; };
+		77233EAD2821B17A006B7903 /* TeamRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EAC2821B17A006B7903 /* TeamRankingTableViewCell.swift */; };
 		773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C727F09A2D0014DE3A /* LogoutViewController.swift */; };
 		773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C927F161300014DE3A /* DeleteAccountViewController.swift */; };
 		77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */; };
@@ -94,6 +95,7 @@
 		77233EA028219AE4006B7903 /* FightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightTableViewCell.swift; sourceTree = "<group>"; };
 		77233EA42821A8C2006B7903 /* FightTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightTableViewHeader.swift; sourceTree = "<group>"; };
 		77233EA72821AEC3006B7903 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		77233EAC2821B17A006B7903 /* TeamRankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRankingTableViewCell.swift; sourceTree = "<group>"; };
 		773D93C727F09A2D0014DE3A /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		773D93C927F161300014DE3A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNavigationBar.swift; sourceTree = "<group>"; };
@@ -205,9 +207,18 @@
 		77233EA62821AEAF006B7903 /* RankingViewController */ = {
 			isa = PBXGroup;
 			children = (
+				77233EA92821B129006B7903 /* Cell */,
 				77233EA72821AEC3006B7903 /* RankingViewController.swift */,
 			);
 			path = RankingViewController;
+			sourceTree = "<group>";
+		};
+		77233EA92821B129006B7903 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77233EAC2821B17A006B7903 /* TeamRankingTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		77576EC227EB888E005AF6DA /* Views */ = {
@@ -799,6 +810,7 @@
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
 				77233E9E2821938D006B7903 /* FightViewController.swift in Sources */,
 				E855DD2D27EF0AF5003F3B34 /* RankingCollectionViewCell.swift in Sources */,
+				77233EAD2821B17A006B7903 /* TeamRankingTableViewCell.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
 				77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */,
 				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
