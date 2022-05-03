@@ -54,15 +54,15 @@ class TeamRankingTableViewCell: UITableViewCell {
       make.leading.equalToSuperview().inset(55)
     }
     nameLabel.snp.makeConstraints { make in
-      make.top.equalToSuperview().inset(41)
+      make.top.equalToSuperview().inset(32)
       make.leading.equalTo(rankLabel.snp.trailing).offset(20)
     }
     commitLabel.snp.makeConstraints { make in
       make.leading.equalTo(rankLabel.snp.trailing).offset(20)
-      make.bottom.equalToSuperview().inset(33)
+      make.bottom.equalToSuperview().inset(32)
     }
     faceImage.snp.makeConstraints { make in
-      make.centerY.equalToSuperview()
+      make.top.bottom.equalToSuperview().inset(16)
       make.trailing.equalToSuperview().inset(41)
     }
   }

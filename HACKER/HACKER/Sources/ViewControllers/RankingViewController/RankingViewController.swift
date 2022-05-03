@@ -67,9 +67,8 @@ class RankingViewController: UIViewController {
     }
     rankingTableView.snp.makeConstraints { make in
       make.top.equalTo(self.dividerLine.snp.bottom)
-      make.leading.equalToSuperview().inset(24)
+      make.leading.trailing.equalToSuperview()
       make.bottom.equalTo(view.safeAreaLayoutGuide)
-      make.centerX.equalToSuperview()
     }
   }
   
