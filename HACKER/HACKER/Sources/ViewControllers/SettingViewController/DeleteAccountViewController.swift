@@ -57,7 +57,7 @@ class DeleteAccountViewController: UIViewController {
     view.addSubviews([navigationBar, goodbyeLabel,
                       cryingManImageView, tearDropView,
                       deleteAccountButton, backButton])
-    navigationBar.iconLayout(logoImage: nil, rightImage: nil)
+    navigationBar.iconLayout(isBack: true, logoImage: nil, rightImage: nil)
     navigationBar.popViewController = {
       self.navigationController?.popViewController(animated: true)
     }

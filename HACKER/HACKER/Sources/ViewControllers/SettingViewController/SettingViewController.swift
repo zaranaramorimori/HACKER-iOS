@@ -43,7 +43,7 @@ class SettingViewController: UIViewController {
     
     private func setupAutoLayout() {
         view.addSubviews([navigationBar, settingsTableView])
-        navigationBar.iconLayout(logoImage: UIImage(named: "settingsIcon"), rightImage: nil)
+      navigationBar.iconLayout(isBack: true, logoImage: UIImage(named: "settingsIcon"), rightImage: nil)
         navigationBar.popViewController = {
             self.navigationController?.popViewController(animated: true)
         }

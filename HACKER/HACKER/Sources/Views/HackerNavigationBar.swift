@@ -19,80 +19,81 @@ import Then
  */
 
 class HackerNavigationBar: UIView {
+  
+  // MARK: - Properties
+  
+  var popViewController: (() -> Void)?
+  
+  private let backButton = UIButton().then {
+    $0.setImage(UIImage(named: "backButtonIcon"), for: .normal)
+    $0.addTarget(self, action: #selector(touchBackButton(_:)), for: .touchUpInside)
+    $0.isUserInteractionEnabled = true
+  }
+  
+  private let logoButton = UIButton().then {
+    $0.addTarget(self, action: #selector(touchLogoButton(_:)), for: .touchUpInside)
+  }
+  
+  private let rightButton = UIButton().then {
+    $0.addTarget(self, action: #selector(touchRightButton(_:)), for: .touchUpInside)
+  }
+  
+  // MARK: - Init
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    configUI()
+    setupAutoLayout()
+  }
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    configUI()
+    setupAutoLayout()
+  }
+  
+  // MARK: - Custom Method
+  
+  private func configUI() {
+    backgroundColor = .hackerWhite
+  }
+  
+  private func setupAutoLayout() {
+    addSubviews([backButton, logoButton, rightButton])
     
-    // MARK: - Properties
-    
-    var popViewController: (() -> Void)?
-    
-    private let backButton = UIButton().then {
-        $0.setImage(UIImage(named: "backButtonIcon"), for: .normal)
-        $0.addTarget(self, action: #selector(touchBackButton(_:)), for: .touchUpInside)
-        $0.isUserInteractionEnabled = true
+    backButton.snp.makeConstraints { make in
+      make.leading.equalToSuperview().inset(24)
+      make.centerY.equalToSuperview()
     }
     
-    private let logoButton = UIButton().then {
-        $0.addTarget(self, action: #selector(touchLogoButton(_:)), for: .touchUpInside)
+    logoButton.snp.makeConstraints { make in
+      make.centerX.centerY.equalToSuperview()
+      make.width.equalTo(104)
     }
     
-    private let rightButton = UIButton().then {
-        $0.addTarget(self, action: #selector(touchRightButton(_:)), for: .touchUpInside)
+    rightButton.snp.makeConstraints { make in
+      make.centerY.equalToSuperview()
+      make.trailing.equalToSuperview().inset(24)
     }
-    
-    // MARK: - Init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configUI()
-        setupAutoLayout()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        configUI()
-        setupAutoLayout()
-    }
-    
-    // MARK: - Custom Method
-    
-    private func configUI() {
-        backgroundColor = .hackerWhite
-    }
-    
-    private func setupAutoLayout() {
-        addSubviews([backButton, logoButton, rightButton])
-        
-        backButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(24)
-            make.centerY.equalToSuperview()
-        }
-        
-        logoButton.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.width.equalTo(104)
-        }
-        
-        rightButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(24)
-        }
-    }
-    
-    func iconLayout(logoImage: UIImage?, rightImage: UIImage?) {
-        logoButton.setImage(logoImage, for: .normal)
-        rightButton.setImage(rightImage, for: .normal)
-    }
-    
-    // MARK: - @objc
-    
-    @objc func touchBackButton(_ sender: UIButton) {
-        popViewController?()
-    }
-    
-    @objc func touchLogoButton(_ sender: UIButton) {
-        print("touchLogoButton")
-    }
-    
-    @objc func touchRightButton(_ sender: UIButton) {
-        print("touchRightButton")
-    }
+  }
+  
+  func iconLayout(isBack: Bool, logoImage: UIImage?, rightImage: UIImage?) {
+    backButton.isHidden = !isBack
+    logoButton.setImage(logoImage, for: .normal)
+    rightButton.setImage(rightImage, for: .normal)
+  }
+  
+  // MARK: - @objc
+  
+  @objc func touchBackButton(_ sender: UIButton) {
+    popViewController?()
+  }
+  
+  @objc func touchLogoButton(_ sender: UIButton) {
+    print("touchLogoButton")
+  }
+  
+  @objc func touchRightButton(_ sender: UIButton) {
+    print("touchRightButton")
+  }
 }
