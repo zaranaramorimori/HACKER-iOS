@@ -21,15 +21,19 @@ class FightViewController: UIViewController {
   }
   
   private lazy var fightTableView = UITableView(frame: .zero, style: .grouped).then {
-      $0.dataSource = self
-      $0.delegate = self
-      $0.backgroundColor = .hackerWhite
-      $0.separatorStyle = .none
-      $0.register(FightTableViewCell.self, forCellReuseIdentifier: FightTableViewCell.identifier)
-      
-      if #available(iOS 15, *) {
-          $0.sectionHeaderTopPadding = 0
-      }
+    $0.dataSource = self
+    $0.delegate = self
+    $0.backgroundColor = .hackerWhite
+    $0.separatorStyle = .none
+    $0.sectionFooterHeight = 0
+    $0.rowHeight = UITableView.automaticDimension
+    $0.estimatedRowHeight = 254
+    $0.register(FightTableViewCell.self, forCellReuseIdentifier: FightTableViewCell.identifier)
+    $0.register(FightTableViewHeader.self, forHeaderFooterViewReuseIdentifier: FightTableViewHeader.identifier)
+    
+    if #available(iOS 15, *) {
+      $0.sectionHeaderTopPadding = 0
+    }
   }
   
   override func viewDidLoad() {
@@ -62,10 +66,10 @@ class FightViewController: UIViewController {
       make.leading.trailing.equalToSuperview()
     }
     fightTableView.snp.makeConstraints { make in
-        make.top.equalTo(self.navigationBar.snp.bottom).offset(8)
-        make.leading.equalToSuperview().inset(24)
-        make.bottom.equalTo(view.safeAreaLayoutGuide)
-        make.centerX.equalToSuperview()
+      make.top.equalTo(self.dividerLine.snp.bottom)
+      make.leading.equalToSuperview().inset(24)
+      make.bottom.equalTo(view.safeAreaLayoutGuide)
+      make.centerX.equalToSuperview()
     }
   }
   
@@ -74,47 +78,55 @@ class FightViewController: UIViewController {
   @objc func infoButtonClicked(_ sender: UIButton) {
     print("info clicked")
   }
-
+  
 }
 
 // MARK: - UITableViewDataSource
 extension FightViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 6
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: FightTableViewCell.identifier) as? FightTableViewCell else { return UITableViewCell() }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
-    }
+    cell.backgroundColor = .hackerWhite
+    cell.selectionStyle = .none
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FightTableViewCell.identifier) as? FightTableViewCell else { return UITableViewCell() }
-        
-        cell.backgroundColor = .hackerWhite
-        cell.selectionStyle = .none
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
-        print(indexPath.section)
-    }
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
+    print(indexPath.section)
+  }
 }
 
 // MARK: - UITableViewDelegate
 extension FightViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear
-        return headerView
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    switch section {
+    case 0:
+      guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FightTableViewHeader.identifier) as? FightTableViewHeader else { return UIView() }
+      return headerView
+    default:
+      let headerView = UIView()
+      headerView.backgroundColor = .clear
+      return headerView
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UIScreen.main.bounds.size.height * (254/812)
+  }
+  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    switch section {
+    case 0:
+      return 40
+    default:
+      return 24
     }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
+  }
 }

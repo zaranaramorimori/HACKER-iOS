@@ -80,6 +80,7 @@ class FightTableViewCell: UITableViewCell {
     dateLabel.snp.makeConstraints { make in
       make.top.equalTo(titleLabel.snp.bottom).offset(8)
       make.leading.equalToSuperview().inset(20)
+      make.bottom.equalToSuperview().inset(19)
     }
   }
 }
