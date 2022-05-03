@@ -20,6 +20,18 @@ class FightViewController: UIViewController {
     $0.contentMode = .scaleToFill
   }
   
+  private lazy var fightTableView = UITableView(frame: .zero, style: .grouped).then {
+//      $0.dataSource = self
+//      $0.delegate = self
+      $0.backgroundColor = .hackerWhite
+      $0.separatorStyle = .none
+      $0.register(FightTableViewCell.self, forCellReuseIdentifier: FightTableViewCell.identifier)
+      
+      if #available(iOS 15, *) {
+          $0.sectionHeaderTopPadding = 0
+      }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configUI()

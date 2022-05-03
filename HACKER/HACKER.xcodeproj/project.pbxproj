@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A3D50C1AFB4489BB093B1EB /* Pods_HACKERUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */; };
 		77233E9E2821938D006B7903 /* FightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9D2821938D006B7903 /* FightViewController.swift */; };
+		77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EA028219AE4006B7903 /* FightTableViewCell.swift */; };
 		773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C727F09A2D0014DE3A /* LogoutViewController.swift */; };
 		773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C927F161300014DE3A /* DeleteAccountViewController.swift */; };
 		77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */; };
@@ -88,6 +89,7 @@
 		41BDBABACCF0BB55F93813D2 /* Pods-HACKERUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.release.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6D722C98A0200948EF94743D /* Pods-HACKERTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERTests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERTests/Pods-HACKERTests.debug.xcconfig"; sourceTree = "<group>"; };
 		77233E9D2821938D006B7903 /* FightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightViewController.swift; sourceTree = "<group>"; };
+		77233EA028219AE4006B7903 /* FightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightTableViewCell.swift; sourceTree = "<group>"; };
 		773D93C727F09A2D0014DE3A /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		773D93C927F161300014DE3A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNavigationBar.swift; sourceTree = "<group>"; };
@@ -181,9 +183,18 @@
 		77233E9C28219379006B7903 /* FightViewController */ = {
 			isa = PBXGroup;
 			children = (
+				77233E9F28219AD4006B7903 /* Cell */,
 				77233E9D2821938D006B7903 /* FightViewController.swift */,
 			);
 			path = FightViewController;
+			sourceTree = "<group>";
+		};
+		77233E9F28219AD4006B7903 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77233EA028219AE4006B7903 /* FightTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		77576EC227EB888E005AF6DA /* Views */ = {
@@ -759,6 +770,7 @@
 				77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
+				77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */,
 				E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */,
 				E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */,
 				E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */,
