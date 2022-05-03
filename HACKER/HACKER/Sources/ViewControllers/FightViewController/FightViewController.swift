@@ -21,8 +21,8 @@ class FightViewController: UIViewController {
   }
   
   private lazy var fightTableView = UITableView(frame: .zero, style: .grouped).then {
-//      $0.dataSource = self
-//      $0.delegate = self
+      $0.dataSource = self
+      $0.delegate = self
       $0.backgroundColor = .hackerWhite
       $0.separatorStyle = .none
       $0.register(FightTableViewCell.self, forCellReuseIdentifier: FightTableViewCell.identifier)
@@ -46,7 +46,7 @@ class FightViewController: UIViewController {
   }
   
   private func setupAutoLayout() {
-    view.addSubviews([navigationBar, dividerLine])
+    view.addSubviews([navigationBar, dividerLine, fightTableView])
     navigationBar.iconLayout(isBack: false,
                              logoImage: UIImage(named: "fightMainIcon"),
                              rightImage: UIImage(named: "infoIconBlack"))
@@ -61,6 +61,12 @@ class FightViewController: UIViewController {
       make.top.equalTo(navigationBar.snp.bottom)
       make.leading.trailing.equalToSuperview()
     }
+    fightTableView.snp.makeConstraints { make in
+        make.top.equalTo(self.navigationBar.snp.bottom).offset(8)
+        make.leading.equalToSuperview().inset(24)
+        make.bottom.equalTo(view.safeAreaLayoutGuide)
+        make.centerX.equalToSuperview()
+    }
   }
   
   // MARK: - @objc
@@ -69,4 +75,46 @@ class FightViewController: UIViewController {
     print("info clicked")
   }
 
+}
+
+// MARK: - UITableViewDataSource
+extension FightViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 6
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FightTableViewCell.identifier) as? FightTableViewCell else { return UITableViewCell() }
+        
+        cell.backgroundColor = .hackerWhite
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
+        print(indexPath.section)
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension FightViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIScreen.main.bounds.size.height * (254/812)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
 }

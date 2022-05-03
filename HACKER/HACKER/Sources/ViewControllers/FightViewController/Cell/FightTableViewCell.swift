@@ -15,14 +15,14 @@ class FightTableViewCell: UITableViewCell {
   
   // MARK: - UI
   var backgroundWithBorder = UIView().then {
+    $0.backgroundColor = .white
     $0.layer.cornerRadius = 25
     $0.layer.borderWidth = 3
     $0.layer.borderColor = UIColor.hackerBlack.cgColor
   }
   
   var logoImage = UIImageView().then {
-    $0.contentMode = .scaleAspectFill
-    $0.clipsToBounds = true
+    $0.contentMode = .scaleToFill
     $0.image = UIImage(named: "nextBtnBlack")
   }
   
@@ -55,8 +55,8 @@ class FightTableViewCell: UITableViewCell {
   
   // MARK: - Setup Method
   private func setupLayout() {
-    addSubviews([backgroundWithBorder,logoImage,nameLabel,
-                 titleLabel,dateLabel])
+    addSubviews([backgroundWithBorder, logoImage, nameLabel,
+                 titleLabel, dateLabel])
     
     backgroundWithBorder.snp.makeConstraints { make in
       make.edges.equalToSuperview()
@@ -68,7 +68,7 @@ class FightTableViewCell: UITableViewCell {
     }
     
     nameLabel.snp.makeConstraints { make in
-      make.top.equalTo(nameLabel.snp.bottom).offset(8)
+      make.top.equalTo(logoImage.snp.bottom).offset(8)
       make.leading.equalToSuperview().inset(20)
     }
     
@@ -78,9 +78,8 @@ class FightTableViewCell: UITableViewCell {
     }
     
     dateLabel.snp.makeConstraints { make in
-      make.top.equalTo(nameLabel.snp.bottom).offset(8)
+      make.top.equalTo(titleLabel.snp.bottom).offset(8)
       make.leading.equalToSuperview().inset(20)
     }
   }
 }
-
