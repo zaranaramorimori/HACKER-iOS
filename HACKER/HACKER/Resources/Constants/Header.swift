@@ -32,11 +32,11 @@ extension Const {
 //    }
     static func basicHeader() -> [String: String] {
       ["Content-Type": "application/json",
-       "token": Const.accessToken]
+       "Authorization": Const.accessToken]
     }
     
     static func tokenHeader() -> [String: String] {
-      ["token": Const.accessToken]
+      ["Authorization": Const.accessToken]
     }
     
     static func urlEncodedHeader() -> [String: String] {
@@ -45,7 +45,7 @@ extension Const {
     
     static func multipartFormHeader() -> [String: String] {
       ["Content-Type": "multipart/form-data",
-       "token": Const.accessToken]
+       "Authorization": Const.accessToken]
     }
   }
 }

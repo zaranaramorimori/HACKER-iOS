@@ -39,6 +39,7 @@ class FightViewController: UIViewController {
     super.viewDidLoad()
     configUI()
     setupAutoLayout()
+    ingSeasonWithAPI()
   }
   
   // MARK: - Custom Method
@@ -121,6 +122,30 @@ extension FightViewController: UITableViewDelegate {
       return 40
     default:
       return 24
+    }
+  }
+}
+
+// MARK: - Network
+extension FightViewController {
+  func ingSeasonWithAPI() {
+    FightAPI.shared.ingSeason { response in
+      switch response {
+      case .success(let data):
+        if let curations = data as? SeasonResponse {
+//          self.dataSource.serverCuration = curations
+//          self.filmRollCollectionView.reloadData()
+          print(curations)
+        }
+      case .requestErr(let message):
+        print("ingSeasonWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("ingSeasonWithAPI - pathErr")
+      case .serverErr:
+        print("ingSeasonWithAPI - serverErr")
+      case .networkFail:
+        print("ingSeasonWithAPI - networkFail")
+      }
     }
   }
 }

@@ -8,6 +8,6 @@
 import Foundation
 extension Const {
     struct URL {
-        static let baseURL = "3.36.251.74:5000"
+        static let baseURL = "http://3.36.251.74:5000"
     }
 }
