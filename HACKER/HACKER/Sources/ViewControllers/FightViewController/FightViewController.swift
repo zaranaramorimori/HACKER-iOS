@@ -132,10 +132,11 @@ extension FightViewController {
     FightAPI.shared.ingSeason { response in
       switch response {
       case .success(let data):
-        if let curations = data as? SeasonResponse {
+        if let seasons = data as? SeasonResponse {
 //          self.dataSource.serverCuration = curations
 //          self.filmRollCollectionView.reloadData()
-          print(curations)
+          print("seasons")
+          print(seasons)
         }
       case .requestErr(let message):
         print("ingSeasonWithAPI - requestErr: \(message)")

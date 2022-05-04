@@ -22,7 +22,7 @@ public class FightAPI {
                 let statusCode = response.statusCode
                 let data = response.data
 
-                let networkResult = self.judgeStatus(by: statusCode, data)
+                let networkResult = self.judgeIngSeasonStatus(by: statusCode, data)
                 completion(networkResult)
                 
             case .failure(let err):
@@ -31,7 +31,7 @@ public class FightAPI {
         }
     }
     
-    private func judgeGroupListFetchStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+    private func judgeIngSeasonStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
 
         let decoder = JSONDecoder()
         guard let decodedData = try? decoder.decode(GenericResponse<SeasonResponse>.self, from: data)
