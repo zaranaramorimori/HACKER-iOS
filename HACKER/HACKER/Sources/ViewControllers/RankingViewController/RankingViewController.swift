@@ -155,6 +155,8 @@ extension RankingViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
     print(indexPath.section)
+    let nextVC = TeamViewController()
+    navigationController?.pushViewController(nextVC, animated: true)
   }
 }
 
