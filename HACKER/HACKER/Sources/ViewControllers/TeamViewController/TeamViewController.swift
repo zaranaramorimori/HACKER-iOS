@@ -122,7 +122,7 @@ class TeamViewController: UIViewController {
     configUI()
     setupAutoLayout()
     collectionViewRegister()
-    print(serverTeamDetailInfo)
+    updateTeamDetail()
   }
   
   // MARK: - Custom Method
@@ -178,7 +178,6 @@ class TeamViewController: UIViewController {
     }
     teamInfoContainerView.snp.makeConstraints { make in
       make.top.equalTo(faceImage.snp.bottom)
-      make.leading.equalToSuperview().inset(97)
       make.centerX.equalToSuperview()
       make.height.equalTo(190)
     }
@@ -190,13 +189,16 @@ class TeamViewController: UIViewController {
     nameLabel.snp.makeConstraints { make in
       make.centerY.equalTo(teamIcon)
       make.leading.equalTo(teamIcon.snp.trailing).offset(20)
+      make.trailing.equalToSuperview()
     }
     commitLabel.snp.makeConstraints { make in
       make.top.equalTo(teamIcon.snp.bottom).offset(8)
       make.centerX.equalToSuperview()
     }
     attackButton.snp.makeConstraints { make in
-      make.leading.trailing.bottom.equalToSuperview()
+      make.bottom.equalToSuperview()
+      make.centerX.equalToSuperview()
+      make.width.equalTo(181)
     }
     attackButtonCountLabel.snp.makeConstraints { make in
       make.leading.equalTo(attackButton.snp.trailing).offset(12)
@@ -224,6 +226,12 @@ class TeamViewController: UIViewController {
       make.height.equalTo(500)
 //      print("height", logTableView.contentSize.height)
     }
+  }
+  
+  private func updateTeamDetail() {
+//    teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
+    nameLabel.text = serverTeamDetailInfo?.team.name
+    commitLabel.text = "\(serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(serverTeamDetailInfo?.team.hairCount ?? 0) 가닥"
   }
   
   // MARK: - @objc
