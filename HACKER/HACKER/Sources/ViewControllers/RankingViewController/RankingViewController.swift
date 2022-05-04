@@ -29,7 +29,7 @@ class RankingViewController: UIViewController {
     $0.rowHeight = UITableView.automaticDimension
     $0.estimatedRowHeight = 254
     $0.register(TeamRankingTableViewCell.self, forCellReuseIdentifier: TeamRankingTableViewCell.identifier)
-//    $0.register(FightTableViewHeader.self, forHeaderFooterViewReuseIdentifier: FightTableViewHeader.identifier)
+    $0.register(RankingTableViewHeader.self, forHeaderFooterViewReuseIdentifier: RankingTableViewHeader.identifier)
     
     if #available(iOS 15, *) {
       $0.sectionHeaderTopPadding = 0
@@ -108,12 +108,13 @@ extension RankingViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension RankingViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    var headerView = UIView()
     switch section {
     case 0:
-      guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FightTableViewHeader.identifier) as? FightTableViewHeader else { return UIView() }
+      headerView = RankingTableViewHeader()
       return headerView
     default:
-      let headerView = UIView()
+      headerView = UIView()
       headerView.backgroundColor = .lightGray
       return headerView
     }
@@ -122,7 +123,7 @@ extension RankingViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     switch section {
     case 0:
-      return 40
+      return 173
     default:
       return 1
     }

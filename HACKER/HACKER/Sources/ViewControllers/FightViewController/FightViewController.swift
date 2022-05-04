@@ -29,7 +29,6 @@ class FightViewController: UIViewController {
     $0.rowHeight = UITableView.automaticDimension
     $0.estimatedRowHeight = 254
     $0.register(FightTableViewCell.self, forCellReuseIdentifier: FightTableViewCell.identifier)
-    $0.register(FightTableViewHeader.self, forHeaderFooterViewReuseIdentifier: FightTableViewHeader.identifier)
     
     if #available(iOS 15, *) {
       $0.sectionHeaderTopPadding = 0
@@ -111,12 +110,12 @@ extension FightViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension FightViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    var headerView = UIView()
     switch section {
     case 0:
-      guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FightTableViewHeader.identifier) as? FightTableViewHeader else { return UIView() }
+      headerView = FightTableViewHeader()
       return headerView
     default:
-      let headerView = UIView()
       headerView.backgroundColor = .clear
       return headerView
     }

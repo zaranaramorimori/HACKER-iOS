@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 class TeamRankingTableViewCell: UITableViewCell {
   static let identifier = "TeamRankingTableViewCell"
