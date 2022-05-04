@@ -14,6 +14,15 @@
 		77233E97281828BF006B7903 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E96281828BF006B7903 /* URL.swift */; };
 		77233E9928182F69006B7903 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9828182F69006B7903 /* Header.swift */; };
 		77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9A281830FC006B7903 /* UserDefaultsKey.swift */; };
+		77233E9E2821938D006B7903 /* FightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9D2821938D006B7903 /* FightViewController.swift */; };
+		77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EA028219AE4006B7903 /* FightTableViewCell.swift */; };
+		77233EA52821A8C2006B7903 /* FightTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EA42821A8C2006B7903 /* FightTableViewHeader.swift */; };
+		77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EA72821AEC3006B7903 /* RankingViewController.swift */; };
+		77233EAD2821B17A006B7903 /* TeamRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EAC2821B17A006B7903 /* TeamRankingTableViewCell.swift */; };
+		77233EAF2821B6D2006B7903 /* RankingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EAE2821B6D2006B7903 /* RankingTableViewHeader.swift */; };
+		77233EB2282231E0006B7903 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EB1282231E0006B7903 /* TeamViewController.swift */; };
+		77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */; };
+		77233EB72822CB8C006B7903 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EB62822CB8C006B7903 /* LogTableViewCell.swift */; };
 		773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C727F09A2D0014DE3A /* LogoutViewController.swift */; };
 		773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C927F161300014DE3A /* DeleteAccountViewController.swift */; };
 		77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */; };
@@ -98,6 +107,15 @@
 		77233E96281828BF006B7903 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		77233E9828182F69006B7903 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		77233E9A281830FC006B7903 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		77233E9D2821938D006B7903 /* FightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightViewController.swift; sourceTree = "<group>"; };
+		77233EA028219AE4006B7903 /* FightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightTableViewCell.swift; sourceTree = "<group>"; };
+		77233EA42821A8C2006B7903 /* FightTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightTableViewHeader.swift; sourceTree = "<group>"; };
+		77233EA72821AEC3006B7903 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		77233EAC2821B17A006B7903 /* TeamRankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRankingTableViewCell.swift; sourceTree = "<group>"; };
+		77233EAE2821B6D2006B7903 /* RankingTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewHeader.swift; sourceTree = "<group>"; };
+		77233EB1282231E0006B7903 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
+		77233EB62822CB8C006B7903 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		773D93C727F09A2D0014DE3A /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		773D93C927F161300014DE3A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNavigationBar.swift; sourceTree = "<group>"; };
@@ -203,6 +221,60 @@
 				77233E9428182861006B7903 /* HowTo.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		77233E9C28219379006B7903 /* FightViewController */ = {
+			isa = PBXGroup;
+			children = (
+				77233E9F28219AD4006B7903 /* Cell */,
+				77233E9D2821938D006B7903 /* FightViewController.swift */,
+				77233EA42821A8C2006B7903 /* FightTableViewHeader.swift */,
+			);
+			path = FightViewController;
+			sourceTree = "<group>";
+		};
+		77233E9F28219AD4006B7903 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77233EA028219AE4006B7903 /* FightTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		77233EA62821AEAF006B7903 /* RankingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				77233EA92821B129006B7903 /* Cell */,
+				77233EA72821AEC3006B7903 /* RankingViewController.swift */,
+				77233EAE2821B6D2006B7903 /* RankingTableViewHeader.swift */,
+			);
+			path = RankingViewController;
+			sourceTree = "<group>";
+		};
+		77233EA92821B129006B7903 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77233EAC2821B17A006B7903 /* TeamRankingTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		77233EB0282231C3006B7903 /* TeamViewController */ = {
+			isa = PBXGroup;
+			children = (
+				77233EB328229FFF006B7903 /* Cell */,
+				77233EB1282231E0006B7903 /* TeamViewController.swift */,
+			);
+			path = TeamViewController;
+			sourceTree = "<group>";
+		};
+		77233EB328229FFF006B7903 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */,
+				77233EB62822CB8C006B7903 /* LogTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		77576EC227EB888E005AF6DA /* Views */ = {
@@ -372,6 +444,9 @@
 		E8761190279EFE7C00D238B3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				77233EB0282231C3006B7903 /* TeamViewController */,
+				77233EA62821AEAF006B7903 /* RankingViewController */,
+				77233E9C28219379006B7903 /* FightViewController */,
 				E855DD2427EF0A6C003F3B34 /* ShoppingRankingViewController */,
 				E88D4C3727E44AFD009F65E3 /* TabBarViewController */,
 				E88D4C3227E449D9009F65E3 /* MainViewController */,
@@ -778,18 +853,23 @@
 			files = (
 				77233E9928182F69006B7903 /* Header.swift in Sources */,
 				77233E902818250C006B7903 /* GenericResponse.swift in Sources */,
+				77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */,
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
+				77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */,
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
 				77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */,
 				77233E97281828BF006B7903 /* URL.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
+				77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */,
 				E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */,
 				E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */,
 				77233E9528182861006B7903 /* HowTo.swift in Sources */,
+				77233EAF2821B6D2006B7903 /* RankingTableViewHeader.swift in Sources */,
 				E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */,
 				E855DD3627EF4556003F3B34 /* AddFriendViewController.swift in Sources */,
+				77233EB2282231E0006B7903 /* TeamViewController.swift in Sources */,
 				E855DD2B27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
 				E855DD3027EF1DC4003F3B34 /* identifiable.swift in Sources */,
@@ -797,7 +877,9 @@
 				E833EEF327C247A400107741 /* SplashViewController.swift in Sources */,
 				77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
+				77233E9E2821938D006B7903 /* FightViewController.swift in Sources */,
 				E855DD2D27EF0AF5003F3B34 /* RankingCollectionViewCell.swift in Sources */,
+				77233EAD2821B17A006B7903 /* TeamRankingTableViewCell.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
 				77233E9228182649006B7903 /* NetworkResult.swift in Sources */,
 				77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */,
@@ -809,10 +891,12 @@
 				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
 				77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */,
 				773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */,
+				77233EB72822CB8C006B7903 /* LogTableViewCell.swift in Sources */,
 				E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */,
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
 				E87AA6962809C774008913AE /* Notification.swift in Sources */,
 				E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */,
+				77233EA52821A8C2006B7903 /* FightTableViewHeader.swift in Sources */,
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
 				E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */,
 				773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */,

@@ -41,7 +41,7 @@ extension TabBarViewController {
   
   private func createFirstTab() -> UINavigationController {
     let firstNavigationController = UINavigationController()
-    let firstTabController = LoginViewController()
+    let firstTabController = FightViewController()
     firstNavigationController.addChild(firstTabController)
     /// 기본으로 보여질 이미지
     firstNavigationController.tabBarItem.image = UIImage(named: "fightIconInactive")?.withRenderingMode(.alwaysOriginal)
