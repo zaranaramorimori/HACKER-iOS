@@ -91,6 +91,8 @@ extension FightViewController: UITableViewDataSource {
     
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
+    cell.seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID
+    cell.logoImage.updateServerImage(serverIngSeasons?.seasons[indexPath.section].imageURL ?? "")
     cell.nameLabel.text = serverIngSeasons?.seasons[indexPath.section].agency
     cell.titleLabel.text = serverIngSeasons?.seasons[indexPath.section].title
     cell.dateLabel.text = serverIngSeasons?.seasons[indexPath.section].duration
