@@ -138,6 +138,18 @@ class RankingViewController: UIViewController {
     print("touchShortCutButton")
   }
   
+  @objc func touchTableViewHeader(_ sender: UITapGestureRecognizer) {
+    let teamId = serverSeasonTeamInfo?.teams.first?.teamID ?? 0
+    teamDetailInfoWithAPI(teamId: teamId)
+  }
+  
+}
+
+// MARK: - UIGestureRecognizerDelegate
+extension RankingViewController: UIGestureRecognizerDelegate {
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    return true
+  }
 }
 
 // MARK: - UITableViewDataSource
@@ -161,10 +173,8 @@ extension RankingViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
-    print(indexPath.section)
-    let nextVC = TeamViewController()
-    navigationController?.pushViewController(nextVC, animated: true)
+    let teamId = serverSeasonTeamInfo?.teams[indexPath.section+1].teamID ?? 0
+    teamDetailInfoWithAPI(teamId: teamId)
   }
 }
 
@@ -173,11 +183,15 @@ extension RankingViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     switch section {
     case 0:
+      let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(touchTableViewHeader(_:)))
+      tapGesture.delegate = self
+      
       guard let rankingTableViewHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: RankingTableViewHeader.identifier) as? RankingTableViewHeader else {
         return UIView()
       }
       rankingTableViewHeader.nameLabel.text = serverSeasonTeamInfo?.teams.first?.name
       rankingTableViewHeader.commitLabel.text = String(serverSeasonTeamInfo?.teams.first?.commitCount ?? 0) + " 커밋"
+      rankingTableViewHeader.addGestureRecognizer(tapGesture)
       return rankingTableViewHeader
     default:
       let headerView = UIView()
@@ -192,6 +206,30 @@ extension RankingViewController: UITableViewDelegate {
       return 173
     default:
       return 1
+    }
+  }
+}
+
+// MARK: - Network
+extension RankingViewController {
+  func teamDetailInfoWithAPI(teamId: Int) {
+    FightAPI.shared.teamDetailInfo(teamId: teamId) { response in
+      switch response {
+      case .success(let data):
+        if let teamInfo = data as? TeamDetailResponse {
+          let nextVC = TeamViewController()
+          nextVC.serverTeamDetailInfo = teamInfo
+          self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+      case .requestErr(let message):
+        print("teamDetailInfoWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("teamDetailInfoWithAPI - pathErr")
+      case .serverErr:
+        print("teamDetailInfoWithAPI - serverErr")
+      case .networkFail:
+        print("teamDetailInfoWithAPI - networkFail")
+      }
     }
   }
 }

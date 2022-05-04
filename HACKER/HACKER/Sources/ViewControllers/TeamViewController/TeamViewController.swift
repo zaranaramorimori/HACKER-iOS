@@ -13,6 +13,8 @@ class TeamViewController: UIViewController {
   
   // MARK: - Components
   
+  var serverTeamDetailInfo: TeamDetailResponse?
+  
   private let navigationBar = HackerNavigationBar()
   
   private let dividerLine = UIImageView().then {
@@ -120,6 +122,7 @@ class TeamViewController: UIViewController {
     configUI()
     setupAutoLayout()
     collectionViewRegister()
+    print(serverTeamDetailInfo)
   }
   
   // MARK: - Custom Method

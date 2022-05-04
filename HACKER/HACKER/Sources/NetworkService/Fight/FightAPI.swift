@@ -47,6 +47,22 @@ public class FightAPI {
     }
   }
   
+  func teamDetailInfo(teamId: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+    fightProvider.request(.teamDetailInfo(teamId: teamId)) { (result) in
+      switch result {
+      case .success(let response):
+        let statusCode = response.statusCode
+        let data = response.data
+        
+        let networkResult = self.judgeTeamDetailInfoStatus(by: statusCode, data)
+        completion(networkResult)
+        
+      case .failure(let err):
+        print(err)
+      }
+    }
+  }
+  
   private func judgeIngSeasonStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
     
     let decoder = JSONDecoder()
@@ -87,6 +103,25 @@ public class FightAPI {
     }
   }
   
+  private func judgeTeamDetailInfoStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+    
+    let decoder = JSONDecoder()
+    guard let decodedData = try? decoder.decode(GenericResponse<TeamDetailResponse>.self, from: data)
+    else {
+      return .pathErr
+    }
+    
+    switch statusCode {
+    case 200:
+      return .success(decodedData.data ?? "None-Data")
+    case 400..<500:
+      return .requestErr(decodedData.message)
+    case 500:
+      return .serverErr
+    default:
+      return .networkFail
+    }
+  }
   
   private func judgeStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
     
