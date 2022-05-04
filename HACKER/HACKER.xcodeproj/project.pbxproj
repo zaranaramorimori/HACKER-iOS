@@ -15,6 +15,7 @@
 		77233EAD2821B17A006B7903 /* TeamRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EAC2821B17A006B7903 /* TeamRankingTableViewCell.swift */; };
 		77233EAF2821B6D2006B7903 /* RankingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EAE2821B6D2006B7903 /* RankingTableViewHeader.swift */; };
 		77233EB2282231E0006B7903 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EB1282231E0006B7903 /* TeamViewController.swift */; };
+		77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */; };
 		773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C727F09A2D0014DE3A /* LogoutViewController.swift */; };
 		773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C927F161300014DE3A /* DeleteAccountViewController.swift */; };
 		77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */; };
@@ -100,6 +101,7 @@
 		77233EAC2821B17A006B7903 /* TeamRankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRankingTableViewCell.swift; sourceTree = "<group>"; };
 		77233EAE2821B6D2006B7903 /* RankingTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewHeader.swift; sourceTree = "<group>"; };
 		77233EB1282231E0006B7903 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		773D93C727F09A2D0014DE3A /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		773D93C927F161300014DE3A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNavigationBar.swift; sourceTree = "<group>"; };
@@ -229,9 +231,18 @@
 		77233EB0282231C3006B7903 /* TeamViewController */ = {
 			isa = PBXGroup;
 			children = (
+				77233EB328229FFF006B7903 /* Cell */,
 				77233EB1282231E0006B7903 /* TeamViewController.swift */,
 			);
 			path = TeamViewController;
+			sourceTree = "<group>";
+		};
+		77233EB328229FFF006B7903 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		77576EC227EB888E005AF6DA /* Views */ = {
@@ -803,6 +814,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */,
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
 				77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */,

@@ -81,10 +81,30 @@ class TeamViewController: UIViewController {
     $0.text = "멤버"
   }
   
+  private let memberCollectionView: UICollectionView = {
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .horizontal
+    let collectionView = UICollectionView(frame: .zero,
+                                          collectionViewLayout: layout)
+    collectionView.isScrollEnabled = true
+    collectionView.showsHorizontalScrollIndicator = false
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.backgroundColor = .blue
+    collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 12)
+    return collectionView
+  }()
+  
+  private let logLabel = UILabel().then {
+    $0.textColor = .hackerBlack
+    $0.font = .subtitleMedium(ofSize: 20)
+    $0.text = "로그"
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configUI()
     setupAutoLayout()
+    collectionViewRegister()
   }
   
   // MARK: - Custom Method
@@ -94,12 +114,20 @@ class TeamViewController: UIViewController {
     self.navigationController?.navigationBar.isHidden = true
   }
   
+  private func collectionViewRegister() {
+    memberCollectionView.delegate = self
+    memberCollectionView.dataSource = self
+    memberCollectionView.register(MemberCollectionViewCell.self, forCellWithReuseIdentifier: MemberCollectionViewCell.identifier)
+  }
+  
   private func setupAutoLayout() {
     view.addSubviews([teamScrollView, navigationBar, dividerLine])
     teamScrollView.add(teamScrollContainerView)
-    teamScrollContainerView.addSubviews([faceImage, teamInfoContainerView, memberLabel])
     teamInfoContainerView.addSubviews([teamIcon, nameLabel,
                                        commitLabel, attackButton, attackButtonCountLabel])
+    teamScrollContainerView.addSubviews([faceImage, teamInfoContainerView,
+                                         memberLabel, memberCollectionView,
+                                         logLabel])
     navigationBar.iconLayout(isBack: true,
                              logoImage: UIImage(named: "fightMainIcon"),
                              rightImage: UIImage(named: "infoIconBlack"))
@@ -160,6 +188,17 @@ class TeamViewController: UIViewController {
       make.top.equalTo(teamInfoContainerView.snp.bottom).offset(25)
       make.leading.equalToSuperview().inset(24)
     }
+    memberCollectionView.snp.makeConstraints { make in
+      make.top.equalTo(memberLabel.snp.bottom).offset(12)
+      make.leading.equalToSuperview().inset(24)
+      make.trailing.equalToSuperview()
+      make.height.equalTo(140)
+    }
+    logLabel.snp.makeConstraints { make in
+      make.top.equalTo(memberCollectionView.snp.bottom).offset(20)
+      make.bottom.equalToSuperview()
+      make.leading.equalToSuperview().inset(24)
+    }
   }
   
   // MARK: - @objc
@@ -168,4 +207,31 @@ class TeamViewController: UIViewController {
     print("touchAttackButton")
   }
   
+}
+
+extension TeamViewController: UICollectionViewDelegate {
+  
+}
+
+extension TeamViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 6
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let memberCell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionViewCell.identifier, for: indexPath) as? MemberCollectionViewCell else {return UICollectionViewCell() }
+    memberCell.awakeFromNib()
+    return memberCell
+  }
+}
+extension TeamViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: 101, height: collectionView.frame.height)
+  }
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets.zero
+  }
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return 12
+  }
 }
