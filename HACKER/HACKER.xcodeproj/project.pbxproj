@@ -24,12 +24,15 @@
 		77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */; };
 		77233EB72822CB8C006B7903 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EB62822CB8C006B7903 /* LogTableViewCell.swift */; };
 		77233EBB2822DB01006B7903 /* MoyaLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EBA2822DB01006B7903 /* MoyaLoggerPlugin.swift */; };
+		77233EBD2822DB6C006B7903 /* FightAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EBC2822DB6C006B7903 /* FightAPI.swift */; };
+		77233EBF2822DB78006B7903 /* FightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EBE2822DB78006B7903 /* FightService.swift */; };
 		773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C727F09A2D0014DE3A /* LogoutViewController.swift */; };
 		773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C927F161300014DE3A /* DeleteAccountViewController.swift */; };
 		77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */; };
 		77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC627EB90A2005AF6DA /* SettingViewController.swift */; };
 		77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */; };
 		77576ECC27ECDB26005AF6DA /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576ECB27ECDB26005AF6DA /* Const.swift */; };
+		77BA0E532822E1CF00EC41A5 /* SeasonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */; };
 		8648AD9727E8D417009F5C7A /* HACKERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8648AD9627E8D417009F5C7A /* HACKERTests.swift */; };
 		869B5AC127ECFFB500F2ACA7 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */; };
 		869B5AC327ED04D000F2ACA7 /* XCUIElement+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */; };
@@ -118,6 +121,8 @@
 		77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		77233EB62822CB8C006B7903 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		77233EBA2822DB01006B7903 /* MoyaLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggerPlugin.swift; sourceTree = "<group>"; };
+		77233EBC2822DB6C006B7903 /* FightAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightAPI.swift; sourceTree = "<group>"; };
+		77233EBE2822DB78006B7903 /* FightService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightService.swift; sourceTree = "<group>"; };
 		773D93C727F09A2D0014DE3A /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		773D93C927F161300014DE3A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNavigationBar.swift; sourceTree = "<group>"; };
@@ -125,6 +130,7 @@
 		77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		77576ECB27ECDB26005AF6DA /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		775BA15627E7783700A43516 /* HACKER.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HACKER.entitlements; sourceTree = "<group>"; };
+		77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonResponse.swift; sourceTree = "<group>"; };
 		834AE9E2D5646B5161A239D4 /* Pods-HACKERUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8648AD9427E8D417009F5C7A /* HACKERTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8648AD9627E8D417009F5C7A /* HACKERTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERTests.swift; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				77233E9F28219AD4006B7903 /* Cell */,
+				77233EC02822E195006B7903 /* DataModel */,
 				77233E9D2821938D006B7903 /* FightViewController.swift */,
 				77233EA42821A8C2006B7903 /* FightTableViewHeader.swift */,
 			);
@@ -284,6 +291,8 @@
 		77233EB82822DA90006B7903 /* Fight */ = {
 			isa = PBXGroup;
 			children = (
+				77233EBC2822DB6C006B7903 /* FightAPI.swift */,
+				77233EBE2822DB78006B7903 /* FightService.swift */,
 			);
 			path = Fight;
 			sourceTree = "<group>";
@@ -294,6 +303,14 @@
 				77233EBA2822DB01006B7903 /* MoyaLoggerPlugin.swift */,
 			);
 			path = Plugin;
+			sourceTree = "<group>";
+		};
+		77233EC02822E195006B7903 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		77576EC227EB888E005AF6DA /* Views */ = {
@@ -871,6 +888,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77233E9928182F69006B7903 /* Header.swift in Sources */,
+				77BA0E532822E1CF00EC41A5 /* SeasonResponse.swift in Sources */,
 				77233E902818250C006B7903 /* GenericResponse.swift in Sources */,
 				77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */,
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
@@ -887,6 +905,7 @@
 				77233E9528182861006B7903 /* HowTo.swift in Sources */,
 				77233EAF2821B6D2006B7903 /* RankingTableViewHeader.swift in Sources */,
 				E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */,
+				77233EBD2822DB6C006B7903 /* FightAPI.swift in Sources */,
 				E855DD3627EF4556003F3B34 /* AddFriendViewController.swift in Sources */,
 				77233EB2282231E0006B7903 /* TeamViewController.swift in Sources */,
 				E855DD2B27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift in Sources */,
@@ -894,6 +913,7 @@
 				E855DD3027EF1DC4003F3B34 /* identifiable.swift in Sources */,
 				E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */,
 				E833EEF327C247A400107741 /* SplashViewController.swift in Sources */,
+				77233EBF2822DB78006B7903 /* FightService.swift in Sources */,
 				77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
 				77233E9E2821938D006B7903 /* FightViewController.swift in Sources */,
