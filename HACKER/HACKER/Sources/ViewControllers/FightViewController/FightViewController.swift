@@ -71,13 +71,6 @@ class FightViewController: UIViewController {
       make.centerX.equalToSuperview()
     }
   }
-  
-  // MARK: - @objc
-  
-  @objc func infoButtonClicked(_ sender: UIButton) {
-    print("info clicked")
-  }
-  
 }
 
 // MARK: - UITableViewDataSource
