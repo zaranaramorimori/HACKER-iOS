@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3A3D50C1AFB4489BB093B1EB /* Pods_HACKERUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */; };
+		77233E902818250C006B7903 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E8F2818250C006B7903 /* GenericResponse.swift */; };
+		77233E9228182649006B7903 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9128182649006B7903 /* NetworkResult.swift */; };
+		77233E9528182861006B7903 /* HowTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9428182861006B7903 /* HowTo.swift */; };
+		77233E97281828BF006B7903 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E96281828BF006B7903 /* URL.swift */; };
+		77233E9928182F69006B7903 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9828182F69006B7903 /* Header.swift */; };
+		77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9A281830FC006B7903 /* UserDefaultsKey.swift */; };
 		77233E9E2821938D006B7903 /* FightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233E9D2821938D006B7903 /* FightViewController.swift */; };
 		77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EA028219AE4006B7903 /* FightTableViewCell.swift */; };
 		77233EA52821A8C2006B7903 /* FightTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EA42821A8C2006B7903 /* FightTableViewHeader.swift */; };
@@ -95,6 +101,12 @@
 		2630E0090F60CB7C7F7933B4 /* Pods_HACKERUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HACKERUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BDBABACCF0BB55F93813D2 /* Pods-HACKERUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.release.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6D722C98A0200948EF94743D /* Pods-HACKERTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERTests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERTests/Pods-HACKERTests.debug.xcconfig"; sourceTree = "<group>"; };
+		77233E8F2818250C006B7903 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
+		77233E9128182649006B7903 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		77233E9428182861006B7903 /* HowTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowTo.swift; sourceTree = "<group>"; };
+		77233E96281828BF006B7903 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		77233E9828182F69006B7903 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		77233E9A281830FC006B7903 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		77233E9D2821938D006B7903 /* FightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightViewController.swift; sourceTree = "<group>"; };
 		77233EA028219AE4006B7903 /* FightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightTableViewCell.swift; sourceTree = "<group>"; };
 		77233EA42821A8C2006B7903 /* FightTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightTableViewHeader.swift; sourceTree = "<group>"; };
@@ -194,6 +206,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77233E8C281824E7006B7903 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				77233E8F2818250C006B7903 /* GenericResponse.swift */,
+				77233E9128182649006B7903 /* NetworkResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		77233E9328182814006B7903 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				77233E9428182861006B7903 /* HowTo.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		77233E9C28219379006B7903 /* FightViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +431,8 @@
 		E876118F279EFE5500D238B3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				77233E8C281824E7006B7903 /* Models */,
+				77233E9328182814006B7903 /* NetworkService */,
 				E8761190279EFE7C00D238B3 /* ViewControllers */,
 				77576EC227EB888E005AF6DA /* Views */,
 				E8E8477C279EF6E900D5A482 /* AppDelegate.swift */,
@@ -457,6 +488,9 @@
 				86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */,
 				E87AA6952809C774008913AE /* Notification.swift */,
 				77576ECB27ECDB26005AF6DA /* Const.swift */,
+				77233E96281828BF006B7903 /* URL.swift */,
+				77233E9828182F69006B7903 /* Header.swift */,
+				77233E9A281830FC006B7903 /* UserDefaultsKey.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -817,17 +851,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77233E9928182F69006B7903 /* Header.swift in Sources */,
+				77233E902818250C006B7903 /* GenericResponse.swift in Sources */,
 				77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */,
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
 				77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */,
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
 				77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */,
+				77233E97281828BF006B7903 /* URL.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
 				77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */,
 				E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */,
 				E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */,
+				77233E9528182861006B7903 /* HowTo.swift in Sources */,
 				77233EAF2821B6D2006B7903 /* RankingTableViewHeader.swift in Sources */,
 				E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */,
 				E855DD3627EF4556003F3B34 /* AddFriendViewController.swift in Sources */,
@@ -843,6 +881,7 @@
 				E855DD2D27EF0AF5003F3B34 /* RankingCollectionViewCell.swift in Sources */,
 				77233EAD2821B17A006B7903 /* TeamRankingTableViewCell.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
+				77233E9228182649006B7903 /* NetworkResult.swift in Sources */,
 				77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */,
 				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
 				E855DD2627EF0AC4003F3B34 /* ShoppingRankingViewController.swift in Sources */,
@@ -850,6 +889,7 @@
 				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
 				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
 				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
+				77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */,
 				773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */,
 				77233EB72822CB8C006B7903 /* LogTableViewCell.swift in Sources */,
 				E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */,
