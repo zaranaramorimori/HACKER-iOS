@@ -127,9 +127,9 @@ class RankingViewController: UIViewController {
   }
   
   private func updateMyTeam() {
-    rankLabel.text = String(serverSeasonTeamInfo?.myTeam?.rank ?? 0) + "등"
+    rankLabel.text = "\(serverSeasonTeamInfo?.myTeam?.rank ?? 0) 등"
     nameLabel.text = serverSeasonTeamInfo?.myTeam?.name
-    commitLabel.text = String(serverSeasonTeamInfo?.myTeam?.commitCount ?? 0) + " 커밋"
+    commitLabel.text = "\(serverSeasonTeamInfo?.myTeam?.commitCount ?? 0) 커밋"
   }
   
   // MARK: - @objc
@@ -166,9 +166,9 @@ extension RankingViewController: UITableViewDataSource {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: TeamRankingTableViewCell.identifier) as? TeamRankingTableViewCell else { return UITableViewCell() }
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
-    cell.rankLabel.text = String(serverSeasonTeamInfo?.teams[indexPath.section+1].rank ?? 0) + "등"
+    cell.rankLabel.text = "\(serverSeasonTeamInfo?.teams[indexPath.section+1].rank ?? 0) 등"
     cell.nameLabel.text = serverSeasonTeamInfo?.teams[indexPath.section+1].name
-    cell.commitLabel.text = String(serverSeasonTeamInfo?.teams[indexPath.section+1].commitCount ?? 0) + " 커밋"
+    cell.commitLabel.text = "\(serverSeasonTeamInfo?.teams[indexPath.section+1].commitCount ?? 0) 커밋"
     return cell
   }
   
@@ -190,7 +190,7 @@ extension RankingViewController: UITableViewDelegate {
         return UIView()
       }
       rankingTableViewHeader.nameLabel.text = serverSeasonTeamInfo?.teams.first?.name
-      rankingTableViewHeader.commitLabel.text = String(serverSeasonTeamInfo?.teams.first?.commitCount ?? 0) + " 커밋"
+      rankingTableViewHeader.commitLabel.text = "\(serverSeasonTeamInfo?.teams.first?.commitCount ?? 0) 커밋"
       rankingTableViewHeader.addGestureRecognizer(tapGesture)
       return rankingTableViewHeader
     default:
