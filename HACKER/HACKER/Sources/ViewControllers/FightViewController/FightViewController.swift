@@ -83,7 +83,8 @@ extension FightViewController: UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return serverIngSeasons?.seasons.count ?? 0
+//    return serverIngSeasons?.seasons.count ?? 0
+    return 3
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,20 +92,19 @@ extension FightViewController: UITableViewDataSource {
     
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
-    cell.seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID
-    cell.logoImage.updateServerImage(serverIngSeasons?.seasons[indexPath.section].imageURL ?? "")
-    cell.nameLabel.text = serverIngSeasons?.seasons[indexPath.section].agency
-    cell.titleLabel.text = serverIngSeasons?.seasons[indexPath.section].title
-    cell.dateLabel.text = serverIngSeasons?.seasons[indexPath.section].duration
+//    cell.seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID
+//    cell.logoImage.updateServerImage(serverIngSeasons?.seasons[indexPath.section].imageURL ?? "")
+//    cell.nameLabel.text = serverIngSeasons?.seasons[indexPath.section].agency
+//    cell.titleLabel.text = serverIngSeasons?.seasons[indexPath.section].title
+//    cell.dateLabel.text = serverIngSeasons?.seasons[indexPath.section].duration
     
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
-    print(indexPath.section)
-    let nextVC = RankingViewController()
-    navigationController?.pushViewController(nextVC, animated: true)
+//    let seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID ?? 0
+//    seasonTeamInfoWithAPI(seasonId: seasonId)
+    seasonTeamInfoWithAPI(seasonId: 1)
   }
 }
 
@@ -151,6 +151,27 @@ extension FightViewController {
         print("ingSeasonWithAPI - serverErr")
       case .networkFail:
         print("ingSeasonWithAPI - networkFail")
+      }
+    }
+  }
+  
+  func seasonTeamInfoWithAPI(seasonId: Int) {
+    FightAPI.shared.seasonTeamInfo(seasonId: seasonId) { response in
+      switch response {
+      case .success(let data):
+        if let teams = data as? SeasonTeamResponse {
+          let nextVC = RankingViewController()
+          nextVC.serverSeasonTeamInfo = teams
+          self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+      case .requestErr(let message):
+        print("seasonTeamInfoWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("seasonTeamInfoWithAPI - pathErr")
+      case .serverErr:
+        print("seasonTeamInfoWithAPI - serverErr")
+      case .networkFail:
+        print("seasonTeamInfoWithAPI - networkFail")
       }
     }
   }

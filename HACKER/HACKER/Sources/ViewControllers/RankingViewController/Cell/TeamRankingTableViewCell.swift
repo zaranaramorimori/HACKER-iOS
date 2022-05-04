@@ -17,12 +17,14 @@ class TeamRankingTableViewCell: UITableViewCell {
     $0.textColor = .hackerBlack
     $0.font = .subtitleMedium(ofSize: 20)
     $0.text = "3등"
+    $0.sizeToFit()
   }
   
   var nameLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .titleBold(ofSize: 24)
     $0.text = "FILL-IN"
+    $0.lineBreakMode = .byTruncatingTail
   }
   
   var commitLabel = UILabel().then {
@@ -32,7 +34,7 @@ class TeamRankingTableViewCell: UITableViewCell {
   }
   
   var faceImage = UIImageView().then {
-    $0.contentMode = .scaleAspectFit
+    $0.contentMode = .scaleToFill
     $0.clipsToBounds = true
     $0.image = UIImage(named: "teamCharacterImage")
   }
@@ -48,24 +50,27 @@ class TeamRankingTableViewCell: UITableViewCell {
   
   // MARK: - Setup Method
   private func setupLayout() {
-    addSubviews([rankLabel, nameLabel,
-                 commitLabel, faceImage])
-    
+    addSubviews([faceImage, rankLabel,
+                 nameLabel, commitLabel])
+    faceImage.snp.makeConstraints { make in
+      make.top.bottom.equalToSuperview().inset(16)
+      make.trailing.equalToSuperview().inset(41)
+      make.height.equalTo(faceImage.snp.width).multipliedBy(1).priority(.low)
+    }
     rankLabel.snp.makeConstraints { make in
       make.centerY.equalToSuperview()
-      make.leading.equalToSuperview().inset(55)
+      make.leading.equalToSuperview().inset(55).priority(.high)
     }
     nameLabel.snp.makeConstraints { make in
       make.top.equalToSuperview().inset(32)
       make.leading.equalTo(rankLabel.snp.trailing).offset(20)
+      make.trailing.equalTo(faceImage.snp.leading).offset(-10)
+      make.width.equalTo(150)
     }
     commitLabel.snp.makeConstraints { make in
       make.leading.equalTo(rankLabel.snp.trailing).offset(20)
       make.bottom.equalToSuperview().inset(32)
     }
-    faceImage.snp.makeConstraints { make in
-      make.top.bottom.equalToSuperview().inset(16)
-      make.trailing.equalToSuperview().inset(41)
-    }
+    
   }
 }

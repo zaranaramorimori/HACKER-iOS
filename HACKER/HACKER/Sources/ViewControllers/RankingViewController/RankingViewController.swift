@@ -13,6 +13,8 @@ class RankingViewController: UIViewController {
   
   // MARK: - Components
   
+  var serverSeasonTeamInfo: SeasonTeamResponse?
+  
   private let navigationBar = HackerNavigationBar()
   
   private let dividerLine = UIImageView().then {
@@ -29,6 +31,7 @@ class RankingViewController: UIViewController {
     $0.rowHeight = UITableView.automaticDimension
     $0.estimatedRowHeight = 254
     $0.register(TeamRankingTableViewCell.self, forCellReuseIdentifier: TeamRankingTableViewCell.identifier)
+    $0.register(RankingTableViewHeader.self, forHeaderFooterViewReuseIdentifier: RankingTableViewHeader.identifier)
     
     if #available(iOS 15, *) {
       $0.sectionHeaderTopPadding = 0
@@ -45,19 +48,16 @@ class RankingViewController: UIViewController {
   var rankLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .subtitleMedium(ofSize: 16)
-    $0.text = "145등"
   }
   
   var nameLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .subtitleMedium(ofSize: 16)
-    $0.text = "FILL-IN"
   }
   
   var commitLabel = UILabel().then {
     $0.textColor = .lightGray
     $0.font = .subtitleRegular(ofSize: 12)
-    $0.text = "1500 커밋"
   }
   
   private let shortCutButton = UIButton().then {
@@ -71,6 +71,7 @@ class RankingViewController: UIViewController {
     super.viewDidLoad()
     configUI()
     setupAutoLayout()
+    updateMyTeam()
   }
   
   // MARK: - Custom Method
@@ -116,13 +117,19 @@ class RankingViewController: UIViewController {
       make.centerX.equalTo(myRankView)
     }
     commitLabel.snp.makeConstraints { make in
-      make.top.equalTo(nameLabel.snp.bottom)
+      make.bottom.equalTo(myRankView.snp.bottom).inset(11)
       make.centerX.equalTo(myRankView)
     }
     shortCutButton.snp.makeConstraints { make in
       make.trailing.equalTo(myRankView.snp.trailing).inset(16)
       make.centerY.equalTo(myRankView)
     }
+  }
+  
+  private func updateMyTeam() {
+    rankLabel.text = String(serverSeasonTeamInfo?.myTeam?.rank ?? 0) + "등"
+    nameLabel.text = serverSeasonTeamInfo?.myTeam?.name
+    commitLabel.text = String(serverSeasonTeamInfo?.myTeam?.commitCount ?? 0) + " 커밋"
   }
   
   // MARK: - @objc
@@ -140,15 +147,16 @@ extension RankingViewController: UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 6
+    return (serverSeasonTeamInfo?.teams.count ?? 1) - 1
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: TeamRankingTableViewCell.identifier) as? TeamRankingTableViewCell else { return UITableViewCell() }
-    
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
-    
+    cell.rankLabel.text = String(serverSeasonTeamInfo?.teams[indexPath.section+1].rank ?? 0) + "등"
+    cell.nameLabel.text = serverSeasonTeamInfo?.teams[indexPath.section+1].name
+    cell.commitLabel.text = String(serverSeasonTeamInfo?.teams[indexPath.section+1].commitCount ?? 0) + " 커밋"
     return cell
   }
   
@@ -163,13 +171,16 @@ extension RankingViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension RankingViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    var headerView = UIView()
     switch section {
     case 0:
-      headerView = RankingTableViewHeader()
-      return headerView
+      guard let rankingTableViewHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: RankingTableViewHeader.identifier) as? RankingTableViewHeader else {
+        return UIView()
+      }
+      rankingTableViewHeader.nameLabel.text = serverSeasonTeamInfo?.teams.first?.name
+      rankingTableViewHeader.commitLabel.text = String(serverSeasonTeamInfo?.teams.first?.commitCount ?? 0) + " 커밋"
+      return rankingTableViewHeader
     default:
-      headerView = UIView()
+      let headerView = UIView()
       headerView.backgroundColor = .lightGray
       return headerView
     }

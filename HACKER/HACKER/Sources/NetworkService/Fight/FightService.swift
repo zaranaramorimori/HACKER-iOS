@@ -10,6 +10,7 @@ import Moya
 
 enum FightService {
   case ingSeason
+  case seasonTeamInfo(seasonId: Int)
 }
 
 extension FightService: TargetType {
@@ -21,12 +22,14 @@ extension FightService: TargetType {
     switch self {
     case .ingSeason:
       return "/battle"
+    case .seasonTeamInfo(let seasonId):
+      return "/battle/season/\(seasonId)"
     }
   }
   
   var method: Moya.Method {
     switch self {
-    case .ingSeason:
+    case .ingSeason, .seasonTeamInfo:
       return .get
     }
   }
@@ -37,14 +40,14 @@ extension FightService: TargetType {
   
   var task: Task {
     switch self {
-    case .ingSeason:
+    case .ingSeason, .seasonTeamInfo:
       return .requestPlain
     }
   }
   
   var headers: [String: String]? {
     switch self {
-    case .ingSeason:
+    case .ingSeason, .seasonTeamInfo:
       return Const.Header.basicHeader()
     }
   }
