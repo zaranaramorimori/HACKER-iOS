@@ -103,7 +103,7 @@ class RankingViewController: UIViewController {
       make.bottom.equalTo(view.safeAreaLayoutGuide)
     }
     myRankView.snp.makeConstraints { make in
-      make.bottom.equalTo(view.safeAreaLayoutGuide)
+      make.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
       make.leading.trailing.equalToSuperview().inset(24)
       make.height.equalTo(58)
     }
