@@ -41,4 +41,8 @@ class FightTableViewHeader: UITableViewHeaderFooterView {
       make.centerY.equalToSuperview()
     }
   }
+  
+  func setIngLabel(text: String) {
+    ingLabel.text = text
+  }
 }

@@ -89,7 +89,7 @@ class TeamViewController: UIViewController {
     collectionView.isScrollEnabled = true
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.translatesAutoresizingMaskIntoConstraints = false
-    collectionView.backgroundColor = .blue
+    collectionView.backgroundColor = .hackerWhite
     collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 12)
     return collectionView
   }()
@@ -98,6 +98,21 @@ class TeamViewController: UIViewController {
     $0.textColor = .hackerBlack
     $0.font = .subtitleMedium(ofSize: 20)
     $0.text = "로그"
+  }
+  
+  private lazy var logTableView = UITableView(frame: .zero, style: .grouped).then {
+    $0.dataSource = self
+    $0.delegate = self
+    $0.backgroundColor = .blue
+    $0.separatorStyle = .none
+    $0.sectionFooterHeight = 0
+    $0.rowHeight = UITableView.automaticDimension
+    $0.estimatedRowHeight = 62
+    $0.isScrollEnabled = false
+    $0.register(LogTableViewCell.self, forCellReuseIdentifier: LogTableViewCell.identifier)
+    if #available(iOS 15, *) {
+      $0.sectionHeaderTopPadding = 0
+    }
   }
   
   override func viewDidLoad() {
@@ -127,7 +142,7 @@ class TeamViewController: UIViewController {
                                        commitLabel, attackButton, attackButtonCountLabel])
     teamScrollContainerView.addSubviews([faceImage, teamInfoContainerView,
                                          memberLabel, memberCollectionView,
-                                         logLabel])
+                                         logLabel, logTableView])
     navigationBar.iconLayout(isBack: true,
                              logoImage: UIImage(named: "fightMainIcon"),
                              rightImage: UIImage(named: "infoIconBlack"))
@@ -149,9 +164,9 @@ class TeamViewController: UIViewController {
     }
     teamScrollContainerView.snp.makeConstraints { make in
       make.centerX.top.leading.equalToSuperview()
-      make.bottom.equalTo(self.teamScrollView.snp.bottom)
+      make.bottom.equalTo(teamScrollView.snp.bottom)
       make.width.equalTo(self.view)
-      make.height.equalTo(self.teamScrollView.snp.height).priority(250)
+      make.height.equalTo(teamScrollView.snp.height).priority(250)
     }
     faceImage.snp.makeConstraints { make in
       make.top.equalToSuperview().inset(47)
@@ -196,8 +211,15 @@ class TeamViewController: UIViewController {
     }
     logLabel.snp.makeConstraints { make in
       make.top.equalTo(memberCollectionView.snp.bottom).offset(20)
-      make.bottom.equalToSuperview()
       make.leading.equalToSuperview().inset(24)
+    }
+    logTableView.snp.makeConstraints { make in
+      make.top.equalTo(logLabel.snp.bottom).offset(16)
+      make.centerX.equalToSuperview()
+      make.leading.equalToSuperview().inset(23)
+      make.bottom.equalToSuperview()
+      make.height.equalTo(500)
+//      print("height", logTableView.contentSize.height)
     }
   }
   
@@ -209,10 +231,12 @@ class TeamViewController: UIViewController {
   
 }
 
+// MARK: - UICollectionViewDelegate
 extension TeamViewController: UICollectionViewDelegate {
   
 }
 
+// MARK: - UICollectionViewDataSource
 extension TeamViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 6
@@ -233,5 +257,43 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout {
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return 12
+  }
+}
+
+// MARK: - UITableViewDataSource
+extension TeamViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 6
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: LogTableViewCell.identifier) as? LogTableViewCell else { return UITableViewCell() }
+    
+    cell.backgroundColor = .hackerWhite
+    cell.selectionStyle = .none
+    
+    return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
+    print(indexPath.section)
+  }
+}
+
+// MARK: - UITableViewDelegate
+extension TeamViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let headerView = FightTableViewHeader()
+    headerView.setIngLabel(text: "2022.01.23")
+    return headerView
+  }
+  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+   return 20
   }
 }

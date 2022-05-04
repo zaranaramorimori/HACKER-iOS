@@ -16,6 +16,7 @@
 		77233EAF2821B6D2006B7903 /* RankingTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EAE2821B6D2006B7903 /* RankingTableViewHeader.swift */; };
 		77233EB2282231E0006B7903 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EB1282231E0006B7903 /* TeamViewController.swift */; };
 		77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */; };
+		77233EB72822CB8C006B7903 /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77233EB62822CB8C006B7903 /* LogTableViewCell.swift */; };
 		773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C727F09A2D0014DE3A /* LogoutViewController.swift */; };
 		773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773D93C927F161300014DE3A /* DeleteAccountViewController.swift */; };
 		77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */; };
@@ -102,6 +103,7 @@
 		77233EAE2821B6D2006B7903 /* RankingTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewHeader.swift; sourceTree = "<group>"; };
 		77233EB1282231E0006B7903 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
+		77233EB62822CB8C006B7903 /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		773D93C727F09A2D0014DE3A /* LogoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		773D93C927F161300014DE3A /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
 		77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNavigationBar.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			isa = PBXGroup;
 			children = (
 				77233EB42822A02B006B7903 /* MemberCollectionViewCell.swift */,
+				77233EB62822CB8C006B7903 /* LogTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
 				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
 				773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */,
+				77233EB72822CB8C006B7903 /* LogTableViewCell.swift in Sources */,
 				E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */,
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
 				E87AA6962809C774008913AE /* Notification.swift in Sources */,
