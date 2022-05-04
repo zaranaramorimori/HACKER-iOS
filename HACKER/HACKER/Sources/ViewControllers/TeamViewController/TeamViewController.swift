@@ -46,27 +46,39 @@ class TeamViewController: UIViewController {
   
   var nameLabel = UILabel().then {
     $0.textColor = .hackerBlack
-    $0.font = .subtitleMedium(ofSize: 16)
+    $0.font = .titleBold(ofSize: 24)
     $0.text = "FILL-IN"
   }
   
   var commitLabel = UILabel().then {
-    $0.textColor = .lightGray
-    $0.font = .subtitleRegular(ofSize: 12)
-    $0.text = "1500 커밋"
+    $0.textColor = .hackerBlack
+    $0.font = .subtitleRegular(ofSize: 18)
+    $0.text = "1,500 커밋  /  360가닥"
   }
   
   private let attackButton = UIButton().then {
-    $0.titleLabel?.font = .btnText(ofSize: 20)
-    $0.setTitle("바로가기", for: .normal)
-    $0.setTitleColor(.hackerBlack, for: .normal)
+    $0.titleLabel?.font = .btnText(ofSize: 32)
+    $0.setBackgroundImage(UIImage(named: "yesButtonActive"), for: .normal)
+    $0.setTitle("공격하기", for: .normal)
+    $0.setTitleColor(.hackerWhite, for: .normal)
     $0.addTarget(self, action: #selector(touchAttackButton(_:)), for: .touchUpInside)
   }
   
   var attackButtonCountLabel = UILabel().then {
-    $0.textColor = .lightGray
-    $0.font = .subtitleRegular(ofSize: 12)
-    $0.text = "X 14"
+    $0.textColor = .hackerBlack
+    $0.font = .btnText(ofSize: 32)
+    $0.text = "X14"
+  }
+  
+  private let teamInfoContainerView = UIView().then {
+    $0.translatesAutoresizingMaskIntoConstraints = false
+    $0.contentMode = .scaleToFill
+  }
+  
+  private let memberLabel = UILabel().then {
+    $0.textColor = .hackerBlack
+    $0.font = .subtitleMedium(ofSize: 20)
+    $0.text = "멤버"
   }
   
   override func viewDidLoad() {
@@ -85,8 +97,9 @@ class TeamViewController: UIViewController {
   private func setupAutoLayout() {
     view.addSubviews([teamScrollView, navigationBar, dividerLine])
     teamScrollView.add(teamScrollContainerView)
-    teamScrollContainerView.addSubviews([faceImage, teamIcon, nameLabel,
-                                         commitLabel, attackButton, attackButtonCountLabel])
+    teamScrollContainerView.addSubviews([faceImage, teamInfoContainerView, memberLabel])
+    teamInfoContainerView.addSubviews([teamIcon, nameLabel,
+                                       commitLabel, attackButton, attackButtonCountLabel])
     navigationBar.iconLayout(isBack: true,
                              logoImage: UIImage(named: "fightMainIcon"),
                              rightImage: UIImage(named: "infoIconBlack"))
@@ -110,19 +123,49 @@ class TeamViewController: UIViewController {
       make.centerX.top.leading.equalToSuperview()
       make.bottom.equalTo(self.teamScrollView.snp.bottom)
       make.width.equalTo(self.view)
-//      make.height.equalTo(1000)
       make.height.equalTo(self.teamScrollView.snp.height).priority(250)
     }
     faceImage.snp.makeConstraints { make in
       make.top.equalToSuperview().inset(47)
       make.centerX.equalToSuperview()
+      make.height.width.equalTo(197)
+    }
+    teamInfoContainerView.snp.makeConstraints { make in
+      make.top.equalTo(faceImage.snp.bottom)
+      make.leading.equalToSuperview().inset(97)
+      make.centerX.equalToSuperview()
+      make.height.equalTo(190)
+    }
+    teamIcon.snp.makeConstraints { make in
+      make.top.equalToSuperview().inset(35)
+      make.leading.equalToSuperview().inset(12)
+      make.height.width.equalTo(49)
+    }
+    nameLabel.snp.makeConstraints { make in
+      make.centerY.equalTo(teamIcon)
+      make.leading.equalTo(teamIcon.snp.trailing).offset(20)
+    }
+    commitLabel.snp.makeConstraints { make in
+      make.top.equalTo(teamIcon.snp.bottom).offset(8)
+      make.centerX.equalToSuperview()
+    }
+    attackButton.snp.makeConstraints { make in
+      make.leading.trailing.bottom.equalToSuperview()
+    }
+    attackButtonCountLabel.snp.makeConstraints { make in
+      make.leading.equalTo(attackButton.snp.trailing).offset(12)
+      make.centerY.equalTo(attackButton)
+    }
+    memberLabel.snp.makeConstraints { make in
+      make.top.equalTo(teamInfoContainerView.snp.bottom).offset(25)
+      make.leading.equalToSuperview().inset(24)
     }
   }
   
   // MARK: - @objc
   
   @objc func touchAttackButton(_ sender: UIButton) {
-    print("touchShortCutButton")
+    print("touchAttackButton")
   }
   
 }
