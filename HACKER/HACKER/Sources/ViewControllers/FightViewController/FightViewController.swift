@@ -13,6 +13,8 @@ class FightViewController: UIViewController {
   
   // MARK: - Components
   
+  var serverIngSeasons: SeasonResponse?
+  
   private let navigationBar = HackerNavigationBar()
   
   private let dividerLine = UIImageView().then {
@@ -81,7 +83,7 @@ extension FightViewController: UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 6
+    return serverIngSeasons?.seasons.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,6 +91,9 @@ extension FightViewController: UITableViewDataSource {
     
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
+    cell.nameLabel.text = serverIngSeasons?.seasons[indexPath.section].agency
+    cell.titleLabel.text = serverIngSeasons?.seasons[indexPath.section].title
+    cell.dateLabel.text = serverIngSeasons?.seasons[indexPath.section].duration
     
     return cell
   }
@@ -133,10 +138,8 @@ extension FightViewController {
       switch response {
       case .success(let data):
         if let seasons = data as? SeasonResponse {
-//          self.dataSource.serverCuration = curations
-//          self.filmRollCollectionView.reloadData()
-          print("seasons")
-          print(seasons)
+          self.serverIngSeasons = seasons
+          self.fightTableView.reloadData()
         }
       case .requestErr(let message):
         print("ingSeasonWithAPI - requestErr: \(message)")
