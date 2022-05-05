@@ -13,7 +13,11 @@ class TeamViewController: UIViewController {
   
   // MARK: - Components
   
+  var serverTeamDetailInfo: TeamDetailResponse?
+  
   private let navigationBar = HackerNavigationBar()
+  private let memberEmptyView = EmptyView()
+  private let logEmptyView = EmptyView()
   
   private let dividerLine = UIImageView().then {
     $0.image = UIImage(named: "sectionLine")
@@ -120,6 +124,8 @@ class TeamViewController: UIViewController {
     configUI()
     setupAutoLayout()
     collectionViewRegister()
+    updateTeamDetail()
+    updateEmptyViewLabel()
   }
   
   // MARK: - Custom Method
@@ -141,8 +147,8 @@ class TeamViewController: UIViewController {
     teamInfoContainerView.addSubviews([teamIcon, nameLabel,
                                        commitLabel, attackButton, attackButtonCountLabel])
     teamScrollContainerView.addSubviews([faceImage, teamInfoContainerView,
-                                         memberLabel, memberCollectionView,
-                                         logLabel, logTableView])
+                                         memberLabel, memberCollectionView, memberEmptyView,
+                                         logLabel, logTableView, logEmptyView])
     navigationBar.iconLayout(isBack: true,
                              logoImage: UIImage(named: "fightMainIcon"),
                              rightImage: UIImage(named: "infoIconBlack"))
@@ -175,7 +181,6 @@ class TeamViewController: UIViewController {
     }
     teamInfoContainerView.snp.makeConstraints { make in
       make.top.equalTo(faceImage.snp.bottom)
-      make.leading.equalToSuperview().inset(97)
       make.centerX.equalToSuperview()
       make.height.equalTo(190)
     }
@@ -187,13 +192,16 @@ class TeamViewController: UIViewController {
     nameLabel.snp.makeConstraints { make in
       make.centerY.equalTo(teamIcon)
       make.leading.equalTo(teamIcon.snp.trailing).offset(20)
+      make.trailing.equalToSuperview()
     }
     commitLabel.snp.makeConstraints { make in
       make.top.equalTo(teamIcon.snp.bottom).offset(8)
       make.centerX.equalToSuperview()
     }
     attackButton.snp.makeConstraints { make in
-      make.leading.trailing.bottom.equalToSuperview()
+      make.bottom.equalToSuperview()
+      make.centerX.equalToSuperview()
+      make.width.equalTo(181)
     }
     attackButtonCountLabel.snp.makeConstraints { make in
       make.leading.equalTo(attackButton.snp.trailing).offset(12)
@@ -209,6 +217,11 @@ class TeamViewController: UIViewController {
       make.trailing.equalToSuperview()
       make.height.equalTo(140)
     }
+    memberEmptyView.snp.makeConstraints { make in
+      make.top.equalTo(memberLabel.snp.bottom).offset(12)
+      make.leading.trailing.equalToSuperview()
+      make.height.equalTo(113)
+    }
     logLabel.snp.makeConstraints { make in
       make.top.equalTo(memberCollectionView.snp.bottom).offset(20)
       make.leading.equalToSuperview().inset(24)
@@ -217,9 +230,37 @@ class TeamViewController: UIViewController {
       make.top.equalTo(logLabel.snp.bottom).offset(16)
       make.centerX.equalToSuperview()
       make.leading.equalToSuperview().inset(23)
-      make.bottom.equalToSuperview()
-      make.height.equalTo(500)
-//      print("height", logTableView.contentSize.height)
+      logTableView.layoutIfNeeded()
+      make.height.equalTo(logTableView.contentSize.height)
+      make.bottom.equalToSuperview().priority(.low)
+    }
+    logEmptyView.snp.makeConstraints { make in
+      make.top.equalTo(logLabel.snp.bottom).offset(16)
+      make.leading.trailing.equalToSuperview()
+      make.bottom.equalToSuperview().inset(36).priority(.high)
+    }
+  }
+  
+  private func updateTeamDetail() {
+//    teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
+    nameLabel.text = serverTeamDetailInfo?.team.name
+    commitLabel.text = "\(serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(serverTeamDetailInfo?.team.hairCount ?? 0) 가닥"
+  }
+  
+  private func updateEmptyViewLabel() {
+    memberEmptyView.updateLabels(text: "아직 추가된 멤버가 없어요!", aigoSize: 16, nothingSize: 11)
+    logEmptyView.updateLabels(text: "아무 소식도 알려드릴게 없어요!", aigoSize: 16, nothingSize: 11)
+    
+    if let membersCount = serverTeamDetailInfo?.members {
+      if !membersCount.isEmpty {
+        memberEmptyView.isHidden = true
+      }
+    }
+    
+    if let logsCount = serverTeamDetailInfo?.logs {
+      if !logsCount.isEmpty {
+        logEmptyView.isHidden = true
+      }
     }
   }
   
@@ -239,12 +280,14 @@ extension TeamViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension TeamViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 6
+    return serverTeamDetailInfo?.members.count ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let memberCell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionViewCell.identifier, for: indexPath) as? MemberCollectionViewCell else {return UICollectionViewCell() }
     memberCell.awakeFromNib()
+//    memberCell.characterImage.updateServerImage(serverTeamDetailInfo?.members[indexPath.section])
+    memberCell.nameLabel.text = serverTeamDetailInfo?.members[indexPath.section].nickname
     return memberCell
   }
 }
@@ -267,7 +310,7 @@ extension TeamViewController: UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 6
+    return serverTeamDetailInfo?.logs.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -276,6 +319,7 @@ extension TeamViewController: UITableViewDataSource {
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
     
+    cell.logLabel.text = serverTeamDetailInfo?.logs[indexPath.section].content.first
     return cell
   }
   
@@ -289,7 +333,7 @@ extension TeamViewController: UITableViewDataSource {
 extension TeamViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = FightTableViewHeader()
-    headerView.setIngLabel(text: "2022.01.23")
+    headerView.setIngLabel(text: serverTeamDetailInfo?.logs[section].date ?? "")
     return headerView
   }
   
