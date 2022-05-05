@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Then
+import CoreMedia
 
 // MARK: - SignupViewController
 class SignupViewController: UIViewController {
@@ -148,8 +149,11 @@ extension SignupViewController {
   }
   /// 화면전환
   @objc func touchNextButton() {
-    let nickNameVC = NicknameViewController()
-    self.navigationController?.pushViewController(nickNameVC, animated: false)
+    /// username 받아오기
+    userGithubIDWithAPI(username: self.usernameTextField.text ?? "")
+    if !usernameTextField.hasText {
+      self.makeAlertOnlyMessage(message: "유저네임을 입력하세요", okAction: nil)
+    }
   }
 }
 
@@ -177,5 +181,46 @@ extension SignupViewController: UITextFieldDelegate {
     }
     nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+  }
+}
+
+// MARK: - Network
+extension SignupViewController {
+  func userGithubIDWithAPI(username: String) {
+    SignUpAPI.shared.userGithubName(username: username) { response in
+      switch response {
+      case .success(let data):
+        print("성공티비")
+        if let userGithubInfo = data as? SignUpResponse {
+          let signupPopUpVC = SignupPopUpViewController()
+          let signupPopUpNVC = UINavigationController(rootViewController: signupPopUpVC)
+  
+          //TODOs : 이미지 변경
+          signupPopUpVC.userNameLabel.text = userGithubInfo.username
+          signupPopUpNVC.modalPresentationStyle = .overFullScreen
+          self.present(signupPopUpNVC, animated: false, completion: nil)
+        }
+        
+      case .requestErr(let status):
+        print("userPhotosWithAPI - requestErr: \(status)")
+        if let statusCode = status as? Int {
+          switch statusCode {
+          case 404 :
+            let unknownUserVC = UnknownUserPopUpViewController()
+            unknownUserVC.modalPresentationStyle = .overFullScreen
+            self.present(unknownUserVC, animated: false, completion: nil)
+          default :
+            break
+          }
+        }
+        
+      case .pathErr:
+        print("userPhotosWithAPI - pathErr")
+      case .serverErr:
+        print("userPhotosWithAPI - serverErr")
+      case .networkFail:
+        print("userPhotosWithAPI - networkFail")
+      }
+    }
   }
 }
