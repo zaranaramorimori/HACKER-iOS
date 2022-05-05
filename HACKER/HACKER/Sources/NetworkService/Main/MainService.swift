@@ -10,6 +10,7 @@ import Moya
 
 enum MainService {
   case userInfo
+  case userDetailInfo
 }
 
 extension MainService: TargetType {
@@ -22,12 +23,16 @@ extension MainService: TargetType {
         switch self {
         case .userInfo :
           return "/user"
+        case .userDetailInfo:
+          return "/user/detail"
         }
     }
     
     var method: Moya.Method {
         switch self {
         case .userInfo :
+          return .get
+        case .userDetailInfo:
           return .get
         }
     }
@@ -40,12 +45,16 @@ extension MainService: TargetType {
         switch self {
         case .userInfo :
           return .requestPlain
+        case .userDetailInfo:
+          return .requestPlain
         }
     }
     
     var headers: [String: String]? {
         switch self {
         case .userInfo :
+          return Const.Header.basicHeader()
+        case .userDetailInfo :
           return Const.Header.basicHeader()
         }
     }

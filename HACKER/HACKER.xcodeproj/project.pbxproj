@@ -61,6 +61,7 @@
 		E80282CD2823A66500268A5A /* MainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282CC2823A66500268A5A /* MainAPI.swift */; };
 		E80282CF2823A67200268A5A /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282CE2823A67200268A5A /* MainService.swift */; };
 		E80282D22823A70D00268A5A /* MainResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282D12823A70D00268A5A /* MainResponse.swift */; };
+		E80282E028241A6C00268A5A /* MainDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282DF28241A6C00268A5A /* MainDetailResponse.swift */; };
 		E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF027C2479C00107741 /* LoginViewController.swift */; };
 		E833EEF327C247A400107741 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF227C247A400107741 /* SplashViewController.swift */; };
 		E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */; };
@@ -178,6 +179,7 @@
 		E80282CC2823A66500268A5A /* MainAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAPI.swift; sourceTree = "<group>"; };
 		E80282CE2823A67200268A5A /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
 		E80282D12823A70D00268A5A /* MainResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainResponse.swift; sourceTree = "<group>"; };
+		E80282DF28241A6C00268A5A /* MainDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailResponse.swift; sourceTree = "<group>"; };
 		E833EEF027C2479C00107741 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E833EEF227C247A400107741 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownUserPopUpViewController.swift; sourceTree = "<group>"; };
@@ -483,12 +485,13 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		E80282D02823A70400268A5A /* DataModel */ = {
+		E80282D02823A70400268A5A /* MainDataModel */ = {
 			isa = PBXGroup;
 			children = (
 				E80282D12823A70D00268A5A /* MainResponse.swift */,
+				E80282DF28241A6C00268A5A /* MainDetailResponse.swift */,
 			);
-			path = DataModel;
+			path = MainDataModel;
 			sourceTree = "<group>";
 		};
 		E833EEEE27C2477900107741 /* LoginViewController */ = {
@@ -645,7 +648,7 @@
 		E88D4C3227E449D9009F65E3 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E80282D02823A70400268A5A /* DataModel */,
+				E80282D02823A70400268A5A /* MainDataModel */,
 				E88D4C3327E44A27009F65E3 /* MainViewController.swift */,
 				E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */,
 			);
@@ -1018,6 +1021,7 @@
 				E80282C728238B8800268A5A /* NickNameRequest.swift in Sources */,
 				E80282CD2823A66500268A5A /* MainAPI.swift in Sources */,
 				E80282CF2823A67200268A5A /* MainService.swift in Sources */,
+				E80282E028241A6C00268A5A /* MainDetailResponse.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
 				77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */,

@@ -395,8 +395,8 @@ extension MainViewController {
       case .success(let data):
         print("성공티비")
         if let userInfo = data as? MainResponse {
-          print(":")
           //TODO: 머리카락
+          print(userInfo)
           self.userNickName = userInfo.user.nickname
           self.todayCommitNumber = userInfo.coupon.todayCommit
           self.attackNumber = userInfo.coupon.couponCommit

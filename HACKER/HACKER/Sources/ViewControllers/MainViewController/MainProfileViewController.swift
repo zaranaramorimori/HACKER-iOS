@@ -21,11 +21,14 @@ class MainProfileViewController: UIViewController {
   let userGithubNameLabel = UILabel()
   let hairNumLabel = UILabel()
   
+  var hairNumber = 0
+  
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setBackground()
     layout()
+    userDetailInfoWithAPI()
   }
 }
 // MARK: - Extensions
@@ -99,7 +102,7 @@ extension MainProfileViewController {
   }
   func layoutHairNumLabel() {
     view.add(hairNumLabel) {
-      $0.setupLabel(text: "360가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
+      $0.setupLabel(text: "\(self.hairNumber)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userGithubNameLabel.snp.bottom).offset(26)
         $0.centerX.equalToSuperview()
@@ -108,5 +111,32 @@ extension MainProfileViewController {
   }
   @objc func backButtonTapped() {
     self.navigationController?.popViewController(animated: false)
+  }
+}
+
+// MARK: - Network
+extension MainProfileViewController {
+  func userDetailInfoWithAPI() {
+    MainAPI.shared.userDetailInfo { response in
+      switch response {
+      case .success(let data):
+        print("우왕티비")
+        if let userDetailInfo = data as? MainDetailResponse {
+          //TODO: 머리카락
+          print(userDetailInfo)
+          self.userNicknameLabel.text = userDetailInfo.user.nickname
+          self.userGithubNameLabel.text = userDetailInfo.user.username
+          self.hairNumber = userDetailInfo.user.hairCount
+        }
+      case .requestErr(let status):
+        print("userNicknameWithAPI - requestErr: \(status)")
+      case .pathErr:
+        print("userNicknameWithAPI - pathErr")
+      case .serverErr:
+        print("userNicknameWithAPI - serverErr")
+      case .networkFail:
+        print("userNicknameWithAPI - networkFail")
+      }
+    }
   }
 }
