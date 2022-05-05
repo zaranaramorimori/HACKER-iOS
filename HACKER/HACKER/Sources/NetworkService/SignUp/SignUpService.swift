@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum SignUpService {
-  case userGithubName
+  case userGithubName(username: String)
 }
 
 extension SignUpService: TargetType {
@@ -19,8 +19,8 @@ extension SignUpService: TargetType {
   
   var path: String {
     switch self {
-    case .userGithubName:
-      return "/auth/github/"
+    case .userGithubName(let username):
+      return "/auth/github/\(username)"
     }
   }
   

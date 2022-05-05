@@ -92,7 +92,7 @@ extension SignupPopUpViewController {
   }
   func layoutUserNameLabel() {
     self.rectangleBackgroundView.add(userNameLabel) {
-      $0.setupLabel(text: "이준이가 다 해줘엉 해줘어엉", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
+      
       $0.snp.makeConstraints {
         $0.bottom.equalTo(self.userNameLine.snp.bottom).offset(-5)
         $0.centerX.equalToSuperview()
@@ -125,6 +125,7 @@ extension SignupPopUpViewController {
     self.buttonContainerView.add(yesButton) {
       $0.setBackgroundImage(UIImage(named: "yesnoButton"), for: .normal)
       $0.setupButton(title: "네", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.addTarget(self, action: #selector(self.pushNickNameVC), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.leading.equalToSuperview()
         $0.width.equalTo(120)
@@ -136,11 +137,20 @@ extension SignupPopUpViewController {
     self.buttonContainerView.add(noButton) {
       $0.setBackgroundImage(UIImage(named: "yesnoButton"), for: .normal)
       $0.setupButton(title: "아니요", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.addTarget(self, action: #selector(self.dismissPopUpVC), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.trailing.equalToSuperview()
         $0.width.equalTo(120)
         $0.height.equalTo(60)
       }
     }
+  }
+  @objc func pushNickNameVC() {
+    let nicknameVC = NicknameViewController()
+    self.navigationController?.pushViewController(nicknameVC, animated: false)
+  }
+  @objc func dismissPopUpVC() {
+    print("df")
+    self.dismiss(animated: false, completion: nil)
   }
 }
