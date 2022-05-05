@@ -255,7 +255,6 @@ extension NicknameViewController {
           let tabbarVC = TabBarViewController()
           self.changeRootViewController(tabbarVC)
         }
-        
       case .requestErr(let status):
         print("userNicknameWithAPI - requestErr: \(status)")
         if let statusCode = status as? Int {

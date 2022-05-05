@@ -18,7 +18,18 @@ class MainViewController: UIViewController {
   let alarmButton = UIButton()
   let settingsButton = UIButton()
   let userCharacterImage = UIImageView()
-  let userhairImage = UIImageView()
+  let userhairfirstImage = UIImageView()
+  let userhairsecondImage = UIImageView()
+  let userhairthirdImage = UIImageView()
+  let userhairfourthImage = UIImageView()
+  let userhairfifthImage = UIImageView()
+  let userhairsixthImage = UIImageView()
+  let userhairseventhImage = UIImageView()
+  let userhaireighthImage = UIImageView()
+  let userhairninethImage = UIImageView()
+  let userhairtenthImage = UIImageView()
+  let userhaireleventhImage = UIImageView()
+  let userhairtwelvethImage = UIImageView()
   let todayCommitLabel = UILabel()
   let todayCommitNumLabel = UILabel()
   let refreshButton = UIButton()
@@ -28,12 +39,17 @@ class MainViewController: UIViewController {
   let attackTicket = UIImageView()
   let attackNum = UILabel()
   
+  var userNickName = ""
+  var todayCommitNumber = 0
+  var attackNumber = 0
+  
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setBackgrund()
     layout()
     setImageViewTap()
+    userInfoWithAPI()
   }
   override func viewWillAppear(_ animated: Bool) {
     self.tabBarController?.tabBar.isHidden = false
@@ -60,7 +76,18 @@ extension MainViewController {
     layoutAlarmButton()
     layoutSettingsButton()
     layoutUserCharacterImage()
-    layoutUserHairImage()
+    layoutUserHairFirstImage()
+    layoutUserHairSecondImage()
+    layoutUserHairThirdImage()
+    layoutUserHairfourthImage()
+    layoutUserHairFifthImage()
+    layoutUserHairsixthImage()
+    layoutUserHairseventhImage()
+    layoutUserHaireighthImage()
+    layoutUserHairninethImage()
+    layoutUserHairtenthImage()
+    layoutUserHaireleventhImage()
+    layoutUserHairtwelvethImage()
     layoutTodayCommitLabel()
     layoutTodayCommitNumLabel()
     layoutRefreshButton()
@@ -72,12 +99,12 @@ extension MainViewController {
   }
   func layoutNickNameLabel() {
     view.add(nicknameLabel) {
-      $0.setupLabel(text: "훈세 님\n오늘도 커밋하세요!",
+      $0.setupLabel(text: "\(self.userNickName) 님\n오늘도 커밋하세요!",
                     color: .hackerBlack,
                     font: .subtitleMedium(ofSize: 24))
       /// 훈세, 님 만 굵은 글씨로 변경하기
       let attributedStr = NSMutableAttributedString(string: self.nicknameLabel.text ?? "")
-      attributedStr.addAttribute(.font, value: UIFont.titleBold(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "훈세"))
+      attributedStr.addAttribute(.font, value: UIFont.titleBold(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "\(self.userNickName)"))
       attributedStr.addAttribute(.font, value: UIFont.subtitleMedium(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "님"))
       self.nicknameLabel.attributedText = attributedStr
       $0.numberOfLines = 2
@@ -121,9 +148,141 @@ extension MainViewController {
       }
     }
   }
-  func layoutUserHairImage() {
-    view.add(userhairImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+  func layoutUserHairFirstImage() {
+    view.add(userhairfirstImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHairSecondImage() {
+    view.add(userhairsecondImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHairThirdImage() {
+    view.add(userhairthirdImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHairfourthImage() {
+    view.add(userhairfourthImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHairFifthImage() {
+    view.add(userhairfifthImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHairsixthImage() {
+    view.add(userhairsixthImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHairseventhImage() {
+    view.add(userhairseventhImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHaireighthImage() {
+    view.add(userhaireighthImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHairninethImage() {
+    view.add(userhairninethImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHairtenthImage() {
+    view.add(userhairtenthImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHaireleventhImage() {
+    view.add(userhaireleventhImage) {
+      $0.image = UIImage(named: "")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userCharacterImage.snp.top)
+        $0.centerX.equalToSuperview()
+        $0.leading.equalToSuperview().offset(24)
+        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
+      }
+    }
+  }
+  func layoutUserHairtwelvethImage() {
+    view.add(userhairtwelvethImage) {
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -144,7 +303,7 @@ extension MainViewController {
   }
   func layoutTodayCommitNumLabel() {
     view.add(todayCommitNumLabel) {
-      $0.setupLabel(text: "(9/10)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+      $0.setupLabel(text: "(\(self.todayCommitNumber)/10)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.todayCommitLabel.snp.top)
         $0.leading.equalTo(self.todayCommitLabel.snp.trailing).offset(4)
@@ -206,10 +365,62 @@ extension MainViewController {
   }
   func layoutAttackNum() {
     attackContainerView.addArrangedSubview(attackNum)
-    attackNum.setupLabel(text: "x1123124", color: .hackerBlack, font: .btnText(ofSize: 32))
+    attackNum.setupLabel(text: "x\(self.attackNumber)", color: .hackerBlack, font: .btnText(ofSize: 32))
+  }
+  func setupLabel() {
+    nicknameLabel.setupLabel(text: "\(self.userNickName) 님\n오늘도 커밋하세요!",
+                  color: .hackerBlack,
+                  font: .subtitleMedium(ofSize: 24))
+    /// 훈세, 님 만 굵은 글씨로 변경하기
+    let attributedStr = NSMutableAttributedString(string: self.nicknameLabel.text ?? "")
+    attributedStr.addAttribute(.font, value: UIFont.titleBold(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "\(self.userNickName)"))
+    attributedStr.addAttribute(.font, value: UIFont.subtitleMedium(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "님"))
+    self.nicknameLabel.attributedText = attributedStr
+    
+    todayCommitNumLabel.setupLabel(text: "(\(self.todayCommitNumber)/10)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+    attackNum.setupLabel(text: "x\(self.attackNumber)", color: .hackerBlack, font: .btnText(ofSize: 32))
+    
   }
   @objc func userCharacterViewTapped() {
     let mainProfileVC = MainProfileViewController()
     self.navigationController?.pushViewController(mainProfileVC, animated: false)
+  }
+}
+
+// MARK: - Network
+extension MainViewController {
+  func userInfoWithAPI() {
+    MainAPI.shared.userInfo { response in
+      switch response {
+      case .success(let data):
+        if let userInfo = data as? MainResponse {
+          self.userhairfirstImage.updateServerImage(userInfo.head.one ?? "")
+          self.userhairsecondImage.updateServerImage(userInfo.head.two ?? "")
+          self.userhairthirdImage.updateServerImage(userInfo.head.three ?? "")
+          self.userhairfourthImage.updateServerImage(userInfo.head.four ?? "")
+          self.userhairfifthImage.updateServerImage(userInfo.head.five ?? "")
+          self.userhairsixthImage.updateServerImage(userInfo.head.six ?? "")
+          self.userhairseventhImage.updateServerImage(userInfo.head.seven ?? "")
+          self.userhaireighthImage.updateServerImage(userInfo.head.eight ?? "")
+          self.userhairninethImage.updateServerImage(userInfo.head.nine ?? "")
+          self.userhairtenthImage.updateServerImage(userInfo.head.ten ?? "")
+          self.userhaireleventhImage.updateServerImage(userInfo.head.eleven ?? "")
+          self.userhairtwelvethImage.updateServerImage(userInfo.head.twelve ?? "")
+          self.userNickName = userInfo.user.nickname
+          self.todayCommitNumber = userInfo.coupon.todayCommit
+          self.attackNumber = userInfo.coupon.couponCommit
+          self.setupLabel()
+        }
+      case .requestErr(let status):
+        print("userNicknameWithAPI - requestErr: \(status)")
+  
+      case .pathErr:
+        print("userNicknameWithAPI - pathErr")
+      case .serverErr:
+        print("userNicknameWithAPI - serverErr")
+      case .networkFail:
+        print("userNicknameWithAPI - networkFail")
+      }
+    }
   }
 }
