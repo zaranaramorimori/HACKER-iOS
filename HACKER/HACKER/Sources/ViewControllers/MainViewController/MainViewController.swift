@@ -150,7 +150,7 @@ extension MainViewController {
   }
   func layoutUserHairFirstImage() {
     view.add(userhairfirstImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -162,7 +162,7 @@ extension MainViewController {
   }
   func layoutUserHairSecondImage() {
     view.add(userhairsecondImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -174,7 +174,7 @@ extension MainViewController {
   }
   func layoutUserHairThirdImage() {
     view.add(userhairthirdImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -186,7 +186,7 @@ extension MainViewController {
   }
   func layoutUserHairfourthImage() {
     view.add(userhairfourthImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -198,7 +198,7 @@ extension MainViewController {
   }
   func layoutUserHairFifthImage() {
     view.add(userhairfifthImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -210,7 +210,7 @@ extension MainViewController {
   }
   func layoutUserHairsixthImage() {
     view.add(userhairsixthImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -222,7 +222,7 @@ extension MainViewController {
   }
   func layoutUserHairseventhImage() {
     view.add(userhairseventhImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -234,7 +234,7 @@ extension MainViewController {
   }
   func layoutUserHaireighthImage() {
     view.add(userhaireighthImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -246,7 +246,7 @@ extension MainViewController {
   }
   func layoutUserHairninethImage() {
     view.add(userhairninethImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -258,7 +258,7 @@ extension MainViewController {
   }
   func layoutUserHairtenthImage() {
     view.add(userhairtenthImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -270,7 +270,7 @@ extension MainViewController {
   }
   func layoutUserHaireleventhImage() {
     view.add(userhaireleventhImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -282,7 +282,7 @@ extension MainViewController {
   }
   func layoutUserHairtwelvethImage() {
     view.add(userhairtwelvethImage) {
-      $0.image = UIImage(named: "sampleHairImage")
+      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -393,10 +393,19 @@ extension MainViewController {
     MainAPI.shared.userInfo { response in
       switch response {
       case .success(let data):
-        print("성공티비")
         if let userInfo = data as? MainResponse {
-          //TODO: 머리카락
-          print(userInfo)
+          self.userhairfirstImage.updateServerImage(userInfo.head.one ?? "")
+          self.userhairsecondImage.updateServerImage(userInfo.head.two ?? "")
+          self.userhairthirdImage.updateServerImage(userInfo.head.three ?? "")
+          self.userhairfourthImage.updateServerImage(userInfo.head.four ?? "")
+          self.userhairfifthImage.updateServerImage(userInfo.head.five ?? "")
+          self.userhairsixthImage.updateServerImage(userInfo.head.six ?? "")
+          self.userhairseventhImage.updateServerImage(userInfo.head.seven ?? "")
+          self.userhaireighthImage.updateServerImage(userInfo.head.eight ?? "")
+          self.userhairninethImage.updateServerImage(userInfo.head.nine ?? "")
+          self.userhairtenthImage.updateServerImage(userInfo.head.ten ?? "")
+          self.userhaireleventhImage.updateServerImage(userInfo.head.eleven ?? "")
+          self.userhairtwelvethImage.updateServerImage(userInfo.head.twelve ?? "")
           self.userNickName = userInfo.user.nickname
           self.todayCommitNumber = userInfo.coupon.todayCommit
           self.attackNumber = userInfo.coupon.couponCommit
