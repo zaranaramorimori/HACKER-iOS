@@ -23,7 +23,7 @@ class NicknameViewController: UIViewController {
   let nextButton = UIButton()
   
   final let maxLength = 6
-  var userGithubName : String?
+  var userGithubName: String?
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
