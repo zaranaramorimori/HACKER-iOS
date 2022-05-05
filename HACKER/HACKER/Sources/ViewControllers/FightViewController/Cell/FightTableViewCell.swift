@@ -44,6 +44,8 @@ class FightTableViewCell: UITableViewCell {
     $0.text = "2022.01.22 ~ 2022.02.22"
   }
   
+  var seasonId: Int?
+  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupLayout()
