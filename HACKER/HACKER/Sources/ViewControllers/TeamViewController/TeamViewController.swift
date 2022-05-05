@@ -16,6 +16,8 @@ class TeamViewController: UIViewController {
   var serverTeamDetailInfo: TeamDetailResponse?
   
   private let navigationBar = HackerNavigationBar()
+  private let memberEmptyView = EmptyView()
+  private let logEmptyView = EmptyView()
   
   private let dividerLine = UIImageView().then {
     $0.image = UIImage(named: "sectionLine")
@@ -112,7 +114,6 @@ class TeamViewController: UIViewController {
     $0.estimatedRowHeight = 62
     $0.isScrollEnabled = false
     $0.register(LogTableViewCell.self, forCellReuseIdentifier: LogTableViewCell.identifier)
-//    $0.register(FightTableViewHeader.self, forHeaderFooterViewReuseIdentifier: FightTableViewHeader.identifier)
     if #available(iOS 15, *) {
       $0.sectionHeaderTopPadding = 0
     }
@@ -124,6 +125,7 @@ class TeamViewController: UIViewController {
     setupAutoLayout()
     collectionViewRegister()
     updateTeamDetail()
+    updateEmptyViewLabel()
   }
   
   // MARK: - Custom Method
@@ -145,8 +147,8 @@ class TeamViewController: UIViewController {
     teamInfoContainerView.addSubviews([teamIcon, nameLabel,
                                        commitLabel, attackButton, attackButtonCountLabel])
     teamScrollContainerView.addSubviews([faceImage, teamInfoContainerView,
-                                         memberLabel, memberCollectionView,
-                                         logLabel, logTableView])
+                                         memberLabel, memberCollectionView, memberEmptyView,
+                                         logLabel, logTableView, logEmptyView])
     navigationBar.iconLayout(isBack: true,
                              logoImage: UIImage(named: "fightMainIcon"),
                              rightImage: UIImage(named: "infoIconBlack"))
@@ -215,6 +217,11 @@ class TeamViewController: UIViewController {
       make.trailing.equalToSuperview()
       make.height.equalTo(140)
     }
+    memberEmptyView.snp.makeConstraints { make in
+      make.top.equalTo(memberLabel.snp.bottom).offset(12)
+      make.leading.trailing.equalToSuperview()
+      make.height.equalTo(113)
+    }
     logLabel.snp.makeConstraints { make in
       make.top.equalTo(memberCollectionView.snp.bottom).offset(20)
       make.leading.equalToSuperview().inset(24)
@@ -223,9 +230,14 @@ class TeamViewController: UIViewController {
       make.top.equalTo(logLabel.snp.bottom).offset(16)
       make.centerX.equalToSuperview()
       make.leading.equalToSuperview().inset(23)
-      make.bottom.equalToSuperview()
       logTableView.layoutIfNeeded()
       make.height.equalTo(logTableView.contentSize.height)
+      make.bottom.equalToSuperview().priority(.low)
+    }
+    logEmptyView.snp.makeConstraints { make in
+      make.top.equalTo(logLabel.snp.bottom).offset(16)
+      make.leading.trailing.equalToSuperview()
+      make.bottom.equalToSuperview().inset(36).priority(.high)
     }
   }
   
@@ -233,6 +245,23 @@ class TeamViewController: UIViewController {
 //    teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
     nameLabel.text = serverTeamDetailInfo?.team.name
     commitLabel.text = "\(serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(serverTeamDetailInfo?.team.hairCount ?? 0) 가닥"
+  }
+  
+  private func updateEmptyViewLabel() {
+    memberEmptyView.updateLabels(text: "아직 추가된 멤버가 없어요!", aigoSize: 16, nothingSize: 11)
+    logEmptyView.updateLabels(text: "아무 소식도 알려드릴게 없어요!", aigoSize: 16, nothingSize: 11)
+    
+    if let membersCount = serverTeamDetailInfo?.members {
+      if !membersCount.isEmpty {
+        memberEmptyView.isHidden = true
+      }
+    }
+    
+    if let logsCount = serverTeamDetailInfo?.logs {
+      if !logsCount.isEmpty {
+        logEmptyView.isHidden = true
+      }
+    }
   }
   
   // MARK: - @objc

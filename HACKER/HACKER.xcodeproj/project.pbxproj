@@ -36,6 +36,7 @@
 		77BA0E552822ED1900EC41A5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E542822ED1900EC41A5 /* UIImageView+Extension.swift */; };
 		77BA0E572822F07D00EC41A5 /* SeasonTeamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E562822F07D00EC41A5 /* SeasonTeamResponse.swift */; };
 		77BA0E5A2823095500EC41A5 /* TeamDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E592823095500EC41A5 /* TeamDetailResponse.swift */; };
+		77BA0E5C2823720700EC41A5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E5B2823720700EC41A5 /* EmptyView.swift */; };
 		8648AD9727E8D417009F5C7A /* HACKERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8648AD9627E8D417009F5C7A /* HACKERTests.swift */; };
 		869B5AC127ECFFB500F2ACA7 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */; };
 		869B5AC327ED04D000F2ACA7 /* XCUIElement+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */; };
@@ -137,6 +138,7 @@
 		77BA0E542822ED1900EC41A5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		77BA0E562822F07D00EC41A5 /* SeasonTeamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTeamResponse.swift; sourceTree = "<group>"; };
 		77BA0E592823095500EC41A5 /* TeamDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailResponse.swift; sourceTree = "<group>"; };
+		77BA0E5B2823720700EC41A5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		834AE9E2D5646B5161A239D4 /* Pods-HACKERUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8648AD9427E8D417009F5C7A /* HACKERTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8648AD9627E8D417009F5C7A /* HACKERTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERTests.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				77576EC327EB88A0005AF6DA /* HackerNavigationBar.swift */,
+				77BA0E5B2823720700EC41A5 /* EmptyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -910,6 +913,7 @@
 				77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */,
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
+				77BA0E5C2823720700EC41A5 /* EmptyView.swift in Sources */,
 				77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */,
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
 				77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */,
