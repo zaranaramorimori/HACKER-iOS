@@ -48,6 +48,10 @@
 		C4C05B48E05749AF8AC87FED /* Pods_HACKER.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0FDE97D43B564FE2665C5AB /* Pods_HACKER.framework */; };
 		E80282BD2823764B00268A5A /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282BC2823764B00268A5A /* SignUpResponse.swift */; };
 		E80282BF282376EF00268A5A /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282BE282376EF00268A5A /* UIViewController+Extension.swift */; };
+		E80282C3282388EF00268A5A /* NickNameAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282C2282388EF00268A5A /* NickNameAPI.swift */; };
+		E80282C5282388F800268A5A /* NickNameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282C4282388F800268A5A /* NickNameService.swift */; };
+		E80282C728238B8800268A5A /* NickNameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282C628238B8800268A5A /* NickNameRequest.swift */; };
+		E80282CA28238B9F00268A5A /* NickNameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282C928238B9F00268A5A /* NickNameResponse.swift */; };
 		E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF027C2479C00107741 /* LoginViewController.swift */; };
 		E833EEF327C247A400107741 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF227C247A400107741 /* SplashViewController.swift */; };
 		E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */; };
@@ -152,6 +156,10 @@
 		D64BBA392CA295A2C82DAB1C /* Pods-HACKER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKER.release.xcconfig"; path = "Target Support Files/Pods-HACKER/Pods-HACKER.release.xcconfig"; sourceTree = "<group>"; };
 		E80282BC2823764B00268A5A /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
 		E80282BE282376EF00268A5A /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		E80282C2282388EF00268A5A /* NickNameAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameAPI.swift; sourceTree = "<group>"; };
+		E80282C4282388F800268A5A /* NickNameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameService.swift; sourceTree = "<group>"; };
+		E80282C628238B8800268A5A /* NickNameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameRequest.swift; sourceTree = "<group>"; };
+		E80282C928238B9F00268A5A /* NickNameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameResponse.swift; sourceTree = "<group>"; };
 		E833EEF027C2479C00107741 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E833EEF227C247A400107741 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownUserPopUpViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +240,7 @@
 		77233E9328182814006B7903 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				E80282C1282388E100268A5A /* NickName */,
 				E87ED8382823636500775A85 /* SignUp */,
 				77233EB92822DABC006B7903 /* Plugin */,
 				77233EB82822DA90006B7903 /* Fight */,
@@ -408,6 +417,24 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		E80282C0282388D700268A5A /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				E80282C628238B8800268A5A /* NickNameRequest.swift */,
+				E80282C928238B9F00268A5A /* NickNameResponse.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		E80282C1282388E100268A5A /* NickName */ = {
+			isa = PBXGroup;
+			children = (
+				E80282C2282388EF00268A5A /* NickNameAPI.swift */,
+				E80282C4282388F800268A5A /* NickNameService.swift */,
+			);
+			path = NickName;
+			sourceTree = "<group>";
+		};
 		E833EEEE27C2477900107741 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +489,7 @@
 		E87580A927B16EBC00C7E7E2 /* NicknameViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E80282C0282388D700268A5A /* DataModel */,
 				E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */,
 			);
 			path = NicknameViewController;
@@ -912,6 +940,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E80282C3282388EF00268A5A /* NickNameAPI.swift in Sources */,
 				77233E9928182F69006B7903 /* Header.swift in Sources */,
 				77BA0E532822E1CF00EC41A5 /* SeasonResponse.swift in Sources */,
 				77233E902818250C006B7903 /* GenericResponse.swift in Sources */,
@@ -920,8 +949,10 @@
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
 				77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */,
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
+				E80282CA28238B9F00268A5A /* NickNameResponse.swift in Sources */,
 				77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */,
 				77233E97281828BF006B7903 /* URL.swift in Sources */,
+				E80282C728238B8800268A5A /* NickNameRequest.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
 				77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */,
@@ -932,6 +963,7 @@
 				77233EAF2821B6D2006B7903 /* RankingTableViewHeader.swift in Sources */,
 				E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */,
 				77233EBD2822DB6C006B7903 /* FightAPI.swift in Sources */,
+				E80282C5282388F800268A5A /* NickNameService.swift in Sources */,
 				E855DD3627EF4556003F3B34 /* AddFriendViewController.swift in Sources */,
 				77233EB2282231E0006B7903 /* TeamViewController.swift in Sources */,
 				E855DD2B27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift in Sources */,

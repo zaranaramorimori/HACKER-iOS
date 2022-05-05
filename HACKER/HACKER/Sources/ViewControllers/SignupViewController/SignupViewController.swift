@@ -150,7 +150,7 @@ extension SignupViewController {
   /// 화면전환
   @objc func touchNextButton() {
     /// username 받아오기
-    userPhotosWithAPI(username: self.usernameTextField.text ?? "")
+    userGithubIDWithAPI(username: self.usernameTextField.text ?? "")
     if !usernameTextField.hasText {
       self.makeAlertOnlyMessage(message: "유저네임을 입력하세요", okAction: nil)
     }
@@ -186,17 +186,19 @@ extension SignupViewController: UITextFieldDelegate {
 
 // MARK: - Network
 extension SignupViewController {
-  func userPhotosWithAPI(username: String) {
+  func userGithubIDWithAPI(username: String) {
     SignUpAPI.shared.userGithubName(username: username) { response in
       switch response {
       case .success(let data):
         print("성공티비")
         if let userGithubInfo = data as? SignUpResponse {
-          let signupPopUPVC = SignupPopUpViewController()
+          let signupPopUpVC = SignupPopUpViewController()
+          let signupPopUpNVC = UINavigationController(rootViewController: signupPopUpVC)
+  
           //TODOs : 이미지 변경
-          signupPopUPVC.userNameLabel.text = userGithubInfo.username
-          signupPopUPVC.modalPresentationStyle = .overFullScreen
-          self.present(signupPopUPVC, animated: false, completion: nil)
+          signupPopUpVC.userNameLabel.text = userGithubInfo.username
+          signupPopUpNVC.modalPresentationStyle = .overFullScreen
+          self.present(signupPopUpNVC, animated: false, completion: nil)
         }
         
       case .requestErr(let status):

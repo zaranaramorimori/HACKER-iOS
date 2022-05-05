@@ -92,7 +92,6 @@ extension SignupPopUpViewController {
   }
   func layoutUserNameLabel() {
     self.rectangleBackgroundView.add(userNameLabel) {
-      
       $0.snp.makeConstraints {
         $0.bottom.equalTo(self.userNameLine.snp.bottom).offset(-5)
         $0.centerX.equalToSuperview()
@@ -147,10 +146,10 @@ extension SignupPopUpViewController {
   }
   @objc func pushNickNameVC() {
     let nicknameVC = NicknameViewController()
+    nicknameVC.userGithubName = userNameLabel.text
     self.navigationController?.pushViewController(nicknameVC, animated: false)
   }
   @objc func dismissPopUpVC() {
-    print("df")
     self.dismiss(animated: false, completion: nil)
   }
 }

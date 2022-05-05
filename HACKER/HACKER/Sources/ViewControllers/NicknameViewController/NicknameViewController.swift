@@ -23,6 +23,7 @@ class NicknameViewController: UIViewController {
   let nextButton = UIButton()
   
   final let maxLength = 6
+  var userGithubName : String?
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -165,8 +166,15 @@ extension NicknameViewController {
     self.nextButton.transform = .identity
   }
   @objc func nextButtonClicked() {
-    let tabBarVC = TabBarViewController()
-    self.navigationController?.pushViewController(tabBarVC, animated: false)
+    //TODO: 소셜로그인 할 때 Social, uuid 저장 후 여기 넣기
+    userNicknameWithAPI(nicknameRequest: NickNameRequest(social: "kakao",
+                                                         uuid: "2145709067",
+                                                         username: userGithubName ?? "",
+                                                         nickname: usernameTextField.text ?? ""))
+    if !usernameTextField.hasText {
+      self.makeAlertOnlyMessage(message: "닉네임을 입력하세요", okAction: nil)
+    }
+
   }
 }
 
@@ -220,6 +228,57 @@ extension NicknameViewController: UITextFieldDelegate {
           let countNum = textField.text?.count ?? 0
           countTextLabel.text = "\(countNum)/6"
         }
+        if text.isEmpty {
+          explainLabel.text = "사용하실 닉네임을 입력해주세요"
+        }
+      }
+      self.explainLabel.text = "와 제법 멋진 이름이네요"
+      if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+        clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
+      }
+      self.nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
+      self.nextButton.setTitleColor(.hackerWhite, for: .normal)
+    }
+  }
+}
+
+// MARK: - Network
+extension NicknameViewController {
+  func userNicknameWithAPI(nicknameRequest: NickNameRequest) {
+    NickNAmeAPI.shared.userNickname(nicknameRequest: nicknameRequest) { response in
+      switch response {
+      case .success(let data):
+        print("성공티비")
+        if let nickNameInfo = data as? NickNameResponse {
+          UserDefaults.standard.set(nickNameInfo.accessToken, forKey: Const.UserDefaultsKey.accessToken)
+          UserDefaults.standard.set(nickNameInfo.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
+          let tabbarVC = TabBarViewController()
+          self.changeRootViewController(tabbarVC)
+        }
+        
+      case .requestErr(let status):
+        print("userNicknameWithAPI - requestErr: \(status)")
+        if let statusCode = status as? Int {
+          print("여기야여기")
+          print(statusCode)
+          switch statusCode {
+          case 409 :
+            self.explainLabel.text = "앗! 이미 사용중인 이름이에요 :)"
+            if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+              clearButton.setImage(UIImage(named: "xRed"), for: .normal)
+            }
+            self.nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+            self.nextButton.setTitleColor(.hackerDarkGray, for: .normal)
+          default :
+            break
+          }
+        }
+      case .pathErr:
+        print("userNicknameWithAPI - pathErr")
+      case .serverErr:
+        print("userNicknameWithAPI - serverErr")
+      case .networkFail:
+        print("userNicknameWithAPI - networkFail")
       }
     }
   }
