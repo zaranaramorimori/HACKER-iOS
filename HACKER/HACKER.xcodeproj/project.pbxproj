@@ -32,6 +32,8 @@
 		77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC627EB90A2005AF6DA /* SettingViewController.swift */; };
 		77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */; };
 		77576ECC27ECDB26005AF6DA /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576ECB27ECDB26005AF6DA /* Const.swift */; };
+		7789EBE92823A97700237036 /* pulledOut.json in Resources */ = {isa = PBXBuildFile; fileRef = 7789EBE72823A97700237036 /* pulledOut.json */; };
+		7789EBEA2823A97700237036 /* pullingOut.json in Resources */ = {isa = PBXBuildFile; fileRef = 7789EBE82823A97700237036 /* pullingOut.json */; };
 		77BA0E532822E1CF00EC41A5 /* SeasonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */; };
 		77BA0E552822ED1900EC41A5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E542822ED1900EC41A5 /* UIImageView+Extension.swift */; };
 		77BA0E572822F07D00EC41A5 /* SeasonTeamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E562822F07D00EC41A5 /* SeasonTeamResponse.swift */; };
@@ -141,6 +143,8 @@
 		77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		77576ECB27ECDB26005AF6DA /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		775BA15627E7783700A43516 /* HACKER.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HACKER.entitlements; sourceTree = "<group>"; };
+		7789EBE72823A97700237036 /* pulledOut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pulledOut.json; sourceTree = "<group>"; };
+		7789EBE82823A97700237036 /* pullingOut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pullingOut.json; sourceTree = "<group>"; };
 		77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonResponse.swift; sourceTree = "<group>"; };
 		77BA0E542822ED1900EC41A5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		77BA0E562822F07D00EC41A5 /* SeasonTeamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTeamResponse.swift; sourceTree = "<group>"; };
@@ -375,6 +379,15 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		77BA0E5D2823A88A00EC41A5 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				7789EBE72823A97700237036 /* pulledOut.json */,
+				7789EBE82823A97700237036 /* pullingOut.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		8648AD9527E8D417009F5C7A /* HACKERTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -517,6 +530,7 @@
 		E876118E279EFE4B00D238B3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				77BA0E5D2823A88A00EC41A5 /* Lottie */,
 				E855DD2E27EF1DB3003F3B34 /* Protocols */,
 				E8761194279EFEF900D238B3 /* Constants */,
 				E8761193279EFECF00D238B3 /* Fonts */,
@@ -781,10 +795,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7789EBEA2823A97700237036 /* pullingOut.json in Resources */,
 				E8FF04FA27B212C000C7C3E5 /* NotoSansKR-Medium.otf in Resources */,
 				E8547B9227BC085D0078EEA8 /* KCC-Kimhwanki.otf in Resources */,
 				E87580A727B15FFD00C7E7E2 /* .swiftlint.yml in Resources */,
 				E8E84789279EF6EC00D5A482 /* LaunchScreen.storyboard in Resources */,
+				7789EBE92823A97700237036 /* pulledOut.json in Resources */,
 				E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */,
 				E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */,
 				E8FF04FB27B212C000C7C3E5 /* NotoSansKR-Bold.otf in Resources */,
@@ -1276,7 +1292,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1307,7 +1323,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
