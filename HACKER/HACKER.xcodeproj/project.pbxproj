@@ -454,6 +454,7 @@
 				E80282BB2823763D00268A5A /* DataModel */,
 				E87580AC27B16EDF00C7E7E2 /* SignupViewController.swift */,
 				E8FF04F527B2111C00C7C3E5 /* SignupPopUpViewController.swift */,
+				E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */,
 			);
 			path = SignupViewController;
 			sourceTree = "<group>";
@@ -462,7 +463,6 @@
 			isa = PBXGroup;
 			children = (
 				E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */,
-				E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */,
 			);
 			path = NicknameViewController;
 			sourceTree = "<group>";
