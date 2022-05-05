@@ -71,6 +71,7 @@ extension UnknownUserPopUpViewController {
     self.rectangleBackgroundView.add(tryagainButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
       $0.setupButton(title: "다시 입력하기", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.addTarget(self, action: #selector(self.dismissPopUPVC), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.unknownUserLabel.snp.bottom).offset(51)
         $0.centerX.equalToSuperview()
@@ -78,5 +79,8 @@ extension UnknownUserPopUpViewController {
         $0.height.equalTo(60)
       }
     }
+  }
+  @objc func dismissPopUPVC() {
+    self.dismiss(animated: false, completion: nil)
   }
 }
