@@ -112,6 +112,7 @@ class TeamViewController: UIViewController {
     $0.estimatedRowHeight = 62
     $0.isScrollEnabled = false
     $0.register(LogTableViewCell.self, forCellReuseIdentifier: LogTableViewCell.identifier)
+//    $0.register(FightTableViewHeader.self, forHeaderFooterViewReuseIdentifier: FightTableViewHeader.identifier)
     if #available(iOS 15, *) {
       $0.sectionHeaderTopPadding = 0
     }
@@ -223,8 +224,8 @@ class TeamViewController: UIViewController {
       make.centerX.equalToSuperview()
       make.leading.equalToSuperview().inset(23)
       make.bottom.equalToSuperview()
-      make.height.equalTo(500)
-//      print("height", logTableView.contentSize.height)
+      logTableView.layoutIfNeeded()
+      make.height.equalTo(logTableView.contentSize.height)
     }
   }
   
@@ -250,12 +251,14 @@ extension TeamViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension TeamViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 6
+    return serverTeamDetailInfo?.members.count ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let memberCell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionViewCell.identifier, for: indexPath) as? MemberCollectionViewCell else {return UICollectionViewCell() }
     memberCell.awakeFromNib()
+//    memberCell.characterImage.updateServerImage(serverTeamDetailInfo?.members[indexPath.section])
+    memberCell.nameLabel.text = serverTeamDetailInfo?.members[indexPath.section].nickname
     return memberCell
   }
 }
@@ -278,7 +281,7 @@ extension TeamViewController: UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 6
+    return serverTeamDetailInfo?.logs.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -287,6 +290,7 @@ extension TeamViewController: UITableViewDataSource {
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
     
+    cell.logLabel.text = serverTeamDetailInfo?.logs[indexPath.section].content.first
     return cell
   }
   
@@ -300,7 +304,7 @@ extension TeamViewController: UITableViewDataSource {
 extension TeamViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = FightTableViewHeader()
-    headerView.setIngLabel(text: "2022.01.23")
+    headerView.setIngLabel(text: serverTeamDetailInfo?.logs[section].date ?? "")
     return headerView
   }
   
