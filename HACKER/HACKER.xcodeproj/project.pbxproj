@@ -49,7 +49,6 @@
 		E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF027C2479C00107741 /* LoginViewController.swift */; };
 		E833EEF327C247A400107741 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF227C247A400107741 /* SplashViewController.swift */; };
 		E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */; };
-		E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF627C24D9000107741 /* NickNameCheckPopUpViewController.swift */; };
 		E8547B9227BC085D0078EEA8 /* KCC-Kimhwanki.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8547B9127BC085D0078EEA8 /* KCC-Kimhwanki.otf */; };
 		E855DD2627EF0AC4003F3B34 /* ShoppingRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD2527EF0AC4003F3B34 /* ShoppingRankingViewController.swift */; };
 		E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E855DD2827EF0AE4003F3B34 /* TabbarCollectionViewCell.swift */; };
@@ -69,6 +68,8 @@
 		E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119D27A0398000D238B3 /* UIFont+Extension.swift */; };
 		E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E876119F27A0398B00D238B3 /* UIButton+Extension.swift */; };
 		E87AA6962809C774008913AE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87AA6952809C774008913AE /* Notification.swift */; };
+		E87ED83A2823637400775A85 /* SignUpAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87ED8392823637400775A85 /* SignUpAPI.swift */; };
+		E87ED83C2823637E00775A85 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87ED83B2823637E00775A85 /* SignUpService.swift */; };
 		E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3327E44A27009F65E3 /* MainViewController.swift */; };
 		E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */; };
 		E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */; };
@@ -150,7 +151,6 @@
 		E833EEF027C2479C00107741 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E833EEF227C247A400107741 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownUserPopUpViewController.swift; sourceTree = "<group>"; };
-		E833EEF627C24D9000107741 /* NickNameCheckPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameCheckPopUpViewController.swift; sourceTree = "<group>"; };
 		E8547B9127BC085D0078EEA8 /* KCC-Kimhwanki.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KCC-Kimhwanki.otf"; sourceTree = "<group>"; };
 		E855DD2527EF0AC4003F3B34 /* ShoppingRankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingRankingViewController.swift; sourceTree = "<group>"; };
 		E855DD2827EF0AE4003F3B34 /* TabbarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +170,8 @@
 		E876119D27A0398000D238B3 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		E876119F27A0398B00D238B3 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		E87AA6952809C774008913AE /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		E87ED8392823637400775A85 /* SignUpAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAPI.swift; sourceTree = "<group>"; };
+		E87ED83B2823637E00775A85 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
 		E88D4C3327E44A27009F65E3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileViewController.swift; sourceTree = "<group>"; };
 		E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		77233E9328182814006B7903 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				E87ED8382823636500775A85 /* SignUp */,
 				77233EB92822DABC006B7903 /* Plugin */,
 				77233EB82822DA90006B7903 /* Fight */,
 				77233E9428182861006B7903 /* HowTo.swift */,
@@ -447,7 +450,6 @@
 			children = (
 				E87580AA27B16ED600C7E7E2 /* NicknameViewController.swift */,
 				E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */,
-				E833EEF627C24D9000107741 /* NickNameCheckPopUpViewController.swift */,
 			);
 			path = NicknameViewController;
 			sourceTree = "<group>";
@@ -529,6 +531,15 @@
 				77233E9A281830FC006B7903 /* UserDefaultsKey.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		E87ED8382823636500775A85 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				E87ED8392823637400775A85 /* SignUpAPI.swift */,
+				E87ED83B2823637E00775A85 /* SignUpService.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		E88D4C3227E449D9009F65E3 /* MainViewController */ = {
@@ -900,6 +911,7 @@
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
 				77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */,
+				E87ED83A2823637400775A85 /* SignUpAPI.swift in Sources */,
 				E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */,
 				E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */,
 				77233E9528182861006B7903 /* HowTo.swift in Sources */,
@@ -923,6 +935,7 @@
 				77233E9228182649006B7903 /* NetworkResult.swift in Sources */,
 				77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */,
 				E876119827A0395D00D238B3 /* UIView+Extension.swift in Sources */,
+				E87ED83C2823637E00775A85 /* SignUpService.swift in Sources */,
 				E855DD2627EF0AC4003F3B34 /* ShoppingRankingViewController.swift in Sources */,
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
 				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
@@ -935,7 +948,6 @@
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
 				77233EBB2822DB01006B7903 /* MoyaLoggerPlugin.swift in Sources */,
 				E87AA6962809C774008913AE /* Notification.swift in Sources */,
-				E833EEF727C24D9000107741 /* NickNameCheckPopUpViewController.swift in Sources */,
 				77233EA52821A8C2006B7903 /* FightTableViewHeader.swift in Sources */,
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
 				E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */,

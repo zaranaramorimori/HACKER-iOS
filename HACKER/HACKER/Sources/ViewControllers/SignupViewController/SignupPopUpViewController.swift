@@ -7,22 +7,140 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
+// MARK: - SignupPopUpViewController
 class SignupPopUpViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+  
+  // MARK: - Components
+  let backgroundView = UIView()
+  let rectangleBackgroundView = UIView()
+  let userImageView = UIImageView()
+  let userNameLine = UIImageView()
+  let userNameLabel = UILabel()
+  let checkLabel = UILabel()
+  let buttonContainerView = UIView()
+  let yesButton = UIButton()
+  let noButton = UIButton()
+  
+  // MARK: - LifeCycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setBackground()
+    layout()
+  }
+}
+// MARK: - Extensions
+extension SignupPopUpViewController {
+  func setBackground() {
+    self.view.backgroundColor = .hackerWhite
+  }
+  func layout() {
+    layoutBackGroundView()
+    layoutRectangleBackgroundView()
+    layoutUserImageView()
+    layoutUserNameLine()
+    layoutUserNameLabel()
+    layoutCheckLabel()
+    layoutButtonContainerView()
+    layoutYesButton()
+    layoutNoButton()
+  }
+  func layoutBackGroundView() {
+    self.view.add(backgroundView) {
+      $0.backgroundColor = .hackerBackgroundBlack
+      $0.snp.makeConstraints {
+        $0.top.leading.trailing.bottom.equalToSuperview()
+      }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+  }
+  func layoutRectangleBackgroundView() {
+    self.backgroundView.add(rectangleBackgroundView) {
+      $0.backgroundColor = .white
+      $0.setRounded(radius: 40)
+      $0.snp.makeConstraints {
+        $0.top.equalToSuperview().offset(201)
+        $0.centerX.equalToSuperview()
+        $0.width.equalTo(306)
+        $0.height.equalTo(323)
+      }
     }
-    */
-
+  }
+  func layoutUserImageView() {
+    self.rectangleBackgroundView.add(userImageView) {
+      $0.setBorder(borderColor: .hackerBlack, borderWidth: 3)
+      $0.setRounded(radius: 34)
+      $0.image = UIImage(named: "200")
+      $0.snp.makeConstraints {
+        $0.top.equalToSuperview().offset(32)
+        $0.centerX.equalToSuperview()
+        $0.width.height.equalTo(68)
+      }
+    }
+  }
+  func layoutUserNameLine() {
+    self.rectangleBackgroundView.add(userNameLine) {
+      $0.image = UIImage(named: "idLine")
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userImageView.snp.bottom).offset(5)
+        $0.centerX.equalToSuperview()
+        $0.width.equalTo(215)
+        $0.height.equalTo(39)
+      }
+    }
+  }
+  func layoutUserNameLabel() {
+    self.rectangleBackgroundView.add(userNameLabel) {
+      $0.setupLabel(text: "이준이가 다 해줘엉 해줘어엉", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
+      $0.snp.makeConstraints {
+        $0.bottom.equalTo(self.userNameLine.snp.bottom).offset(-5)
+        $0.centerX.equalToSuperview()
+      }
+    }
+  }
+  func layoutCheckLabel() {
+    self.rectangleBackgroundView.add(checkLabel) {
+      $0.setupLabel(text: "틀림없이 입력했나요?\n나중에 수정이 불가능해요!", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+      $0.numberOfLines = 2
+      $0.textAlignment = .center
+      $0.snp.makeConstraints {
+        $0.top.equalTo(self.userNameLine.snp.bottom).offset(22)
+        $0.centerX.equalToSuperview()
+      }
+    }
+  }
+  func layoutButtonContainerView() {
+    self.rectangleBackgroundView.add(buttonContainerView) {
+      $0.backgroundColor = .clear
+      $0.snp.makeConstraints {
+        $0.bottom.equalTo(self.rectangleBackgroundView.snp.bottom).offset(-24)
+        $0.centerX.equalToSuperview()
+        $0.width.equalTo(258)
+        $0.height.equalTo(60)
+      }
+    }
+  }
+  func layoutYesButton() {
+    self.buttonContainerView.add(yesButton) {
+      $0.setBackgroundImage(UIImage(named: "yesnoButton"), for: .normal)
+      $0.setupButton(title: "네", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.snp.makeConstraints {
+        $0.top.leading.equalToSuperview()
+        $0.width.equalTo(120)
+        $0.height.equalTo(60)
+      }
+    }
+  }
+  func layoutNoButton() {
+    self.buttonContainerView.add(noButton) {
+      $0.setBackgroundImage(UIImage(named: "yesnoButton"), for: .normal)
+      $0.setupButton(title: "아니요", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.snp.makeConstraints {
+        $0.top.trailing.equalToSuperview()
+        $0.width.equalTo(120)
+        $0.height.equalTo(60)
+      }
+    }
+  }
 }
