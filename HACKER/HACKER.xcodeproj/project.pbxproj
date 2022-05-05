@@ -52,6 +52,9 @@
 		E80282C5282388F800268A5A /* NickNameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282C4282388F800268A5A /* NickNameService.swift */; };
 		E80282C728238B8800268A5A /* NickNameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282C628238B8800268A5A /* NickNameRequest.swift */; };
 		E80282CA28238B9F00268A5A /* NickNameResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282C928238B9F00268A5A /* NickNameResponse.swift */; };
+		E80282CD2823A66500268A5A /* MainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282CC2823A66500268A5A /* MainAPI.swift */; };
+		E80282CF2823A67200268A5A /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282CE2823A67200268A5A /* MainService.swift */; };
+		E80282D22823A70D00268A5A /* MainResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282D12823A70D00268A5A /* MainResponse.swift */; };
 		E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF027C2479C00107741 /* LoginViewController.swift */; };
 		E833EEF327C247A400107741 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF227C247A400107741 /* SplashViewController.swift */; };
 		E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */; };
@@ -160,6 +163,9 @@
 		E80282C4282388F800268A5A /* NickNameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameService.swift; sourceTree = "<group>"; };
 		E80282C628238B8800268A5A /* NickNameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameRequest.swift; sourceTree = "<group>"; };
 		E80282C928238B9F00268A5A /* NickNameResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameResponse.swift; sourceTree = "<group>"; };
+		E80282CC2823A66500268A5A /* MainAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAPI.swift; sourceTree = "<group>"; };
+		E80282CE2823A67200268A5A /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
+		E80282D12823A70D00268A5A /* MainResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainResponse.swift; sourceTree = "<group>"; };
 		E833EEF027C2479C00107741 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E833EEF227C247A400107741 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownUserPopUpViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +246,7 @@
 		77233E9328182814006B7903 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				E80282CB2823A64A00268A5A /* Main */,
 				E80282C1282388E100268A5A /* NickName */,
 				E87ED8382823636500775A85 /* SignUp */,
 				77233EB92822DABC006B7903 /* Plugin */,
@@ -435,6 +442,23 @@
 			path = NickName;
 			sourceTree = "<group>";
 		};
+		E80282CB2823A64A00268A5A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E80282CC2823A66500268A5A /* MainAPI.swift */,
+				E80282CE2823A67200268A5A /* MainService.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E80282D02823A70400268A5A /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				E80282D12823A70D00268A5A /* MainResponse.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		E833EEEE27C2477900107741 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +611,7 @@
 		E88D4C3227E449D9009F65E3 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E80282D02823A70400268A5A /* DataModel */,
 				E88D4C3327E44A27009F65E3 /* MainViewController.swift */,
 				E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */,
 			);
@@ -941,6 +966,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E80282C3282388EF00268A5A /* NickNameAPI.swift in Sources */,
+				E80282D22823A70D00268A5A /* MainResponse.swift in Sources */,
 				77233E9928182F69006B7903 /* Header.swift in Sources */,
 				77BA0E532822E1CF00EC41A5 /* SeasonResponse.swift in Sources */,
 				77233E902818250C006B7903 /* GenericResponse.swift in Sources */,
@@ -953,6 +979,8 @@
 				77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */,
 				77233E97281828BF006B7903 /* URL.swift in Sources */,
 				E80282C728238B8800268A5A /* NickNameRequest.swift in Sources */,
+				E80282CD2823A66500268A5A /* MainAPI.swift in Sources */,
+				E80282CF2823A67200268A5A /* MainService.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
 				77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */,
