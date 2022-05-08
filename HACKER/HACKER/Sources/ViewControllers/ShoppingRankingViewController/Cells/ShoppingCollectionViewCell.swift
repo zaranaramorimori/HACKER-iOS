@@ -60,7 +60,7 @@ extension ShoppingCollectionViewCell {
     }
   }
   func setupNewFriend() {
-    let addFriendVC = AddFriendViewController()
+    let addFriendVC = FriendDetailViewController()
     self.parentViewController?.navigationController?.pushViewController(addFriendVC, animated: false)
   }
 }

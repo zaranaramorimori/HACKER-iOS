@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 // MARK: - AddFriendViewController
-class AddFriendViewController: UIViewController {
+class FriendDetailViewController: UIViewController {
   
   // MARK: - Components
   let backButton = UIButton()
@@ -31,7 +31,7 @@ class AddFriendViewController: UIViewController {
   }
 }
 // MARK: - Extensions
-extension AddFriendViewController {
+extension FriendDetailViewController {
   func setBackground() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
