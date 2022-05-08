@@ -47,7 +47,6 @@ extension AddFriendViewController {
   }
   func attribute() {
     self.usernameTextField.delegate = self
-    self.view.accessibilityIdentifier = SignupVCIdentifier.view
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
@@ -102,7 +101,6 @@ extension AddFriendViewController {
       if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
         clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
       }
-      $0.accessibilityIdentifier = SignupVCIdentifier.usernameTextField
       $0.snp.makeConstraints {
         $0.centerY.equalTo(self.textBorderView)
         $0.leading.equalTo(self.textBorderView.snp.leading).offset(16)
@@ -117,7 +115,6 @@ extension AddFriendViewController {
       $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
-      $0.accessibilityIdentifier = SignupVCIdentifier.nextButton
       $0.addTarget(self, action: #selector(self.touchNextButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
