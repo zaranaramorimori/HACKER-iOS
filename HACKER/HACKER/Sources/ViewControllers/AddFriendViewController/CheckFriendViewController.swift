@@ -87,4 +87,7 @@ extension CheckFriendViewController {
       }
     }
   }
+  @objc func touchNextButton() {
+    
+  }
 }
