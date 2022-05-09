@@ -191,8 +191,7 @@ extension SignupViewController {
         if let userGithubInfo = data as? SignUpResponse {
           let signupPopUpVC = SignupPopUpViewController()
           let signupPopUpNVC = UINavigationController(rootViewController: signupPopUpVC)
-  
-          //TODOs : 이미지 변경
+          signupPopUpVC.userImageView.updateServerImage(userGithubInfo.profileImage)
           signupPopUpVC.userNameLabel.text = userGithubInfo.username
           signupPopUpNVC.modalPresentationStyle = .overFullScreen
           self.present(signupPopUpNVC, animated: false, completion: nil)

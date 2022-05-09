@@ -72,10 +72,21 @@ extension ShoppingCollectionViewCell {
         if let shoppingInfo = data as? ShoppingResponse {
           
           let friendDetailVC = FriendDetailViewController()
-          //TODOs : 이미지 변경
           friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
           friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
           friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
+          friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head.one ?? "")
+          friendDetailVC.userhairsecondImage.updateServerImage(shoppingInfo.head.two ?? "")
+          friendDetailVC.userhairthirdImage.updateServerImage(shoppingInfo.head.three ?? "")
+          friendDetailVC.userhairfourthImage.updateServerImage(shoppingInfo.head.four ?? "")
+          friendDetailVC.userhairfifthImage.updateServerImage(shoppingInfo.head.five ?? "")
+          friendDetailVC.userhairsixthImage.updateServerImage(shoppingInfo.head.six ?? "")
+          friendDetailVC.userhairseventhImage.updateServerImage(shoppingInfo.head.seven ?? "")
+          friendDetailVC.userhaireighthImage.updateServerImage(shoppingInfo.head.eight ?? "")
+          friendDetailVC.userhairninethImage.updateServerImage(shoppingInfo.head.nine ?? "")
+          friendDetailVC.userhairtenthImage.updateServerImage(shoppingInfo.head.ten ?? "")
+          friendDetailVC.userhaireleventhImage.updateServerImage(shoppingInfo.head.eleven ?? "")
+          friendDetailVC.userhairtwelvethImage.updateServerImage(shoppingInfo.head.twelve ?? "")
           self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
         }
       case .requestErr(let status):
