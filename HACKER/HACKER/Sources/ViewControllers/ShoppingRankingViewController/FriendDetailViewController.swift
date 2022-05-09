@@ -15,7 +15,7 @@ class FriendDetailViewController: UIViewController {
   
   // MARK: - Components
   let backButton = UIButton()
-  let addUserButton = UIButton()
+  let quitUserButton = UIButton()
   let userCharacterImage = UIImageView()
   let userhairfirstImage = UIImageView()
   let userhairsecondImage = UIImageView()
@@ -82,9 +82,9 @@ extension FriendDetailViewController {
     }
   }
   func layoutAddUserButton() {
-    view.add(addUserButton) {
-      $0.setImage(UIImage(named: "addUserIcon"), for: .normal)
-      $0.addTarget(self, action: #selector(self.adduserButtonClicked), for: .touchUpInside)
+    view.add(quitUserButton) {
+      $0.setImage(UIImage(named: "userAddedIcon"), for: .normal)
+      $0.addTarget(self, action: #selector(self.quituserButtonClicked), for: .touchUpInside)
       $0.snp.makeConstraints { make in
         make.centerY.equalTo(self.backButton)
         make.trailing.equalToSuperview().offset(-24)
@@ -290,8 +290,8 @@ extension FriendDetailViewController {
   @objc func backButtonTapped() {
     self.navigationController?.popViewController(animated: false)
   }
-  @objc func adduserButtonClicked() {
-    
+  @objc func quituserButtonClicked() {
+    //친구 취소 버튼 클릭 시
   }
   @objc func attackButtonClicked() {
     
