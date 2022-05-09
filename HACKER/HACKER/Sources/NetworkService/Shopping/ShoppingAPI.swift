@@ -1,0 +1,71 @@
+//
+//  ShoppingAPI.swift
+//  HACKER
+//
+//  Created by 김지수 on 2022/05/10.
+//
+
+import Foundation
+import Moya
+
+public class ShoppingAPI {
+
+    static let shared = ShoppingAPI()
+    var shoppingProvider = MoyaProvider<ShoppingService>(plugins: [MoyaLoggerPlugin()])
+
+    public init() { }
+
+  func friendDetail(userID: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+    shoppingProvider.request(.friendDetail(userID: userID)) { (result) in
+          switch result {
+          case .success(let response):
+              let statusCode = response.statusCode
+              let data = response.data
+              
+              let networkResult = self.judgeShoppingStatus(by: statusCode, data)
+              completion(networkResult)
+              
+          case .failure(let err):
+              print(err)
+          }
+      }
+  }
+    
+    private func judgeShoppingStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(GenericResponse<ShoppingResponse>.self, from: data)
+        else {
+            return .pathErr
+        }
+
+        switch statusCode {
+        case 200:
+            return .success(decodedData.data ?? "None-Data")
+        case 400..<500:
+          return .requestErr(decodedData.status)
+        case 500:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
+    
+    private func judgeStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+        
+        let decoder = JSONDecoder()
+        guard let decodedData = try? decoder.decode(GenericResponse<String>.self, from: data)
+        else { return .pathErr }
+        
+        switch statusCode {
+        case 200:
+            return .success(decodedData.message)
+        case 400..<500:
+            return .requestErr(decodedData.message)
+        case 500:
+            return .serverErr
+        default:
+            return .networkFail
+        }
+    }
+}

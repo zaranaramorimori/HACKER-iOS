@@ -97,7 +97,6 @@ extension FriendDetailViewController {
   }
   func layoutUserNickNameLabel() {
     view.add(userNicknameLabel) {
-      $0.setupLabel(text: "훈세", color: .hackerBlack, font: .titleBold(ofSize: 24))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.bottom).offset(20)
         $0.centerX.equalToSuperview()
@@ -106,7 +105,6 @@ extension FriendDetailViewController {
   }
   func layoutUserGithubNameLabel() {
     view.add(userGithubNameLabel) {
-      $0.setupLabel(text: "devkwonsehoon", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userNicknameLabel.snp.bottom).offset(8)
         $0.centerX.equalToSuperview()
@@ -115,7 +113,6 @@ extension FriendDetailViewController {
   }
   func layoutHairNumLabel() {
     view.add(hairNumLabel) {
-      $0.setupLabel(text: "360가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userGithubNameLabel.snp.bottom).offset(38)
         $0.centerX.equalToSuperview()
