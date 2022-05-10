@@ -63,6 +63,43 @@ extension ShoppingCollectionViewCell {
     let addFriendVC = AddFriendViewController()
     self.parentViewController?.navigationController?.pushViewController(addFriendVC, animated: false)
   }
+  // MARK: - Network
+  func shoppingWithAPI(userID: Int) {
+    ShoppingAPI.shared.friendDetail(userID: userID) { response in
+      switch response {
+      case .success(let data):
+        print("성공티비")
+        if let shoppingInfo = data as? ShoppingResponse {
+          
+          let friendDetailVC = FriendDetailViewController()
+          friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
+          friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+          friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
+          friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head.one ?? "")
+          friendDetailVC.userhairsecondImage.updateServerImage(shoppingInfo.head.two ?? "")
+          friendDetailVC.userhairthirdImage.updateServerImage(shoppingInfo.head.three ?? "")
+          friendDetailVC.userhairfourthImage.updateServerImage(shoppingInfo.head.four ?? "")
+          friendDetailVC.userhairfifthImage.updateServerImage(shoppingInfo.head.five ?? "")
+          friendDetailVC.userhairsixthImage.updateServerImage(shoppingInfo.head.six ?? "")
+          friendDetailVC.userhairseventhImage.updateServerImage(shoppingInfo.head.seven ?? "")
+          friendDetailVC.userhaireighthImage.updateServerImage(shoppingInfo.head.eight ?? "")
+          friendDetailVC.userhairninethImage.updateServerImage(shoppingInfo.head.nine ?? "")
+          friendDetailVC.userhairtenthImage.updateServerImage(shoppingInfo.head.ten ?? "")
+          friendDetailVC.userhaireleventhImage.updateServerImage(shoppingInfo.head.eleven ?? "")
+          friendDetailVC.userhairtwelvethImage.updateServerImage(shoppingInfo.head.twelve ?? "")
+          self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
+        }
+      case .requestErr(let status):
+        print("shoppingWithAPI - requestErr: \(status)")
+      case .pathErr:
+        print("userPhotosWithAPI - pathErr")
+      case .serverErr:
+        print("userPhotosWithAPI - serverErr")
+      case .networkFail:
+        print("userPhotosWithAPI - networkFail")
+      }
+    }
+  }
 }
 // MARK: - UICollectionViewDataSource
 extension ShoppingCollectionViewCell: UICollectionViewDataSource {
@@ -84,6 +121,8 @@ extension ShoppingCollectionViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if indexPath.item == 0 {
       self.setupNewFriend()
+    } else {
+      self.shoppingWithAPI(userID: indexPath.row)
     }
   }
 }

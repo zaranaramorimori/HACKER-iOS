@@ -258,8 +258,6 @@ extension NicknameViewController {
       case .requestErr(let status):
         print("userNicknameWithAPI - requestErr: \(status)")
         if let statusCode = status as? Int {
-          print("여기야여기")
-          print(statusCode)
           switch statusCode {
           case 409 :
             self.explainLabel.text = "앗! 이미 사용중인 이름이에요 :)"

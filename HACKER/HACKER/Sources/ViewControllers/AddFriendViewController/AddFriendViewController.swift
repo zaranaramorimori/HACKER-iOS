@@ -1,18 +1,17 @@
 //
-//  SignupViewController.swift
+//  AddFriendViewController.swift
 //  HACKER
 //
-//  Created by 김지수 on 2022/02/08.
+//  Created by 김지수 on 2022/05/08.
 //
 
 import UIKit
 
 import SnapKit
 import Then
-import CoreMedia
 
-// MARK: - SignupViewController
-class SignupViewController: UIViewController {
+//MARK: - AddFriendViewController
+class AddFriendViewController: UIViewController {
   
   // MARK: - Components
   let hackerImageView = UIImageView()
@@ -33,7 +32,7 @@ class SignupViewController: UIViewController {
 }
 
 // MARK: - Extensions
-extension SignupViewController {
+extension AddFriendViewController {
   func setBackground() {
       self.view.backgroundColor = .hackerWhite
       self.navigationController?.navigationBar.isHidden = true
@@ -62,7 +61,7 @@ extension SignupViewController {
   }
   func layoutHelloLabel() {
     self.view.add(helloLabel) {
-      $0.setupLabel(text: "안녕하세요!", color: .hackerBlack, font: .titleBold(ofSize: 24))
+      $0.setupLabel(text: "친구를 찾아봐요!", color: .hackerBlack, font: .titleBold(ofSize: 24))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.hackerImageView.snp.bottom).offset(16)
         $0.centerX.equalToSuperview()
@@ -71,7 +70,7 @@ extension SignupViewController {
   }
   func layoutExplainLabel() {
     self.view.add(explainLabel) {
-      $0.setupLabel(text: "Github 유저 네임을 적어주세요", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+      $0.setupLabel(text: "추가할 Github 유저 네임을 적어주세요", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.helloLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
@@ -127,7 +126,7 @@ extension SignupViewController {
 }
 
 // MARK: - Extension
-extension SignupViewController {
+extension AddFriendViewController {
   /// 키보드가 올라오면 버튼도 따라서 올라오게
   func setKeyboardObserver() {
     NotificationCenter.default.addObserver(self, selector: #selector(textViewMoveUp), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -146,8 +145,6 @@ extension SignupViewController {
   }
   /// 화면전환
   @objc func touchNextButton() {
-    /// username 받아오기
-    userGithubIDWithAPI(username: self.usernameTextField.text ?? "")
     if !usernameTextField.hasText {
       self.makeAlertOnlyMessage(message: "유저네임을 입력하세요", okAction: nil)
     }
@@ -155,7 +152,7 @@ extension SignupViewController {
 }
 
 // MARK: - UITextFieldDelegate
-extension SignupViewController: UITextFieldDelegate {
+extension AddFriendViewController: UITextFieldDelegate {
   
   /// Return 눌렀을 때 키보드 내리기
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -178,45 +175,5 @@ extension SignupViewController: UITextFieldDelegate {
     }
     nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-  }
-}
-
-// MARK: - Network
-extension SignupViewController {
-  func userGithubIDWithAPI(username: String) {
-    SignUpAPI.shared.userGithubName(username: username) { response in
-      switch response {
-      case .success(let data):
-        print("성공티비")
-        if let userGithubInfo = data as? SignUpResponse {
-          let signupPopUpVC = SignupPopUpViewController()
-          let signupPopUpNVC = UINavigationController(rootViewController: signupPopUpVC)
-          signupPopUpVC.userImageView.updateServerImage(userGithubInfo.profileImage)
-          signupPopUpVC.userNameLabel.text = userGithubInfo.username
-          signupPopUpNVC.modalPresentationStyle = .overFullScreen
-          self.present(signupPopUpNVC, animated: false, completion: nil)
-        }
-        
-      case .requestErr(let status):
-        print("userPhotosWithAPI - requestErr: \(status)")
-        if let statusCode = status as? Int {
-          switch statusCode {
-          case 404 :
-            let unknownUserVC = UnknownUserPopUpViewController()
-            unknownUserVC.modalPresentationStyle = .overFullScreen
-            self.present(unknownUserVC, animated: false, completion: nil)
-          default :
-            break
-          }
-        }
-        
-      case .pathErr:
-        print("userPhotosWithAPI - pathErr")
-      case .serverErr:
-        print("userPhotosWithAPI - serverErr")
-      case .networkFail:
-        print("userPhotosWithAPI - networkFail")
-      }
-    }
   }
 }
