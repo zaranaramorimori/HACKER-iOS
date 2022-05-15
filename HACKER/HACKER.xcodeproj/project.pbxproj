@@ -47,6 +47,9 @@
 		86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86DF9A7927ECF61E00C7D493 /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86DF9A7B27ECF8EC00C7D493 /* NicknameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7A27ECF8EC00C7D493 /* NicknameUITests.swift */; };
+		86E4CF6D282B7E280069C048 /* FriendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E4CF6C282B7E280069C048 /* FriendAPI.swift */; };
+		86E4CF6F282F41CB0069C048 /* FriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E4CF6E282F41CB0069C048 /* FriendService.swift */; };
+		86E4CF72282F46CD0069C048 /* FriendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E4CF71282F46CD0069C048 /* FriendResponse.swift */; };
 		86F9EB2327E8D51100E1FEFD /* HACKERUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */; };
 		86F9EB3027E9D63000E1FEFD /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86F9EB3727E9DBB400E1FEFD /* TestErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB3427E9DBAE00E1FEFD /* TestErrorMessage.swift */; };
@@ -169,6 +172,9 @@
 		86DF9A7327EB37C900C7D493 /* SignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUITests.swift; sourceTree = "<group>"; };
 		86DF9A7627ECF1B500C7D493 /* UITestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUtils.swift; sourceTree = "<group>"; };
 		86DF9A7A27ECF8EC00C7D493 /* NicknameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameUITests.swift; sourceTree = "<group>"; };
+		86E4CF6C282B7E280069C048 /* FriendAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAPI.swift; sourceTree = "<group>"; };
+		86E4CF6E282F41CB0069C048 /* FriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendService.swift; sourceTree = "<group>"; };
+		86E4CF71282F46CD0069C048 /* FriendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendResponse.swift; sourceTree = "<group>"; };
 		86F9EB2027E8D51100E1FEFD /* HACKERUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERUITests.swift; sourceTree = "<group>"; };
 		86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetIdentifier.swift; sourceTree = "<group>"; };
@@ -274,6 +280,7 @@
 		77233E9328182814006B7903 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				86E4CF6B282B7E020069C048 /* Friend */,
 				E85657822829715C001BE9E4 /* Shopping */,
 				E80282CB2823A64A00268A5A /* Main */,
 				E80282C1282388E100268A5A /* NickName */,
@@ -429,6 +436,23 @@
 				869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		86E4CF6B282B7E020069C048 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				86E4CF6C282B7E280069C048 /* FriendAPI.swift */,
+				86E4CF6E282F41CB0069C048 /* FriendService.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		86E4CF70282F467D0069C048 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				86E4CF71282F46CD0069C048 /* FriendResponse.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		86F7ADBA2E616E873EB7C0F1 /* Frameworks */ = {
@@ -700,6 +724,7 @@
 		E8C7316D28274E0400431E5F /* AddFriendViewController */ = {
 			isa = PBXGroup;
 			children = (
+				86E4CF70282F467D0069C048 /* DataModel */,
 				E8C7316E28274E2100431E5F /* AddFriendViewController.swift */,
 				E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */,
 				E8C73172282750ED00431E5F /* CheckAddUserPopUpViewController.swift */,
@@ -1083,6 +1108,7 @@
 				E80282C5282388F800268A5A /* NickNameService.swift in Sources */,
 				E855DD3627EF4556003F3B34 /* FriendDetailViewController.swift in Sources */,
 				E85657842829716B001BE9E4 /* ShoppingAPI.swift in Sources */,
+				86E4CF72282F46CD0069C048 /* FriendResponse.swift in Sources */,
 				77233EB2282231E0006B7903 /* TeamViewController.swift in Sources */,
 				E855DD2B27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
@@ -1106,6 +1132,7 @@
 				E87ED83C2823637E00775A85 /* SignUpService.swift in Sources */,
 				E855DD2627EF0AC4003F3B34 /* ShoppingRankingViewController.swift in Sources */,
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
+				86E4CF6D282B7E280069C048 /* FriendAPI.swift in Sources */,
 				E8C731712827509D00431E5F /* NotHackerUserPopUpViewController.swift in Sources */,
 				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
 				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
@@ -1113,6 +1140,7 @@
 				77BA0E552822ED1900EC41A5 /* UIImageView+Extension.swift in Sources */,
 				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
 				77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */,
+				86E4CF6F282F41CB0069C048 /* FriendService.swift in Sources */,
 				E80282BD2823764B00268A5A /* SignUpResponse.swift in Sources */,
 				773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */,
 				77233EB72822CB8C006B7903 /* LogTableViewCell.swift in Sources */,
