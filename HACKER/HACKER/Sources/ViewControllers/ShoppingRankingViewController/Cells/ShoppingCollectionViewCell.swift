@@ -100,6 +100,40 @@ extension ShoppingCollectionViewCell {
       }
     }
   }
+  func searchFriendWithAPI() {
+    SearchFriendAPI.shared.searchFriend { response in
+      switch response {
+      case .success(let data):
+        if let searchFriendInfo = data as? [SearchFriendResponse] {
+          let friendCell = MyFriendsCollectionViewCell()
+          print(searchFriendInfo)
+          friendCell.userNameLabel.setupLabel(text: "\(searchFriendInfo[0].nickname)", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
+          friendCell.userhairfirstImage.updateServerImage(searchFriendInfo[0].head.one ?? "")
+          friendCell.userhairsecondImage.updateServerImage(searchFriendInfo[0].head.two ?? "")
+          friendCell.userhairthirdImage.updateServerImage(searchFriendInfo[0].head.three ?? "")
+          friendCell.userhairfourthImage.updateServerImage(searchFriendInfo[0].head.four ?? "")
+          friendCell.userhairfifthImage.updateServerImage(searchFriendInfo[0].head.five ?? "")
+          friendCell.userhairsixthImage.updateServerImage(searchFriendInfo[0].head.six ?? "")
+          friendCell.userhairseventhImage.updateServerImage(searchFriendInfo[0].head.seven ?? "")
+          friendCell.userhaireighthImage.updateServerImage(searchFriendInfo[0].head.eight ?? "")
+          friendCell.userhairninethImage.updateServerImage(searchFriendInfo[0].head.nine ?? "")
+          friendCell.userhairtenthImage.updateServerImage(searchFriendInfo[0].head.ten ?? "")
+          friendCell.userhaireleventhImage.updateServerImage(searchFriendInfo[0].head.eleven ?? "")
+          friendCell.userhairtwelvethImage.updateServerImage(searchFriendInfo[0].head.twelve ?? "")
+          self.myFriendsCollectionView.reloadData()
+        }
+      case .requestErr(let status):
+        print("SearchFriendAPI - requestErr: \(status)")
+  
+      case .pathErr:
+        print("SearchFriendAPI - pathErr")
+      case .serverErr:
+        print("SearchFriendAPI - serverErr")
+      case .networkFail:
+        print("SearchFriendAPI - networkFail")
+      }
+    }
+  }
 }
 // MARK: - UICollectionViewDataSource
 extension ShoppingCollectionViewCell: UICollectionViewDataSource {
@@ -115,6 +149,7 @@ extension ShoppingCollectionViewCell: UICollectionViewDataSource {
       return addCell
     } else {
       friendCell.awakeFromNib()
+//      searchFriendWithAPI()
       return friendCell
     }
   }
