@@ -147,6 +147,8 @@ extension AddFriendViewController {
   @objc func touchNextButton() {
     if !usernameTextField.hasText {
       self.makeAlertOnlyMessage(message: "유저네임을 입력하세요", okAction: nil)
+    } else {
+      searchGithubAPI(username: usernameTextField.text ?? "")
     }
   }
 }
@@ -175,5 +177,40 @@ extension AddFriendViewController: UITextFieldDelegate {
     }
     nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+  }
+}
+
+// MARK: - Network
+extension AddFriendViewController {
+  func searchGithubAPI(username: String) {
+    FriendAPI.shared.searchFriendGithub(username: username) { (response) in
+      switch response {
+      case .success(let data):
+        print("성 공 yeah")
+        if let userGithubInfo = data as? [FriendGithubResponse] {
+          let friendListVC = CheckFriendViewController()
+          self.navigationController?.pushViewController(friendListVC, animated: true)
+        }
+      case .requestErr(let status):
+        print("userPhotosWithAPI - requestErr: \(status)")
+        if let statusCode = status as? Int {
+          switch statusCode {
+          case 404 :
+            let notUserVC = NotHackerUserPopUpViewController()
+            notUserVC.modalPresentationStyle = .overFullScreen
+            self.present(notUserVC, animated: false, completion: nil)
+          default :
+            break
+          }
+        }
+        
+      case .pathErr:
+        print("userPhotosWithAPI - pathErr")
+      case .serverErr:
+        print("userPhotosWithAPI - serverErr")
+      case .networkFail:
+        print("userPhotosWithAPI - networkFail")
+      }
+    }
   }
 }

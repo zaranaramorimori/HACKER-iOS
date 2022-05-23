@@ -34,7 +34,7 @@ public class FriendAPI {
   
   private func judgeGithubStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
     let decoder = JSONDecoder()
-    guard let decodedData = try? decoder.decode(GenericResponse<FriendGithubResponse>.self, from: data) else {
+    guard let decodedData = try? decoder.decode(GenericResponse<[FriendGithubResponse]>.self, from: data) else {
       return .pathErr
     }
     
