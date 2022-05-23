@@ -39,6 +39,7 @@
 		77BA0E572822F07D00EC41A5 /* SeasonTeamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E562822F07D00EC41A5 /* SeasonTeamResponse.swift */; };
 		77BA0E5A2823095500EC41A5 /* TeamDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E592823095500EC41A5 /* TeamDetailResponse.swift */; };
 		77BA0E5C2823720700EC41A5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E5B2823720700EC41A5 /* EmptyView.swift */; };
+		86287D63283BAC9400391C4D /* FriendListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86287D62283BAC9400391C4D /* FriendListCollectionViewCell.swift */; };
 		8648AD9727E8D417009F5C7A /* HACKERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8648AD9627E8D417009F5C7A /* HACKERTests.swift */; };
 		869B5AC127ECFFB500F2ACA7 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */; };
 		869B5AC327ED04D000F2ACA7 /* XCUIElement+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */; };
@@ -165,6 +166,7 @@
 		77BA0E592823095500EC41A5 /* TeamDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailResponse.swift; sourceTree = "<group>"; };
 		77BA0E5B2823720700EC41A5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		834AE9E2D5646B5161A239D4 /* Pods-HACKERUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		86287D62283BAC9400391C4D /* FriendListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCollectionViewCell.swift; sourceTree = "<group>"; };
 		8648AD9427E8D417009F5C7A /* HACKERTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8648AD9627E8D417009F5C7A /* HACKERTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERTests.swift; sourceTree = "<group>"; };
 		869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
@@ -417,6 +419,14 @@
 				7789EBE82823A97700237036 /* pullingOut.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		86287D61283BAC7300391C4D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				86287D62283BAC9400391C4D /* FriendListCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		8648AD9527E8D417009F5C7A /* HACKERTests */ = {
@@ -724,6 +734,7 @@
 		E8C7316D28274E0400431E5F /* AddFriendViewController */ = {
 			isa = PBXGroup;
 			children = (
+				86287D61283BAC7300391C4D /* Cell */,
 				86E4CF70282F467D0069C048 /* DataModel */,
 				E8C7316E28274E2100431E5F /* AddFriendViewController.swift */,
 				E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */,
@@ -1114,6 +1125,7 @@
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
 				E855DD3027EF1DC4003F3B34 /* identifiable.swift in Sources */,
 				E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */,
+				86287D63283BAC9400391C4D /* FriendListCollectionViewCell.swift in Sources */,
 				E833EEF327C247A400107741 /* SplashViewController.swift in Sources */,
 				E80282BF282376EF00268A5A /* UIViewController+Extension.swift in Sources */,
 				77233EBF2822DB78006B7903 /* FightService.swift in Sources */,

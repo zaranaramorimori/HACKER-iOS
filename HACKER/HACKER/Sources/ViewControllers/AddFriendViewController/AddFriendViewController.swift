@@ -115,7 +115,7 @@ extension AddFriendViewController {
       $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
-      $0.addTarget(self, action: #selector(self.touchNextButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchAddButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
@@ -144,7 +144,7 @@ extension AddFriendViewController {
     self.nextButton.transform = .identity
   }
   /// 화면전환
-  @objc func touchNextButton() {
+  @objc func touchAddButton() {
     if !usernameTextField.hasText {
       self.makeAlertOnlyMessage(message: "유저네임을 입력하세요", okAction: nil)
     } else {
@@ -186,13 +186,12 @@ extension AddFriendViewController {
     FriendAPI.shared.searchFriendGithub(username: username) { (response) in
       switch response {
       case .success(let data):
-        print("성 공 yeah")
         if let userGithubInfo = data as? [FriendGithubResponse] {
           let friendListVC = CheckFriendViewController()
+          friendListVC.friendList = userGithubInfo
           self.navigationController?.pushViewController(friendListVC, animated: true)
         }
       case .requestErr(let status):
-        print("userPhotosWithAPI - requestErr: \(status)")
         if let statusCode = status as? Int {
           switch statusCode {
           case 404 :

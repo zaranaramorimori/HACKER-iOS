@@ -13,12 +13,28 @@ import Then
 //MARK: - CheckFriendViewController
 class CheckFriendViewController: UIViewController {
   
-  // MARK: - Components
-  let hackerImageView = UIImageView()
-  let helloLabel = UILabel()
-  let explainLabel = UILabel()
-  let nextButton = UIButton()
+  //MARK: - Properties
+  var friendList: [FriendGithubResponse]?
   
+  // MARK: - Components
+  private let hackerImageView = UIImageView()
+  private let helloLabel = UILabel()
+  private let explainLabel = UILabel()
+  private let addButton = UIButton()
+  private let friendCollectionView: UICollectionView = {
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .vertical
+    
+    let collectionView = UICollectionView(frame: .zero,
+                                          collectionViewLayout: layout)
+    collectionView.isScrollEnabled = true
+    collectionView.showsHorizontalScrollIndicator = false
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.backgroundColor = .hackerWhite
+    collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    
+    return collectionView
+  }()
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -40,8 +56,12 @@ extension CheckFriendViewController {
     layoutHelloLabel()
     layoutExplainLabel()
     layoutNextButton()
+    layoutFriendCV()
   }
   func attribute() {
+    friendCollectionView.delegate = self
+    friendCollectionView.dataSource = self
+    friendCollectionView.register(FriendListCollectionViewCell.self, forCellWithReuseIdentifier: FriendListCollectionViewCell.identifier)
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
@@ -74,12 +94,12 @@ extension CheckFriendViewController {
   }
   
   func layoutNextButton() {
-    self.view.add(nextButton) {
+    self.view.add(addButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
       $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
-      $0.addTarget(self, action: #selector(self.touchNextButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchAddButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
@@ -87,7 +107,50 @@ extension CheckFriendViewController {
       }
     }
   }
-  @objc func touchNextButton() {
+  
+  func layoutFriendCV() {
+    self.view.add(friendCollectionView) {
+      $0.snp.makeConstraints { make in
+        make.top.equalTo(self.explainLabel.snp.bottom).offset(35)
+        make.leading.trailing.equalToSuperview().inset(24)
+        make.bottom.equalTo(self.addButton.snp.top).inset(10)
+      }
+    }
+  }
+}
+
+// MARK: - Actions
+extension CheckFriendViewController {
+  @objc func touchAddButton() {
     
+  }
+}
+
+// MARK: - UICollectionViewDataSource
+extension CheckFriendViewController: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return friendList?.count ?? 0
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendListCollectionViewCell.identifier, for: indexPath) as? FriendListCollectionViewCell else {return UICollectionViewCell() }
+    
+    cell.currentFriendData = friendList?[indexPath.item]
+    cell.awakeFromNib()
+    
+    return cell
+  }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension CheckFriendViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: collectionView.frame.width, height: 100)
+  }
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets.zero
+  }
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return 8
   }
 }
