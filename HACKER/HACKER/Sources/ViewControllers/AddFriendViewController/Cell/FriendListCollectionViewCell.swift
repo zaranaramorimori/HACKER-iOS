@@ -13,6 +13,7 @@ class FriendListCollectionViewCell: UICollectionViewCell {
   // MARK: - Properties
   static let identifier = "FriendListCollectionViewCell"
   var currentFriendData: FriendGithubResponse?
+  var isChecked: Bool = false
     
   // MARK: - Components
   private var profileImageView = UIImageView().then {
@@ -32,35 +33,49 @@ class FriendListCollectionViewCell: UICollectionViewCell {
     $0.font = .bodyRegular(ofSize: 16)
   }
   
+  private var checkButton = UIButton().then {
+    $0.contentMode = .center
+    $0.addTarget(self, action: #selector(touchCheckButton), for: .touchUpInside)
+  }
+  
   // MARK: - LifeCycles
   override func awakeFromNib() {
     super.awakeFromNib()
     setupLayout()
+    updateCheckButton()
     updateCell()
   }
 }
 
 extension FriendListCollectionViewCell {
   private func setupLayout() {
-    self.contentView.addSubviews([profileImageView, nameLabel, usernameLabel])
+    self.contentView.addSubviews([profileImageView, nameLabel, usernameLabel, checkButton])
     
     contentView.setBorder(borderColor: .hackerBlack, borderWidth: 3)
     contentView.setRounded(radius: 20)
     
     profileImageView.snp.makeConstraints { make in
       make.leading.equalToSuperview().offset(20)
-      make.top.bottom.equalToSuperview().inset(18)
-      make.width.equalTo(64)
+      make.centerY.equalToSuperview()
+      make.width.height.equalTo(64)
     }
     
     nameLabel.snp.makeConstraints { make in
       make.leading.equalTo(self.profileImageView.snp.trailing).offset(16)
+      make.trailing.equalTo(self.checkButton.snp.leading).offset(10)
       make.top.equalToSuperview().offset(23)
     }
     
     usernameLabel.snp.makeConstraints { make in
       make.leading.equalTo(self.nameLabel)
+      make.trailing.equalTo(self.checkButton.snp.leading).offset(10)
       make.top.equalTo(self.nameLabel.snp.bottom)
+    }
+    
+    checkButton.snp.makeConstraints { make in
+      make.trailing.equalToSuperview().inset(18)
+      make.width.equalTo(66)
+      make.centerY.equalToSuperview()
     }
   }
   
@@ -75,6 +90,31 @@ extension FriendListCollectionViewCell {
       contentView.alpha = 0.3
     } else {
       contentView.alpha = 1
+    }
+  }
+}
+
+// MARK: - Actions
+extension FriendListCollectionViewCell {
+  @objc private func touchCheckButton() {
+    isChecked = !isChecked
+    updateCheckButton()
+  }
+}
+
+// MARK: - Functions
+extension FriendListCollectionViewCell {
+  private func updateCheckButton() {
+    guard let data = currentFriendData else { return }
+    
+    if data.isFriend {
+      checkButton.setImage(UIImage(named: "userAddedIcon"), for: .normal)
+    } else {
+      if isChecked {
+        checkButton.setImage(UIImage(named: "addFriend_chackOn"), for: .normal)
+      } else {
+        checkButton.setImage(UIImage(named: "addFriend_chackOff"), for: .normal)
+      }
     }
   }
 }
