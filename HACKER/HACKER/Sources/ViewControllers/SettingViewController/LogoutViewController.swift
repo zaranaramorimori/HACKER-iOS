@@ -86,6 +86,7 @@ class LogoutViewController: UIViewController {
     // MARK: - @objc
     
     @objc func touchYesButton(_ sender: UIButton) {
+      //TODO: logout 서버
         print("touchYesButton")
     }
     

@@ -96,6 +96,9 @@ extension SettingViewController: UITableViewDataSource {
         logoutVC.modalTransitionStyle = .crossDissolve
         logoutVC.modalPresentationStyle = .overCurrentContext
         self.present(logoutVC, animated: false, completion: nil)
+      case 5:
+        let deleteAccountVC = DeleteAccountViewController()
+        self.navigationController?.pushViewController(deleteAccountVC, animated: true)
       default: print("default!")
         
       }

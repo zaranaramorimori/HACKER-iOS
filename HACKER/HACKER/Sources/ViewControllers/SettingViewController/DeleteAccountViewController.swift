@@ -117,10 +117,11 @@ class DeleteAccountViewController: UIViewController {
   // MARK: - @objc
   
   @objc func touchBackButton(_ sender: UIButton) {
-    print("go back")
+    self.navigationController?.popViewController(animated: true)
   }
   
   @objc func touchDeleteAccountButton(_ sender: UIButton) {
     print("deleteAccountButton")
+    // TODO: 서비스 탈퇴 서버
   }
 }
