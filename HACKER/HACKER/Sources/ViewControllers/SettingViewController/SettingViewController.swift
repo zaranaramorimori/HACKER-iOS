@@ -35,11 +35,12 @@ class SettingViewController: UIViewController {
     }
     
     // MARK: - Custom Method
-    
-    private func configUI() {
-        self.view.backgroundColor = .hackerWhite
-        self.navigationController?.navigationBar.isHidden = true
-    }
+  
+  private func configUI() {
+    self.view.backgroundColor = .hackerWhite
+    self.navigationController?.navigationBar.isHidden = true
+    self.tabBarController?.tabBar.isHidden = true
+  }
     
     private func setupAutoLayout() {
         view.addSubviews([navigationBar, settingsTableView])
@@ -88,7 +89,13 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       switch indexPath.section {
-      case 1: openURL(link: URL(string: Const.URL.termURL)!)
+      case 1:
+        openURL(link: URL(string: Const.URL.termURL)!)
+      case 4:
+        let logoutVC = LogoutViewController()
+        logoutVC.modalTransitionStyle = .crossDissolve
+        logoutVC.modalPresentationStyle = .overCurrentContext
+        self.present(logoutVC, animated: false, completion: nil)
       default: print("default!")
         
       }

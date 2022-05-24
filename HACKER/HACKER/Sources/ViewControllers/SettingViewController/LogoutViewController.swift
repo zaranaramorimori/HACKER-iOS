@@ -44,16 +44,10 @@ class LogoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configUI()
         setupAutoLayout()
     }
     
     // MARK: - Custom Method
-    
-    private func configUI() {
-        view.backgroundColor = .hackerWhite
-    }
-    
     private func setupAutoLayout() {
         view.addSubviews([dimmedBackView, popUpView,
                           logoutLabel,
@@ -96,6 +90,6 @@ class LogoutViewController: UIViewController {
     }
     
     @objc func touchNoButton(_ sender: UIButton) {
-        print("touchNoButton")
+      self.dismiss(animated: true)
     }
 }
