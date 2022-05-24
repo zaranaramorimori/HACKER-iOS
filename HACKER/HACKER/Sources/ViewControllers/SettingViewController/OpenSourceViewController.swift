@@ -1,19 +1,19 @@
 //
-//  SettingViewController.swift
+//  OpenSourceViewController.swift
 //  HACKER
 //
-//  Created by Yi Joon Choi on 2022/03/24.
+//  Created by Yi Joon Choi on 2022/05/24.
 //
 
 import UIKit
 import SnapKit
 import Then
 
-class SettingViewController: UIViewController {
+class OpenSourceViewController: UIViewController {
     
     // MARK: - Components
     private let navigationBar = HackerNavigationBar()
-    private lazy var settingsTableView = UITableView(frame: .zero, style: .grouped).then {
+    private lazy var openSourceTableView = UITableView(frame: .zero, style: .grouped).then {
         $0.dataSource = self
         $0.delegate = self
         $0.backgroundColor = .hackerWhite
@@ -25,8 +25,8 @@ class SettingViewController: UIViewController {
         }
     }
     
-    private let settingTitles = ["닉네임 변경", "이용약관", "오픈소스 라이선스",
-                                 "만든 사람들", "로그아웃", "서비스 탈퇴"]
+    private let openSourceTitles = ["Moya", "SwiftLint", "Kingfisher",
+                                 "Snapkit", "Then"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class SettingViewController: UIViewController {
   }
     
     private func setupAutoLayout() {
-        view.addSubviews([navigationBar, settingsTableView])
+        view.addSubviews([navigationBar, openSourceTableView])
       navigationBar.iconLayout(isBack: true, logoImage: UIImage(named: "settingsIcon"), rightImage: nil)
         navigationBar.popViewController = {
             self.navigationController?.popViewController(animated: true)
@@ -52,7 +52,7 @@ class SettingViewController: UIViewController {
             make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             make.height.equalTo(72)
         }
-        settingsTableView.snp.makeConstraints { make in
+      openSourceTableView.snp.makeConstraints { make in
             make.top.equalTo(self.navigationBar.snp.bottom).offset(8)
             make.leading.equalToSuperview().inset(24)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
@@ -68,13 +68,13 @@ class SettingViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource
-extension SettingViewController: UITableViewDataSource {
+extension OpenSourceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+      return openSourceTitles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,34 +82,25 @@ extension SettingViewController: UITableViewDataSource {
         
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
-        cell.titleLabel.text = settingTitles[indexPath.section]
+        cell.titleLabel.text = openSourceTitles[indexPath.section]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       switch indexPath.section {
-      case 1:
-        openURL(link: URL(string: Const.URL.termURL)!)
-      case 2:
-        let openSourceVC = OpenSourceViewController()
-        self.navigationController?.pushViewController(openSourceVC, animated: true)
-      case 4:
-        let logoutVC = LogoutViewController()
-        logoutVC.modalTransitionStyle = .crossDissolve
-        logoutVC.modalPresentationStyle = .overCurrentContext
-        self.present(logoutVC, animated: false, completion: nil)
-      case 5:
-        let deleteAccountVC = DeleteAccountViewController()
-        self.navigationController?.pushViewController(deleteAccountVC, animated: true)
+      case 0: openURL(link: URL(string: Const.URL.moyaURL)!)
+      case 1: openURL(link: URL(string: Const.URL.swiftLintURL)!)
+      case 2: openURL(link: URL(string: Const.URL.kingfisherURL)!)
+      case 3: openURL(link: URL(string: Const.URL.snapkitURL)!)
+      case 4: openURL(link: URL(string: Const.URL.thenURL)!)
       default: print("default!")
-        
       }
     }
 }
 
 // MARK: - UITableViewDelegate
-extension SettingViewController: UITableViewDelegate {
+extension OpenSourceViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = .clear
