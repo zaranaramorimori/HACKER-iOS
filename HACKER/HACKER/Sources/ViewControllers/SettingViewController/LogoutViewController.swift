@@ -86,8 +86,11 @@ class LogoutViewController: UIViewController {
     // MARK: - @objc
     
     @objc func touchYesButton(_ sender: UIButton) {
-      //TODO: logout 서버
-        print("touchYesButton")
+      UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.accessToken)
+      UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.refreshToken)
+      //TODO: 또 유저디폴트에 저장해놓은거 있으면 여기서 없애주기
+      let loginVC = LoginViewController()
+      self.changeRootViewController(loginVC)
     }
     
     @objc func touchNoButton(_ sender: UIButton) {
