@@ -58,6 +58,12 @@ class SettingViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
     }
+  
+  func openURL(link: URL) {
+    if UIApplication.shared.canOpenURL(link) {
+      UIApplication.shared.open(link, options: [:], completionHandler: nil)
+    }
+  }
 }
 
 // MARK: - UITableViewDataSource
@@ -81,8 +87,11 @@ extension SettingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
-        print(indexPath.section)
+      switch indexPath.section {
+      case 1: openURL(link: URL(string: Const.URL.termURL)!)
+      default: print("default!")
+        
+      }
     }
 }
 
