@@ -8,12 +8,12 @@
 import UIKit
 
 import SnapKit
-import Then
 
-//MARK: - CheckAddUserPopUpViewController
+// MARK: - CheckAddUserPopUpViewController
 class CheckAddUserPopUpViewController: UIViewController {
 
   // MARK: - Properties
+  var parentVC: UIViewController?
   var friendId: Int?
   
   // MARK: - Components
@@ -148,9 +148,40 @@ extension CheckAddUserPopUpViewController {
     }
   }
   @objc func pushNickNameVC() {
-    let nicknameVC = NicknameViewController()
-    nicknameVC.userGithubName = userNameLabel.text
-    self.navigationController?.pushViewController(nicknameVC, animated: false)
+//    let nicknameVC = NicknameViewController()
+//    nicknameVC.userGithubName = userNameLabel.text
+//    self.navigationController?.pushViewController(nicknameVC, animated: false)
+    if let id = friendId {
+      FriendAPI.shared.addFriend(requestBody: AddFriendRequest(friendId: id)) { (response) in
+        switch response {
+        case .success(let data):
+          if let userGithubInfo = data as? AddFriendResponse {
+            if userGithubInfo.isFriend {
+              print("became friends")
+              self.dismiss(animated: false) {
+                self.parentVC?.navigationController?.popToRootViewController(animated: true)
+              }
+            }
+          }
+        case .requestErr(let status):
+          if let statusCode = status as? Int {
+            switch statusCode {
+            case 400 :
+              print("[ERR] 필요한 값이 없습니다.")
+            default :
+              break
+            }
+          }
+          
+        case .pathErr:
+          print("addFriendAPI - pathErr")
+        case .serverErr:
+          print("addFriendAPI - serverErr")
+        case .networkFail:
+          print("addFriendAPI - networkFail")
+        }
+      }
+    }
   }
   @objc func dismissPopUpVC() {
     self.dismiss(animated: false, completion: nil)

@@ -10,6 +10,7 @@ import Moya
 
 enum FriendService {
   case searchFriendGithub(username: String)
+  case addFriend(requestBody: AddFriendRequest)
 }
 
 extension FriendService: TargetType {
@@ -21,6 +22,8 @@ extension FriendService: TargetType {
     switch self {
     case .searchFriendGithub(let username):
       return "/friend/github/\(username)"
+    case .addFriend:
+      return "/friend"
     }
   }
   
@@ -28,6 +31,8 @@ extension FriendService: TargetType {
     switch self {
     case .searchFriendGithub:
       return .get
+    case .addFriend:
+      return .post
     }
   }
   
@@ -39,12 +44,16 @@ extension FriendService: TargetType {
     switch self {
     case .searchFriendGithub:
       return .requestPlain
+    case .addFriend(let requestBody):
+      return .requestJSONEncodable(requestBody)
     }
   }
   
   var headers: [String : String]? {
     switch self {
     case .searchFriendGithub:
+      return Const.Header.basicHeader()
+    case .addFriend:
       return Const.Header.basicHeader()
     }
   }
