@@ -13,8 +13,10 @@ import Then
 //MARK: - CheckFriendViewController
 class CheckFriendViewController: UIViewController {
   
-  //MARK: - Properties
+  // MARK: - Properties
   var friendList: [FriendGithubResponse]?
+  var prevIndex: IndexPath?
+  var checkedIndex: Int?
   
   // MARK: - Components
   private let hackerImageView = UIImageView()
@@ -136,6 +138,15 @@ extension CheckFriendViewController: UICollectionViewDataSource {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendListCollectionViewCell.identifier, for: indexPath) as? FriendListCollectionViewCell else {return UICollectionViewCell() }
     
     cell.currentFriendData = friendList?[indexPath.item]
+    
+    if let index = checkedIndex {
+      if indexPath.item == index {
+        cell.isChecked = true
+      } else {
+        cell.isChecked = false
+      }
+    }
+    
     cell.awakeFromNib()
     
     return cell
@@ -147,10 +158,27 @@ extension CheckFriendViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: collectionView.frame.width, height: 100)
   }
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     return UIEdgeInsets.zero
   }
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return 8
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    collectionView.deselectItem(at: indexPath, animated: false)
+    
+    guard let data = friendList?[indexPath.item] else { return }
+    if !data.isFriend {
+      checkedIndex = indexPath.item
+      if let prev = prevIndex {
+          collectionView.reloadItems(at: [prev, indexPath])
+      } else {
+          collectionView.reloadItems(at: [indexPath])
+      }
+      prevIndex = indexPath
+    }
   }
 }

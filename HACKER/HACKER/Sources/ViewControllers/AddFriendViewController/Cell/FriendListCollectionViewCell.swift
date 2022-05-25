@@ -33,9 +33,8 @@ class FriendListCollectionViewCell: UICollectionViewCell {
     $0.font = .bodyRegular(ofSize: 16)
   }
   
-  private var checkButton = UIButton().then {
+  private var checkButton = UIImageView().then {
     $0.contentMode = .center
-    $0.addTarget(self, action: #selector(touchCheckButton), for: .touchUpInside)
   }
   
   // MARK: - LifeCycles
@@ -96,25 +95,25 @@ extension FriendListCollectionViewCell {
 
 // MARK: - Actions
 extension FriendListCollectionViewCell {
-  @objc private func touchCheckButton() {
-    isChecked = !isChecked
-    updateCheckButton()
+  @objc private func updateCheckButton() {
+    guard let data = currentFriendData else { return }
+    
+    if data.isFriend {
+      checkButton.image = UIImage(named: "userAddedIcon")
+      checkButton.isUserInteractionEnabled = false
+    } else {
+      print(isChecked)
+      checkButton.isUserInteractionEnabled = true
+      if isChecked {
+        checkButton.image = UIImage(named: "addFriend_chackOn")
+      } else {
+        checkButton.image = UIImage(named: "addFriend_chackOff")
+      }
+    }
   }
 }
 
 // MARK: - Functions
 extension FriendListCollectionViewCell {
-  private func updateCheckButton() {
-    guard let data = currentFriendData else { return }
-    
-    if data.isFriend {
-      checkButton.setImage(UIImage(named: "userAddedIcon"), for: .normal)
-    } else {
-      if isChecked {
-        checkButton.setImage(UIImage(named: "addFriend_chackOn"), for: .normal)
-      } else {
-        checkButton.setImage(UIImage(named: "addFriend_chackOff"), for: .normal)
-      }
-    }
-  }
+
 }
