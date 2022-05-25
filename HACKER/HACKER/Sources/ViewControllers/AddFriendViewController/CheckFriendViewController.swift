@@ -105,7 +105,7 @@ extension CheckFriendViewController {
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
-        $0.bottom.equalToSuperview().offset(-39)
+        $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-19)
       }
     }
   }
@@ -115,7 +115,7 @@ extension CheckFriendViewController {
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.explainLabel.snp.bottom).offset(35)
         make.leading.trailing.equalToSuperview().inset(24)
-        make.bottom.equalTo(self.addButton.snp.top).inset(10)
+        make.bottom.equalTo(self.addButton.snp.top).offset(-10)
       }
     }
   }

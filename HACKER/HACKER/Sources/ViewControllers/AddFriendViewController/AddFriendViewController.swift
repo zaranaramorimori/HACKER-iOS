@@ -29,6 +29,10 @@ class AddFriendViewController: UIViewController {
     attribute()
     setKeyboardObserver()
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    self.tabBarController?.tabBar.isHidden = true
+  }
 }
 
 // MARK: - Extensions
@@ -119,7 +123,7 @@ extension AddFriendViewController {
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
-        $0.bottom.equalToSuperview().offset(-39)
+        $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-19)
       }
     }
   }
