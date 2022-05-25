@@ -124,7 +124,13 @@ extension CheckFriendViewController {
 // MARK: - Actions
 extension CheckFriendViewController {
   @objc func touchAddButton() {
-    
+    if let index = checkedIndex {
+      let popupVC = CheckAddUserPopUpViewController()
+      popupVC.friendId = friendList?[index].id
+      popupVC.userNameLabel.text = friendList?[index].username
+      popupVC.modalPresentationStyle = .overFullScreen
+      self.present(popupVC, animated: false, completion: nil)
+    }
   }
 }
 

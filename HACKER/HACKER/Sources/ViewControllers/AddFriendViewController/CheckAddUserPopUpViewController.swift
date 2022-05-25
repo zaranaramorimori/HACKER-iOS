@@ -12,6 +12,9 @@ import Then
 
 //MARK: - CheckAddUserPopUpViewController
 class CheckAddUserPopUpViewController: UIViewController {
+
+  // MARK: - Properties
+  var friendId: Int?
   
   // MARK: - Components
   let backgroundView = UIView()
@@ -34,7 +37,7 @@ class CheckAddUserPopUpViewController: UIViewController {
 // MARK: - Extensions
 extension CheckAddUserPopUpViewController {
   func setBackground() {
-    self.view.backgroundColor = .hackerWhite
+//    self.view.backgroundColor = .hackerWhite
   }
   func layout() {
     layoutBackGroundView()
