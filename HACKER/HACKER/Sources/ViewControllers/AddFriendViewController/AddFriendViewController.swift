@@ -152,7 +152,7 @@ extension AddFriendViewController {
   @objc func textViewMoveUp(_ notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
       UIView.animate(withDuration: 0.3, animations: {
-        self.nextButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+        self.nextButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + 20)
       })
     }
   }
