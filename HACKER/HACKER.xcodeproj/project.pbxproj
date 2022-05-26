@@ -306,13 +306,10 @@
 		77233E9328182814006B7903 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				E8DECE64282F790C002B6E35 /* SearchFriend */,
 				E8DECE5B282F71B2002B6E35 /* TotalRanking */,
-=======
 				775EC037283FA29E00C3CA0B /* Setting */,
 				86E4CF6B282B7E020069C048 /* Friend */,
->>>>>>> e40fa3bbddf55cca17739994016b7e04583ec220
 				E85657822829715C001BE9E4 /* Shopping */,
 				E80282CB2823A64A00268A5A /* Main */,
 				E80282C1282388E100268A5A /* NickName */,
