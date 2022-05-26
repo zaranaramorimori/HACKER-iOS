@@ -181,6 +181,9 @@ extension AddFriendViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .black
     textField.textColor = .hackerWhite
+    if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+      clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
+    }
   }
   /// TextField 비활성화 되었을 때
   func textFieldDidEndEditing(_ textField: UITextField) {
