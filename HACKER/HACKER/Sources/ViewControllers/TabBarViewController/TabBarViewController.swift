@@ -37,6 +37,13 @@ extension TabBarViewController {
     viewControllers = [createFirstTab(), createSecondTab(), createThirdTab()]
     /// 처음 선택된 VC 설정
     selectedIndex = 1
+    
+    /// 탭바 아이템 가운데 정렬
+    if let items = self.tabBar.items {
+      for item in items {
+        item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0);
+      }
+    }
   }
   
   private func createFirstTab() -> UINavigationController {

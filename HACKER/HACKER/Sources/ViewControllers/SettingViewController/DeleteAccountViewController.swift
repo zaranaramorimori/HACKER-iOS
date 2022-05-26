@@ -117,10 +117,37 @@ class DeleteAccountViewController: UIViewController {
   // MARK: - @objc
   
   @objc func touchBackButton(_ sender: UIButton) {
-    print("go back")
+    self.navigationController?.popViewController(animated: true)
   }
   
   @objc func touchDeleteAccountButton(_ sender: UIButton) {
     print("deleteAccountButton")
+    // TODO: 서비스 탈퇴 서버
+//    deleteAccountWithAPI()
+  }
+}
+
+// MARK: - Network
+extension DeleteAccountViewController {
+  func deleteAccountWithAPI() {
+    SettingAPI.shared.deleteAccount() { response in
+      switch response {
+      case .success(let message):
+        print("deleteAccountWithAPI - success: \(message)")
+        UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.accessToken)
+        UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.refreshToken)
+        //TODO: 또 유저디폴트에 저장해놓은거 있으면 여기서 없애주기
+        let loginVC = LoginViewController()
+        self.changeRootViewController(loginVC)
+      case .requestErr(let message):
+        print("deleteAccountWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("deleteAccountWithAPI - pathErr")
+      case .serverErr:
+        print("deleteAccountWithAPI - serverErr")
+      case .networkFail:
+        print("deleteAccountWithAPI - networkFail")
+      }
+    }
   }
 }
