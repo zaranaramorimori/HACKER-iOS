@@ -33,6 +33,8 @@
 		77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC627EB90A2005AF6DA /* SettingViewController.swift */; };
 		77576ECA27ECDAB3005AF6DA /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */; };
 		77576ECC27ECDB26005AF6DA /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576ECB27ECDB26005AF6DA /* Const.swift */; };
+		775EC039283FA2AC00C3CA0B /* SettingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775EC038283FA2AC00C3CA0B /* SettingAPI.swift */; };
+		775EC03B283FA2B400C3CA0B /* SettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775EC03A283FA2B400C3CA0B /* SettingService.swift */; };
 		7789EBE92823A97700237036 /* pulledOut.json in Resources */ = {isa = PBXBuildFile; fileRef = 7789EBE72823A97700237036 /* pulledOut.json */; };
 		7789EBEA2823A97700237036 /* pullingOut.json in Resources */ = {isa = PBXBuildFile; fileRef = 7789EBE82823A97700237036 /* pullingOut.json */; };
 		77BA0E532822E1CF00EC41A5 /* SeasonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */; };
@@ -156,6 +158,8 @@
 		77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		77576ECB27ECDB26005AF6DA /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		775BA15627E7783700A43516 /* HACKER.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HACKER.entitlements; sourceTree = "<group>"; };
+		775EC038283FA2AC00C3CA0B /* SettingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAPI.swift; sourceTree = "<group>"; };
+		775EC03A283FA2B400C3CA0B /* SettingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingService.swift; sourceTree = "<group>"; };
 		7789EBE72823A97700237036 /* pulledOut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pulledOut.json; sourceTree = "<group>"; };
 		7789EBE82823A97700237036 /* pullingOut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pullingOut.json; sourceTree = "<group>"; };
 		77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonResponse.swift; sourceTree = "<group>"; };
@@ -276,6 +280,7 @@
 		77233E9328182814006B7903 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				775EC037283FA29E00C3CA0B /* Setting */,
 				E85657822829715C001BE9E4 /* Shopping */,
 				E80282CB2823A64A00268A5A /* Main */,
 				E80282C1282388E100268A5A /* NickName */,
@@ -396,6 +401,15 @@
 				77576EC927ECDAB3005AF6DA /* SettingTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		775EC037283FA29E00C3CA0B /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				775EC038283FA2AC00C3CA0B /* SettingAPI.swift */,
+				775EC03A283FA2B400C3CA0B /* SettingService.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		77BA0E582823094800EC41A5 /* DataModel */ = {
@@ -1057,12 +1071,14 @@
 				E80282D22823A70D00268A5A /* MainResponse.swift in Sources */,
 				77233E9928182F69006B7903 /* Header.swift in Sources */,
 				77BA0E532822E1CF00EC41A5 /* SeasonResponse.swift in Sources */,
+				775EC03B283FA2B400C3CA0B /* SettingService.swift in Sources */,
 				77233E902818250C006B7903 /* GenericResponse.swift in Sources */,
 				77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */,
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
 				77BA0E5C2823720700EC41A5 /* EmptyView.swift in Sources */,
 				77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */,
+				775EC039283FA2AC00C3CA0B /* SettingAPI.swift in Sources */,
 				E876119C27A0397700D238B3 /* UIColor+Extension.swift in Sources */,
 				E80282CA28238B9F00268A5A /* NickNameResponse.swift in Sources */,
 				E8565781282970D3001BE9E4 /* ShoppingResponse.swift in Sources */,
