@@ -19,6 +19,7 @@ class CheckFriendViewController: UIViewController {
   var checkedIndex: Int?
   
   // MARK: - Components
+  private let navigationBar = HackerNavigationBar()
   private let hackerImageView = UIImageView()
   private let helloLabel = UILabel()
   private let explainLabel = UILabel()
@@ -54,6 +55,7 @@ extension CheckFriendViewController {
       self.navigationController?.navigationBar.isHidden = true
   }
   func layout() {
+    layoutNavigationBar()
     layoutHackerImageView()
     layoutHelloLabel()
     layoutExplainLabel()
@@ -64,6 +66,17 @@ extension CheckFriendViewController {
     friendCollectionView.delegate = self
     friendCollectionView.dataSource = self
     friendCollectionView.register(FriendListCollectionViewCell.self, forCellWithReuseIdentifier: FriendListCollectionViewCell.identifier)
+  }
+  func layoutNavigationBar() {
+    view.addSubview(navigationBar)
+    navigationBar.iconLayout(isBack: true, logoImage: nil, rightImage: nil)
+    navigationBar.popViewController = {
+      self.navigationController?.popViewController(animated: true)
+    }
+    navigationBar.snp.makeConstraints { make in
+      make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+      make.height.equalTo(72)
+    }
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {

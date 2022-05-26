@@ -14,12 +14,13 @@ import Then
 class AddFriendViewController: UIViewController {
   
   // MARK: - Components
-  let hackerImageView = UIImageView()
-  let helloLabel = UILabel()
-  let explainLabel = UILabel()
-  let textBorderView = UIView()
-  let usernameTextField = UITextField()
-  let nextButton = UIButton()
+  private let navigationBar = HackerNavigationBar()
+  private let hackerImageView = UIImageView()
+  private let helloLabel = UILabel()
+  private let explainLabel = UILabel()
+  private let textBorderView = UIView()
+  private let usernameTextField = UITextField()
+  private let nextButton = UIButton()
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -38,10 +39,11 @@ class AddFriendViewController: UIViewController {
 // MARK: - Extensions
 extension AddFriendViewController {
   func setBackground() {
-      self.view.backgroundColor = .hackerWhite
-      self.navigationController?.navigationBar.isHidden = true
+    self.view.backgroundColor = .hackerWhite
+    self.navigationController?.navigationBar.isHidden = true
   }
   func layout() {
+    layoutNavigationBar()
     layoutHackerImageView()
     layoutHelloLabel()
     layoutExplainLabel()
@@ -51,6 +53,17 @@ extension AddFriendViewController {
   }
   func attribute() {
     self.usernameTextField.delegate = self
+  }
+  func layoutNavigationBar() {
+    view.addSubview(navigationBar)
+    navigationBar.iconLayout(isBack: true, logoImage: nil, rightImage: nil)
+    navigationBar.popViewController = {
+      self.navigationController?.popViewController(animated: true)
+    }
+    navigationBar.snp.makeConstraints { make in
+      make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+      make.height.equalTo(72)
+    }
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
