@@ -34,7 +34,7 @@ extension AlarmViewController {
     let tableView = UITableView()
     
     tableView.backgroundColor = .clear
-    tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    tableView.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
     tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     
     return tableView
@@ -90,6 +90,10 @@ extension AlarmViewController {
 
 // MARK: - UITableViewDataSource
 extension AlarmViewController: UITableViewDataSource {
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 2
   }
@@ -105,5 +109,15 @@ extension AlarmViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension AlarmViewController: UITableViewDelegate {
-  
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let dateLabel = UILabel()
+    
+    dateLabel.frame = CGRect(x: 5, y: -8, width: tableView.frame.width, height: 30)
+    dateLabel.setupLabel(text: "2022.01.23", color: .hackerBlack, font: .titleBold(ofSize: 16))
+    
+    let headerView = UIView()
+    headerView.addSubview(dateLabel)
+    
+    return headerView
+  }
 }
