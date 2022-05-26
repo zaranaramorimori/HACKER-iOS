@@ -252,6 +252,7 @@ extension NicknameViewController {
         if let nickNameInfo = data as? NickNameResponse {
           UserDefaults.standard.set(nickNameInfo.accessToken, forKey: Const.UserDefaultsKey.accessToken)
           UserDefaults.standard.set(nickNameInfo.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
+          UserDefaults.standard.set(nicknameRequest.username, forKey: Const.UserDefaultsKey.username)
           let tabbarVC = TabBarViewController()
           self.changeRootViewController(tabbarVC)
         }
