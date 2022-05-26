@@ -11,7 +11,7 @@ class AlarmViewController: UIViewController {
   
   // MARK: - Components
   private let navigationBar = HackerNavigationBar()
-  private lazy var alarmCollectionView: UICollectionView = { createAlarmCollectionView() }()
+  private lazy var alarmTableView: UITableView = { createAlarmTableView() }()
   private let emptyView = UIStackView()
   private let emptyImage = UIImageView()
   private let emptyTitle = UILabel()
@@ -30,22 +30,14 @@ class AlarmViewController: UIViewController {
 
 // MARK: - UI
 extension AlarmViewController {
-  private func createAlarmCollectionView() -> UICollectionView {
-    let layout = DynamicHeightFlowLayout()
-    layout.scrollDirection = .vertical
-    layout.minimumInteritemSpacing = 8
-    layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+  private func createAlarmTableView() -> UITableView {
+    let tableView = UITableView()
     
-    let collectionView = UICollectionView(frame: .zero,
-                                          collectionViewLayout: layout)
-    collectionView.isScrollEnabled = true
-    collectionView.showsHorizontalScrollIndicator = false
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-    collectionView.backgroundColor = .hackerWhite
-    collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    collectionView.contentInsetAdjustmentBehavior = .always
+    tableView.backgroundColor = .clear
+    tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     
-    return collectionView
+    return tableView
   }
   
   private func setStyle() {
@@ -57,9 +49,9 @@ extension AlarmViewController {
   }
   
   private func attribute() {
-    alarmCollectionView.delegate = self
-    alarmCollectionView.dataSource = self
-    alarmCollectionView.register(AlarmCollectionViewCell.self, forCellWithReuseIdentifier: AlarmCollectionViewCell.identifier)
+    alarmTableView.delegate = self
+    alarmTableView.dataSource = self
+    alarmTableView.register(AlarmTableViewCell.self, forCellReuseIdentifier: AlarmTableViewCell.identifier)
   }
   
   private func layoutNavigationBar() {
@@ -75,7 +67,7 @@ extension AlarmViewController {
   }
   
   private func layoutAlarmCollectionView() {
-    self.view.add(alarmCollectionView) {
+    self.view.add(alarmTableView) {
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.navigationBar.snp.bottom).offset(10)
         make.leading.trailing.equalToSuperview().inset(24)
@@ -96,14 +88,14 @@ extension AlarmViewController {
   }
 }
 
-// MARK: - UICollectionViewDataSource
-extension AlarmViewController: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+// MARK: - UITableViewDataSource
+extension AlarmViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 2
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlarmCollectionViewCell.identifier, for: indexPath) as? AlarmCollectionViewCell else { return UICollectionViewCell() }
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: AlarmTableViewCell.identifier, for: indexPath) as? AlarmTableViewCell else { return UITableViewCell() }
     
     cell.contentLabel.text = "대머리가 머리카락을 뽑아갔어요! 대머리가 머리카락을 뽑아갔어요!"
     
@@ -111,9 +103,7 @@ extension AlarmViewController: UICollectionViewDataSource {
   }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-extension AlarmViewController: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets.zero
-  }
+// MARK: - UITableViewDelegate
+extension AlarmViewController: UITableViewDelegate {
+  
 }

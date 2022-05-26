@@ -7,34 +7,38 @@
 
 import UIKit
 
-class AlarmCollectionViewCell: UICollectionViewCell {
+class AlarmTableViewCell: UITableViewCell {
   static let identifier = "AlarmCollectionViewCell"
   
+  private let containerView = UIView()
   let contentLabel = UILabel()
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
     
-    setStyle()
-    layoutContentLabel()
+    layout()
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-    let targetSize = CGSize(width: layoutAttributes.frame.width, height: 0)
-    layoutAttributes.frame.size = contentView.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: .required, verticalFittingPriority: .fittingSizeLevel)
-    return layoutAttributes
-  }
-  
 }
 
-extension AlarmCollectionViewCell {
-  private func setStyle() {
-    contentView.setBorder(borderColor: .hackerBlack, borderWidth: 3)
-    contentView.setRounded(radius: 20)
+extension AlarmTableViewCell {
+  private func layout() {
+    layoutContainerView()
+    layoutContentLabel()
+  }
+  
+  private func layoutContainerView() {
+    contentView.add(containerView) { view in
+      view.setBorder(borderColor: .hackerBlack, borderWidth: 3)
+      view.setRounded(radius: 20)
+      view.snp.makeConstraints { make in
+        make.top.leading.trailing.equalToSuperview()
+        make.bottom.equalToSuperview().inset(8)
+      }
+    }
   }
   
   private func layoutContentLabel() {
@@ -42,7 +46,7 @@ extension AlarmCollectionViewCell {
       label.setupLabel(text: "", color: .hackerBlack, font: .bodyRegular(ofSize: 16))
       label.numberOfLines = 0
       label.snp.makeConstraints { make in
-        make.edges.equalToSuperview().inset(18)
+        make.edges.equalTo(self.containerView).inset(18)
       }
     }
   }
