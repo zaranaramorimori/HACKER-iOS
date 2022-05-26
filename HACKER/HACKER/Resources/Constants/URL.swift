@@ -7,7 +7,14 @@
 
 import Foundation
 extension Const {
-    struct URL {
-        static let baseURL = "http://3.36.251.74:5000"
-    }
+  struct URL {
+    static let baseURL = "http://3.36.251.74:5000"
+    static let termURL = "https://haircommit.notion.site/Hair-Commit-HACKER-f24ccbfd82b04e5883b3975f56693383"
+    static let moyaURL = "https://github.com/Moya/Moya"
+    static let swiftLintURL = "https://github.com/realm/SwiftLint"
+    static let kingfisherURL = "https://github.com/onevcat/Kingfisher"
+    static let indicatorURL = "https://github.com/ninjaprox/NVActivityIndicatorView"
+    static let snapkitURL = "https://github.com/SnapKit/SnapKit"
+    static let thenURL = "https://github.com/devxoul/Then"
+  }
 }

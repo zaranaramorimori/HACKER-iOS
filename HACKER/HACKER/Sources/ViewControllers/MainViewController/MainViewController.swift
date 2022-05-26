@@ -131,6 +131,7 @@ extension MainViewController {
   func layoutSettingsButton() {
     view.add(settingsButton) {
       $0.setImage(UIImage(named: "settingsIcon"), for: .normal)
+      $0.addTarget(self, action: #selector(self.settingButtonTapped), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.alarmButton.snp.bottom).offset(13)
         $0.trailing.equalTo(self.alarmButton.snp.trailing)
@@ -397,6 +398,10 @@ extension MainViewController {
   @objc func userCharacterViewTapped() {
     let mainProfileVC = MainProfileViewController()
     self.navigationController?.pushViewController(mainProfileVC, animated: false)
+  }
+  @objc func settingButtonTapped() {
+    let settingVC = SettingViewController()
+    self.navigationController?.pushViewController(settingVC, animated: true)
   }
   @objc private func getAttackCouponTapped() {
     AttackAPI.shared.getAttackCoupon { (response) in
