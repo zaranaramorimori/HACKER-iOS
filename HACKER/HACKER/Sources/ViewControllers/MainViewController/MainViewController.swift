@@ -117,6 +117,7 @@ extension MainViewController {
   func layoutAlarmButton() {
     view.add(alarmButton) {
       $0.setImage(UIImage(named: "alarmIcon"), for: .normal)
+      $0.addTarget(self, action: #selector(self.alarmButtonTapped), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.nicknameLabel.snp.top)
         $0.trailing.equalToSuperview().offset(-24)
@@ -389,6 +390,10 @@ extension MainViewController {
   @objc func settingButtonTapped() {
     let settingVC = SettingViewController()
     self.navigationController?.pushViewController(settingVC, animated: true)
+  }
+  @objc func alarmButtonTapped() {
+    let alarmVC = AlarmViewController()
+    self.navigationController?.pushViewController(alarmVC, animated: true)
   }
 }
 
