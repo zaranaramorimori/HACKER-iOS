@@ -44,6 +44,7 @@ class ShoppingRankingViewController: UIViewController {
   }()
   
   var rankList: RankingResponse?
+  var friendList = [SearchFriendResponse]()
   var isToolTipShown: Bool = false
   let screenWidth = UIScreen.main.bounds.width
   var trigger = true
@@ -56,6 +57,7 @@ class ShoppingRankingViewController: UIViewController {
     register()
     layout()
     rankingWithAPI()
+    searchFriendWithAPI()
   }
   override func viewWillAppear(_ animated: Bool) {
     self.tabBarController?.tabBar.isHidden = false
@@ -192,8 +194,28 @@ extension ShoppingRankingViewController {
           let rankingCollectionVC = RankingCollectionViewCell()
           self.rankList = rankInfo
           self.pageCollectionView.reloadData()
-          print(rankingCollectionVC.rankList)
-          print("$$")
+        }
+      case .requestErr(let status):
+        print("RankingAPI - requestErr: \(status)")
+        
+      case .pathErr:
+        print("RankingAPI - pathErr")
+      case .serverErr:
+        print("RankingAPI - serverErr")
+      case .networkFail:
+        print("RankingAPI - networkFail")
+      }
+    }
+  }
+  // MARK: - Network
+  func searchFriendWithAPI() {
+    SearchFriendAPI.shared.searchFriend { response in
+      switch response {
+      case .success(let data):
+        if let friendInfo = data as? [SearchFriendResponse] {
+          let shoppingCollectionviewCell = ShoppingCollectionViewCell()
+          self.friendList = friendInfo
+          self.pageCollectionView.reloadData()
         }
       case .requestErr(let status):
         print("RankingAPI - requestErr: \(status)")
@@ -280,6 +302,7 @@ extension ShoppingRankingViewController: UICollectionViewDataSource {
       if indexPath.section == 0 {
         guard let shoppingCell = collectionView.dequeueReusableCell(withReuseIdentifier: ShoppingCollectionViewCell.identifier, for: indexPath) as? ShoppingCollectionViewCell else { return UICollectionViewCell() }
         shoppingCell.backgroundColor = .hackerWhite
+        shoppingCell.friendList = self.friendList
         shoppingCell.awakeFromNib()
         return shoppingCell
       } else {

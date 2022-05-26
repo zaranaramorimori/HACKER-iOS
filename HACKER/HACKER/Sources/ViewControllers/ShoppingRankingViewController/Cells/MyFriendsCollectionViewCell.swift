@@ -79,7 +79,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserFirstHairImage() {
     self.contentView.add(userhairfirstImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -91,7 +90,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserSecondHairImage() {
     self.contentView.add(userhairsecondImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -103,7 +101,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserThirdHairImage() {
     self.contentView.add(userhairthirdImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -115,7 +112,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserFourthHairImage() {
     self.contentView.add(userhairfourthImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -127,7 +123,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserFifthtHairImage() {
     self.contentView.add(userhairfifthImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -139,7 +134,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserSixthHairImage() {
     self.contentView.add(userhairsixthImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -151,7 +145,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserSeventhHairImage() {
     self.contentView.add(userhairseventhImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -163,7 +156,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserEighthHairImage() {
     self.contentView.add(userhaireighthImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -175,7 +167,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserNinethHairImage() {
     self.contentView.add(userhairninethImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -187,7 +178,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserTenthHairImage() {
     self.contentView.add(userhairtenthImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -199,7 +189,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserEleventhHairImage() {
     self.contentView.add(userhaireleventhImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -211,7 +200,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserTwelvethHairImage() {
     self.contentView.add(userhairtwelvethImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView)
@@ -223,7 +211,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserNameLabel() {
     self.lineborderView.add(userNameLabel) {
-//      $0.setupLabel(text: "두두두두", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
       $0.textAlignment = .center
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView.snp.bottom)

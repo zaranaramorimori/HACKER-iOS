@@ -107,7 +107,6 @@ extension FriendDetailViewController {
   }
   func layoutUserFirstHairImage() {
     view.add(userhairfirstImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -119,7 +118,6 @@ extension FriendDetailViewController {
   }
   func layoutUserSecondHairImage() {
     view.add(userhairsecondImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -131,7 +129,6 @@ extension FriendDetailViewController {
   }
   func layoutUserthirdHairImage() {
     view.add(userhairthirdImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -143,7 +140,6 @@ extension FriendDetailViewController {
   }
   func layoutUserFourthHairImage() {
     view.add(userhairfourthImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -155,7 +151,6 @@ extension FriendDetailViewController {
   }
   func layoutUserFifthHairImage() {
     view.add(userhairfifthImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -167,7 +162,6 @@ extension FriendDetailViewController {
   }
   func layoutUserSixthHairImage() {
     view.add(userhairsixthImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -179,7 +173,6 @@ extension FriendDetailViewController {
   }
   func layoutUserSeventhHairImage() {
     view.add(userhairseventhImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -191,7 +184,6 @@ extension FriendDetailViewController {
   }
   func layoutUserEighthHairImage() {
     view.add(userhaireighthImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -203,7 +195,6 @@ extension FriendDetailViewController {
   }
   func layoutUserNinethHairImage() {
     view.add(userhairninethImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -215,7 +206,6 @@ extension FriendDetailViewController {
   }
   func layoutUserTenthHairImage() {
     view.add(userhairtenthImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -227,7 +217,6 @@ extension FriendDetailViewController {
   }
   func layoutUserEleventhHairImage() {
     view.add(userhaireleventhImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -239,7 +228,6 @@ extension FriendDetailViewController {
   }
   func layoutUserTwelvethHairImage() {
     view.add(userhairtwelvethImage) {
-      $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)

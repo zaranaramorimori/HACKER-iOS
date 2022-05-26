@@ -25,6 +25,12 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
     return collectionView
   }()
   
+  var friendList = [SearchFriendResponse]() {
+    didSet {
+      myFriendsCollectionView.reloadData()
+    }
+  }
+  
   // MARK: - LifeCycle
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -68,9 +74,7 @@ extension ShoppingCollectionViewCell {
     ShoppingAPI.shared.friendDetail(userID: userID) { response in
       switch response {
       case .success(let data):
-        print("성공티비")
         if let shoppingInfo = data as? ShoppingResponse {
-          
           let friendDetailVC = FriendDetailViewController()
           friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
           friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
@@ -100,46 +104,19 @@ extension ShoppingCollectionViewCell {
       }
     }
   }
-  func searchFriendWithAPI() {
-    SearchFriendAPI.shared.searchFriend { response in
-      switch response {
-      case .success(let data):
-        if let searchFriendInfo = data as? [SearchFriendResponse] {
-          let friendCell = MyFriendsCollectionViewCell()
-          print(searchFriendInfo)
-          friendCell.userNameLabel.setupLabel(text: "\(searchFriendInfo[0].nickname)", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
-          friendCell.userhairfirstImage.updateServerImage(searchFriendInfo[0].head.one ?? "")
-          friendCell.userhairsecondImage.updateServerImage(searchFriendInfo[0].head.two ?? "")
-          friendCell.userhairthirdImage.updateServerImage(searchFriendInfo[0].head.three ?? "")
-          friendCell.userhairfourthImage.updateServerImage(searchFriendInfo[0].head.four ?? "")
-          friendCell.userhairfifthImage.updateServerImage(searchFriendInfo[0].head.five ?? "")
-          friendCell.userhairsixthImage.updateServerImage(searchFriendInfo[0].head.six ?? "")
-          friendCell.userhairseventhImage.updateServerImage(searchFriendInfo[0].head.seven ?? "")
-          friendCell.userhaireighthImage.updateServerImage(searchFriendInfo[0].head.eight ?? "")
-          friendCell.userhairninethImage.updateServerImage(searchFriendInfo[0].head.nine ?? "")
-          friendCell.userhairtenthImage.updateServerImage(searchFriendInfo[0].head.ten ?? "")
-          friendCell.userhaireleventhImage.updateServerImage(searchFriendInfo[0].head.eleven ?? "")
-          friendCell.userhairtwelvethImage.updateServerImage(searchFriendInfo[0].head.twelve ?? "")
-          self.myFriendsCollectionView.reloadData()
-        }
-      case .requestErr(let status):
-        print("SearchFriendAPI - requestErr: \(status)")
-  
-      case .pathErr:
-        print("SearchFriendAPI - pathErr")
-      case .serverErr:
-        print("SearchFriendAPI - serverErr")
-      case .networkFail:
-        print("SearchFriendAPI - networkFail")
-      }
-    }
-  }
 }
 // MARK: - UICollectionViewDataSource
 extension ShoppingCollectionViewCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 30
+    if !friendList.isEmpty {
+      print(friendList.count)
+      return friendList.count+1
+    } else {
+      return 0
+    }
+    
   }
+  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let addCell = collectionView.dequeueReusableCell(withReuseIdentifier: AddFriendCollectionViewCell.identifier, for: indexPath) as? AddFriendCollectionViewCell else { return UICollectionViewCell() }
     guard let friendCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFriendsCollectionViewCell.identifier, for: indexPath) as? MyFriendsCollectionViewCell else { return UICollectionViewCell() }
@@ -147,17 +124,31 @@ extension ShoppingCollectionViewCell: UICollectionViewDataSource {
     if indexPath.item == 0 {
       addCell.awakeFromNib()
       return addCell
-    } else {
-      friendCell.awakeFromNib()
-//      searchFriendWithAPI()
-      return friendCell
     }
+    if !friendList.isEmpty {
+      print(friendList)
+      friendCell.userNameLabel.setupLabel(text: friendList[indexPath.item-1].nickname ?? "", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
+      friendCell.userhairfirstImage.updateServerImage(friendList[indexPath.item-1].head.one ?? "")
+      friendCell.userhairsecondImage.updateServerImage(friendList[indexPath.item-1].head.two ?? "")
+      friendCell.userhairthirdImage.updateServerImage(friendList[indexPath.item-1].head.three ?? "")
+      friendCell.userhairfourthImage.updateServerImage(friendList[indexPath.item-1].head.four ?? "")
+      friendCell.userhairfifthImage.updateServerImage(friendList[indexPath.item-1].head.five ?? "")
+      friendCell.userhairsixthImage.updateServerImage(friendList[indexPath.item-1].head.six ?? "")
+      friendCell.userhairseventhImage.updateServerImage(friendList[indexPath.item-1].head.seven ?? "")
+      friendCell.userhaireighthImage.updateServerImage(friendList[indexPath.item-1].head.eight ?? "")
+      friendCell.userhairninethImage.updateServerImage(friendList[indexPath.item-1].head.nine ?? "")
+      friendCell.userhairtenthImage.updateServerImage(friendList[indexPath.item-1].head.ten ?? "")
+      friendCell.userhaireleventhImage.updateServerImage(friendList[indexPath.item-1].head.eleven ?? "")
+      friendCell.userhairtwelvethImage.updateServerImage(friendList[indexPath.item-1].head.twelve ?? "")
+      friendCell.awakeFromNib()
+    }
+    return friendCell
   }
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     if indexPath.item == 0 {
       self.setupNewFriend()
     } else {
-      self.shoppingWithAPI(userID: indexPath.row)
+      self.shoppingWithAPI(userID: friendList[indexPath.item-1].id)
     }
   }
 }
