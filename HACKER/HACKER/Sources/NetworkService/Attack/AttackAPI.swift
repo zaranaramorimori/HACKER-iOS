@@ -22,7 +22,7 @@ public class AttackAPI {
         let statusCode = response.statusCode
         let data = response.data
         
-        let networkResult = self.judgeAttackUserStatus(by: statusCode, data)
+        let networkResult = self.judgeAttackStatus(by: statusCode, data)
         completion(networkResult)
         
       case .failure(let err):
@@ -31,9 +31,41 @@ public class AttackAPI {
     }
   }
   
-  private func judgeAttackUserStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+  func attackTeam(teamId: Int, completion: @escaping (NetworkResult<Any>) -> Void) {
+    friendProvider.request(.attackTeam(teamId: teamId)) { (result) in
+      switch result {
+      case .success(let response):
+        let statusCode = response.statusCode
+        let data = response.data
+        
+        let networkResult = self.judgeAttackStatus(by: statusCode, data)
+        completion(networkResult)
+        
+      case .failure(let err):
+        print(err)
+      }
+    }
+  }
+  
+  func getAttackCoupon(completion: @escaping (NetworkResult<Any>) -> Void) {
+    friendProvider.request(.getAttackCoupon) { (result) in
+      switch result {
+      case .success(let response):
+        let statusCode = response.statusCode
+        let data = response.data
+        
+        let networkResult = self.judgeAttackStatus(by: statusCode, data)
+        completion(networkResult)
+        
+      case .failure(let err):
+        print(err)
+      }
+    }
+  }
+  
+  private func judgeAttackStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
     let decoder = JSONDecoder()
-    guard let decodedData = try? decoder.decode(GenericResponse<[FriendGithubResponse]>.self, from: data) else {
+    guard let decodedData = try? decoder.decode(GenericResponse<String>.self, from: data) else {
       return .pathErr
     }
     
