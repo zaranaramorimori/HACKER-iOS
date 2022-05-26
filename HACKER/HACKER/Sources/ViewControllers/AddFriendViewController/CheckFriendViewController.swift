@@ -101,6 +101,7 @@ extension CheckFriendViewController {
       $0.setupButton(title: "추가", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
+      $0.isUserInteractionEnabled = false
       $0.addTarget(self, action: #selector(self.touchAddButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
@@ -193,9 +194,11 @@ extension CheckFriendViewController: UICollectionViewDelegateFlowLayout {
     if checkedIndex != nil {
       addButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
       addButton.setupButton(title: "추가", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      addButton.isUserInteractionEnabled = true
     } else {
       addButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
       addButton.setupButton(title: "추가", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      addButton.isUserInteractionEnabled = false
     }
   }
 }
