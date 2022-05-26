@@ -89,6 +89,10 @@ extension SettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       switch indexPath.section {
+      case 0:
+        print("닉네임 변경")
+        let changeNicknameVC = ChangeNicknameViewController()
+        self.navigationController?.pushViewController(changeNicknameVC, animated: true)
       case 1:
         openURL(link: URL(string: Const.URL.termURL)!)
       case 2:
