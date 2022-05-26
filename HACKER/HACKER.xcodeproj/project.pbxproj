@@ -53,6 +53,7 @@
 		86856D49283FDD1E00F3B3BC /* PushAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D48283FDD1E00F3B3BC /* PushAPI.swift */; };
 		86856D4B283FDD2600F3B3BC /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D4A283FDD2600F3B3BC /* PushService.swift */; };
 		86856D4D283FDE3000F3B3BC /* PushResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D4C283FDE3000F3B3BC /* PushResponse.swift */; };
+		86856D4F283FE98900F3B3BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86856D4E283FE98900F3B3BC /* GoogleService-Info.plist */; };
 		869B5AC127ECFFB500F2ACA7 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */; };
 		869B5AC327ED04D000F2ACA7 /* XCUIElement+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */; };
 		86DF9A7427EB37CA00C7D493 /* SignupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7327EB37C900C7D493 /* SignupUITests.swift */; };
@@ -193,6 +194,8 @@
 		86856D48283FDD1E00F3B3BC /* PushAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAPI.swift; sourceTree = "<group>"; };
 		86856D4A283FDD2600F3B3BC /* PushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
 		86856D4C283FDE3000F3B3BC /* PushResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushResponse.swift; sourceTree = "<group>"; };
+		86856D4E283FE98900F3B3BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		86856D50283FEB0500F3B3BC /* HACKERDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HACKERDebug.entitlements; sourceTree = "<group>"; };
 		869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
 		869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extension.swift"; sourceTree = "<group>"; };
 		86DF9A7327EB37C900C7D493 /* SignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUITests.swift; sourceTree = "<group>"; };
@@ -838,8 +841,10 @@
 		E8E8477B279EF6E900D5A482 /* HACKER */ = {
 			isa = PBXGroup;
 			children = (
+				86856D50283FEB0500F3B3BC /* HACKERDebug.entitlements */,
 				775BA15627E7783700A43516 /* HACKER.entitlements */,
 				E8E8478A279EF6EC00D5A482 /* Info.plist */,
+				86856D4E283FE98900F3B3BC /* GoogleService-Info.plist */,
 				E876118E279EFE4B00D238B3 /* Resources */,
 				E876118F279EFE5500D238B3 /* Sources */,
 				E8E84787279EF6EC00D5A482 /* LaunchScreen.storyboard */,
@@ -979,6 +984,7 @@
 				E8E84789279EF6EC00D5A482 /* LaunchScreen.storyboard in Resources */,
 				7789EBE92823A97700237036 /* pulledOut.json in Resources */,
 				E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */,
+				86856D4F283FE98900F3B3BC /* GoogleService-Info.plist in Resources */,
 				E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */,
 				E8FF04FB27B212C000C7C3E5 /* NotoSansKR-Bold.otf in Resources */,
 			);
@@ -1475,10 +1481,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = HACKER/HACKER.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HACKER/HACKERDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T3VFJ764ZC;
+				DEVELOPMENT_TEAM = J92QJ4K4KU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HACKER/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1491,7 +1497,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "YJC.HACKER-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamzzong.hacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
