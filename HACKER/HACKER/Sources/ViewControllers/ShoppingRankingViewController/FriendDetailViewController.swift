@@ -294,6 +294,22 @@ extension FriendDetailViewController {
     //친구 취소 버튼 클릭 시
   }
   @objc func attackButtonClicked() {
-    
+    AttackAPI.shared.attackUser(userId: 2) { (response) in
+      switch response {
+      case .success:
+        print("성공")
+        //TODO: 로티 뷰 연결하기
+      case .requestErr(let msg):
+        if let errorMsg = msg as? String {
+          self.makeAlertOnlyMessage(message: errorMsg, okAction: nil)
+        }
+      case .pathErr:
+        print("attackUser - pathErr")
+      case .serverErr:
+        print("attackUser - serverErr")
+      case .networkFail:
+        print("attackUser - networkFail")
+      }
+    }
   }
 }
