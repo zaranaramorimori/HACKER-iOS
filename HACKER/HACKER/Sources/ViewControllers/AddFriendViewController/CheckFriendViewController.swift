@@ -98,7 +98,7 @@ extension CheckFriendViewController {
   func layoutNextButton() {
     self.view.add(addButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-      $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: "추가", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
       $0.addTarget(self, action: #selector(self.touchAddButton), for: .touchUpInside)
@@ -177,6 +177,7 @@ extension CheckFriendViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     collectionView.deselectItem(at: indexPath, animated: false)
     
+    // 셀 체크박스 변경 로직
     guard let data = friendList?[indexPath.item] else { return }
     if !data.isFriend {
       checkedIndex = indexPath.item
@@ -186,6 +187,15 @@ extension CheckFriendViewController: UICollectionViewDelegateFlowLayout {
           collectionView.reloadItems(at: [indexPath])
       }
       prevIndex = indexPath
+    }
+    
+    // 추가 버튼 변경 로직
+    if checkedIndex != nil {
+      addButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
+      addButton.setupButton(title: "추가", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+    } else {
+      addButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+      addButton.setupButton(title: "추가", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     }
   }
 }
