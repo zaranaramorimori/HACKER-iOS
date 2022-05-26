@@ -271,6 +271,7 @@ class TeamViewController: UIViewController {
       switch response {
       case .success:
         let lottieVC = AttackLottieViewController()
+        lottieVC.attackType = .attacker
         lottieVC.modalPresentationStyle = .overCurrentContext
         self.present(lottieVC, animated: false)
       case .requestErr(let msg):

@@ -10,6 +10,11 @@ import Lottie
 
 class AttackLottieViewController: UIViewController {
   
+  enum AttackType {
+    case attacker, victim
+  }
+  
+  var attackType: AttackType = .attacker
   let lottieView = AnimationView()
   
   override func viewDidLoad() {
@@ -31,7 +36,13 @@ extension AttackLottieViewController {
       $0.snp.makeConstraints { make in
         make.edges.equalToSuperview().inset(50)
       }
-      $0.animation = Animation.named("pullingOut")
+      switch self.attackType {
+      case .attacker:
+        $0.animation = Animation.named("pullingOut")
+      case .victim:
+        $0.animation = Animation.named("pulledOut")
+      }
+      
       $0.contentMode = .scaleAspectFit
       $0.loopMode = .playOnce
       $0.play { _ in

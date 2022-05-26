@@ -167,4 +167,17 @@ extension AlarmViewController: UITableViewDelegate {
     
     return headerView
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: false)
+    
+    if let data = pushLogData {
+      if data[indexPath.section].content[indexPath.row].contains("머리카락을 뽑아갔어요!") {
+        let lottieVC = AttackLottieViewController()
+        lottieVC.attackType = .victim
+        lottieVC.modalPresentationStyle = .overCurrentContext
+        self.present(lottieVC, animated: false)
+      }
+    }
+  }
 }
