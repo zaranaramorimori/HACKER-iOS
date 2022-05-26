@@ -150,6 +150,10 @@ extension AddFriendViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(textViewMoveUp), name: UIResponder.keyboardWillShowNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(textViewMoveDown), name: UIResponder.keyboardWillHideNotification, object: nil)
   }
+  /// 빈 공간 터치하면 키보드 내려가게
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
   /// 텍스트필드 값 바뀌었을 때
   @objc func textFieldDidChange() {
     if usernameTextField.hasText {
