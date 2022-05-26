@@ -9,6 +9,9 @@ import UIKit
 
 class AlarmViewController: UIViewController {
   
+  //MARK: - Properties
+  private var pushLogData: [PushLog]?
+  
   // MARK: - Components
   private let navigationBar = HackerNavigationBar()
   private lazy var alarmTableView: UITableView = { createAlarmTableView() }()
@@ -66,7 +69,7 @@ extension AlarmViewController {
     }
   }
   
-  private func layoutAlarmCollectionView() {
+  private func layoutAlarmTableView() {
     self.view.add(alarmTableView) {
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.navigationBar.snp.bottom).offset(10)
@@ -84,24 +87,50 @@ extension AlarmViewController {
 // MARK: - Custom Methods
 extension AlarmViewController {
   private func getAlarmList() {
-    layoutAlarmCollectionView()
+    PushAPI.shared.fetchPushList { response in
+      switch response {
+      case .success(let data):
+        if let pushInfo = data as? PushResponse {
+          if let logs = pushInfo.logs {
+            if logs.isEmpty {
+              self.layoutEmptyView()
+            } else {
+              self.pushLogData = pushInfo.logs
+              self.layoutAlarmTableView()
+            }
+          }
+        }
+      case .requestErr(let status):
+        print("userNicknameWithAPI - requestErr: \(status)")
+        self.layoutEmptyView()
+      case .pathErr:
+        print("userNicknameWithAPI - pathErr")
+        self.layoutEmptyView()
+      case .serverErr:
+        print("userNicknameWithAPI - serverErr")
+        self.layoutEmptyView()
+      case .networkFail:
+        print("userNicknameWithAPI - networkFail")
+        self.layoutEmptyView()
+      }
+    }
   }
 }
 
 // MARK: - UITableViewDataSource
 extension AlarmViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 2
+    return pushLogData?.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    return pushLogData?[section].content.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: AlarmTableViewCell.identifier, for: indexPath) as? AlarmTableViewCell else { return UITableViewCell() }
     
-    cell.contentLabel.text = "대머리가 머리카락을 뽑아갔어요! 대머리가 머리카락을 뽑아갔어요!"
+    cell.contentLabel.text = pushLogData?[indexPath.section].content[indexPath.row]
     
     return cell
   }
@@ -113,7 +142,7 @@ extension AlarmViewController: UITableViewDelegate {
     let dateLabel = UILabel()
     
     dateLabel.frame = CGRect(x: 5, y: -8, width: tableView.frame.width, height: 30)
-    dateLabel.setupLabel(text: "2022.01.23", color: .hackerBlack, font: .titleBold(ofSize: 16))
+    dateLabel.setupLabel(text: pushLogData?[section].date ?? "", color: .hackerBlack, font: .titleBold(ofSize: 16))
     
     let headerView = UIView()
     headerView.addSubview(dateLabel)
