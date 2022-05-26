@@ -105,6 +105,7 @@ extension AddFriendViewController {
       if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
         clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
       }
+      $0.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
       $0.snp.makeConstraints {
         $0.centerY.equalTo(self.textBorderView)
         $0.leading.equalTo(self.textBorderView.snp.leading).offset(16)
@@ -136,7 +137,18 @@ extension AddFriendViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(textViewMoveUp), name: UIResponder.keyboardWillShowNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(textViewMoveDown), name: UIResponder.keyboardWillHideNotification, object: nil)
   }
-  
+  /// 텍스트필드 값 바뀌었을 때
+  @objc func textFieldDidChange() {
+    if usernameTextField.hasText {
+      nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
+      nextButton.isUserInteractionEnabled = true
+    } else {
+      nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+      nextButton.isUserInteractionEnabled = false
+    }
+  }
   @objc func textViewMoveUp(_ notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
       UIView.animate(withDuration: 0.3, animations: {
@@ -169,8 +181,6 @@ extension AddFriendViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .black
     textField.textColor = .hackerWhite
-    nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
-    nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
   }
   /// TextField 비활성화 되었을 때
   func textFieldDidEndEditing(_ textField: UITextField) {
@@ -179,8 +189,6 @@ extension AddFriendViewController: UITextFieldDelegate {
     if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
       clearButton.setImage(UIImage(named: "xBlack"), for: .normal)
     }
-    nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
-    nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
   }
 }
 
