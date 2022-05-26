@@ -81,7 +81,7 @@ extension FriendListCollectionViewCell {
   func updateCell() {
     guard let data = currentFriendData else { return }
     
-//    profileImageView.image = data.profileImage
+    profileImageView.updateServerImage(currentFriendData?.profileImage ?? "")
     nameLabel.text = data.nickname
     usernameLabel.text = data.username
     
@@ -102,7 +102,6 @@ extension FriendListCollectionViewCell {
       checkButton.image = UIImage(named: "userAddedIcon")
       checkButton.isUserInteractionEnabled = false
     } else {
-      print(isChecked)
       checkButton.isUserInteractionEnabled = true
       if isChecked {
         checkButton.image = UIImage(named: "addFriend_chackOn")
@@ -111,9 +110,4 @@ extension FriendListCollectionViewCell {
       }
     }
   }
-}
-
-// MARK: - Functions
-extension FriendListCollectionViewCell {
-
 }

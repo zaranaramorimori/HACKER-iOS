@@ -148,16 +148,12 @@ extension CheckAddUserPopUpViewController {
     }
   }
   @objc func pushNickNameVC() {
-//    let nicknameVC = NicknameViewController()
-//    nicknameVC.userGithubName = userNameLabel.text
-//    self.navigationController?.pushViewController(nicknameVC, animated: false)
     if let id = friendId {
       FriendAPI.shared.addFriend(requestBody: AddFriendRequest(friendId: id)) { (response) in
         switch response {
         case .success(let data):
           if let userGithubInfo = data as? AddFriendResponse {
             if userGithubInfo.isFriend {
-              print("became friends")
               self.dismiss(animated: false) {
                 self.parentVC?.navigationController?.popToRootViewController(animated: true)
               }
