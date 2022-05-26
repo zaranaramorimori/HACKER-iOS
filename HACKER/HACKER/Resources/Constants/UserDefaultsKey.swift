@@ -8,8 +8,9 @@
 import Foundation
 
 extension Const {
-    struct UserDefaultsKey {
-        static let accessToken = "accessToken"
-        static let refreshToken = "refreshToken"
-    }
+  struct UserDefaultsKey {
+    static let accessToken = "accessToken"
+    static let refreshToken = "refreshToken"
+    static let username = "username"
+  }
 }

@@ -14,12 +14,13 @@ import Then
 class AddFriendViewController: UIViewController {
   
   // MARK: - Components
-  let hackerImageView = UIImageView()
-  let helloLabel = UILabel()
-  let explainLabel = UILabel()
-  let textBorderView = UIView()
-  let usernameTextField = UITextField()
-  let nextButton = UIButton()
+  private let navigationBar = HackerNavigationBar()
+  private let hackerImageView = UIImageView()
+  private let helloLabel = UILabel()
+  private let explainLabel = UILabel()
+  private let textBorderView = UIView()
+  private let usernameTextField = UITextField()
+  private let nextButton = UIButton()
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -29,15 +30,20 @@ class AddFriendViewController: UIViewController {
     attribute()
     setKeyboardObserver()
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    self.tabBarController?.tabBar.isHidden = true
+  }
 }
 
 // MARK: - Extensions
 extension AddFriendViewController {
   func setBackground() {
-      self.view.backgroundColor = .hackerWhite
-      self.navigationController?.navigationBar.isHidden = true
+    self.view.backgroundColor = .hackerWhite
+    self.navigationController?.navigationBar.isHidden = true
   }
   func layout() {
+    layoutNavigationBar()
     layoutHackerImageView()
     layoutHelloLabel()
     layoutExplainLabel()
@@ -47,6 +53,17 @@ extension AddFriendViewController {
   }
   func attribute() {
     self.usernameTextField.delegate = self
+  }
+  func layoutNavigationBar() {
+    view.addSubview(navigationBar)
+    navigationBar.iconLayout(isBack: true, logoImage: nil, rightImage: nil)
+    navigationBar.popViewController = {
+      self.navigationController?.popViewController(animated: true)
+    }
+    navigationBar.snp.makeConstraints { make in
+      make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+      make.height.equalTo(72)
+    }
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
@@ -101,6 +118,7 @@ extension AddFriendViewController {
       if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
         clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
       }
+      $0.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControl.Event.editingChanged)
       $0.snp.makeConstraints {
         $0.centerY.equalTo(self.textBorderView)
         $0.leading.equalTo(self.textBorderView.snp.leading).offset(16)
@@ -115,11 +133,11 @@ extension AddFriendViewController {
       $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
-      $0.addTarget(self, action: #selector(self.touchNextButton), for: .touchUpInside)
+      $0.addTarget(self, action: #selector(self.touchAddButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
-        $0.bottom.equalToSuperview().offset(-39)
+        $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-19)
       }
     }
   }
@@ -132,11 +150,26 @@ extension AddFriendViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(textViewMoveUp), name: UIResponder.keyboardWillShowNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(textViewMoveDown), name: UIResponder.keyboardWillHideNotification, object: nil)
   }
-  
+  /// 빈 공간 터치하면 키보드 내려가게
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
+  /// 텍스트필드 값 바뀌었을 때
+  @objc func textFieldDidChange() {
+    if usernameTextField.hasText {
+      nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
+      nextButton.isUserInteractionEnabled = true
+    } else {
+      nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+      nextButton.isUserInteractionEnabled = false
+    }
+  }
   @objc func textViewMoveUp(_ notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
       UIView.animate(withDuration: 0.3, animations: {
-        self.nextButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height)
+        self.nextButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + 20)
       })
     }
   }
@@ -144,9 +177,11 @@ extension AddFriendViewController {
     self.nextButton.transform = .identity
   }
   /// 화면전환
-  @objc func touchNextButton() {
+  @objc func touchAddButton() {
     if !usernameTextField.hasText {
       self.makeAlertOnlyMessage(message: "유저네임을 입력하세요", okAction: nil)
+    } else {
+      searchGithubAPI(username: usernameTextField.text ?? "")
     }
   }
 }
@@ -163,8 +198,9 @@ extension AddFriendViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
     textBorderView.backgroundColor = .black
     textField.textColor = .hackerWhite
-    nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
-    nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
+    if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+      clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
+    }
   }
   /// TextField 비활성화 되었을 때
   func textFieldDidEndEditing(_ textField: UITextField) {
@@ -173,7 +209,39 @@ extension AddFriendViewController: UITextFieldDelegate {
     if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
       clearButton.setImage(UIImage(named: "xBlack"), for: .normal)
     }
-    nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
-    nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+  }
+}
+
+// MARK: - Network
+extension AddFriendViewController {
+  func searchGithubAPI(username: String) {
+    FriendAPI.shared.searchFriendGithub(username: username) { (response) in
+      switch response {
+      case .success(let data):
+        if let userGithubInfo = data as? [FriendGithubResponse] {
+          let friendListVC = CheckFriendViewController()
+          friendListVC.friendList = userGithubInfo
+          self.navigationController?.pushViewController(friendListVC, animated: true)
+        }
+      case .requestErr(let status):
+        if let statusCode = status as? Int {
+          switch statusCode {
+          case 404 :
+            let notUserVC = NotHackerUserPopUpViewController()
+            notUserVC.modalPresentationStyle = .overFullScreen
+            self.present(notUserVC, animated: false, completion: nil)
+          default :
+            break
+          }
+        }
+        
+      case .pathErr:
+        print("userPhotosWithAPI - pathErr")
+      case .serverErr:
+        print("userPhotosWithAPI - serverErr")
+      case .networkFail:
+        print("userPhotosWithAPI - networkFail")
+      }
+    }
   }
 }
