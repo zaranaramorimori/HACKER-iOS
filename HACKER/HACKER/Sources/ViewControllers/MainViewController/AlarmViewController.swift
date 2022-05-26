@@ -9,7 +9,7 @@ import UIKit
 
 class AlarmViewController: UIViewController {
   
-  //MARK: - Properties
+  // MARK: - Properties
   private var pushLogData: [PushLog]?
   
   // MARK: - Components
@@ -45,6 +45,7 @@ extension AlarmViewController {
   
   private func setStyle() {
     view.backgroundColor = .hackerWhite
+    self.tabBarController?.tabBar.isHidden = true
   }
   
   private func layout() {
@@ -80,7 +81,24 @@ extension AlarmViewController {
   }
   
   private func layoutEmptyView() {
+    emptyImage.image = UIImage(named: "logoIcon")
+    emptyTitle.setupLabel(text: "아이고!", color: .hackerBlack, font: .titleBold(ofSize: 24))
+    emptyDescription.setupLabel(text: "아직 아무 소식도 알려드릴 게 없어요!", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
     
+    emptyView.addArrangedSubview(emptyImage)
+    emptyView.addArrangedSubview(emptyTitle)
+    emptyView.addArrangedSubview(emptyDescription)
+    
+    emptyView.alignment = .center
+    emptyView.axis = .vertical
+    emptyView.alpha = 0.3
+    
+    emptyView.setCustomSpacing(10, after: emptyImage)
+    
+    view.addSubview(emptyView)
+    emptyView.snp.makeConstraints { make in
+      make.center.equalToSuperview()
+    }
   }
 }
 
