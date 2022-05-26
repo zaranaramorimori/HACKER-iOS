@@ -270,8 +270,9 @@ class TeamViewController: UIViewController {
     AttackAPI.shared.attackTeam(teamId: 2) { (response) in
       switch response {
       case .success:
-        print("성공")
-        //TODO: 로티 뷰 연결하기
+        let lottieVC = AttackLottieViewController()
+        lottieVC.modalPresentationStyle = .overCurrentContext
+        self.present(lottieVC, animated: false)
       case .requestErr(let msg):
         if let errorMsg = msg as? String {
           self.makeAlertOnlyMessage(message: errorMsg, okAction: nil)
