@@ -93,6 +93,7 @@ PODS:
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
   - Kingfisher (7.1.2)
+  - lottie-ios (3.3.0)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
   - Moya/Core (14.0.0):
@@ -112,6 +113,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Messaging
   - Kingfisher (~> 7.0)
+  - lottie-ios
   - Moya (~> 14.0)
   - SnapKit (~> 5.0.0)
   - SwiftGen (~> 6.0)
@@ -131,6 +133,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - Kingfisher
+    - lottie-ios
     - Moya
     - nanopb
     - PromisesObjC
@@ -151,6 +154,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58

@@ -10,6 +10,7 @@ def pods
   pod 'Then'
   pod 'SwiftGen', '~> 6.0'
   pod 'SwiftLint'
+  pod 'lottie-ios'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
 end

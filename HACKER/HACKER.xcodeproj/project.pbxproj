@@ -47,6 +47,9 @@
 		86287D65283E411900391C4D /* AddFriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86287D64283E411900391C4D /* AddFriendRequest.swift */; };
 		86287D67283E427400391C4D /* AddFriendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86287D66283E427400391C4D /* AddFriendResponse.swift */; };
 		8648AD9727E8D417009F5C7A /* HACKERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8648AD9627E8D417009F5C7A /* HACKERTests.swift */; };
+		86856D39283F919E00F3B3BC /* AttackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D38283F919D00F3B3BC /* AttackAPI.swift */; };
+		86856D3B283F91A500F3B3BC /* AttackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D3A283F91A500F3B3BC /* AttackService.swift */; };
+		86856D3D283FC42F00F3B3BC /* AttackLottieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */; };
 		86856D40283FCA8C00F3B3BC /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D3F283FCA8C00F3B3BC /* AlarmViewController.swift */; };
 		86856D43283FCE1600F3B3BC /* AlarmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D42283FCE1600F3B3BC /* AlarmCollectionViewCell.swift */; };
 		86856D46283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D45283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift */; };
@@ -188,6 +191,9 @@
 		86287D66283E427400391C4D /* AddFriendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendResponse.swift; sourceTree = "<group>"; };
 		8648AD9427E8D417009F5C7A /* HACKERTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8648AD9627E8D417009F5C7A /* HACKERTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERTests.swift; sourceTree = "<group>"; };
+		86856D38283F919D00F3B3BC /* AttackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackAPI.swift; sourceTree = "<group>"; };
+		86856D3A283F91A500F3B3BC /* AttackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackService.swift; sourceTree = "<group>"; };
+		86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackLottieViewController.swift; sourceTree = "<group>"; };
 		86856D3F283FCA8C00F3B3BC /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		86856D42283FCE1600F3B3BC /* AlarmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCollectionViewCell.swift; sourceTree = "<group>"; };
 		86856D45283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightFlowLayout.swift; sourceTree = "<group>"; };
@@ -309,6 +315,7 @@
 		77233E9328182814006B7903 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				86856D37283F919100F3B3BC /* Attack */,
 				86856D47283FDD1400F3B3BC /* Push */,
 				775EC037283FA29E00C3CA0B /* Setting */,
 				86E4CF6B282B7E020069C048 /* Friend */,
@@ -475,6 +482,15 @@
 				8648AD9627E8D417009F5C7A /* HACKERTests.swift */,
 			);
 			path = HACKERTests;
+			sourceTree = "<group>";
+		};
+		86856D37283F919100F3B3BC /* Attack */ = {
+			isa = PBXGroup;
+			children = (
+				86856D38283F919D00F3B3BC /* AttackAPI.swift */,
+				86856D3A283F91A500F3B3BC /* AttackService.swift */,
+			);
+			path = Attack;
 			sourceTree = "<group>";
 		};
 		86856D41283FCE0500F3B3BC /* Cell */ = {
@@ -811,6 +827,7 @@
 				E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */,
 				E8C73172282750ED00431E5F /* CheckAddUserPopUpViewController.swift */,
 				E8C73174282751B700431E5F /* CheckFriendViewController.swift */,
+				86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */,
 			);
 			path = AddFriendViewController;
 			sourceTree = "<group>";
@@ -1169,6 +1186,7 @@
 				86287D67283E427400391C4D /* AddFriendResponse.swift in Sources */,
 				77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */,
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
+				86856D39283F919E00F3B3BC /* AttackAPI.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
 				86856D40283FCA8C00F3B3BC /* AlarmViewController.swift in Sources */,
 				77BA0E5C2823720700EC41A5 /* EmptyView.swift in Sources */,
@@ -1194,8 +1212,10 @@
 				86856D46283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift in Sources */,
 				77043D57283CABF80091A7D5 /* OpenSourceViewController.swift in Sources */,
 				77233EAF2821B6D2006B7903 /* RankingTableViewHeader.swift in Sources */,
+				86856D3B283F91A500F3B3BC /* AttackService.swift in Sources */,
 				E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */,
 				77233EBD2822DB6C006B7903 /* FightAPI.swift in Sources */,
+				86856D3D283FC42F00F3B3BC /* AttackLottieViewController.swift in Sources */,
 				E80282C5282388F800268A5A /* NickNameService.swift in Sources */,
 				E855DD3627EF4556003F3B34 /* FriendDetailViewController.swift in Sources */,
 				E85657842829716B001BE9E4 /* ShoppingAPI.swift in Sources */,
