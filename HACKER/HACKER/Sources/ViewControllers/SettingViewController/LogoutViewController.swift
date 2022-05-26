@@ -44,16 +44,10 @@ class LogoutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configUI()
         setupAutoLayout()
     }
     
     // MARK: - Custom Method
-    
-    private func configUI() {
-        view.backgroundColor = .hackerWhite
-    }
-    
     private func setupAutoLayout() {
         view.addSubviews([dimmedBackView, popUpView,
                           logoutLabel,
@@ -92,10 +86,14 @@ class LogoutViewController: UIViewController {
     // MARK: - @objc
     
     @objc func touchYesButton(_ sender: UIButton) {
-        print("touchYesButton")
+      UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.accessToken)
+      UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.refreshToken)
+      //TODO: 또 유저디폴트에 저장해놓은거 있으면 여기서 없애주기
+      let loginVC = LoginViewController()
+      self.changeRootViewController(loginVC)
     }
     
     @objc func touchNoButton(_ sender: UIButton) {
-        print("touchNoButton")
+      self.dismiss(animated: true)
     }
 }
