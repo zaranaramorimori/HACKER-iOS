@@ -65,7 +65,7 @@ class TeamViewController: UIViewController {
     $0.setBackgroundImage(UIImage(named: "yesButtonActive"), for: .normal)
     $0.setTitle("공격하기", for: .normal)
     $0.setTitleColor(.hackerWhite, for: .normal)
-    $0.addTarget(self, action: #selector(touchAttackButton(_:)), for: .touchUpInside)
+    $0.addTarget(self, action: #selector(touchAttackButton), for: .touchUpInside)
   }
   
   var attackButtonCountLabel = UILabel().then {
@@ -267,7 +267,24 @@ class TeamViewController: UIViewController {
   // MARK: - @objc
   
   @objc func touchAttackButton(_ sender: UIButton) {
-    print("touchAttackButton")
+    AttackAPI.shared.attackTeam(teamId: 2) { (response) in
+      switch response {
+      case .success:
+        let lottieVC = AttackLottieViewController()
+        lottieVC.modalPresentationStyle = .overCurrentContext
+        self.present(lottieVC, animated: false)
+      case .requestErr(let msg):
+        if let errorMsg = msg as? String {
+          self.makeAlertOnlyMessage(message: errorMsg, okAction: nil)
+        }
+      case .pathErr:
+        print("attackUser - pathErr")
+      case .serverErr:
+        print("attackUser - serverErr")
+      case .networkFail:
+        print("attackUser - networkFail")
+      }
+    }
   }
   
 }
