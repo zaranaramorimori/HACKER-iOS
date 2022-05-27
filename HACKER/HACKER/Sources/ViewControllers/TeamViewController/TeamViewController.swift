@@ -46,6 +46,7 @@ class TeamViewController: UIViewController {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
     $0.image = UIImage(named: "teamCharacterImage")
+    $0.layer.cornerRadius = 10
   }
   
   var nameLabel = UILabel().then {
