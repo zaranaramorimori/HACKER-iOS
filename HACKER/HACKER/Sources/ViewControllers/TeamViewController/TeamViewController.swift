@@ -270,6 +270,7 @@ class TeamViewController: UIViewController {
     teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
     nameLabel.text = serverTeamDetailInfo?.team.name
     commitLabel.text = "\(serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(serverTeamDetailInfo?.team.hairCount ?? 0) 가닥"
+    attackButtonCountLabel.text = "X\(serverTeamDetailInfo?.team.couponCount ?? 0)"
   }
   
   private func updateEmptyViewLabel() {
@@ -349,7 +350,6 @@ extension TeamViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
     print(indexPath.section)
   }
 }

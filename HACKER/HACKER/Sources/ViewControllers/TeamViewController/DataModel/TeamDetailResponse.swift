@@ -35,11 +35,11 @@ struct Member: Codable {
 // MARK: - TeamInfo
 struct TeamInfo: Codable {
     let name, imageURL: String
-    let commitCount, hairCount: Int
+    let commitCount, hairCount, couponCount: Int
 
     enum CodingKeys: String, CodingKey {
         case name
         case imageURL = "imageUrl"
-        case commitCount, hairCount
+        case commitCount, hairCount, couponCount
     }
 }
