@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - RankingResponse
 struct RankingResponse: Codable {
-  let myRank: Rank
+  let myRank: Rank?
   let ranks: [Rank]
 }
 

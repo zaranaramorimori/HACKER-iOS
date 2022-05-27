@@ -720,9 +720,9 @@ extension RankingCollectionViewCell {
   }
   func updateServerData() {
     self.firstUserNameLabel.setupLabel(text: rankList?.ranks[1].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-    self.firstUserCommitLabel.setupLabel(text: "\(rankList?.ranks[0].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
+    self.firstUserCommitLabel.setupLabel(text: "\(rankList?.ranks[1].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
     self.secondUserNameLabel.setupLabel(text: rankList?.ranks[0].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-    self.secondUserCommitLabel.setupLabel(text: "\(rankList?.ranks[1].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
+    self.secondUserCommitLabel.setupLabel(text: "\(rankList?.ranks[0].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
     self.thirdUserNameLabel.setupLabel(text: rankList?.ranks[2].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
     self.thirdUserCommitLabel.setupLabel(text: "\(rankList?.ranks[2].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
     self.firstuserhairfirstImage.updateServerImage(rankList?.ranks[1].head?.one ?? "")
