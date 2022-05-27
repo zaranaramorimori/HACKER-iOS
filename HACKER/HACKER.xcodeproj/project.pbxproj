@@ -47,6 +47,9 @@
 		86287D65283E411900391C4D /* AddFriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86287D64283E411900391C4D /* AddFriendRequest.swift */; };
 		86287D67283E427400391C4D /* AddFriendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86287D66283E427400391C4D /* AddFriendResponse.swift */; };
 		8648AD9727E8D417009F5C7A /* HACKERTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8648AD9627E8D417009F5C7A /* HACKERTests.swift */; };
+		86856D39283F919E00F3B3BC /* AttackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D38283F919D00F3B3BC /* AttackAPI.swift */; };
+		86856D3B283F91A500F3B3BC /* AttackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D3A283F91A500F3B3BC /* AttackService.swift */; };
+		86856D3D283FC42F00F3B3BC /* AttackLottieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */; };
 		869B5AC127ECFFB500F2ACA7 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */; };
 		869B5AC327ED04D000F2ACA7 /* XCUIElement+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */; };
 		86DF9A7427EB37CA00C7D493 /* SignupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7327EB37C900C7D493 /* SignupUITests.swift */; };
@@ -187,6 +190,9 @@
 		86287D66283E427400391C4D /* AddFriendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendResponse.swift; sourceTree = "<group>"; };
 		8648AD9427E8D417009F5C7A /* HACKERTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8648AD9627E8D417009F5C7A /* HACKERTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERTests.swift; sourceTree = "<group>"; };
+		86856D38283F919D00F3B3BC /* AttackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackAPI.swift; sourceTree = "<group>"; };
+		86856D3A283F91A500F3B3BC /* AttackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackService.swift; sourceTree = "<group>"; };
+		86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackLottieViewController.swift; sourceTree = "<group>"; };
 		869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
 		869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extension.swift"; sourceTree = "<group>"; };
 		86DF9A7327EB37C900C7D493 /* SignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUITests.swift; sourceTree = "<group>"; };
@@ -308,6 +314,7 @@
 			children = (
 				E8DECE64282F790C002B6E35 /* SearchFriend */,
 				E8DECE5B282F71B2002B6E35 /* TotalRanking */,
+				86856D37283F919100F3B3BC /* Attack */,
 				775EC037283FA29E00C3CA0B /* Setting */,
 				86E4CF6B282B7E020069C048 /* Friend */,
 				E85657822829715C001BE9E4 /* Shopping */,
@@ -473,6 +480,15 @@
 				8648AD9627E8D417009F5C7A /* HACKERTests.swift */,
 			);
 			path = HACKERTests;
+			sourceTree = "<group>";
+		};
+		86856D37283F919100F3B3BC /* Attack */ = {
+			isa = PBXGroup;
+			children = (
+				86856D38283F919D00F3B3BC /* AttackAPI.swift */,
+				86856D3A283F91A500F3B3BC /* AttackService.swift */,
+			);
+			path = Attack;
 			sourceTree = "<group>";
 		};
 		86DF9A7527ECF19900C7D493 /* Utils */ = {
@@ -782,6 +798,7 @@
 				E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */,
 				E8C73172282750ED00431E5F /* CheckAddUserPopUpViewController.swift */,
 				E8C73174282751B700431E5F /* CheckFriendViewController.swift */,
+				86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */,
 			);
 			path = AddFriendViewController;
 			sourceTree = "<group>";
@@ -1155,6 +1172,7 @@
 				86287D67283E427400391C4D /* AddFriendResponse.swift in Sources */,
 				77233EB52822A02B006B7903 /* MemberCollectionViewCell.swift in Sources */,
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
+				86856D39283F919E00F3B3BC /* AttackAPI.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
 				E8DECE5F282F71CC002B6E35 /* RankingService.swift in Sources */,
 				77BA0E5C2823720700EC41A5 /* EmptyView.swift in Sources */,
@@ -1181,8 +1199,10 @@
 				77233E9528182861006B7903 /* HowTo.swift in Sources */,
 				77043D57283CABF80091A7D5 /* OpenSourceViewController.swift in Sources */,
 				77233EAF2821B6D2006B7903 /* RankingTableViewHeader.swift in Sources */,
+				86856D3B283F91A500F3B3BC /* AttackService.swift in Sources */,
 				E855DD3427EF423D003F3B34 /* MyFriendsCollectionViewCell.swift in Sources */,
 				77233EBD2822DB6C006B7903 /* FightAPI.swift in Sources */,
+				86856D3D283FC42F00F3B3BC /* AttackLottieViewController.swift in Sources */,
 				E80282C5282388F800268A5A /* NickNameService.swift in Sources */,
 				E855DD3627EF4556003F3B34 /* FriendDetailViewController.swift in Sources */,
 				E85657842829716B001BE9E4 /* ShoppingAPI.swift in Sources */,

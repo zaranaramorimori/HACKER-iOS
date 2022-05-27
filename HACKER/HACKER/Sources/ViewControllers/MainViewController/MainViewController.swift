@@ -38,10 +38,12 @@ class MainViewController: UIViewController {
   let attackContainerView = UIStackView()
   let attackTicket = UIImageView()
   let attackNum = UILabel()
+  let attackCouponButton = UIButton()
   
   var userNickName = ""
   var todayCommitNumber = 0
   var attackNumber = 0
+  var availableCouponNumber = 0
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -96,6 +98,7 @@ extension MainViewController {
     layoutAttackContainerView()
     layoutAttackTicket()
     layoutAttackNum()
+    layoutAttackCouponButton()
   }
   func layoutNickNameLabel() {
     view.add(nicknameLabel) {
@@ -360,6 +363,16 @@ extension MainViewController {
       }
     }
   }
+  func layoutAttackCouponButton() {
+    view.add(attackCouponButton) {
+      $0.setupButton(title: "교환하기 (\(self.availableCouponNumber))", color: .hackerWhite, font: .btnText(ofSize: 24), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.isHidden = false // TODO: - 지수야 프로그레스바 작업하고 나서 이거 디폴트 true로 바꿔 !
+      $0.addTarget(self, action: #selector(self.getAttackCouponTapped), for: .touchUpInside)
+      $0.snp.makeConstraints { make in
+        make.edges.equalTo(self.progressBackgroundView)
+      }
+    }
+  }
   func layoutAttackTicket() {
     attackContainerView.addArrangedSubview(attackTicket)
     attackTicket.image = UIImage(named: "attackTicketIcon")
@@ -389,6 +402,25 @@ extension MainViewController {
   @objc func settingButtonTapped() {
     let settingVC = SettingViewController()
     self.navigationController?.pushViewController(settingVC, animated: true)
+  }
+  @objc private func getAttackCouponTapped() {
+    AttackAPI.shared.getAttackCoupon { (response) in
+      switch response {
+      case .success:
+        print("getAttackCoupon - 성공")
+        self.attackNumber += 1
+      case .requestErr(let msg):
+        if let errorMsg = msg as? String {
+          self.makeAlertOnlyMessage(message: errorMsg, okAction: nil)
+        }
+      case .pathErr:
+        print("getAttackCoupon - pathErr")
+      case .serverErr:
+        print("getAttackCoupon - serverErr")
+      case .networkFail:
+        print("getAttackCoupon - networkFail")
+      }
+    }
   }
 }
 
