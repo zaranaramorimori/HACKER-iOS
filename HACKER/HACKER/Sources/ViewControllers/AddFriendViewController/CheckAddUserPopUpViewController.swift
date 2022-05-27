@@ -15,6 +15,7 @@ class CheckAddUserPopUpViewController: UIViewController {
   // MARK: - Properties
   var parentVC: UIViewController?
   var friendId: Int?
+  var username: String?
   
   // MARK: - Components
   let backgroundView = UIView()
@@ -95,8 +96,9 @@ extension CheckAddUserPopUpViewController {
   }
   func layoutUserNameLabel() {
     self.rectangleBackgroundView.add(userNameLabel) {
+      $0.setupLabel(text: self.username ?? "", color: .hackerBlack, font: .bodyRegular(ofSize: 16))
       $0.snp.makeConstraints {
-        $0.bottom.equalTo(self.userNameLine.snp.bottom).offset(-5)
+        $0.bottom.equalTo(self.userNameLine).offset(-5)
         $0.centerX.equalToSuperview()
       }
     }

@@ -141,7 +141,7 @@ extension CheckFriendViewController {
     if let index = checkedIndex {
       let popupVC = CheckAddUserPopUpViewController()
       popupVC.friendId = friendList?[index].id
-      popupVC.userNameLabel.text = friendList?[index].username
+      popupVC.username = friendList?[index].username
       popupVC.parentVC = self
       popupVC.modalPresentationStyle = .overFullScreen
       self.present(popupVC, animated: false, completion: nil)
