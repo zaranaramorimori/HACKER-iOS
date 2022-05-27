@@ -43,6 +43,8 @@ class ShoppingRankingViewController: UIViewController {
     return collectionView
   }()
   
+  var rankList: RankingResponse?
+  var friendList = [SearchFriendResponse]()
   var isToolTipShown: Bool = false
   let screenWidth = UIScreen.main.bounds.width
   var trigger = true
@@ -54,6 +56,8 @@ class ShoppingRankingViewController: UIViewController {
     attribute()
     register()
     layout()
+    rankingWithAPI()
+    searchFriendWithAPI()
   }
   override func viewWillAppear(_ animated: Bool) {
     self.tabBarController?.tabBar.isHidden = false
@@ -181,8 +185,51 @@ extension ShoppingRankingViewController {
       self.infoView.isHidden = true
     }
   }
+  // MARK: - Network
+  func rankingWithAPI() {
+    RankingAPI.shared.totalRanking { response in
+      switch response {
+      case .success(let data):
+        if let rankInfo = data as? RankingResponse {
+          let rankingCollectionVC = RankingCollectionViewCell()
+          self.rankList = rankInfo
+          self.pageCollectionView.reloadData()
+        }
+      case .requestErr(let status):
+        print("RankingAPI - requestErr: \(status)")
+        
+      case .pathErr:
+        print("RankingAPI - pathErr")
+      case .serverErr:
+        print("RankingAPI - serverErr")
+      case .networkFail:
+        print("RankingAPI - networkFail")
+      }
+    }
+  }
+  // MARK: - Network
+  func searchFriendWithAPI() {
+    SearchFriendAPI.shared.searchFriend { response in
+      switch response {
+      case .success(let data):
+        if let friendInfo = data as? [SearchFriendResponse] {
+          let shoppingCollectionviewCell = ShoppingCollectionViewCell()
+          self.friendList = friendInfo
+          self.pageCollectionView.reloadData()
+        }
+      case .requestErr(let status):
+        print("RankingAPI - requestErr: \(status)")
+        
+      case .pathErr:
+        print("RankingAPI - pathErr")
+      case .serverErr:
+        print("RankingAPI - serverErr")
+      case .networkFail:
+        print("RankingAPI - networkFail")
+      }
+    }
+  }
 }
-
 // MARK: - CollectionViewDelegate FlowLayout
 extension ShoppingRankingViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -255,11 +302,13 @@ extension ShoppingRankingViewController: UICollectionViewDataSource {
       if indexPath.section == 0 {
         guard let shoppingCell = collectionView.dequeueReusableCell(withReuseIdentifier: ShoppingCollectionViewCell.identifier, for: indexPath) as? ShoppingCollectionViewCell else { return UICollectionViewCell() }
         shoppingCell.backgroundColor = .hackerWhite
+        shoppingCell.friendList = self.friendList
         shoppingCell.awakeFromNib()
         return shoppingCell
       } else {
         guard let rankingCell = collectionView.dequeueReusableCell(withReuseIdentifier: RankingCollectionViewCell.identifier, for: indexPath) as? RankingCollectionViewCell else { return UICollectionViewCell() }
         rankingCell.backgroundColor = .hackerWhite
+        rankingCell.rankList = self.rankList
         rankingCell.awakeFromNib()
         return rankingCell
       }
