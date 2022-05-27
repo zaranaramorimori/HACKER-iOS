@@ -66,6 +66,16 @@ class RankingViewController: UIViewController {
     $0.setTitleColor(.hackerBlack, for: .normal)
     $0.addTarget(self, action: #selector(touchShortCutButton(_:)), for: .touchUpInside)
   }
+  
+  private let notificationView = UIView().then {
+    $0.backgroundColor = .hackerBlack
+    $0.layer.cornerRadius = 15
+  }
+  
+  private let notificationViewLabel = UILabel().then {
+    $0.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .hackerWhite, font: .titleBold(ofSize: 16))
+    $0.numberOfLines = 2
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -79,16 +89,21 @@ class RankingViewController: UIViewController {
   private func configUI() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
+    notificationView.isHidden = true
   }
   
   private func setupAutoLayout() {
     view.addSubviews([navigationBar, dividerLine, rankingTableView,
-                      myRankView, rankLabel, nameLabel, commitLabel, shortCutButton])
+                      myRankView, rankLabel, nameLabel, commitLabel, shortCutButton, notificationView])
+    notificationView.add(notificationViewLabel)
     navigationBar.iconLayout(isBack: true,
                              logoImage: UIImage(named: "fightMainIcon"),
                              rightImage: UIImage(named: "infoIconBlack"))
     navigationBar.popViewController = {
       self.navigationController?.popViewController(animated: true)
+    }
+    navigationBar.hideNotificationView = {
+      self.notificationView.isHidden = !self.navigationBar.rightButton.isSelected
     }
     navigationBar.snp.makeConstraints { make in
       make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
@@ -123,6 +138,17 @@ class RankingViewController: UIViewController {
     shortCutButton.snp.makeConstraints { make in
       make.trailing.equalTo(myRankView.snp.trailing).inset(16)
       make.centerY.equalTo(myRankView)
+    }
+    
+    notificationView.snp.makeConstraints { make in
+      make.top.equalTo(navigationBar.rightButton.snp.bottom).offset(4)
+      make.trailing.equalToSuperview().inset(24)
+      make.width.equalTo(265)
+      make.height.equalTo(72)
+    }
+
+    notificationViewLabel.snp.makeConstraints { make in
+      make.centerX.centerY.equalToSuperview()
     }
   }
   

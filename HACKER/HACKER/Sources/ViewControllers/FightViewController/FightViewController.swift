@@ -37,6 +37,16 @@ class FightViewController: UIViewController {
     }
   }
   
+  private let notificationView = UIView().then {
+    $0.backgroundColor = .hackerBlack
+    $0.layer.cornerRadius = 15
+  }
+  
+  private let notificationViewLabel = UILabel().then {
+    $0.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .hackerWhite, font: .titleBold(ofSize: 16))
+    $0.numberOfLines = 2
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configUI()
@@ -49,15 +59,20 @@ class FightViewController: UIViewController {
   private func configUI() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
+    notificationView.isHidden = true
   }
   
   private func setupAutoLayout() {
-    view.addSubviews([navigationBar, dividerLine, fightTableView])
+    view.addSubviews([navigationBar, dividerLine, fightTableView, notificationView])
+    notificationView.add(notificationViewLabel)
     navigationBar.iconLayout(isBack: false,
                              logoImage: UIImage(named: "fightMainIcon"),
                              rightImage: UIImage(named: "infoIconBlack"))
     navigationBar.popViewController = {
       self.navigationController?.popViewController(animated: true)
+    }
+    navigationBar.hideNotificationView = {
+      self.notificationView.isHidden = !self.navigationBar.rightButton.isSelected
     }
     navigationBar.snp.makeConstraints { make in
       make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
@@ -72,6 +87,17 @@ class FightViewController: UIViewController {
       make.leading.equalToSuperview().inset(24)
       make.bottom.equalTo(view.safeAreaLayoutGuide)
       make.centerX.equalToSuperview()
+    }
+    
+    notificationView.snp.makeConstraints { make in
+      make.top.equalTo(navigationBar.rightButton.snp.bottom).offset(4)
+      make.trailing.equalToSuperview().inset(24)
+      make.width.equalTo(265)
+      make.height.equalTo(72)
+    }
+
+    notificationViewLabel.snp.makeConstraints { make in
+      make.centerX.centerY.equalToSuperview()
     }
   }
 }

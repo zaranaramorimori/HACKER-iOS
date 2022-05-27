@@ -119,6 +119,16 @@ class TeamViewController: UIViewController {
     }
   }
   
+  private let notificationView = UIView().then {
+    $0.backgroundColor = .hackerBlack
+    $0.layer.cornerRadius = 15
+  }
+  
+  private let notificationViewLabel = UILabel().then {
+    $0.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .hackerWhite, font: .titleBold(ofSize: 16))
+    $0.numberOfLines = 2
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configUI()
@@ -133,6 +143,7 @@ class TeamViewController: UIViewController {
   private func configUI() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
+    notificationView.isHidden = true
   }
   
   private func collectionViewRegister() {
@@ -142,7 +153,8 @@ class TeamViewController: UIViewController {
   }
   
   private func setupAutoLayout() {
-    view.addSubviews([teamScrollView, navigationBar, dividerLine])
+    view.addSubviews([teamScrollView, navigationBar, dividerLine, notificationView])
+    notificationView.add(notificationViewLabel)
     teamScrollView.add(teamScrollContainerView)
     teamInfoContainerView.addSubviews([teamIcon, nameLabel,
                                        commitLabel, attackButton, attackButtonCountLabel])
@@ -154,6 +166,9 @@ class TeamViewController: UIViewController {
                              rightImage: UIImage(named: "infoIconBlack"))
     navigationBar.popViewController = {
       self.navigationController?.popViewController(animated: true)
+    }
+    navigationBar.hideNotificationView = {
+      self.notificationView.isHidden = !self.navigationBar.rightButton.isSelected
     }
     navigationBar.snp.makeConstraints { make in
       make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
@@ -239,10 +254,20 @@ class TeamViewController: UIViewController {
       make.leading.trailing.equalToSuperview()
       make.bottom.equalToSuperview().inset(36).priority(.high)
     }
+    notificationView.snp.makeConstraints { make in
+      make.top.equalTo(navigationBar.rightButton.snp.bottom).offset(4)
+      make.trailing.equalToSuperview().inset(24)
+      make.width.equalTo(265)
+      make.height.equalTo(72)
+    }
+
+    notificationViewLabel.snp.makeConstraints { make in
+      make.centerX.centerY.equalToSuperview()
+    }
   }
   
   private func updateTeamDetail() {
-//    teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
+    teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
     nameLabel.text = serverTeamDetailInfo?.team.name
     commitLabel.text = "\(serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(serverTeamDetailInfo?.team.hairCount ?? 0) 가닥"
   }
