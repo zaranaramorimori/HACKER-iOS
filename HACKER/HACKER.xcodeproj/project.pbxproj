@@ -110,6 +110,12 @@
 		E8C731712827509D00431E5F /* NotHackerUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */; };
 		E8C73173282750ED00431E5F /* CheckAddUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C73172282750ED00431E5F /* CheckAddUserPopUpViewController.swift */; };
 		E8C73175282751B700431E5F /* CheckFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C73174282751B700431E5F /* CheckFriendViewController.swift */; };
+		E8DECE5A282F6FAC002B6E35 /* RankingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DECE59282F6FAC002B6E35 /* RankingResponse.swift */; };
+		E8DECE5D282F71C3002B6E35 /* RankingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DECE5C282F71C3002B6E35 /* RankingAPI.swift */; };
+		E8DECE5F282F71CC002B6E35 /* RankingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DECE5E282F71CC002B6E35 /* RankingService.swift */; };
+		E8DECE63282F7884002B6E35 /* SearchFriendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DECE62282F7884002B6E35 /* SearchFriendResponse.swift */; };
+		E8DECE68282F7980002B6E35 /* SearchFriendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DECE67282F7980002B6E35 /* SearchFriendAPI.swift */; };
+		E8DECE6C282F7A40002B6E35 /* SearchFriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DECE6B282F7A40002B6E35 /* SearchFriendService.swift */; };
 		E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477C279EF6E900D5A482 /* AppDelegate.swift */; };
 		E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */; };
 		E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8E84785279EF6EC00D5A482 /* Assets.xcassets */; };
@@ -248,6 +254,12 @@
 		E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotHackerUserPopUpViewController.swift; sourceTree = "<group>"; };
 		E8C73172282750ED00431E5F /* CheckAddUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAddUserPopUpViewController.swift; sourceTree = "<group>"; };
 		E8C73174282751B700431E5F /* CheckFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFriendViewController.swift; sourceTree = "<group>"; };
+		E8DECE59282F6FAC002B6E35 /* RankingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResponse.swift; sourceTree = "<group>"; };
+		E8DECE5C282F71C3002B6E35 /* RankingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingAPI.swift; sourceTree = "<group>"; };
+		E8DECE5E282F71CC002B6E35 /* RankingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingService.swift; sourceTree = "<group>"; };
+		E8DECE62282F7884002B6E35 /* SearchFriendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendResponse.swift; sourceTree = "<group>"; };
+		E8DECE67282F7980002B6E35 /* SearchFriendAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendAPI.swift; sourceTree = "<group>"; };
+		E8DECE6B282F7A40002B6E35 /* SearchFriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendService.swift; sourceTree = "<group>"; };
 		E8E84779279EF6E900D5A482 /* HACKER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HACKER.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E8477C279EF6E900D5A482 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8E8477E279EF6E900D5A482 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -300,6 +312,8 @@
 		77233E9328182814006B7903 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				E8DECE64282F790C002B6E35 /* SearchFriend */,
+				E8DECE5B282F71B2002B6E35 /* TotalRanking */,
 				86856D37283F919100F3B3BC /* Attack */,
 				775EC037283FA29E00C3CA0B /* Setting */,
 				86E4CF6B282B7E020069C048 /* Friend */,
@@ -630,6 +644,8 @@
 			isa = PBXGroup;
 			children = (
 				E8565780282970D3001BE9E4 /* ShoppingResponse.swift */,
+				E8DECE59282F6FAC002B6E35 /* RankingResponse.swift */,
+				E8DECE62282F7884002B6E35 /* SearchFriendResponse.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -785,6 +801,24 @@
 				86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */,
 			);
 			path = AddFriendViewController;
+			sourceTree = "<group>";
+		};
+		E8DECE5B282F71B2002B6E35 /* TotalRanking */ = {
+			isa = PBXGroup;
+			children = (
+				E8DECE5C282F71C3002B6E35 /* RankingAPI.swift */,
+				E8DECE5E282F71CC002B6E35 /* RankingService.swift */,
+			);
+			path = TotalRanking;
+			sourceTree = "<group>";
+		};
+		E8DECE64282F790C002B6E35 /* SearchFriend */ = {
+			isa = PBXGroup;
+			children = (
+				E8DECE67282F7980002B6E35 /* SearchFriendAPI.swift */,
+				E8DECE6B282F7A40002B6E35 /* SearchFriendService.swift */,
+			);
+			path = SearchFriend;
 			sourceTree = "<group>";
 		};
 		E8E84770279EF6E900D5A482 = {
@@ -1140,6 +1174,7 @@
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
 				86856D39283F919E00F3B3BC /* AttackAPI.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
+				E8DECE5F282F71CC002B6E35 /* RankingService.swift in Sources */,
 				77BA0E5C2823720700EC41A5 /* EmptyView.swift in Sources */,
 				77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */,
 				775EC039283FA2AC00C3CA0B /* SettingAPI.swift in Sources */,
@@ -1149,11 +1184,13 @@
 				77576EC727EB90A2005AF6DA /* SettingViewController.swift in Sources */,
 				77233E97281828BF006B7903 /* URL.swift in Sources */,
 				E80282C728238B8800268A5A /* NickNameRequest.swift in Sources */,
+				E8DECE63282F7884002B6E35 /* SearchFriendResponse.swift in Sources */,
 				E80282CD2823A66500268A5A /* MainAPI.swift in Sources */,
 				E80282CF2823A67200268A5A /* MainService.swift in Sources */,
 				E80282E028241A6C00268A5A /* MainDetailResponse.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
+				E8DECE68282F7980002B6E35 /* SearchFriendAPI.swift in Sources */,
 				77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */,
 				E87ED83A2823637400775A85 /* SignUpAPI.swift in Sources */,
 				E8C7316F28274E2100431E5F /* AddFriendViewController.swift in Sources */,
@@ -1173,6 +1210,7 @@
 				77233EB2282231E0006B7903 /* TeamViewController.swift in Sources */,
 				E855DD2B27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
+				E8DECE5A282F6FAC002B6E35 /* RankingResponse.swift in Sources */,
 				775EC03D283FA89400C3CA0B /* ChangeNicknameViewController.swift in Sources */,
 				E855DD3027EF1DC4003F3B34 /* identifiable.swift in Sources */,
 				E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */,
@@ -1185,6 +1223,7 @@
 				77233E9E2821938D006B7903 /* FightViewController.swift in Sources */,
 				E855DD2D27EF0AF5003F3B34 /* RankingCollectionViewCell.swift in Sources */,
 				77233EAD2821B17A006B7903 /* TeamRankingTableViewCell.swift in Sources */,
+				E8DECE6C282F7A40002B6E35 /* SearchFriendService.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
 				E8C73175282751B700431E5F /* CheckFriendViewController.swift in Sources */,
 				77233E9228182649006B7903 /* NetworkResult.swift in Sources */,
@@ -1197,6 +1236,7 @@
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
 				86E4CF6D282B7E280069C048 /* FriendAPI.swift in Sources */,
 				E8C731712827509D00431E5F /* NotHackerUserPopUpViewController.swift in Sources */,
+				E8DECE5D282F71C3002B6E35 /* RankingAPI.swift in Sources */,
 				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
 				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
 				86287D65283E411900391C4D /* AddFriendRequest.swift in Sources */,
