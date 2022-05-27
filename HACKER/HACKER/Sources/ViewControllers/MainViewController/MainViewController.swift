@@ -44,6 +44,7 @@ class MainViewController: UIViewController {
   var todayCommitNumber = 0
   var attackNumber = 0
   var availableCouponNumber = 0
+  let screenWidth = UIScreen.main.bounds.width-48
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -317,6 +318,7 @@ extension MainViewController {
   func layoutRefreshButton() {
     view.add(refreshButton) {
       $0.setImage(UIImage(named: "refreshblackIcon"), for: .normal)
+      $0.addTarget(self, action: #selector(self.refreshButtonTapped), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.bottom).offset(18)
         $0.trailing.equalToSuperview().offset(-24)
@@ -334,7 +336,7 @@ extension MainViewController {
         $0.top.equalTo(self.refreshButton.snp.bottom).offset(5)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo((UIScreen.main.bounds.width-48)*0.12)
+        $0.height.equalTo(self.screenWidth*0.12)
       }
     }
   }
@@ -346,8 +348,7 @@ extension MainViewController {
       $0.snp.makeConstraints {
         $0.top.equalTo(self.progressBackgroundView.snp.top)
         $0.leading.equalToSuperview().offset(24)
-        $0.trailing.equalToSuperview().offset(-(UIScreen.main.bounds.width/10)*3)
-        $0.height.equalTo((UIScreen.main.bounds.width-48)*0.12)
+        $0.height.equalTo(self.screenWidth*0.12)
       }
     }
   }
@@ -366,7 +367,7 @@ extension MainViewController {
   func layoutAttackCouponButton() {
     view.add(attackCouponButton) {
       $0.setupButton(title: "교환하기 (\(self.availableCouponNumber))", color: .hackerWhite, font: .btnText(ofSize: 24), backgroundColor: .clear, state: .normal, radius: 0)
-      $0.isHidden = false // TODO: - 지수야 프로그레스바 작업하고 나서 이거 디폴트 true로 바꿔 !
+      $0.isHidden = true // TODO: - 지수야 프로그레스바 작업하고 나서 이거 디폴트 true로 바꿔 !
       $0.addTarget(self, action: #selector(self.getAttackCouponTapped), for: .touchUpInside)
       $0.snp.makeConstraints { make in
         make.edges.equalTo(self.progressBackgroundView)
@@ -393,7 +394,18 @@ extension MainViewController {
     
     todayCommitNumLabel.setupLabel(text: "(\(self.todayCommitNumber)/10)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
     attackNum.setupLabel(text: "x\(self.attackNumber)", color: .hackerBlack, font: .btnText(ofSize: 32))
-    
+    /// today commit 수에 맞게 progress Bar 분기처리
+    if self.todayCommitNumber < 10 {
+      progressFrontView.snp.makeConstraints { make in
+        make.width.equalTo((Int(self.screenWidth)/10)*self.todayCommitNumber)
+      }
+    } else {
+      progressFrontView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
+      progressFrontView.snp.makeConstraints { make in
+        make.width.equalTo(self.progressBackgroundView)
+      }
+      attackCouponButton.isHidden = false
+      }
   }
   @objc func userCharacterViewTapped() {
     let mainProfileVC = MainProfileViewController()
@@ -421,6 +433,9 @@ extension MainViewController {
         print("getAttackCoupon - networkFail")
       }
     }
+  }
+  @objc private func refreshButtonTapped() {
+    userInfoWithAPI()
   }
 }
 

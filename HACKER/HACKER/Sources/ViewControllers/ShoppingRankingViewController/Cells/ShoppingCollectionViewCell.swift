@@ -91,6 +91,7 @@ extension ShoppingCollectionViewCell {
           friendDetailVC.userhairtenthImage.updateServerImage(shoppingInfo.head.ten ?? "")
           friendDetailVC.userhaireleventhImage.updateServerImage(shoppingInfo.head.eleven ?? "")
           friendDetailVC.userhairtwelvethImage.updateServerImage(shoppingInfo.head.twelve ?? "")
+          friendDetailVC.getuserID = userID 
           self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
         }
       case .requestErr(let status):

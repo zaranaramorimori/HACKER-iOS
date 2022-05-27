@@ -34,6 +34,8 @@ class FriendDetailViewController: UIViewController {
   let hairNumLabel = UILabel()
   let attackButton = UIButton()
   
+  var getuserID: Int = 0
+  
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -281,9 +283,9 @@ extension FriendDetailViewController {
   @objc func quituserButtonClicked() {
     //친구 취소 버튼 클릭 시
   }
-  @objc func attackButtonClicked() {
+  @objc func attackButtonClicked(userID: Int) {
     // TODO: 지수야 userId: 2 이 부분 진짜 유저 아이디로만 바꿔줭
-    AttackAPI.shared.attackUser(userId: 2) { (response) in
+    AttackAPI.shared.attackUser(userId: getuserID) { (response) in
       switch response {
       case .success:
         let lottieVC = AttackLottieViewController()
