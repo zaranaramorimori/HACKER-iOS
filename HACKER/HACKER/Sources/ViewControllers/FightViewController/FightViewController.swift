@@ -83,8 +83,7 @@ extension FightViewController: UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-//    return serverIngSeasons?.seasons.count ?? 0
-    return 3
+    return serverIngSeasons?.seasons.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,19 +91,18 @@ extension FightViewController: UITableViewDataSource {
     
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
-//    cell.seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID
-//    cell.logoImage.updateServerImage(serverIngSeasons?.seasons[indexPath.section].imageURL ?? "")
-//    cell.nameLabel.text = serverIngSeasons?.seasons[indexPath.section].agency
-//    cell.titleLabel.text = serverIngSeasons?.seasons[indexPath.section].title
-//    cell.dateLabel.text = serverIngSeasons?.seasons[indexPath.section].duration
+    cell.seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID
+    cell.logoImage.updateServerImage(serverIngSeasons?.seasons[indexPath.section].imageURL ?? "")
+    cell.nameLabel.text = serverIngSeasons?.seasons[indexPath.section].agency
+    cell.titleLabel.text = serverIngSeasons?.seasons[indexPath.section].title
+    cell.dateLabel.text = serverIngSeasons?.seasons[indexPath.section].duration
     
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    let seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID ?? 0
-//    seasonTeamInfoWithAPI(seasonId: seasonId)
-    seasonTeamInfoWithAPI(seasonId: 1)
+    let seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID ?? 0
+    seasonTeamInfoWithAPI(seasonId: seasonId)
   }
 }
 

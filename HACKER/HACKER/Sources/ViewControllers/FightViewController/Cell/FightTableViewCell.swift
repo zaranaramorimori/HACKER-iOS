@@ -22,8 +22,8 @@ class FightTableViewCell: UITableViewCell {
   }
   
   var logoImage = UIImageView().then {
-    $0.contentMode = .scaleToFill
-    $0.image = UIImage(named: "nextBtnBlack")
+    $0.contentMode = .scaleAspectFill
+    $0.clipsToBounds = true
   }
   
   var nameLabel = UILabel().then {
@@ -66,7 +66,8 @@ class FightTableViewCell: UITableViewCell {
     
     logoImage.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
-      make.top.leading.trailing.equalToSuperview().inset(20)
+      make.top.leading.trailing.equalTo(backgroundWithBorder).inset(20)
+      make.height.equalTo(130)
     }
     
     nameLabel.snp.makeConstraints { make in
