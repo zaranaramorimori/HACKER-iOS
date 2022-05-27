@@ -294,6 +294,24 @@ extension FriendDetailViewController {
     //친구 취소 버튼 클릭 시
   }
   @objc func attackButtonClicked() {
-    
+    // TODO: 지수야 userId: 2 이 부분 진짜 유저 아이디로만 바꿔줭
+    AttackAPI.shared.attackUser(userId: 2) { (response) in
+      switch response {
+      case .success:
+        let lottieVC = AttackLottieViewController()
+        lottieVC.modalPresentationStyle = .overCurrentContext
+        self.present(lottieVC, animated: false)
+      case .requestErr(let msg):
+        if let errorMsg = msg as? String {
+          self.makeAlertOnlyMessage(message: errorMsg, okAction: nil)
+        }
+      case .pathErr:
+        print("attackUser - pathErr")
+      case .serverErr:
+        print("attackUser - serverErr")
+      case .networkFail:
+        print("attackUser - networkFail")
+      }
+    }
   }
 }
