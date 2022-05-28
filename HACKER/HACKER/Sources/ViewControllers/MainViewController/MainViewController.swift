@@ -44,6 +44,7 @@ class MainViewController: UIViewController {
   var todayCommitNumber = 0
   var attackNumber = 0
   var availableCouponNumber = 0
+  var exchangeCouponNumber = 0
   let screenWidth = UIScreen.main.bounds.width-48
   
   // MARK: - LifeCycle
@@ -366,7 +367,7 @@ extension MainViewController {
   }
   func layoutAttackCouponButton() {
     view.add(attackCouponButton) {
-      $0.setupButton(title: "교환하기 (\(self.availableCouponNumber))", color: .hackerWhite, font: .btnText(ofSize: 24), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: "교환하기 (\(self.exchangeCouponNumber))", color: .hackerWhite, font: .btnText(ofSize: 24), backgroundColor: .clear, state: .normal, radius: 0)
       $0.isHidden = true // TODO: - 지수야 프로그레스바 작업하고 나서 이거 디폴트 true로 바꿔 !
       $0.addTarget(self, action: #selector(self.getAttackCouponTapped), for: .touchUpInside)
       $0.snp.makeConstraints { make in
@@ -391,19 +392,19 @@ extension MainViewController {
     attributedStr.addAttribute(.font, value: UIFont.titleBold(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "\(self.userNickName)"))
     attributedStr.addAttribute(.font, value: UIFont.subtitleMedium(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "님"))
     self.nicknameLabel.attributedText = attributedStr
-    
     todayCommitNumLabel.setupLabel(text: "(\(self.todayCommitNumber)/10)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
     attackNum.setupLabel(text: "x\(self.attackNumber)", color: .hackerBlack, font: .btnText(ofSize: 32))
-    /// today commit 수에 맞게 progress Bar 분기처리
-    if self.todayCommitNumber < 10 {
+    /// couponCommit 수에 맞게 progress Bar 분기처리
+    if self.availableCouponNumber < 10 {
       progressFrontView.snp.makeConstraints { make in
-        make.width.equalTo((Int(self.screenWidth)/10)*self.todayCommitNumber)
+        make.width.equalTo((Int(self.screenWidth)/10)*self.availableCouponNumber)
       }
     } else {
       progressFrontView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
       progressFrontView.snp.makeConstraints { make in
         make.width.equalTo(self.progressBackgroundView)
       }
+      self.exchangeCouponNumber = (self.availableCouponNumber)/10
       attackCouponButton.isHidden = false
       }
   }
@@ -460,7 +461,8 @@ extension MainViewController {
           self.userhairtwelvethImage.updateServerImage(userInfo.head.twelve ?? "")
           self.userNickName = userInfo.user.nickname
           self.todayCommitNumber = userInfo.coupon.todayCommit
-          self.attackNumber = userInfo.coupon.couponCommit
+          self.availableCouponNumber = userInfo.coupon.couponCommit
+          self.attackNumber = userInfo.coupon.couponCount
           self.setupLabel()
         }
       case .requestErr(let status):
