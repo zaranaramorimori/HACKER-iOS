@@ -11,15 +11,7 @@ import Foundation
 struct ShoppingResponse: Codable {
   let isMyFriend: Bool
   let user: ShoppingUser
-  let head: ShoppingHead
-}
-
-// MARK: - Head
-struct ShoppingHead: Codable {
-  let one, two, three, four: String?
-  let five, six, seven, eight: String?
-  let nine, ten, eleven, twelve: String?
-  let updatedAt: String?
+  let head: String?
 }
 
 // MARK: - User
