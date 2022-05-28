@@ -13,39 +13,39 @@ extension Const {
       ["Content-Type": "application/json"]
     }
     
+    static func basicHeader() -> [String: String] {
+      ["Content-Type": "application/json",
+       "token": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
+    }
+
+    static func tokenHeader() -> [String: String] {
+      ["token": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
+    }
+
+    static func urlEncodedHeader() -> [String: String] {
+      ["Content-Type": "application/x-www-form-urlencoded"]
+    }
+
+    static func multipartFormHeader() -> [String: String] {
+      ["Content-Type": "multipart/form-data",
+       "token": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
+    }
 //    static func basicHeader() -> [String: String] {
 //      ["Content-Type": "application/json",
-//       "token": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
+//       "Authorization": Const.accessToken]
 //    }
 //
 //    static func tokenHeader() -> [String: String] {
-//      ["token": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
+//      ["Authorization": Const.accessToken]
 //    }
 //
 //    static func urlEncodedHeader() -> [String: String] {
-//      ["Content-Type": "application/x-www-form-urlencoded"]
+//      ["Content-Type": Const.accessToken]
 //    }
 //
 //    static func multipartFormHeader() -> [String: String] {
 //      ["Content-Type": "multipart/form-data",
-//       "token": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
+//       "Authorization": Const.accessToken]
 //    }
-    static func basicHeader() -> [String: String] {
-      ["Content-Type": "application/json",
-       "Authorization": Const.accessToken]
-    }
-    
-    static func tokenHeader() -> [String: String] {
-      ["Authorization": Const.accessToken]
-    }
-    
-    static func urlEncodedHeader() -> [String: String] {
-      ["Content-Type": Const.accessToken]
-    }
-    
-    static func multipartFormHeader() -> [String: String] {
-      ["Content-Type": "multipart/form-data",
-       "Authorization": Const.accessToken]
-    }
   }
 }
