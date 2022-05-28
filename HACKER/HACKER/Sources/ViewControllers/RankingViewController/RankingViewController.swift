@@ -195,6 +195,7 @@ extension RankingViewController: UITableViewDataSource {
     cell.rankLabel.text = "\(serverSeasonTeamInfo?.teams[indexPath.section+1].rank ?? 0) 등"
     cell.nameLabel.text = serverSeasonTeamInfo?.teams[indexPath.section+1].name
     cell.commitLabel.text = "\(serverSeasonTeamInfo?.teams[indexPath.section+1].commitCount ?? 0) 커밋"
+    cell.hairImage.updateServerImage(serverSeasonTeamInfo?.teams[indexPath.section+1].head ?? "")
     return cell
   }
   
@@ -217,6 +218,7 @@ extension RankingViewController: UITableViewDelegate {
       }
       rankingTableViewHeader.nameLabel.text = serverSeasonTeamInfo?.teams.first?.name
       rankingTableViewHeader.commitLabel.text = "\(serverSeasonTeamInfo?.teams.first?.commitCount ?? 0) 커밋"
+      rankingTableViewHeader.hairImage.updateServerImage(serverSeasonTeamInfo?.teams.first?.head ?? "")
       rankingTableViewHeader.addGestureRecognizer(tapGesture)
       return rankingTableViewHeader
     default:

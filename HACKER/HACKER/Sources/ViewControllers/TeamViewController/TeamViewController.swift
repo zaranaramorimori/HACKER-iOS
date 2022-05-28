@@ -42,6 +42,11 @@ class TeamViewController: UIViewController {
     $0.image = UIImage(named: "teamCharacterImage")
   }
   
+  var hairImage = UIImageView().then {
+    $0.contentMode = .scaleAspectFit
+    $0.clipsToBounds = true
+  }
+  
   var teamIcon = UIImageView().then {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
@@ -154,7 +159,7 @@ class TeamViewController: UIViewController {
   }
   
   private func setupAutoLayout() {
-    view.addSubviews([teamScrollView, navigationBar, dividerLine, notificationView])
+    view.addSubviews([teamScrollView, navigationBar, dividerLine, notificationView, hairImage])
     notificationView.add(notificationViewLabel)
     teamScrollView.add(teamScrollContainerView)
     teamInfoContainerView.addSubviews([teamIcon, nameLabel,
@@ -194,6 +199,12 @@ class TeamViewController: UIViewController {
       make.top.equalToSuperview().inset(47)
       make.centerX.equalToSuperview()
       make.height.width.equalTo(197)
+    }
+    hairImage.snp.makeConstraints { make in
+//      make.top.equalToSuperview().inset(47)
+//      make.centerX.equalToSuperview()
+//      make.height.width.equalTo(197)
+      make.edges.equalTo(faceImage)
     }
     teamInfoContainerView.snp.makeConstraints { make in
       make.top.equalTo(faceImage.snp.bottom)
@@ -268,6 +279,7 @@ class TeamViewController: UIViewController {
   }
   
   private func updateTeamDetail() {
+    hairImage.updateServerImage(serverTeamDetailInfo?.team.head ?? "")
     teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
     nameLabel.text = serverTeamDetailInfo?.team.name
     commitLabel.text = "\(serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(serverTeamDetailInfo?.team.hairCount ?? 0) 가닥"
@@ -330,8 +342,8 @@ extension TeamViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let memberCell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionViewCell.identifier, for: indexPath) as? MemberCollectionViewCell else {return UICollectionViewCell() }
     memberCell.awakeFromNib()
-//    memberCell.characterImage.updateServerImage(serverTeamDetailInfo?.members[indexPath.section])
-    memberCell.nameLabel.text = serverTeamDetailInfo?.members[indexPath.section].nickname
+    memberCell.nameLabel.text = serverTeamDetailInfo?.members[indexPath.row].nickname
+    memberCell.hairImage.updateServerImage(serverTeamDetailInfo?.members[indexPath.row].head ?? "")
     return memberCell
   }
 }
