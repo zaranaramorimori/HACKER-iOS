@@ -19,17 +19,6 @@ class RankingTableViewCell: UITableViewCell {
   let usercommitLabel = UILabel()
   let userhairImage = UIImageView()
   let userhairfirstImage = UIImageView()
-  let userhairsecondImage = UIImageView()
-  let userhairthirdImage = UIImageView()
-  let userhairfourthImage = UIImageView()
-  let userhairfifthImage = UIImageView()
-  let userhairsixthImage = UIImageView()
-  let userhairseventhImage = UIImageView()
-  let userhaireighthImage = UIImageView()
-  let userhairninethImage = UIImageView()
-  let userhairtenthImage = UIImageView()
-  let userhaireleventhImage = UIImageView()
-  let userhairtwelvethImage = UIImageView()
   let separateView = UIView()
   
   // MARK: - LifeCycle
@@ -52,17 +41,6 @@ extension RankingTableViewCell {
     layoutUserCommitLabel()
     layoutUserHairImage()
     layoutUserHairFirstImage()
-    layoutUserHairSecondImage()
-    layoutUserHairThirdImage()
-    layoutUserHairFourthImage()
-    layoutUserHairFifthImage()
-    layoutUserHairSixthImage()
-    layoutUserHairSeventhImage()
-    layoutUserHairEighthImage()
-    layoutUserHairNinethImage()
-    layoutUserHairTenthImage()
-    layoutUserHairEleventhImage()
-    layoutUserHairTwelvethImage()
     layoutSeparateView()
   }
   func layoutRankingLabel() {
@@ -107,127 +85,6 @@ extension RankingTableViewCell {
   }
   func layoutUserHairFirstImage() {
     self.contentView.add(userhairfirstImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairSecondImage() {
-    self.contentView.add(userhairsecondImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairThirdImage() {
-    self.contentView.add(userhairthirdImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairFourthImage() {
-    self.contentView.add(userhairfourthImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairFifthImage() {
-    self.contentView.add(userhairfifthImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairSixthImage() {
-    self.contentView.add(userhairsixthImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairSeventhImage() {
-    self.contentView.add(userhairseventhImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairEighthImage() {
-    self.contentView.add(userhaireighthImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairNinethImage() {
-    self.contentView.add(userhairninethImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairTenthImage() {
-    self.contentView.add(userhairtenthImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairEleventhImage() {
-    self.contentView.add(userhaireleventhImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.centerY.equalToSuperview()
-        make.trailing.equalToSuperview().offset(-43)
-        make.width.equalTo(61)
-        make.height.equalTo(68)
-      }
-    }
-  }
-  func layoutUserHairTwelvethImage() {
-    self.contentView.add(userhairtwelvethImage) {
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.centerY.equalToSuperview()

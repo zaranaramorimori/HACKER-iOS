@@ -17,17 +17,6 @@ class MainProfileViewController: UIViewController {
   let backButton = UIButton()
   let userCharacterImage = UIImageView()
   let userhairfirstImage = UIImageView()
-  let userhairsecondImage = UIImageView()
-  let userhairthirdImage = UIImageView()
-  let userhairfourthImage = UIImageView()
-  let userhairfifthImage = UIImageView()
-  let userhairsixthImage = UIImageView()
-  let userhairseventhImage = UIImageView()
-  let userhaireighthImage = UIImageView()
-  let userhairninethImage = UIImageView()
-  let userhairtenthImage = UIImageView()
-  let userhaireleventhImage = UIImageView()
-  let userhairtwelvethImage = UIImageView()
   let userNicknameLabel = UILabel()
   let userGithubNameLabel = UILabel()
   let hairNumLabel = UILabel()
@@ -53,17 +42,6 @@ extension MainProfileViewController {
     layoutBackButton()
     layoutUserCharacterImage()
     layoutUserFirstHairImage()
-    layoutUserSecondHairImage()
-    layoutUserthirdHairImage()
-    layoutUserFourthHairImage()
-    layoutUserFifthHairImage()
-    layoutUserSixthHairImage()
-    layoutUserSeventhHairImage()
-    layoutUserEighthHairImage()
-    layoutUserNinethHairImage()
-    layoutUserTenthHairImage()
-    layoutUserEleventhHairImage()
-    layoutUserTwelvethHairImage()
     layoutUserNickNameLabel()
     layoutUserGithubNameLabel()
     layoutHairNumLabel()
@@ -94,138 +72,6 @@ extension MainProfileViewController {
   }
   func layoutUserFirstHairImage() {
     view.add(userhairfirstImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserSecondHairImage() {
-    view.add(userhairsecondImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserthirdHairImage() {
-    view.add(userhairthirdImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserFourthHairImage() {
-    view.add(userhairfourthImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserFifthHairImage() {
-    view.add(userhairfifthImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserSixthHairImage() {
-    view.add(userhairsixthImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserSeventhHairImage() {
-    view.add(userhairseventhImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserEighthHairImage() {
-    view.add(userhaireighthImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserNinethHairImage() {
-    view.add(userhairninethImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserTenthHairImage() {
-    view.add(userhairtenthImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserEleventhHairImage() {
-    view.add(userhaireleventhImage) {
-      $0.image = UIImage(named: "")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserTwelvethHairImage() {
-    view.add(userhairtwelvethImage) {
       $0.image = UIImage(named: "")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
@@ -275,18 +121,7 @@ extension MainProfileViewController {
       switch response {
       case .success(let data):
         if let userDetailInfo = data as? MainDetailResponse {
-          self.userhairfirstImage.updateServerImage(userDetailInfo.head.one ?? "")
-          self.userhairsecondImage.updateServerImage(userDetailInfo.head.two ?? "")
-          self.userhairthirdImage.updateServerImage(userDetailInfo.head.three ?? "")
-          self.userhairfourthImage.updateServerImage(userDetailInfo.head.four ?? "")
-          self.userhairfifthImage.updateServerImage(userDetailInfo.head.five ?? "")
-          self.userhairsixthImage.updateServerImage(userDetailInfo.head.six ?? "")
-          self.userhairseventhImage.updateServerImage(userDetailInfo.head.seven ?? "")
-          self.userhaireighthImage.updateServerImage(userDetailInfo.head.eight ?? "")
-          self.userhairninethImage.updateServerImage(userDetailInfo.head.nine ?? "")
-          self.userhairtenthImage.updateServerImage(userDetailInfo.head.ten ?? "")
-          self.userhaireleventhImage.updateServerImage(userDetailInfo.head.eleven ?? "")
-          self.userhairtwelvethImage.updateServerImage(userDetailInfo.head.twelve ?? "")
+          self.userhairfirstImage.updateServerImage(userDetailInfo.head ?? "")
           self.userNicknameLabel.text = userDetailInfo.user.nickname
           self.userGithubNameLabel.text = userDetailInfo.user.username
           self.hairNumber = userDetailInfo.user.hairCount

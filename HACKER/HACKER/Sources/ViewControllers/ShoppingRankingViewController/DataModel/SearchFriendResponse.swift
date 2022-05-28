@@ -11,12 +11,5 @@ import Foundation
 struct SearchFriendResponse: Codable {
   let id: Int
   let nickname: String
-  let head: SearchHead
-}
-
-// MARK: - Head
-struct SearchHead: Codable {
-  let one, two, three, four: String?
-  let five, six, seven, eight: String?
-  let nine, ten, eleven, twelve: String?
+  let head: String?
 }
