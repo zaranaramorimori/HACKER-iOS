@@ -108,9 +108,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
       case let appleIDCredential as ASAuthorizationAppleIDCredential:
           let userToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
           let userIdentifier = appleIDCredential.user
+
+        Const.socialToken = userToken
           loginWithAPI(social: "apple")
-          //userToken은 어디로 넣어줘야되지
-        print(userToken)
           UserDefaults.standard.set(userIdentifier, forKey: Const.UserDefaultsKey.username)
       default:
           break

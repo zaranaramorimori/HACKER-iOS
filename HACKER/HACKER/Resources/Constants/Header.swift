@@ -15,11 +15,16 @@ extension Const {
     
     static func basicHeader() -> [String: String] {
       ["Content-Type": "application/json",
-       "token": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
+       "Authorization": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
+    }
+    
+    static func socialHeader() -> [String: String] {
+      ["Content-Type": "application/x-www-form-urlencoded",
+       "token": Const.socialToken]
     }
 
     static func tokenHeader() -> [String: String] {
-      ["token": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
+      ["Authorization": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
     }
 
     static func urlEncodedHeader() -> [String: String] {
@@ -28,7 +33,7 @@ extension Const {
 
     static func multipartFormHeader() -> [String: String] {
       ["Content-Type": "multipart/form-data",
-       "token": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
+       "Authorization": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
     }
 //    static func basicHeader() -> [String: String] {
 //      ["Content-Type": "application/json",
