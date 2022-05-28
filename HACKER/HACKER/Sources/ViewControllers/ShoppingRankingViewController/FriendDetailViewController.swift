@@ -18,21 +18,12 @@ class FriendDetailViewController: UIViewController {
   let quitUserButton = UIButton()
   let userCharacterImage = UIImageView()
   let userhairfirstImage = UIImageView()
-  let userhairsecondImage = UIImageView()
-  let userhairthirdImage = UIImageView()
-  let userhairfourthImage = UIImageView()
-  let userhairfifthImage = UIImageView()
-  let userhairsixthImage = UIImageView()
-  let userhairseventhImage = UIImageView()
-  let userhaireighthImage = UIImageView()
-  let userhairninethImage = UIImageView()
-  let userhairtenthImage = UIImageView()
-  let userhaireleventhImage = UIImageView()
-  let userhairtwelvethImage = UIImageView()
   let userNicknameLabel = UILabel()
   let userGithubNameLabel = UILabel()
   let hairNumLabel = UILabel()
   let attackButton = UIButton()
+  
+  var getuserID: Int = 0
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -53,17 +44,6 @@ extension FriendDetailViewController {
     layoutAddUserButton()
     layoutUserCharacterImage()
     layoutUserFirstHairImage()
-    layoutUserSecondHairImage()
-    layoutUserthirdHairImage()
-    layoutUserFourthHairImage()
-    layoutUserFifthHairImage()
-    layoutUserSixthHairImage()
-    layoutUserSeventhHairImage()
-    layoutUserEighthHairImage()
-    layoutUserNinethHairImage()
-    layoutUserTenthHairImage()
-    layoutUserEleventhHairImage()
-    layoutUserTwelvethHairImage()
     layoutUserNickNameLabel()
     layoutUserGithubNameLabel()
     layoutHairNumLabel()
@@ -107,127 +87,6 @@ extension FriendDetailViewController {
   }
   func layoutUserFirstHairImage() {
     view.add(userhairfirstImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserSecondHairImage() {
-    view.add(userhairsecondImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserthirdHairImage() {
-    view.add(userhairthirdImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserFourthHairImage() {
-    view.add(userhairfourthImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserFifthHairImage() {
-    view.add(userhairfifthImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserSixthHairImage() {
-    view.add(userhairsixthImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserSeventhHairImage() {
-    view.add(userhairseventhImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserEighthHairImage() {
-    view.add(userhaireighthImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserNinethHairImage() {
-    view.add(userhairninethImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserTenthHairImage() {
-    view.add(userhairtenthImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserEleventhHairImage() {
-    view.add(userhaireleventhImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.top)
-        $0.centerX.equalToSuperview()
-        $0.leading.equalToSuperview().offset(24)
-        $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
-      }
-    }
-  }
-  func layoutUserTwelvethHairImage() {
-    view.add(userhairtwelvethImage) {
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.top)
@@ -281,9 +140,8 @@ extension FriendDetailViewController {
   @objc func quituserButtonClicked() {
     //친구 취소 버튼 클릭 시
   }
-  @objc func attackButtonClicked() {
-    // TODO: 지수야 userId: 2 이 부분 진짜 유저 아이디로만 바꿔줭
-    AttackAPI.shared.attackUser(userId: 2) { (response) in
+  @objc func attackButtonClicked(userID: Int) {
+    AttackAPI.shared.attackUser(userId: getuserID) { (response) in
       switch response {
       case .success:
         let lottieVC = AttackLottieViewController()

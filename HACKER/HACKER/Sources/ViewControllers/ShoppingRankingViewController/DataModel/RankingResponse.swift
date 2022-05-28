@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - RankingResponse
 struct RankingResponse: Codable {
-  let myRank: Rank
+  let myRank: Rank?
   let ranks: [Rank]
 }
 
@@ -18,15 +18,10 @@ struct Rank: Codable {
   let userID, rank: Int
   let nickname: String
   let commitCount: Int
-  let head: RankHead?
+  let head: String?
 
   enum CodingKeys: String, CodingKey {
       case userID = "userId"
       case rank, nickname, commitCount, head
   }
-}
-struct RankHead: Codable {
-  let one, two, three, four: String?
-  let five, six, seven, eight: String?
-  let nine, ten, eleven, twelve: String?
 }

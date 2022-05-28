@@ -10,20 +10,13 @@ import Foundation
 // MARK: - MainResponse
 struct MainResponse: Codable {
     let user: User
-    let head: Head
+    let head: String?
     let coupon: Coupon
 }
 
 // MARK: - Coupon
 struct Coupon: Codable {
     let todayCommit, couponCommit, couponCount: Int
-}
-
-// MARK: - Head
-struct Head: Codable {
-    let one, two, three, four: String?
-    let five, six, seven, eight: String?
-    let nine, ten, eleven, twelve: String?
 }
 
 // MARK: - User
