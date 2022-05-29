@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
   let appleloginIcon = UIButton()
   let appleloginexplainLabel = UILabel()
   
+  var checkLogin: Bool = true
+  
   // MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,7 +34,7 @@ class LoginViewController: UIViewController {
 // MARK: - Extensions
 extension LoginViewController {
   func setBackground() {
-      self.view.backgroundColor = .hackerWhite
+    self.view.backgroundColor = .hackerWhite
   }
   func layout() {
     layoutLogoImageView()
@@ -62,88 +64,112 @@ extension LoginViewController {
   }
   func setUI() {
     let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
-      authorizationButton.addTarget(self, action: #selector(appleSignInButtonPress), for: .touchUpInside)
-      view.add(authorizationButton) {
-          authorizationButton.translatesAutoresizingMaskIntoConstraints = false
-          $0.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-51)
-            make.centerX.equalToSuperview()
-            make.leading.equalToSuperview().offset(24)
-            make.height.equalTo(50)
-          }
+    authorizationButton.addTarget(self, action: #selector(appleSignInButtonPress), for: .touchUpInside)
+    view.add(authorizationButton) {
+      authorizationButton.translatesAutoresizingMaskIntoConstraints = false
+      $0.snp.makeConstraints { make in
+        make.bottom.equalToSuperview().offset(-51)
+        make.centerX.equalToSuperview()
+        make.leading.equalToSuperview().offset(24)
+        make.height.equalTo(50)
       }
+    }
   }
   @objc
   func appleSignInButtonPress() {
-      let appleIDProvider = ASAuthorizationAppleIDProvider()
-      let request = appleIDProvider.createRequest()
-      request.requestedScopes = [.fullName, .email]
-      
-      let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-      authorizationController.delegate = self
-      authorizationController.presentationContextProvider = self
-      authorizationController.performRequests()
+    let appleIDProvider = ASAuthorizationAppleIDProvider()
+    let request = appleIDProvider.createRequest()
+    request.requestedScopes = [.fullName, .email]
+    
+    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+    authorizationController.delegate = self
+    authorizationController.presentationContextProvider = self
+    authorizationController.performRequests()
   }
   func presentToMain() {
+    let mainVC = UINavigationController(rootViewController: MainViewController())
+    mainVC.modalPresentationStyle = .fullScreen
+    mainVC.modalTransitionStyle = .crossDissolve
+    self.present(mainVC, animated: true)
+  }
+  func presentToSignup() {
     let signupVC = UINavigationController(rootViewController: SignupViewController())
     signupVC.modalPresentationStyle = .fullScreen
     signupVC.modalTransitionStyle = .crossDissolve
-      self.present(signupVC, animated: true) {
-        UserDefaults.standard.set(false, forKey: Const.UserDefaultsKey.username)
-      }
+    self.present(signupVC, animated: true)
   }
 }
 
 // MARK: - Extension AppleSignIn
 extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
   func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-      return self.view.window!
+    return self.view.window!
   }
   
   // Apple ID 연동 성공 시
   func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-    print("애플로그인 되는중")
-      switch authorization.credential {
-          //      Apple ID
-      case let appleIDCredential as ASAuthorizationAppleIDCredential:
-          let userToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
-          let userIdentifier = appleIDCredential.user
-
-        Const.socialToken = userToken
-          loginWithAPI(social: "apple")
-          UserDefaults.standard.set(userIdentifier, forKey: Const.UserDefaultsKey.username)
-      default:
-          break
+    switch authorization.credential {
+      //      Apple ID
+    case let appleIDCredential as ASAuthorizationAppleIDCredential:
+      let userToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
+      let userIdentifier = appleIDCredential.user
+      Const.socialToken = userToken
+      if self.checkLogin == true {
+        loginWithAPI(social: "apple")
+      } else {
+        loginNewWithAPI(social: "apple")
       }
+    default:
+      break
+    }
   }
   
   // Apple ID 연동 실패 시
   func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-      // Handle error.
+    // Handle error.
   }
 }
 
 // MARK: - Network
 extension LoginViewController {
   func loginWithAPI(social: String) {
-      LoginAPI.shared.login(social: social) { response in
-          switch response {
-          case .success(let loginData):
-              if let userData = loginData as? LoginResponse {
-                  print("loginWithAPI - success")
-                  UserDefaults.standard.set(userData.accessToken, forKey: Const.UserDefaultsKey.accessToken)
-                  UserDefaults.standard.set(userData.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
-                  self.presentToMain()
-              }
-          case .requestErr(let message):
-              print("loginWithAPI - requestErr: \(message)")
-          case .pathErr:
-              print("loginWithAPI - pathErr")
-          case .serverErr:
-              print("loginWithAPI - serverErr")
-          case .networkFail:
-              print("loginWithAPI - networkFail")
-          }
+    LoginAPI.shared.login(social: social) { response in
+      switch response {
+      case .success(let loginData):
+        if let userData = loginData as? LoginResponse {
+          print("loginWithAPI - success")
+          UserDefaults.standard.set(userData.accessToken, forKey: Const.UserDefaultsKey.accessToken)
+          UserDefaults.standard.set(userData.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
+          self.presentToMain()
+        }
+      case .requestErr(let message):
+        print("loginWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("loginWithAPI - pathErr")
+      case .serverErr:
+        print("loginWithAPI - serverErr")
+      case .networkFail:
+        print("loginWithAPI - networkFail")
       }
+    }
+  }
+  func loginNewWithAPI(social: String) {
+    LoginAPI.shared.login(social: social) { response in
+      switch response {
+      case .success(let loginData):
+        if let userData = loginData as? LoginNewResponse {
+          print("loginNewWithAPI - success")
+          self.presentToSignup()
+        }
+      case .requestErr(let message):
+        print("loginWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("loginWithAPI - pathErr")
+      case .serverErr:
+        print("loginWithAPI - serverErr")
+      case .networkFail:
+        print("loginWithAPI - networkFail")
+      }
+    }
   }
 }

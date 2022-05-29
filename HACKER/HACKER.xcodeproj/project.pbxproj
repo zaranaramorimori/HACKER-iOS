@@ -105,6 +105,7 @@
 		E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3327E44A27009F65E3 /* MainViewController.swift */; };
 		E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */; };
 		E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */; };
+		E89BA85A284285640016A2E3 /* LoginNewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89BA859284285640016A2E3 /* LoginNewResponse.swift */; };
 		E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */; };
 		E8C7316F28274E2100431E5F /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C7316E28274E2100431E5F /* AddFriendViewController.swift */; };
 		E8C731712827509D00431E5F /* NotHackerUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */; };
@@ -252,6 +253,7 @@
 		E88D4C3327E44A27009F65E3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileViewController.swift; sourceTree = "<group>"; };
 		E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		E89BA859284285640016A2E3 /* LoginNewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNewResponse.swift; sourceTree = "<group>"; };
 		E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		E8C7316E28274E2100431E5F /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotHackerUserPopUpViewController.swift; sourceTree = "<group>"; };
@@ -824,6 +826,7 @@
 			isa = PBXGroup;
 			children = (
 				E8CEF7E1284259FF007AAB0A /* LoginResponse.swift */,
+				E89BA859284285640016A2E3 /* LoginNewResponse.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -1271,6 +1274,7 @@
 				77BA0E552822ED1900EC41A5 /* UIImageView+Extension.swift in Sources */,
 				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
 				77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */,
+				E89BA85A284285640016A2E3 /* LoginNewResponse.swift in Sources */,
 				86E4CF6F282F41CB0069C048 /* FriendService.swift in Sources */,
 				E80282BD2823764B00268A5A /* SignUpResponse.swift in Sources */,
 				773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */,
