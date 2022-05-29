@@ -36,6 +36,11 @@ class RankingCollectionViewCell: UICollectionViewCell {
   let thirdUserCommitLabel = UILabel()
   let separateView = UIView()
   let rankingTableView = UITableView()
+  let myRankView = UIView()
+  let myRankLabel = UILabel()
+  let myNameLabel = UILabel()
+  let myCommitLabel = UILabel()
+  let shortCutButton = UIButton()
   
   var rankList: RankingResponse?
   let screenWidth = UIScreen.main.bounds.width-48
@@ -46,6 +51,8 @@ class RankingCollectionViewCell: UICollectionViewCell {
     register()
     attribute()
     layout()
+    self.contentView.bringSubviewToFront(myRankView)
+    self.contentView.sendSubviewToBack(rankingTableView)
     updateServerData()
   }
 }
@@ -82,6 +89,11 @@ extension RankingCollectionViewCell {
     layoutThirdUserCommitLabel()
     layoutSeparateView()
     layoutRankingTableView()
+    layoutMyRankView()
+    layoutMyrankLabel()
+    layoutMyNameLabel()
+    layoutMyCommitLabel()
+    layoutShortCutButton()
   }
   func layoutHeaderView() {
     headerView.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: 325)
@@ -289,6 +301,52 @@ extension RankingCollectionViewCell {
       }
     }
   }
+  func layoutMyRankView() {
+    self.contentView.add(myRankView) {
+      $0.backgroundColor = .hackerWhite
+      $0.layer.cornerRadius = 10
+      $0.setBorder(borderColor: .hackerBlack, borderWidth: 3)
+      $0.snp.makeConstraints { make in
+        make.bottom.equalTo(self.contentView.safeAreaLayoutGuide).offset(-10)
+        make.leading.equalToSuperview().offset(24)
+        make.centerX.equalToSuperview()
+        make.height.equalTo(58)
+      }
+    }
+  }
+  func layoutMyrankLabel() {
+    self.myRankView.add(myRankLabel) {
+      $0.snp.makeConstraints { make in
+        make.leading.equalTo(self.myRankView).offset(30)
+        make.centerY.equalToSuperview()
+      }
+    }
+  }
+  func layoutMyNameLabel() {
+    self.myRankView.add(myNameLabel) {
+      $0.snp.makeConstraints { make in
+        make.top.equalToSuperview().offset(7)
+        make.centerX.equalToSuperview()
+      }
+    }
+  }
+  func layoutMyCommitLabel() {
+    self.myRankView.add(myCommitLabel) {
+      $0.snp.makeConstraints { make in
+        make.bottom.equalToSuperview().offset(-11)
+        make.centerX.equalToSuperview()
+      }
+    }
+  }
+  func layoutShortCutButton() {
+    self.myRankView.add(shortCutButton) {
+      $0.isHidden = true
+      $0.snp.makeConstraints { make in
+        make.trailing.equalToSuperview().offset(-16)
+        make.centerY.equalToSuperview()
+      }
+    }
+  }
   func updateServerData() {
     self.firstUserNameLabel.setupLabel(text: rankList?.ranks[1].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
     self.firstUserCommitLabel.setupLabel(text: "\(rankList?.ranks[1].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
@@ -299,6 +357,9 @@ extension RankingCollectionViewCell {
     self.firstuserhairfirstImage.updateServerImage(rankList?.ranks[1].head ?? "")
     self.seconduserhairfirstImage.updateServerImage(rankList?.ranks[0].head ?? "")
     self.thirduserhairfirstImage.updateServerImage(rankList?.ranks[2].head ?? "")
+    self.myRankLabel.setupLabel(text: "\(rankList?.myRank?.rank ?? 0)등", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+    self.myNameLabel.setupLabel(text: "\(rankList?.myRank?.nickname ?? "")", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+    self.myCommitLabel.setupLabel(text: "\(rankList?.myRank?.commitCount ?? 0)커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
   }
 }
 // MARK: - UITableViewDelegate, DataSource
