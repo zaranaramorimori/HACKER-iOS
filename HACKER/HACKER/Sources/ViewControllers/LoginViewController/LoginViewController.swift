@@ -92,11 +92,14 @@ extension LoginViewController {
     mainVC.modalTransitionStyle = .crossDissolve
     self.present(mainVC, animated: true)
   }
-  func presentToSignup() {
-    let signupVC = UINavigationController(rootViewController: SignupViewController())
-    signupVC.modalPresentationStyle = .fullScreen
-    signupVC.modalTransitionStyle = .crossDissolve
-    self.present(signupVC, animated: true)
+  func presentToSignup(userData: LoginNewResponse) {
+    let signupVC = SignupViewController()
+    let signupNVC = UINavigationController(rootViewController: signupVC)
+    signupVC.socialType = userData.social
+    signupVC.uuid = userData.uuid
+    signupNVC.modalPresentationStyle = .fullScreen
+    signupNVC.modalTransitionStyle = .crossDissolve
+    self.present(signupNVC, animated: true)
   }
 }
 
@@ -161,7 +164,8 @@ extension LoginViewController {
         print("loginNewwithAPI되는중")
         if let userData = loginData as? LoginNewResponse {
           print("loginNewWithAPI - success")
-          self.presentToSignup()
+          UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin)
+          self.presentToSignup(userData: userData)
         }
       case .requestErr(let message):
         print("loginWithAPI - requestErr: \(message)")

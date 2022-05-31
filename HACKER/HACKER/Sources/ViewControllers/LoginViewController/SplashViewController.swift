@@ -33,7 +33,7 @@ class SplashViewController: UIViewController {
       if self.appDelegate?.isLogin == true {
         self.presentToMain()
       } else {
-        self.presentToSignup()
+        self.presentToLogin()
       }
     }
   }
@@ -66,11 +66,10 @@ extension SplashViewController {
     self.present(mainVC, animated: true, completion: nil)
   }
   
-  private func presentToSignup() {
-//    let signupVC = SignupViewController()
-    let signupVC = LoginViewController()
-    signupVC.modalPresentationStyle = .fullScreen
-    signupVC.modalTransitionStyle = .crossDissolve
-    self.present(signupVC, animated: true, completion: nil)
+  private func presentToLogin() {
+    let loginVC = LoginViewController()
+    loginVC.modalPresentationStyle = .fullScreen
+    loginVC.modalTransitionStyle = .crossDissolve
+    self.present(loginVC, animated: true, completion: nil)
   }
 }

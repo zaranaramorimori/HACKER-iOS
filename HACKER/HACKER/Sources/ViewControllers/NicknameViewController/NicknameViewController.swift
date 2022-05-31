@@ -24,6 +24,9 @@ class NicknameViewController: UIViewController {
   
   final let maxLength = 6
   var userGithubName: String?
+  var socialType = ""
+  var uuid = ""
+  
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -167,8 +170,8 @@ extension NicknameViewController {
   }
   @objc func nextButtonClicked() {
     // TODO: 소셜로그인 할 때 Social, uuid 저장 후 여기 넣기
-    userNicknameWithAPI(nicknameRequest: NickNameRequest(social: "apple",
-                                                         uuid: "000902.80631ebf9b6243478b043f662d9ffab2.0602",
+    userNicknameWithAPI(nicknameRequest: NickNameRequest(social: socialType,
+                                                         uuid: uuid,
                                                          username: userGithubName ?? "",
                                                          nickname: usernameTextField.text ?? ""))
     if !usernameTextField.hasText {

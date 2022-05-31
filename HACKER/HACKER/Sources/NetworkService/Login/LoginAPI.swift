@@ -28,15 +28,11 @@ public class LoginAPI {
           print("wow")
           let networkResult = self.judgeLoginNewStatus(by: statusCode, data)
           completion(networkResult)
-//          let loginVC = LoginViewController()
-//          loginVC.checkLogin = true
           
         default:
           print("ang")
           let networkResult = self.judgeLoginStatus(by: statusCode, data)
           completion(networkResult)
-//          let loginVC = LoginViewController()
-//          loginVC.checkLogin = false
         }
         
       case .failure(let err):
