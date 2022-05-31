@@ -48,6 +48,7 @@ class ShoppingRankingViewController: UIViewController {
   var isToolTipShown: Bool = false
   let screenWidth = UIScreen.main.bounds.width
   var trigger = true
+  var checkShopping:Bool = true
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -57,10 +58,10 @@ class ShoppingRankingViewController: UIViewController {
     register()
     layout()
     rankingWithAPI()
-    searchFriendWithAPI()
   }
   override func viewWillAppear(_ animated: Bool) {
     self.tabBarController?.tabBar.isHidden = false
+    searchFriendWithAPI()
   }
 }
 // MARK: - Extensions
@@ -120,14 +121,11 @@ extension ShoppingRankingViewController {
         make.top.equalTo(self.infoButton.snp.bottom).offset(4)
         make.trailing.equalTo(self.infoButton)
         make.width.equalTo(255)
-        make.height.equalTo(72)
       }
     }
   }
   func layoutInfoLabel() {
     self.infoView.add(infoLabel) {
-      $0.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .hackerWhite, font: .titleBold(ofSize: 16))
-      $0.numberOfLines = 2
       $0.snp.makeConstraints { make in
         make.centerX.centerY.equalToSuperview()
       }
@@ -177,6 +175,21 @@ extension ShoppingRankingViewController {
     self.pageCollectionView.scrollToItem(at: NSIndexPath(item: 0, section: 1) as IndexPath, at: .left, animated: true)
   }
   @objc func infoButtonClicked() {
+    // Shopping,Ranking일 때 InfoView 분기처리
+    if checkShopping == true {
+      self.infoLabel.numberOfLines = 2
+      self.infoLabel.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .hackerWhite, font: .titleBold(ofSize: 16))
+      self.infoView.snp.makeConstraints { make in
+        make.height.equalTo(72)
+      }
+    } else {
+      self.infoLabel.numberOfLines = 3
+      self.infoLabel.setupLabel(text: "랭킹은 매 월마다 초기화 됩니다.\n한 달 동안 누가 가장 많은 커밋 수를\n올렸는지 랭킹에서 확인해보세요.", color: .hackerWhite, font: .titleBold(ofSize: 16))
+      self.infoView.snp.makeConstraints { make in
+        make.height.equalTo(94)
+      }
+    }
+    // Info버튼 선택 시 뷰 앞으로 보이게
     isToolTipShown = !isToolTipShown
     if isToolTipShown {
       self.infoView.isHidden = false
@@ -303,12 +316,14 @@ extension ShoppingRankingViewController: UICollectionViewDataSource {
         guard let shoppingCell = collectionView.dequeueReusableCell(withReuseIdentifier: ShoppingCollectionViewCell.identifier, for: indexPath) as? ShoppingCollectionViewCell else { return UICollectionViewCell() }
         shoppingCell.backgroundColor = .hackerWhite
         shoppingCell.friendList = self.friendList
+        self.checkShopping = true
         shoppingCell.awakeFromNib()
         return shoppingCell
       } else {
         guard let rankingCell = collectionView.dequeueReusableCell(withReuseIdentifier: RankingCollectionViewCell.identifier, for: indexPath) as? RankingCollectionViewCell else { return UICollectionViewCell() }
         rankingCell.backgroundColor = .hackerWhite
         rankingCell.rankList = self.rankList
+        self.checkShopping = false
         rankingCell.awakeFromNib()
         return rankingCell
       }
@@ -322,11 +337,13 @@ extension ShoppingRankingViewController: UICollectionViewDataSource {
       if indexPath.item == 0 {
         trigger = true
         tabbarCollectionView.reloadData()
+        self.checkShopping = true
         shoppingSelected()
       }
       if indexPath.item == 1 {
         trigger = false
         tabbarCollectionView.reloadData()
+        self.checkShopping = false
         rankingSelected()
       }
     }

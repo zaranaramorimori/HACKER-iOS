@@ -24,6 +24,7 @@ class RankingTableViewCell: UITableViewCell {
   // MARK: - LifeCycle
   override func awakeFromNib() {
     super.awakeFromNib()
+    setUI()
     layout()
   }
   
@@ -34,6 +35,9 @@ class RankingTableViewCell: UITableViewCell {
 }
 // MARK: - Extensions
 extension RankingTableViewCell {
+  func setUI() {
+    self.contentView.backgroundColor = .hackerWhite
+  }
   func layout() {
     layoutRankingLabel()
     layoutLabelContainerView()
@@ -57,6 +61,7 @@ extension RankingTableViewCell {
       $0.axis = .vertical
       $0.alignment = .center
       $0.spacing = 0
+      $0.backgroundColor = .hackerWhite
       $0.snp.makeConstraints { make in
         make.centerX.centerY.equalToSuperview()
         make.width.equalTo(130)

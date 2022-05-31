@@ -105,11 +105,15 @@
 		E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3327E44A27009F65E3 /* MainViewController.swift */; };
 		E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */; };
 		E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */; };
+		E89BA85A284285640016A2E3 /* LoginNewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89BA859284285640016A2E3 /* LoginNewResponse.swift */; };
 		E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */; };
 		E8C7316F28274E2100431E5F /* AddFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C7316E28274E2100431E5F /* AddFriendViewController.swift */; };
 		E8C731712827509D00431E5F /* NotHackerUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */; };
 		E8C73173282750ED00431E5F /* CheckAddUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C73172282750ED00431E5F /* CheckAddUserPopUpViewController.swift */; };
 		E8C73175282751B700431E5F /* CheckFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C73174282751B700431E5F /* CheckFriendViewController.swift */; };
+		E8CEF7E2284259FF007AAB0A /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEF7E1284259FF007AAB0A /* LoginResponse.swift */; };
+		E8CEF7E428425A0B007AAB0A /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEF7E328425A0B007AAB0A /* LoginAPI.swift */; };
+		E8CEF7E628425A16007AAB0A /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CEF7E528425A16007AAB0A /* LoginService.swift */; };
 		E8DECE5A282F6FAC002B6E35 /* RankingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DECE59282F6FAC002B6E35 /* RankingResponse.swift */; };
 		E8DECE5D282F71C3002B6E35 /* RankingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DECE5C282F71C3002B6E35 /* RankingAPI.swift */; };
 		E8DECE5F282F71CC002B6E35 /* RankingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DECE5E282F71CC002B6E35 /* RankingService.swift */; };
@@ -249,11 +253,15 @@
 		E88D4C3327E44A27009F65E3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainProfileViewController.swift; sourceTree = "<group>"; };
 		E88D4C3A27E44E34009F65E3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		E89BA859284285640016A2E3 /* LoginNewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNewResponse.swift; sourceTree = "<group>"; };
 		E8C36D1827C5214100DBDE21 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		E8C7316E28274E2100431E5F /* AddFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendViewController.swift; sourceTree = "<group>"; };
 		E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotHackerUserPopUpViewController.swift; sourceTree = "<group>"; };
 		E8C73172282750ED00431E5F /* CheckAddUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAddUserPopUpViewController.swift; sourceTree = "<group>"; };
 		E8C73174282751B700431E5F /* CheckFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFriendViewController.swift; sourceTree = "<group>"; };
+		E8CEF7E1284259FF007AAB0A /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		E8CEF7E328425A0B007AAB0A /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
+		E8CEF7E528425A16007AAB0A /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		E8DECE59282F6FAC002B6E35 /* RankingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResponse.swift; sourceTree = "<group>"; };
 		E8DECE5C282F71C3002B6E35 /* RankingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingAPI.swift; sourceTree = "<group>"; };
 		E8DECE5E282F71CC002B6E35 /* RankingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingService.swift; sourceTree = "<group>"; };
@@ -312,6 +320,7 @@
 		77233E9328182814006B7903 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				E8CEF7DB2842592C007AAB0A /* Login */,
 				E8DECE64282F790C002B6E35 /* SearchFriend */,
 				E8DECE5B282F71B2002B6E35 /* TotalRanking */,
 				86856D37283F919100F3B3BC /* Attack */,
@@ -602,6 +611,7 @@
 		E833EEEE27C2477900107741 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E8CEF7DE284259AA007AAB0A /* DataModel */,
 				E833EEF027C2479C00107741 /* LoginViewController.swift */,
 				E833EEF227C247A400107741 /* SplashViewController.swift */,
 			);
@@ -801,6 +811,24 @@
 				86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */,
 			);
 			path = AddFriendViewController;
+			sourceTree = "<group>";
+		};
+		E8CEF7DB2842592C007AAB0A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E8CEF7E328425A0B007AAB0A /* LoginAPI.swift */,
+				E8CEF7E528425A16007AAB0A /* LoginService.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E8CEF7DE284259AA007AAB0A /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				E8CEF7E1284259FF007AAB0A /* LoginResponse.swift */,
+				E89BA859284285640016A2E3 /* LoginNewResponse.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		E8DECE5B282F71B2002B6E35 /* TotalRanking */ = {
@@ -1188,6 +1216,8 @@
 				E80282CD2823A66500268A5A /* MainAPI.swift in Sources */,
 				E80282CF2823A67200268A5A /* MainService.swift in Sources */,
 				E80282E028241A6C00268A5A /* MainDetailResponse.swift in Sources */,
+				E8CEF7E428425A0B007AAB0A /* LoginAPI.swift in Sources */,
+				E8CEF7E628425A16007AAB0A /* LoginService.swift in Sources */,
 				E87580AD27B16EDF00C7E7E2 /* SignupViewController.swift in Sources */,
 				E8C36D1927C5214100DBDE21 /* UITextField+Extension.swift in Sources */,
 				E8DECE68282F7980002B6E35 /* SearchFriendAPI.swift in Sources */,
@@ -1244,10 +1274,12 @@
 				77BA0E552822ED1900EC41A5 /* UIImageView+Extension.swift in Sources */,
 				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
 				77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */,
+				E89BA85A284285640016A2E3 /* LoginNewResponse.swift in Sources */,
 				86E4CF6F282F41CB0069C048 /* FriendService.swift in Sources */,
 				E80282BD2823764B00268A5A /* SignUpResponse.swift in Sources */,
 				773D93CA27F161300014DE3A /* DeleteAccountViewController.swift in Sources */,
 				77233EB72822CB8C006B7903 /* LogTableViewCell.swift in Sources */,
+				E8CEF7E2284259FF007AAB0A /* LoginResponse.swift in Sources */,
 				E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */,
 				E87580AB27B16ED600C7E7E2 /* NicknameViewController.swift in Sources */,
 				77233EBB2822DB01006B7903 /* MoyaLoggerPlugin.swift in Sources */,

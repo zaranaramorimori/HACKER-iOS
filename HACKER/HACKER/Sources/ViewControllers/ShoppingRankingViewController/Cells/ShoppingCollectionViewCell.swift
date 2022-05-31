@@ -102,7 +102,7 @@ extension ShoppingCollectionViewCell: UICollectionViewDataSource {
       print(friendList.count)
       return friendList.count+1
     } else {
-      return 0
+      return 1
     }
     
   }

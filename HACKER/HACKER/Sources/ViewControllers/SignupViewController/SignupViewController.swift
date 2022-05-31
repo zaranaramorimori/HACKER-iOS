@@ -187,7 +187,6 @@ extension SignupViewController {
     SignUpAPI.shared.userGithubName(username: username) { response in
       switch response {
       case .success(let data):
-        print("성공티비")
         if let userGithubInfo = data as? SignUpResponse {
           let signupPopUpVC = SignupPopUpViewController()
           let signupPopUpNVC = UINavigationController(rootViewController: signupPopUpVC)

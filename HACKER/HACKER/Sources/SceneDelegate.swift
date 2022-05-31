@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       window?.rootViewController = SplashViewController()
       window?.makeKeyAndVisible()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//            let homeNavigationController = UINavigationController(rootViewController: SignupViewController())
+//            let homeNavigationController = UINavigationController(rootViewController: LoginViewController())
           let homeNavigationController = TabBarViewController()
             self.window?.rootViewController = homeNavigationController
             self.window?.makeKeyAndVisible()
