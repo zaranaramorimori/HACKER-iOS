@@ -20,16 +20,19 @@ public class LoginAPI {
       switch result {
       case .success(let response):
         let statusCode = response.statusCode
+        print(statusCode)
         let data = response.data
         //로그인, 회원가입 구분
         switch statusCode {
-        case 200:
+        case 201:
+          print("wow")
           let networkResult = self.judgeLoginStatus(by: statusCode, data)
           completion(networkResult)
           let loginVC = LoginViewController()
           loginVC.checkLogin = true
           
         default:
+          print("ang")
           let networkResult = self.judgeLoginNewStatus(by: statusCode, data)
           completion(networkResult)
           let loginVC = LoginViewController()

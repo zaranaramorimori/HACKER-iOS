@@ -157,6 +157,7 @@ extension LoginViewController {
     LoginAPI.shared.login(social: social) { response in
       switch response {
       case .success(let loginData):
+        print("loginNewwithAPI되는중")
         if let userData = loginData as? LoginNewResponse {
           print("loginNewWithAPI - success")
           self.presentToSignup()
