@@ -50,6 +50,13 @@
 		86856D39283F919E00F3B3BC /* AttackAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D38283F919D00F3B3BC /* AttackAPI.swift */; };
 		86856D3B283F91A500F3B3BC /* AttackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D3A283F91A500F3B3BC /* AttackService.swift */; };
 		86856D3D283FC42F00F3B3BC /* AttackLottieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */; };
+		86856D40283FCA8C00F3B3BC /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D3F283FCA8C00F3B3BC /* AlarmViewController.swift */; };
+		86856D43283FCE1600F3B3BC /* AlarmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D42283FCE1600F3B3BC /* AlarmCollectionViewCell.swift */; };
+		86856D46283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D45283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift */; };
+		86856D49283FDD1E00F3B3BC /* PushAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D48283FDD1E00F3B3BC /* PushAPI.swift */; };
+		86856D4B283FDD2600F3B3BC /* PushService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D4A283FDD2600F3B3BC /* PushService.swift */; };
+		86856D4D283FDE3000F3B3BC /* PushResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86856D4C283FDE3000F3B3BC /* PushResponse.swift */; };
+		86856D4F283FE98900F3B3BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86856D4E283FE98900F3B3BC /* GoogleService-Info.plist */; };
 		869B5AC127ECFFB500F2ACA7 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */; };
 		869B5AC327ED04D000F2ACA7 /* XCUIElement+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */; };
 		86DF9A7427EB37CA00C7D493 /* SignupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7327EB37C900C7D493 /* SignupUITests.swift */; };
@@ -197,6 +204,14 @@
 		86856D38283F919D00F3B3BC /* AttackAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackAPI.swift; sourceTree = "<group>"; };
 		86856D3A283F91A500F3B3BC /* AttackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackService.swift; sourceTree = "<group>"; };
 		86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackLottieViewController.swift; sourceTree = "<group>"; };
+		86856D3F283FCA8C00F3B3BC /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		86856D42283FCE1600F3B3BC /* AlarmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCollectionViewCell.swift; sourceTree = "<group>"; };
+		86856D45283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightFlowLayout.swift; sourceTree = "<group>"; };
+		86856D48283FDD1E00F3B3BC /* PushAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAPI.swift; sourceTree = "<group>"; };
+		86856D4A283FDD2600F3B3BC /* PushService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushService.swift; sourceTree = "<group>"; };
+		86856D4C283FDE3000F3B3BC /* PushResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushResponse.swift; sourceTree = "<group>"; };
+		86856D4E283FE98900F3B3BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		86856D50283FEB0500F3B3BC /* HACKERDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HACKERDebug.entitlements; sourceTree = "<group>"; };
 		869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
 		869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extension.swift"; sourceTree = "<group>"; };
 		86DF9A7327EB37C900C7D493 /* SignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUITests.swift; sourceTree = "<group>"; };
@@ -324,6 +339,7 @@
 				E8DECE64282F790C002B6E35 /* SearchFriend */,
 				E8DECE5B282F71B2002B6E35 /* TotalRanking */,
 				86856D37283F919100F3B3BC /* Attack */,
+				86856D47283FDD1400F3B3BC /* Push */,
 				775EC037283FA29E00C3CA0B /* Setting */,
 				86E4CF6B282B7E020069C048 /* Friend */,
 				E85657822829715C001BE9E4 /* Shopping */,
@@ -500,6 +516,31 @@
 			path = Attack;
 			sourceTree = "<group>";
 		};
+		86856D41283FCE0500F3B3BC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				86856D42283FCE1600F3B3BC /* AlarmCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		86856D44283FD39D00F3B3BC /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				86856D45283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		86856D47283FDD1400F3B3BC /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				86856D48283FDD1E00F3B3BC /* PushAPI.swift */,
+				86856D4A283FDD2600F3B3BC /* PushService.swift */,
+			);
+			path = Push;
+			sourceTree = "<group>";
+		};
 		86DF9A7527ECF19900C7D493 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,6 +645,7 @@
 			children = (
 				E80282D12823A70D00268A5A /* MainResponse.swift */,
 				E80282DF28241A6C00268A5A /* MainDetailResponse.swift */,
+				86856D4C283FDE3000F3B3BC /* PushResponse.swift */,
 			);
 			path = MainDataModel;
 			sourceTree = "<group>";
@@ -697,6 +739,7 @@
 				E8761194279EFEF900D238B3 /* Constants */,
 				E8761193279EFECF00D238B3 /* Fonts */,
 				E8761192279EFEC700D238B3 /* Extensions */,
+				86856D44283FD39D00F3B3BC /* Class */,
 				E8E84785279EF6EC00D5A482 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -784,9 +827,11 @@
 		E88D4C3227E449D9009F65E3 /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
+				86856D41283FCE0500F3B3BC /* Cell */,
 				E80282D02823A70400268A5A /* MainDataModel */,
 				E88D4C3327E44A27009F65E3 /* MainViewController.swift */,
 				E88D4C3527E44A32009F65E3 /* MainProfileViewController.swift */,
+				86856D3F283FCA8C00F3B3BC /* AlarmViewController.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -875,8 +920,10 @@
 		E8E8477B279EF6E900D5A482 /* HACKER */ = {
 			isa = PBXGroup;
 			children = (
+				86856D50283FEB0500F3B3BC /* HACKERDebug.entitlements */,
 				775BA15627E7783700A43516 /* HACKER.entitlements */,
 				E8E8478A279EF6EC00D5A482 /* Info.plist */,
+				86856D4E283FE98900F3B3BC /* GoogleService-Info.plist */,
 				E876118E279EFE4B00D238B3 /* Resources */,
 				E876118F279EFE5500D238B3 /* Sources */,
 				E8E84787279EF6EC00D5A482 /* LaunchScreen.storyboard */,
@@ -1016,6 +1063,7 @@
 				E8E84789279EF6EC00D5A482 /* LaunchScreen.storyboard in Resources */,
 				7789EBE92823A97700237036 /* pulledOut.json in Resources */,
 				E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */,
+				86856D4F283FE98900F3B3BC /* GoogleService-Info.plist in Resources */,
 				E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */,
 				E8FF04FB27B212C000C7C3E5 /* NotoSansKR-Bold.otf in Resources */,
 			);
@@ -1202,6 +1250,7 @@
 				E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */,
 				86856D39283F919E00F3B3BC /* AttackAPI.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
+				86856D40283FCA8C00F3B3BC /* AlarmViewController.swift in Sources */,
 				E8DECE5F282F71CC002B6E35 /* RankingService.swift in Sources */,
 				77BA0E5C2823720700EC41A5 /* EmptyView.swift in Sources */,
 				77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */,
@@ -1227,6 +1276,7 @@
 				E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */,
 				E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */,
 				77233E9528182861006B7903 /* HowTo.swift in Sources */,
+				86856D46283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift in Sources */,
 				77043D57283CABF80091A7D5 /* OpenSourceViewController.swift in Sources */,
 				77233EAF2821B6D2006B7903 /* RankingTableViewHeader.swift in Sources */,
 				86856D3B283F91A500F3B3BC /* AttackService.swift in Sources */,
@@ -1245,11 +1295,13 @@
 				E855DD3027EF1DC4003F3B34 /* identifiable.swift in Sources */,
 				E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */,
 				86287D63283BAC9400391C4D /* FriendListCollectionViewCell.swift in Sources */,
+				86856D4D283FDE3000F3B3BC /* PushResponse.swift in Sources */,
 				E833EEF327C247A400107741 /* SplashViewController.swift in Sources */,
 				E80282BF282376EF00268A5A /* UIViewController+Extension.swift in Sources */,
 				77233EBF2822DB78006B7903 /* FightService.swift in Sources */,
 				77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
+				86856D43283FCE1600F3B3BC /* AlarmCollectionViewCell.swift in Sources */,
 				77233E9E2821938D006B7903 /* FightViewController.swift in Sources */,
 				E855DD2D27EF0AF5003F3B34 /* RankingCollectionViewCell.swift in Sources */,
 				77233EAD2821B17A006B7903 /* TeamRankingTableViewCell.swift in Sources */,
@@ -1272,6 +1324,7 @@
 				86287D65283E411900391C4D /* AddFriendRequest.swift in Sources */,
 				77BA0E5A2823095500EC41A5 /* TeamDetailResponse.swift in Sources */,
 				77BA0E552822ED1900EC41A5 /* UIImageView+Extension.swift in Sources */,
+				86856D49283FDD1E00F3B3BC /* PushAPI.swift in Sources */,
 				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
 				77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */,
 				E89BA85A284285640016A2E3 /* LoginNewResponse.swift in Sources */,
@@ -1288,6 +1341,7 @@
 				E8E8477F279EF6E900D5A482 /* SceneDelegate.swift in Sources */,
 				E88D4C3627E44A32009F65E3 /* MainProfileViewController.swift in Sources */,
 				773D93C827F09A2D0014DE3A /* LogoutViewController.swift in Sources */,
+				86856D4B283FDD2600F3B3BC /* PushService.swift in Sources */,
 				77576ECC27ECDB26005AF6DA /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1519,7 +1573,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = HACKER/HACKER.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HACKER/HACKERDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T3VFJ764ZC;
@@ -1535,7 +1589,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "YJC.HACKER-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamzzong.hacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1566,7 +1620,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "YJC.HACKER-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamzzong.hacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

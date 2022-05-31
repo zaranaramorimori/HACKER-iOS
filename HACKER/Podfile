@@ -11,6 +11,8 @@ def pods
   pod 'SwiftGen', '~> 6.0'
   pod 'SwiftLint'
   pod 'lottie-ios'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
 end
 
 target 'HACKER' do
