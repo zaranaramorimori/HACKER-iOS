@@ -20,7 +20,7 @@ class EmptyView: UIView {
   
   // MARK: - Properties
   
-  private let logoImage = UIImageView().then {
+  let logoImage = UIImageView().then {
     $0.image = UIImage(named: "emptyLogo")
     $0.clipsToBounds = true
     $0.contentMode = .scaleAspectFit

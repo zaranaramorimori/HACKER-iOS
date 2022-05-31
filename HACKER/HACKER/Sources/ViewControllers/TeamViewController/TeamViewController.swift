@@ -113,7 +113,7 @@ class TeamViewController: UIViewController {
   private lazy var logTableView = UITableView(frame: .zero, style: .grouped).then {
     $0.dataSource = self
     $0.delegate = self
-    $0.backgroundColor = .blue
+    $0.backgroundColor = .hackerWhite
     $0.separatorStyle = .none
     $0.sectionFooterHeight = 0
     $0.rowHeight = UITableView.automaticDimension
@@ -159,12 +159,12 @@ class TeamViewController: UIViewController {
   }
   
   private func setupAutoLayout() {
-    view.addSubviews([teamScrollView, navigationBar, dividerLine, notificationView, hairImage])
+    view.addSubviews([teamScrollView, navigationBar, dividerLine, notificationView])
     notificationView.add(notificationViewLabel)
     teamScrollView.add(teamScrollContainerView)
     teamInfoContainerView.addSubviews([teamIcon, nameLabel,
                                        commitLabel, attackButton, attackButtonCountLabel])
-    teamScrollContainerView.addSubviews([faceImage, teamInfoContainerView,
+    teamScrollContainerView.addSubviews([faceImage, hairImage, teamInfoContainerView,
                                          memberLabel, memberCollectionView, memberEmptyView,
                                          logLabel, logTableView, logEmptyView])
     navigationBar.iconLayout(isBack: true,
@@ -201,9 +201,6 @@ class TeamViewController: UIViewController {
       make.height.width.equalTo(197)
     }
     hairImage.snp.makeConstraints { make in
-//      make.top.equalToSuperview().inset(47)
-//      make.centerX.equalToSuperview()
-//      make.height.width.equalTo(197)
       make.edges.equalTo(faceImage)
     }
     teamInfoContainerView.snp.makeConstraints { make in
@@ -249,6 +246,9 @@ class TeamViewController: UIViewController {
       make.leading.trailing.equalToSuperview()
       make.height.equalTo(113)
     }
+    memberEmptyView.logoImage.snp.makeConstraints { make in
+      make.width.height.equalTo(66)
+    }
     logLabel.snp.makeConstraints { make in
       make.top.equalTo(memberCollectionView.snp.bottom).offset(20)
       make.leading.equalToSuperview().inset(24)
@@ -262,9 +262,13 @@ class TeamViewController: UIViewController {
       make.bottom.equalToSuperview().priority(.low)
     }
     logEmptyView.snp.makeConstraints { make in
-      make.top.equalTo(logLabel.snp.bottom).offset(16)
+      make.top.equalTo(logLabel.snp.bottom).offset(12)
       make.leading.trailing.equalToSuperview()
       make.bottom.equalToSuperview().inset(36).priority(.high)
+      make.height.equalTo(177)
+    }
+    logEmptyView.logoImage.snp.makeConstraints { make in
+      make.width.height.equalTo(66)
     }
     notificationView.snp.makeConstraints { make in
       make.top.equalTo(navigationBar.rightButton.snp.bottom).offset(4)
