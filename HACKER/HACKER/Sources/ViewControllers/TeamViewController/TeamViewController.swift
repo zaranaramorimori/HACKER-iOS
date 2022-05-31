@@ -259,12 +259,12 @@ class TeamViewController: UIViewController {
       make.leading.equalToSuperview().inset(23)
       logTableView.layoutIfNeeded()
       make.height.equalTo(logTableView.contentSize.height)
-      make.bottom.equalToSuperview().priority(.low)
+      make.bottom.equalToSuperview().priority(.high)
     }
     logEmptyView.snp.makeConstraints { make in
       make.top.equalTo(logLabel.snp.bottom).offset(12)
       make.leading.trailing.equalToSuperview()
-      make.bottom.equalToSuperview().inset(36).priority(.high)
+      make.bottom.equalToSuperview().inset(36).priority(.low)
       make.height.equalTo(177)
     }
     logEmptyView.logoImage.snp.makeConstraints { make in
