@@ -59,18 +59,17 @@ class EmptyView: UIView {
   }
   
   private func setupAutoLayout() {
-    addSubviews([logoImage, aigoLabel, nothingLabel])
-    
-    logoImage.snp.makeConstraints { make in
-      make.top.equalToSuperview()
-      make.centerX.equalToSuperview()
-    }
+    addSubviews([aigoLabel, logoImage, nothingLabel])
     
     aigoLabel.snp.makeConstraints { make in
-      make.top.equalTo(logoImage.snp.bottom).offset(12)
-      make.centerX.equalToSuperview()
+      make.centerX.centerY.equalToSuperview()
     }
     
+    logoImage.snp.makeConstraints { make in
+      make.bottom.equalTo(aigoLabel.snp.top).offset(-12)
+      make.centerX.equalToSuperview()
+    }
+  
     nothingLabel.snp.makeConstraints { make in
       make.top.equalTo(aigoLabel.snp.bottom).offset(1)
       make.centerX.equalToSuperview()

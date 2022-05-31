@@ -16,6 +16,7 @@ class RankingViewController: UIViewController {
   var serverSeasonTeamInfo: SeasonTeamResponse?
   
   private let navigationBar = HackerNavigationBar()
+  private let emptyView = EmptyView()
   
   private let dividerLine = UIImageView().then {
     $0.image = UIImage(named: "sectionLine")
@@ -90,10 +91,15 @@ class RankingViewController: UIViewController {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
     notificationView.isHidden = true
+    emptyView.updateLabels(text: "아직 참여하는 팀이 없어요!", aigoSize: 24, nothingSize: 16)
+    guard let noTeams = serverSeasonTeamInfo?.teams.isEmpty else { return }
+    if noTeams {
+      rankingTableView.isHidden = true
+    }
   }
   
   private func setupAutoLayout() {
-    view.addSubviews([navigationBar, dividerLine, rankingTableView,
+    view.addSubviews([navigationBar, dividerLine, emptyView, rankingTableView,
                       myRankView, rankLabel, nameLabel, commitLabel, shortCutButton, notificationView])
     notificationView.add(notificationViewLabel)
     navigationBar.iconLayout(isBack: true,
@@ -112,6 +118,11 @@ class RankingViewController: UIViewController {
     dividerLine.snp.makeConstraints { make in
       make.top.equalTo(navigationBar.snp.bottom)
       make.leading.trailing.equalToSuperview()
+    }
+    emptyView.snp.makeConstraints { make in
+      make.top.equalTo(dividerLine.snp.bottom)
+      make.leading.trailing.equalToSuperview()
+      make.bottom.equalTo(self.view.safeAreaLayoutGuide)
     }
     rankingTableView.snp.makeConstraints { make in
       make.top.equalTo(self.dividerLine.snp.bottom)

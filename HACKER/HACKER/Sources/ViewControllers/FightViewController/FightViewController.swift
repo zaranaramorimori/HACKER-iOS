@@ -16,7 +16,8 @@ class FightViewController: UIViewController {
   var serverIngSeasons: SeasonResponse?
   
   private let navigationBar = HackerNavigationBar()
-  
+  private let emptyView = EmptyView()
+
   private let dividerLine = UIImageView().then {
     $0.image = UIImage(named: "sectionLine")
     $0.contentMode = .scaleToFill
@@ -60,10 +61,11 @@ class FightViewController: UIViewController {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
     notificationView.isHidden = true
+    emptyView.updateLabels(text: "아직 진행중인 세션이 없어요!", aigoSize: 24, nothingSize: 16)
   }
   
   private func setupAutoLayout() {
-    view.addSubviews([navigationBar, dividerLine, fightTableView, notificationView])
+    view.addSubviews([navigationBar, dividerLine, emptyView, fightTableView, notificationView])
     notificationView.add(notificationViewLabel)
     navigationBar.iconLayout(isBack: false,
                              logoImage: UIImage(named: "fightMainIcon"),
@@ -82,20 +84,23 @@ class FightViewController: UIViewController {
       make.top.equalTo(navigationBar.snp.bottom)
       make.leading.trailing.equalToSuperview()
     }
+    emptyView.snp.makeConstraints { make in
+      make.top.equalTo(dividerLine.snp.bottom)
+      make.leading.trailing.equalToSuperview()
+      make.bottom.equalTo(self.view.safeAreaLayoutGuide)
+    }
     fightTableView.snp.makeConstraints { make in
       make.top.equalTo(self.dividerLine.snp.bottom)
       make.leading.equalToSuperview().inset(24)
       make.bottom.equalTo(view.safeAreaLayoutGuide)
       make.centerX.equalToSuperview()
     }
-    
     notificationView.snp.makeConstraints { make in
       make.top.equalTo(navigationBar.rightButton.snp.bottom).offset(4)
       make.trailing.equalToSuperview().inset(24)
       make.width.equalTo(265)
       make.height.equalTo(72)
     }
-
     notificationViewLabel.snp.makeConstraints { make in
       make.centerX.centerY.equalToSuperview()
     }
@@ -165,6 +170,9 @@ extension FightViewController {
       case .success(let data):
         if let seasons = data as? SeasonResponse {
           self.serverIngSeasons = seasons
+          if seasons.seasons.isEmpty {
+            self.fightTableView.isHidden = true
+          }
           self.fightTableView.reloadData()
         }
       case .requestErr(let message):
