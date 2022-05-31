@@ -42,10 +42,16 @@ class TeamViewController: UIViewController {
     $0.image = UIImage(named: "teamCharacterImage")
   }
   
+  var hairImage = UIImageView().then {
+    $0.contentMode = .scaleAspectFit
+    $0.clipsToBounds = true
+  }
+  
   var teamIcon = UIImageView().then {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
     $0.image = UIImage(named: "teamCharacterImage")
+    $0.layer.cornerRadius = 10
   }
   
   var nameLabel = UILabel().then {
@@ -107,7 +113,7 @@ class TeamViewController: UIViewController {
   private lazy var logTableView = UITableView(frame: .zero, style: .grouped).then {
     $0.dataSource = self
     $0.delegate = self
-    $0.backgroundColor = .blue
+    $0.backgroundColor = .hackerWhite
     $0.separatorStyle = .none
     $0.sectionFooterHeight = 0
     $0.rowHeight = UITableView.automaticDimension
@@ -117,6 +123,16 @@ class TeamViewController: UIViewController {
     if #available(iOS 15, *) {
       $0.sectionHeaderTopPadding = 0
     }
+  }
+  
+  private let notificationView = UIView().then {
+    $0.backgroundColor = .hackerBlack
+    $0.layer.cornerRadius = 15
+  }
+  
+  private let notificationViewLabel = UILabel().then {
+    $0.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .hackerWhite, font: .titleBold(ofSize: 16))
+    $0.numberOfLines = 2
   }
   
   override func viewDidLoad() {
@@ -133,6 +149,7 @@ class TeamViewController: UIViewController {
   private func configUI() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
+    notificationView.isHidden = true
   }
   
   private func collectionViewRegister() {
@@ -142,11 +159,12 @@ class TeamViewController: UIViewController {
   }
   
   private func setupAutoLayout() {
-    view.addSubviews([teamScrollView, navigationBar, dividerLine])
+    view.addSubviews([teamScrollView, navigationBar, dividerLine, notificationView])
+    notificationView.add(notificationViewLabel)
     teamScrollView.add(teamScrollContainerView)
     teamInfoContainerView.addSubviews([teamIcon, nameLabel,
                                        commitLabel, attackButton, attackButtonCountLabel])
-    teamScrollContainerView.addSubviews([faceImage, teamInfoContainerView,
+    teamScrollContainerView.addSubviews([faceImage, hairImage, teamInfoContainerView,
                                          memberLabel, memberCollectionView, memberEmptyView,
                                          logLabel, logTableView, logEmptyView])
     navigationBar.iconLayout(isBack: true,
@@ -154,6 +172,9 @@ class TeamViewController: UIViewController {
                              rightImage: UIImage(named: "infoIconBlack"))
     navigationBar.popViewController = {
       self.navigationController?.popViewController(animated: true)
+    }
+    navigationBar.hideNotificationView = {
+      self.notificationView.isHidden = !self.navigationBar.rightButton.isSelected
     }
     navigationBar.snp.makeConstraints { make in
       make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
@@ -178,6 +199,9 @@ class TeamViewController: UIViewController {
       make.top.equalToSuperview().inset(47)
       make.centerX.equalToSuperview()
       make.height.width.equalTo(197)
+    }
+    hairImage.snp.makeConstraints { make in
+      make.edges.equalTo(faceImage)
     }
     teamInfoContainerView.snp.makeConstraints { make in
       make.top.equalTo(faceImage.snp.bottom)
@@ -222,6 +246,9 @@ class TeamViewController: UIViewController {
       make.leading.trailing.equalToSuperview()
       make.height.equalTo(113)
     }
+    memberEmptyView.logoImage.snp.makeConstraints { make in
+      make.width.height.equalTo(66)
+    }
     logLabel.snp.makeConstraints { make in
       make.top.equalTo(memberCollectionView.snp.bottom).offset(20)
       make.leading.equalToSuperview().inset(24)
@@ -232,19 +259,35 @@ class TeamViewController: UIViewController {
       make.leading.equalToSuperview().inset(23)
       logTableView.layoutIfNeeded()
       make.height.equalTo(logTableView.contentSize.height)
-      make.bottom.equalToSuperview().priority(.low)
+      make.bottom.equalToSuperview().priority(.high)
     }
     logEmptyView.snp.makeConstraints { make in
-      make.top.equalTo(logLabel.snp.bottom).offset(16)
+      make.top.equalTo(logLabel.snp.bottom).offset(12)
       make.leading.trailing.equalToSuperview()
-      make.bottom.equalToSuperview().inset(36).priority(.high)
+      make.bottom.equalToSuperview().inset(36).priority(.low)
+      make.height.equalTo(177)
+    }
+    logEmptyView.logoImage.snp.makeConstraints { make in
+      make.width.height.equalTo(66)
+    }
+    notificationView.snp.makeConstraints { make in
+      make.top.equalTo(navigationBar.rightButton.snp.bottom).offset(4)
+      make.trailing.equalToSuperview().inset(24)
+      make.width.equalTo(265)
+      make.height.equalTo(72)
+    }
+
+    notificationViewLabel.snp.makeConstraints { make in
+      make.centerX.centerY.equalToSuperview()
     }
   }
   
   private func updateTeamDetail() {
-//    teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
+    hairImage.updateServerImage(serverTeamDetailInfo?.team.head ?? "")
+    teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
     nameLabel.text = serverTeamDetailInfo?.team.name
     commitLabel.text = "\(serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(serverTeamDetailInfo?.team.hairCount ?? 0) 가닥"
+    attackButtonCountLabel.text = "X\(serverTeamDetailInfo?.team.couponCount ?? 0)"
   }
   
   private func updateEmptyViewLabel() {
@@ -304,8 +347,8 @@ extension TeamViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let memberCell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionViewCell.identifier, for: indexPath) as? MemberCollectionViewCell else {return UICollectionViewCell() }
     memberCell.awakeFromNib()
-//    memberCell.characterImage.updateServerImage(serverTeamDetailInfo?.members[indexPath.section])
-    memberCell.nameLabel.text = serverTeamDetailInfo?.members[indexPath.section].nickname
+    memberCell.nameLabel.text = serverTeamDetailInfo?.members[indexPath.row].nickname
+    memberCell.hairImage.updateServerImage(serverTeamDetailInfo?.members[indexPath.row].head ?? "")
     return memberCell
   }
 }
@@ -342,7 +385,6 @@ extension TeamViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    // TODO: 각 셀을 클릭하면 해당 뷰컨으로 push 해주기
     print(indexPath.section)
   }
 }

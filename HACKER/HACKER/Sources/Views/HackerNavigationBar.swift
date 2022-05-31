@@ -23,18 +23,19 @@ class HackerNavigationBar: UIView {
   // MARK: - Properties
   
   var popViewController: (() -> Void)?
+  var hideNotificationView: (() -> Void)?
   
-  private let backButton = UIButton().then {
+  let backButton = UIButton().then {
     $0.setImage(UIImage(named: "backButtonIcon"), for: .normal)
     $0.addTarget(self, action: #selector(touchBackButton(_:)), for: .touchUpInside)
     $0.isUserInteractionEnabled = true
   }
   
-  private let logoButton = UIButton().then {
+  let logoButton = UIButton().then {
     $0.addTarget(self, action: #selector(touchLogoButton(_:)), for: .touchUpInside)
   }
   
-  private let rightButton = UIButton().then {
+  let rightButton = UIButton().then {
     $0.addTarget(self, action: #selector(touchRightButton(_:)), for: .touchUpInside)
   }
   
@@ -94,6 +95,7 @@ class HackerNavigationBar: UIView {
   }
   
   @objc func touchRightButton(_ sender: UIButton) {
-    print("touchRightButton")
+    sender.isSelected = !sender.isSelected
+    hideNotificationView?()
   }
 }

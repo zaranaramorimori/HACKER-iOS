@@ -22,6 +22,9 @@ class SignupViewController: UIViewController {
   let usernameTextField = UITextField()
   let nextButton = UIButton()
   
+  var socialType = ""
+  var uuid = ""
+  
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -187,12 +190,13 @@ extension SignupViewController {
     SignUpAPI.shared.userGithubName(username: username) { response in
       switch response {
       case .success(let data):
-        print("성공티비")
         if let userGithubInfo = data as? SignUpResponse {
           let signupPopUpVC = SignupPopUpViewController()
           let signupPopUpNVC = UINavigationController(rootViewController: signupPopUpVC)
           signupPopUpVC.userImageView.updateServerImage(userGithubInfo.profileImage)
           signupPopUpVC.userNameLabel.text = userGithubInfo.username
+          signupPopUpVC.socialType = self.socialType
+          signupPopUpVC.uuid = self.uuid
           signupPopUpNVC.modalPresentationStyle = .overFullScreen
           self.present(signupPopUpNVC, animated: false, completion: nil)
         }

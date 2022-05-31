@@ -11,14 +11,7 @@ import Foundation
 struct MainDetailResponse: Codable {
     let isMyFriend: Bool?
     let user: DetailUser
-    let head: DetailHead
-}
-
-// MARK: - Head
-struct DetailHead: Codable {
-    let one, two, three, four: String?
-    let five, six, seven, eight: String?
-    let nine, ten, eleven, twelve: String?
+    let head: String?
 }
 
 // MARK: - User

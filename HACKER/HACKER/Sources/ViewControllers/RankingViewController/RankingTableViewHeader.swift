@@ -33,6 +33,11 @@ class RankingTableViewHeader: UITableViewHeaderFooterView {
     $0.image = UIImage(named: "teamCharacterImage")
   }
   
+  var hairImage = UIImageView().then {
+    $0.contentMode = .scaleAspectFit
+    $0.clipsToBounds = true
+  }
+  
   var nameLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .titleBold(ofSize: 24)
@@ -59,7 +64,7 @@ class RankingTableViewHeader: UITableViewHeaderFooterView {
   // MARK: - Setup Method
   private func setupAutoLayout() {
     addSubviews([backgroundWithBorder, rankingFirstImage,
-                 faceImage, nameLabel, commitLabel])
+                 faceImage, hairImage, nameLabel, commitLabel])
     
     backgroundWithBorder.snp.makeConstraints { make in
       make.top.bottom.equalToSuperview()
@@ -73,6 +78,11 @@ class RankingTableViewHeader: UITableViewHeaderFooterView {
     faceImage.snp.makeConstraints { make in
       make.bottom.equalToSuperview().inset(26)
       make.leading.equalToSuperview().inset(62)
+    }
+    hairImage.snp.makeConstraints { make in
+//      make.bottom.equalToSuperview().inset(26)
+//      make.leading.equalToSuperview().inset(62)
+      make.edges.equalTo(faceImage)
     }
     nameLabel.snp.makeConstraints { make in
       make.top.equalTo(rankingFirstImage.snp.bottom).offset(23)

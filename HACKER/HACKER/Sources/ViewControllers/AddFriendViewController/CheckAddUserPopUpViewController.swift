@@ -158,6 +158,7 @@ extension CheckAddUserPopUpViewController {
             if userGithubInfo.isFriend {
               self.dismiss(animated: false) {
                 self.parentVC?.navigationController?.popToRootViewController(animated: true)
+                print(self.parentVC?.navigationController)
               }
             }
           }

@@ -34,9 +34,14 @@ class TeamRankingTableViewCell: UITableViewCell {
   }
   
   var faceImage = UIImageView().then {
-    $0.contentMode = .scaleToFill
+    $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
     $0.image = UIImage(named: "teamCharacterImage")
+  }
+  
+  var hairImage = UIImageView().then {
+    $0.contentMode = .scaleAspectFit
+    $0.clipsToBounds = true
   }
  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -50,12 +55,15 @@ class TeamRankingTableViewCell: UITableViewCell {
   
   // MARK: - Setup Method
   private func setupLayout() {
-    addSubviews([faceImage, rankLabel,
+    addSubviews([faceImage, hairImage, rankLabel,
                  nameLabel, commitLabel])
     faceImage.snp.makeConstraints { make in
       make.top.bottom.equalToSuperview().inset(16)
       make.trailing.equalToSuperview().inset(41)
       make.height.equalTo(faceImage.snp.width).multipliedBy(1).priority(.low)
+    }
+    hairImage.snp.makeConstraints { make in
+      make.edges.equalTo(faceImage)
     }
     rankLabel.snp.makeConstraints { make in
       make.centerY.equalToSuperview()

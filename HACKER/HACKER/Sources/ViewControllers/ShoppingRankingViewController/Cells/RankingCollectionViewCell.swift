@@ -19,21 +19,30 @@ class RankingCollectionViewCell: UICollectionViewCell {
   let firstContainerView = UIView()
   let firstUser = UIImageView()
   let firstUserImage = UIImageView()
+  let firstuserhairfirstImage = UIImageView()
   let firstUserNameLabel = UILabel()
   let firstUserCommitLabel = UILabel()
   let secondContainerView = UIView()
   let secondUser = UIImageView()
   let secondUserImage = UIImageView()
+  let seconduserhairfirstImage = UIImageView()
   let secondUserNameLabel = UILabel()
   let secondUserCommitLabel = UILabel()
   let thirdContainerView = UIView()
   let thirdUser = UIImageView()
   let thirdUserImage = UIImageView()
+  let thirduserhairfirstImage = UIImageView()
   let thirdUserNameLabel = UILabel()
   let thirdUserCommitLabel = UILabel()
   let separateView = UIView()
   let rankingTableView = UITableView()
+  let myRankView = UIView()
+  let myRankLabel = UILabel()
+  let myNameLabel = UILabel()
+  let myCommitLabel = UILabel()
+  let shortCutButton = UIButton()
   
+  var rankList: RankingResponse?
   let screenWidth = UIScreen.main.bounds.width-48
   
   // MARK: - LifeCycle
@@ -42,6 +51,9 @@ class RankingCollectionViewCell: UICollectionViewCell {
     register()
     attribute()
     layout()
+    self.contentView.bringSubviewToFront(myRankView)
+    self.contentView.sendSubviewToBack(rankingTableView)
+    updateServerData()
   }
 }
 // MARK: - Extensions
@@ -60,20 +72,28 @@ extension RankingCollectionViewCell {
     layoutFirstContainerView()
     layoutFirstUser()
     layoutFirstUserImage()
+    layoutFirstUserFirstHairImage()
     layoutFirstUserNameLabel()
     layoutFirstUserCommitLabel()
     layoutSecondContainerView()
     layoutSecondUser()
     layoutSecondUserImage()
+    layoutSecondUserFirstHairImage()
     layoutSecondUserNameLabel()
     layoutSecondUserCommitLabel()
     layoutThirdContainerView()
     layoutThirdUser()
     layoutThirdUserImage()
+    layoutThirdUserFirstHairImage()
     layoutThirdUserNameLabel()
     layoutThirdUserCommitLabel()
     layoutSeparateView()
     layoutRankingTableView()
+    layoutMyRankView()
+    layoutMyrankLabel()
+    layoutMyNameLabel()
+    layoutMyCommitLabel()
+    layoutShortCutButton()
   }
   func layoutHeaderView() {
     headerView.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: 325)
@@ -110,6 +130,17 @@ extension RankingCollectionViewCell {
   func layoutFirstUserImage() {
     self.firstContainerView.add(firstUserImage) {
       $0.image = UIImage(named: "userCharacterImage")
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints { make in
+        make.top.equalTo(self.firstUser.snp.bottom)
+        make.centerX.equalToSuperview()
+        make.width.equalTo(101)
+        make.height.equalTo(110)
+      }
+    }
+  }
+  func layoutFirstUserFirstHairImage() {
+    self.firstContainerView.add(firstuserhairfirstImage) {
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.firstUser.snp.bottom)
@@ -165,6 +196,17 @@ extension RankingCollectionViewCell {
       }
     }
   }
+  func layoutSecondUserFirstHairImage() {
+    self.secondContainerView.add(seconduserhairfirstImage) {
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints { make in
+        make.top.equalTo(self.secondUser.snp.bottom)
+        make.centerX.equalToSuperview()
+        make.width.equalTo(101)
+        make.height.equalTo(110)
+      }
+    }
+  }
   func layoutSecondUserNameLabel() {
     self.secondContainerView.add(secondUserNameLabel) {
       $0.setupLabel(text: "지수", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
@@ -211,6 +253,17 @@ extension RankingCollectionViewCell {
       }
     }
   }
+  func layoutThirdUserFirstHairImage() {
+    self.thirdContainerView.add(thirduserhairfirstImage) {
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints { make in
+        make.top.equalTo(self.thirdUser.snp.bottom)
+        make.centerX.equalToSuperview()
+        make.width.equalTo(101)
+        make.height.equalTo(110)
+      }
+    }
+  }
   func layoutThirdUserNameLabel() {
     self.thirdContainerView.add(thirdUserNameLabel) {
       $0.setupLabel(text: "지수", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
@@ -248,6 +301,66 @@ extension RankingCollectionViewCell {
       }
     }
   }
+  func layoutMyRankView() {
+    self.contentView.add(myRankView) {
+      $0.backgroundColor = .hackerWhite
+      $0.layer.cornerRadius = 10
+      $0.setBorder(borderColor: .hackerBlack, borderWidth: 3)
+      $0.snp.makeConstraints { make in
+        make.bottom.equalTo(self.contentView.safeAreaLayoutGuide).offset(-10)
+        make.leading.equalToSuperview().offset(24)
+        make.centerX.equalToSuperview()
+        make.height.equalTo(58)
+      }
+    }
+  }
+  func layoutMyrankLabel() {
+    self.myRankView.add(myRankLabel) {
+      $0.snp.makeConstraints { make in
+        make.leading.equalTo(self.myRankView).offset(30)
+        make.centerY.equalToSuperview()
+      }
+    }
+  }
+  func layoutMyNameLabel() {
+    self.myRankView.add(myNameLabel) {
+      $0.snp.makeConstraints { make in
+        make.top.equalToSuperview().offset(7)
+        make.centerX.equalToSuperview()
+      }
+    }
+  }
+  func layoutMyCommitLabel() {
+    self.myRankView.add(myCommitLabel) {
+      $0.snp.makeConstraints { make in
+        make.bottom.equalToSuperview().offset(-11)
+        make.centerX.equalToSuperview()
+      }
+    }
+  }
+  func layoutShortCutButton() {
+    self.myRankView.add(shortCutButton) {
+      $0.isHidden = true
+      $0.snp.makeConstraints { make in
+        make.trailing.equalToSuperview().offset(-16)
+        make.centerY.equalToSuperview()
+      }
+    }
+  }
+  func updateServerData() {
+    self.firstUserNameLabel.setupLabel(text: rankList?.ranks[1].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+    self.firstUserCommitLabel.setupLabel(text: "\(rankList?.ranks[1].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
+    self.secondUserNameLabel.setupLabel(text: rankList?.ranks[0].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+    self.secondUserCommitLabel.setupLabel(text: "\(rankList?.ranks[0].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
+    self.thirdUserNameLabel.setupLabel(text: rankList?.ranks[2].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+    self.thirdUserCommitLabel.setupLabel(text: "\(rankList?.ranks[2].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
+    self.firstuserhairfirstImage.updateServerImage(rankList?.ranks[1].head ?? "")
+    self.seconduserhairfirstImage.updateServerImage(rankList?.ranks[0].head ?? "")
+    self.thirduserhairfirstImage.updateServerImage(rankList?.ranks[2].head ?? "")
+    self.myRankLabel.setupLabel(text: "\(rankList?.myRank?.rank ?? 0)등", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+    self.myNameLabel.setupLabel(text: "\(rankList?.myRank?.nickname ?? "")", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+    self.myCommitLabel.setupLabel(text: "\(rankList?.myRank?.commitCount ?? 0)커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
+  }
 }
 // MARK: - UITableViewDelegate, DataSource
 extension RankingCollectionViewCell: UITableViewDelegate {
@@ -260,10 +373,15 @@ extension RankingCollectionViewCell: UITableViewDataSource {
     1
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 30
+    let rankCount = self.rankList?.ranks.count ?? 0
+    return rankCount-3
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let rankingCell = tableView.dequeueReusableCell(withIdentifier: RankingTableViewCell.identifier, for: indexPath) as? RankingTableViewCell else { return UITableViewCell() }
+    rankingCell.userNameLabel.setupLabel(text: rankList?.ranks[indexPath.row+3].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+    rankingCell.rankingLabel.setupLabel(text: "\(rankList?.ranks[indexPath.row+3].rank ?? 0)등", color: .hackerBlack, font: .subtitleMedium(ofSize: 20))
+    rankingCell.usercommitLabel.setupLabel(text: "\(rankList?.ranks[indexPath.row+3].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
+    rankingCell.userhairfirstImage.updateServerImage(rankList?.ranks[indexPath.row+3].head ?? "")
     rankingCell.awakeFromNib()
     rankingCell.selectionStyle = .none
     rankingCell.backgroundColor = .white

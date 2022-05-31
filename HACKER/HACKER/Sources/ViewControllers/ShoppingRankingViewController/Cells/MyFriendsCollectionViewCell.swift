@@ -16,6 +16,7 @@ class MyFriendsCollectionViewCell: UICollectionViewCell {
   // MARK: - Components
   let lineborderView = UIView()
   let userImageView = UIImageView()
+  let userhairfirstImage = UIImageView()
   let userNameLabel = UILabel()
   
   // MARK: - LifeCycle
@@ -29,6 +30,7 @@ extension MyFriendsCollectionViewCell {
   func layout() {
     layoutLineBorderView()
     layoutUserImageView()
+    layoutUserFirstHairImage()
     layoutUserNameLabel()
   }
   func layoutLineBorderView() {
@@ -53,9 +55,19 @@ extension MyFriendsCollectionViewCell {
       }
     }
   }
+  func layoutUserFirstHairImage() {
+    self.contentView.add(userhairfirstImage) {
+      $0.contentMode = .scaleAspectFit
+      $0.snp.makeConstraints { make in
+        make.top.equalTo(self.userImageView)
+        make.leading.equalToSuperview().offset(6)
+        make.trailing.equalToSuperview().offset(-6)
+        make.bottom.equalToSuperview().offset(-38)
+      }
+    }
+  }
   func layoutUserNameLabel() {
     self.lineborderView.add(userNameLabel) {
-      $0.setupLabel(text: "두두두두", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
       $0.textAlignment = .center
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.userImageView.snp.bottom)
