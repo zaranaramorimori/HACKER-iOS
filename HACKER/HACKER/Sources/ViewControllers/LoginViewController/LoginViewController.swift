@@ -114,11 +114,12 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
       let userToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
       let userIdentifier = appleIDCredential.user
       Const.socialToken = userToken
-      if self.checkLogin == true {
-        loginWithAPI(social: "apple")
-      } else {
-        loginNewWithAPI(social: "apple")
-      }
+      loginNewWithAPI(social: "apple")
+//      if self.checkLogin == true {
+//        loginWithAPI(social: "apple")
+//      } else {
+//        loginNewWithAPI(social: "apple")
+//      }
     default:
       break
     }

@@ -26,17 +26,17 @@ public class LoginAPI {
         switch statusCode {
         case 201:
           print("wow")
-          let networkResult = self.judgeLoginStatus(by: statusCode, data)
+          let networkResult = self.judgeLoginNewStatus(by: statusCode, data)
           completion(networkResult)
-          let loginVC = LoginViewController()
-          loginVC.checkLogin = true
+//          let loginVC = LoginViewController()
+//          loginVC.checkLogin = true
           
         default:
           print("ang")
-          let networkResult = self.judgeLoginNewStatus(by: statusCode, data)
+          let networkResult = self.judgeLoginStatus(by: statusCode, data)
           completion(networkResult)
-          let loginVC = LoginViewController()
-          loginVC.checkLogin = false
+//          let loginVC = LoginViewController()
+//          loginVC.checkLogin = false
         }
         
       case .failure(let err):
@@ -87,7 +87,7 @@ public class LoginAPI {
     else { return .pathErr }
     
     switch statusCode {
-    case 200:
+    case 201:
       return .success(decodedData.data ?? "None-Data")
     case 400..<500:
       return .requestErr(decodedData.message)

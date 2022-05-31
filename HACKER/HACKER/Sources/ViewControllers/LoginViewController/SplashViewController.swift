@@ -67,7 +67,8 @@ extension SplashViewController {
   }
   
   private func presentToSignup() {
-    let signupVC = SignupViewController()
+//    let signupVC = SignupViewController()
+    let signupVC = LoginViewController()
     signupVC.modalPresentationStyle = .fullScreen
     signupVC.modalTransitionStyle = .crossDissolve
     self.present(signupVC, animated: true, completion: nil)
