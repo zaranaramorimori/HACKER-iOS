@@ -87,10 +87,8 @@ extension LoginViewController {
     authorizationController.performRequests()
   }
   func presentToMain() {
-    let mainVC = UINavigationController(rootViewController: MainViewController())
-    mainVC.modalPresentationStyle = .fullScreen
-    mainVC.modalTransitionStyle = .crossDissolve
-    self.present(mainVC, animated: true)
+    let tabbarVC = TabBarViewController()
+    self.changeRootViewController(tabbarVC)
   }
   func presentToSignup(userData: LoginNewResponse) {
     let signupVC = SignupViewController()
@@ -117,12 +115,13 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
       let userToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
       let userIdentifier = appleIDCredential.user
       Const.socialToken = userToken
-      loginNewWithAPI(social: "apple")
-//      if self.checkLogin == true {
-//        loginWithAPI(social: "apple")
-//      } else {
-//        loginNewWithAPI(social: "apple")
-//      }
+//      loginNewWithAPI(social: "apple")
+      // TODO: 애플 로그인 분기처리
+      if self.checkLogin == true {
+        loginWithAPI(social: "apple")
+      } else {
+        loginNewWithAPI(social: "apple")
+      }
     default:
       break
     }
