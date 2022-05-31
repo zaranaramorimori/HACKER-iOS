@@ -16,7 +16,8 @@ class FightViewController: UIViewController {
   var serverIngSeasons: SeasonResponse?
   
   private let navigationBar = HackerNavigationBar()
-  
+  private let emptyView = EmptyView()
+
   private let dividerLine = UIImageView().then {
     $0.image = UIImage(named: "sectionLine")
     $0.contentMode = .scaleToFill
@@ -37,6 +38,16 @@ class FightViewController: UIViewController {
     }
   }
   
+  private let notificationView = UIView().then {
+    $0.backgroundColor = .hackerBlack
+    $0.layer.cornerRadius = 15
+  }
+  
+  private let notificationViewLabel = UILabel().then {
+    $0.setupLabel(text: "랭킹과 머리카락은 00:00시 정각에\n업데이트 됩니다.", color: .hackerWhite, font: .titleBold(ofSize: 16))
+    $0.numberOfLines = 2
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configUI()
@@ -49,15 +60,21 @@ class FightViewController: UIViewController {
   private func configUI() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
+    notificationView.isHidden = true
+    emptyView.updateLabels(text: "아직 진행중인 세션이 없어요!", aigoSize: 24, nothingSize: 16)
   }
   
   private func setupAutoLayout() {
-    view.addSubviews([navigationBar, dividerLine, fightTableView])
+    view.addSubviews([navigationBar, dividerLine, emptyView, fightTableView, notificationView])
+    notificationView.add(notificationViewLabel)
     navigationBar.iconLayout(isBack: false,
                              logoImage: UIImage(named: "fightMainIcon"),
                              rightImage: UIImage(named: "infoIconBlack"))
     navigationBar.popViewController = {
       self.navigationController?.popViewController(animated: true)
+    }
+    navigationBar.hideNotificationView = {
+      self.notificationView.isHidden = !self.navigationBar.rightButton.isSelected
     }
     navigationBar.snp.makeConstraints { make in
       make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
@@ -67,11 +84,25 @@ class FightViewController: UIViewController {
       make.top.equalTo(navigationBar.snp.bottom)
       make.leading.trailing.equalToSuperview()
     }
+    emptyView.snp.makeConstraints { make in
+      make.top.equalTo(dividerLine.snp.bottom)
+      make.leading.trailing.equalToSuperview()
+      make.bottom.equalTo(self.view.safeAreaLayoutGuide)
+    }
     fightTableView.snp.makeConstraints { make in
       make.top.equalTo(self.dividerLine.snp.bottom)
       make.leading.equalToSuperview().inset(24)
       make.bottom.equalTo(view.safeAreaLayoutGuide)
       make.centerX.equalToSuperview()
+    }
+    notificationView.snp.makeConstraints { make in
+      make.top.equalTo(navigationBar.rightButton.snp.bottom).offset(4)
+      make.trailing.equalToSuperview().inset(24)
+      make.width.equalTo(265)
+      make.height.equalTo(72)
+    }
+    notificationViewLabel.snp.makeConstraints { make in
+      make.centerX.centerY.equalToSuperview()
     }
   }
 }
@@ -83,8 +114,7 @@ extension FightViewController: UITableViewDataSource {
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-//    return serverIngSeasons?.seasons.count ?? 0
-    return 3
+    return serverIngSeasons?.seasons.count ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,19 +122,18 @@ extension FightViewController: UITableViewDataSource {
     
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
-//    cell.seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID
-//    cell.logoImage.updateServerImage(serverIngSeasons?.seasons[indexPath.section].imageURL ?? "")
-//    cell.nameLabel.text = serverIngSeasons?.seasons[indexPath.section].agency
-//    cell.titleLabel.text = serverIngSeasons?.seasons[indexPath.section].title
-//    cell.dateLabel.text = serverIngSeasons?.seasons[indexPath.section].duration
+    cell.seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID
+    cell.logoImage.updateServerImage(serverIngSeasons?.seasons[indexPath.section].imageURL ?? "")
+    cell.nameLabel.text = serverIngSeasons?.seasons[indexPath.section].agency
+    cell.titleLabel.text = serverIngSeasons?.seasons[indexPath.section].title
+    cell.dateLabel.text = serverIngSeasons?.seasons[indexPath.section].duration
     
     return cell
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    let seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID ?? 0
-//    seasonTeamInfoWithAPI(seasonId: seasonId)
-    seasonTeamInfoWithAPI(seasonId: 1)
+    let seasonId = serverIngSeasons?.seasons[indexPath.section].seasonID ?? 0
+    seasonTeamInfoWithAPI(seasonId: seasonId)
   }
 }
 
@@ -141,6 +170,9 @@ extension FightViewController {
       case .success(let data):
         if let seasons = data as? SeasonResponse {
           self.serverIngSeasons = seasons
+          if seasons.seasons.isEmpty {
+            self.fightTableView.isHidden = true
+          }
           self.fightTableView.reloadData()
         }
       case .requestErr(let message):

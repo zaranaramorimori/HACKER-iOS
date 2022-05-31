@@ -24,22 +24,23 @@ struct Log: Codable {
 // MARK: - Member
 struct Member: Codable {
     let userID: Int
-    let nickname: String
+    let nickname, head: String
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
-        case nickname
+        case nickname, head
     }
 }
 
 // MARK: - TeamInfo
 struct TeamInfo: Codable {
     let name, imageURL: String
-    let commitCount, hairCount: Int
+    let commitCount, hairCount, couponCount: Int
+  let head: String?
 
     enum CodingKeys: String, CodingKey {
         case name
         case imageURL = "imageUrl"
-        case commitCount, hairCount
+      case commitCount, hairCount, couponCount, head
     }
 }

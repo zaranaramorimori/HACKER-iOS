@@ -19,9 +19,10 @@ struct Team: Codable {
     let name: String
     let commitCount: Int
     let hairCount: Int?
+    let head: String?
 
     enum CodingKeys: String, CodingKey {
         case teamID = "teamId"
-        case rank, name, commitCount, hairCount
+        case rank, name, commitCount, hairCount, head
     }
 }
