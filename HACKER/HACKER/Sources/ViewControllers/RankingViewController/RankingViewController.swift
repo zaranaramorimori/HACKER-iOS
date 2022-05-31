@@ -62,7 +62,7 @@ class RankingViewController: UIViewController {
   
   private let shortCutButton = UIButton().then {
     $0.titleLabel?.font = .btnText(ofSize: 20)
-    $0.setTitle("바로가기", for: .normal)
+//    $0.setTitle("바로가기", for: .normal)
     $0.setTitleColor(.hackerBlack, for: .normal)
     $0.addTarget(self, action: #selector(touchShortCutButton(_:)), for: .touchUpInside)
   }
