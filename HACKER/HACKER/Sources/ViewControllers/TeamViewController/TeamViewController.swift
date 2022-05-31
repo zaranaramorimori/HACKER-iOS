@@ -14,6 +14,7 @@ class TeamViewController: UIViewController {
   // MARK: - Components
   
   var serverTeamDetailInfo: TeamDetailResponse?
+  var teamId = 0
   
   private let navigationBar = HackerNavigationBar()
   private let memberEmptyView = EmptyView()
@@ -310,7 +311,7 @@ class TeamViewController: UIViewController {
   // MARK: - @objc
   
   @objc func touchAttackButton(_ sender: UIButton) {
-    AttackAPI.shared.attackTeam(teamId: 2) { (response) in
+    AttackAPI.shared.attackTeam(teamId: teamId) { (response) in
       switch response {
       case .success:
         let lottieVC = AttackLottieViewController()
