@@ -258,6 +258,7 @@ extension RankingViewController {
         if let teamInfo = data as? TeamDetailResponse {
           let nextVC = TeamViewController()
           nextVC.serverTeamDetailInfo = teamInfo
+          nextVC.teamId = teamId
           self.navigationController?.pushViewController(nextVC, animated: true)
         }
       case .requestErr(let message):
