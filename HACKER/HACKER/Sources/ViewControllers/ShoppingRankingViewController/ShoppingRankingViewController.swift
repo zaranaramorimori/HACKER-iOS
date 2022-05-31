@@ -206,6 +206,7 @@ extension ShoppingRankingViewController {
         if let rankInfo = data as? RankingResponse {
           let rankingCollectionVC = RankingCollectionViewCell()
           self.rankList = rankInfo
+          print(rankInfo)
           self.pageCollectionView.reloadData()
         }
       case .requestErr(let status):

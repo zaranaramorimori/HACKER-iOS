@@ -24,6 +24,9 @@ class SignupPopUpViewController: UIViewController {
   let yesButton = UIButton()
   let noButton = UIButton()
   
+  var socialType = ""
+  var uuid = ""
+  
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -147,6 +150,8 @@ extension SignupPopUpViewController {
   @objc func pushNickNameVC() {
     let nicknameVC = NicknameViewController()
     nicknameVC.userGithubName = userNameLabel.text
+    nicknameVC.socialType = socialType
+    nicknameVC.uuid = uuid
     self.navigationController?.pushViewController(nicknameVC, animated: false)
   }
   @objc func dismissPopUpVC() {

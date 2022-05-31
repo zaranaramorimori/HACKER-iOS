@@ -46,8 +46,8 @@ extension LoginService: TargetType {
     var headers: [String: String]? {
         switch self {
         case .login:
-//          return Const.Header.socialHeader()
-          return Const.Header.basicHeader()
+          return Const.Header.socialHeader()
+//          return Const.Header.basicHeader()
         }
     }
 }

@@ -87,16 +87,17 @@ extension LoginViewController {
     authorizationController.performRequests()
   }
   func presentToMain() {
-    let mainVC = UINavigationController(rootViewController: MainViewController())
-    mainVC.modalPresentationStyle = .fullScreen
-    mainVC.modalTransitionStyle = .crossDissolve
-    self.present(mainVC, animated: true)
+    let tabbarVC = TabBarViewController()
+    self.changeRootViewController(tabbarVC)
   }
-  func presentToSignup() {
-    let signupVC = UINavigationController(rootViewController: SignupViewController())
-    signupVC.modalPresentationStyle = .fullScreen
-    signupVC.modalTransitionStyle = .crossDissolve
-    self.present(signupVC, animated: true)
+  func presentToSignup(userData: LoginNewResponse) {
+    let signupVC = SignupViewController()
+    let signupNVC = UINavigationController(rootViewController: signupVC)
+    signupVC.socialType = userData.social
+    signupVC.uuid = userData.uuid
+    signupNVC.modalPresentationStyle = .fullScreen
+    signupNVC.modalTransitionStyle = .crossDissolve
+    self.present(signupNVC, animated: true)
   }
 }
 
@@ -114,6 +115,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
       let userToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
       let userIdentifier = appleIDCredential.user
       Const.socialToken = userToken
+//      loginNewWithAPI(social: "apple")
+      // TODO: 애플 로그인 분기처리
       if self.checkLogin == true {
         loginWithAPI(social: "apple")
       } else {
@@ -157,9 +160,11 @@ extension LoginViewController {
     LoginAPI.shared.login(social: social) { response in
       switch response {
       case .success(let loginData):
+        print("loginNewwithAPI되는중")
         if let userData = loginData as? LoginNewResponse {
           print("loginNewWithAPI - success")
-          self.presentToSignup()
+          UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin)
+          self.presentToSignup(userData: userData)
         }
       case .requestErr(let message):
         print("loginWithAPI - requestErr: \(message)")
