@@ -169,7 +169,6 @@ extension NicknameViewController {
     self.nextButton.transform = .identity
   }
   @objc func nextButtonClicked() {
-    // TODO: 소셜로그인 할 때 Social, uuid 저장 후 여기 넣기
     userNicknameWithAPI(nicknameRequest: NickNameRequest(social: socialType,
                                                          uuid: uuid,
                                                          username: userGithubName ?? "",
