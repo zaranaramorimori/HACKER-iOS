@@ -98,6 +98,10 @@ extension SettingViewController: UITableViewDataSource {
       case 2:
         let openSourceVC = OpenSourceViewController()
         self.navigationController?.pushViewController(openSourceVC, animated: true)
+      case 3:
+        let webViewVC = WebkitViewController()
+        webViewVC.urlString = "https://hacker-webview.vercel.app/members"
+        self.navigationController?.pushViewController(webViewVC, animated: true)
       case 4:
         let logoutVC = LogoutViewController()
         logoutVC.modalTransitionStyle = .crossDissolve
