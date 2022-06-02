@@ -130,6 +130,8 @@ extension AlarmViewController {
       case .networkFail:
         print("userNicknameWithAPI - networkFail")
         self.layoutEmptyView()
+      default:
+        print("default!")
       }
     }
   }

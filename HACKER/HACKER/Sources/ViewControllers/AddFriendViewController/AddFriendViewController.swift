@@ -241,6 +241,8 @@ extension AddFriendViewController {
         print("userPhotosWithAPI - serverErr")
       case .networkFail:
         print("userPhotosWithAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }

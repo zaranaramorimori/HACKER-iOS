@@ -279,6 +279,8 @@ extension NicknameViewController {
         print("userNicknameWithAPI - serverErr")
       case .networkFail:
         print("userNicknameWithAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }

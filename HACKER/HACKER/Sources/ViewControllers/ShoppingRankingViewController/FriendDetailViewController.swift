@@ -158,6 +158,8 @@ extension FriendDetailViewController {
         print("attackUser - serverErr")
       case .networkFail:
         print("attackUser - networkFail")
+      default:
+        print("default!")
       }
     }
   }

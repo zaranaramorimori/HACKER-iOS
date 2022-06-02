@@ -147,6 +147,8 @@ extension DeleteAccountViewController {
         print("deleteAccountWithAPI - serverErr")
       case .networkFail:
         print("deleteAccountWithAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }

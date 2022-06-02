@@ -178,6 +178,8 @@ extension CheckAddUserPopUpViewController {
           print("addFriendAPI - serverErr")
         case .networkFail:
           print("addFriendAPI - networkFail")
+        default:
+          print("default!")
         }
       }
     }

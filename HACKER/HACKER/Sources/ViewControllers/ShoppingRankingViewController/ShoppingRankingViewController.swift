@@ -218,6 +218,8 @@ extension ShoppingRankingViewController {
         print("RankingAPI - serverErr")
       case .networkFail:
         print("RankingAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }
@@ -240,6 +242,8 @@ extension ShoppingRankingViewController {
         print("RankingAPI - serverErr")
       case .networkFail:
         print("RankingAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }
