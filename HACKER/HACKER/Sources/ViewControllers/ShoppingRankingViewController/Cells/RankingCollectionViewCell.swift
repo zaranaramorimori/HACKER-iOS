@@ -297,7 +297,8 @@ extension RankingCollectionViewCell {
       $0.showsVerticalScrollIndicator = false
       $0.separatorStyle = .none
       $0.snp.makeConstraints { make in
-        make.top.leading.trailing.bottom.equalToSuperview()
+        make.top.leading.trailing.equalToSuperview()
+        make.bottom.equalTo(self.contentView.safeAreaLayoutGuide).offset(-68)
       }
     }
   }
@@ -341,11 +342,15 @@ extension RankingCollectionViewCell {
   func layoutShortCutButton() {
     self.myRankView.add(shortCutButton) {
       $0.isHidden = true
+      $0.addTarget(self, action: #selector(self.shortCutButtonClicked), for: .touchUpInside)
       $0.snp.makeConstraints { make in
         make.trailing.equalToSuperview().offset(-16)
         make.centerY.equalToSuperview()
       }
     }
+  }
+  @objc func shortCutButtonClicked() {
+    print("shortcutButtonClicked")
   }
   func updateServerData() {
     self.firstUserNameLabel.setupLabel(text: rankList?.ranks[1].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
