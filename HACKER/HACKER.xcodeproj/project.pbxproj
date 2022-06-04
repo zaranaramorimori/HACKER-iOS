@@ -59,6 +59,7 @@
 		86856D4F283FE98900F3B3BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86856D4E283FE98900F3B3BC /* GoogleService-Info.plist */; };
 		869B5AC127ECFFB500F2ACA7 /* XCUIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */; };
 		869B5AC327ED04D000F2ACA7 /* XCUIElement+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */; };
+		86B086CF2849023A0094F21C /* WebkitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B086CE2849023A0094F21C /* WebkitViewController.swift */; };
 		86DF9A7427EB37CA00C7D493 /* SignupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7327EB37C900C7D493 /* SignupUITests.swift */; };
 		86DF9A7727ECF1B500C7D493 /* UITestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DF9A7627ECF1B500C7D493 /* UITestUtils.swift */; };
 		86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
@@ -214,6 +215,7 @@
 		86856D50283FEB0500F3B3BC /* HACKERDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HACKERDebug.entitlements; sourceTree = "<group>"; };
 		869B5AC027ECFFB500F2ACA7 /* XCUIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIApplication+Extension.swift"; sourceTree = "<group>"; };
 		869B5AC227ED04D000F2ACA7 /* XCUIElement+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCUIElement+Extension.swift"; sourceTree = "<group>"; };
+		86B086CE2849023A0094F21C /* WebkitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebkitViewController.swift; sourceTree = "<group>"; };
 		86DF9A7327EB37C900C7D493 /* SignupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUITests.swift; sourceTree = "<group>"; };
 		86DF9A7627ECF1B500C7D493 /* UITestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestUtils.swift; sourceTree = "<group>"; };
 		86DF9A7A27ECF8EC00C7D493 /* NicknameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameUITests.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				773D93C927F161300014DE3A /* DeleteAccountViewController.swift */,
 				77043D56283CABF80091A7D5 /* OpenSourceViewController.swift */,
 				775EC03C283FA89400C3CA0B /* ChangeNicknameViewController.swift */,
+				86B086CE2849023A0094F21C /* WebkitViewController.swift */,
 			);
 			path = SettingViewController;
 			sourceTree = "<group>";
@@ -1251,6 +1254,7 @@
 				86856D39283F919E00F3B3BC /* AttackAPI.swift in Sources */,
 				E8FF04F627B2111C00C7C3E5 /* SignupPopUpViewController.swift in Sources */,
 				86856D40283FCA8C00F3B3BC /* AlarmViewController.swift in Sources */,
+				86B086CF2849023A0094F21C /* WebkitViewController.swift in Sources */,
 				E8DECE5F282F71CC002B6E35 /* RankingService.swift in Sources */,
 				77BA0E5C2823720700EC41A5 /* EmptyView.swift in Sources */,
 				77233EA82821AEC3006B7903 /* RankingViewController.swift in Sources */,
