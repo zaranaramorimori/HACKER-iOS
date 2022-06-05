@@ -307,6 +307,9 @@ extension RankingCollectionViewCell {
       $0.backgroundColor = .hackerWhite
       $0.layer.cornerRadius = 10
       $0.setBorder(borderColor: .hackerBlack, borderWidth: 3)
+      let tapGesture = UITapGestureRecognizer(target: self,
+                                              action: #selector(self.myrankingViewClicked))
+      $0.addGestureRecognizer(tapGesture)
       $0.snp.makeConstraints { make in
         make.bottom.equalTo(self.contentView.safeAreaLayoutGuide).offset(-10)
         make.leading.equalToSuperview().offset(24)
@@ -342,15 +345,15 @@ extension RankingCollectionViewCell {
   func layoutShortCutButton() {
     self.myRankView.add(shortCutButton) {
       $0.isHidden = true
-      $0.addTarget(self, action: #selector(self.shortCutButtonClicked), for: .touchUpInside)
+      $0.setupButton(title: "바로가기", color: .hackerBlack, font: .btnText(ofSize: 20), backgroundColor: .clear, state: .normal, radius: 0)
       $0.snp.makeConstraints { make in
-        make.trailing.equalToSuperview().offset(-16)
+        make.trailing.equalToSuperview().offset(-19)
         make.centerY.equalToSuperview()
       }
     }
   }
-  @objc func shortCutButtonClicked() {
-    print("shortcutButtonClicked")
+  @objc func myrankingViewClicked() {
+    print("myrankingViewClicked")
   }
   func updateServerData() {
     self.firstUserNameLabel.setupLabel(text: rankList?.ranks[1].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
