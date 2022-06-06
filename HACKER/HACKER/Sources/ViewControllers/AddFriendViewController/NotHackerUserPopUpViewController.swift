@@ -30,7 +30,7 @@ class NotHackerUserPopUpViewController: UIViewController {
 // MARK: - Extensions
 extension NotHackerUserPopUpViewController {
   func setBackground() {
-    self.view.backgroundColor = .hackerWhite
+//    self.view.backgroundColor = .hackerWhite
   }
   func layout() {
     layoutBackGroundView()
