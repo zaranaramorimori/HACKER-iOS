@@ -854,8 +854,8 @@
 				86E4CF70282F467D0069C048 /* DataModel */,
 				E8C7316E28274E2100431E5F /* AddFriendViewController.swift */,
 				E8C731702827509D00431E5F /* NotHackerUserPopUpViewController.swift */,
-				E8C73172282750ED00431E5F /* CheckAddUserPopUpViewController.swift */,
 				E8C73174282751B700431E5F /* CheckFriendViewController.swift */,
+				E8C73172282750ED00431E5F /* CheckAddUserPopUpViewController.swift */,
 				86856D3C283FC42F00F3B3BC /* AttackLottieViewController.swift */,
 			);
 			path = AddFriendViewController;
