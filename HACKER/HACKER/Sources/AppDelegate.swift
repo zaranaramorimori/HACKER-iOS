@@ -43,13 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
       }
     }
-      // 앱 실행 중 애플 ID 강제로 연결 취소 시
-      NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: nil) { (Notification) in
-        print("Revoked Notification")
-        self.isLogin = false
-      }
-      
-      return true
+    // 앱 실행 중 애플 ID 강제로 연결 취소 시
+    NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: nil) { (Notification) in
+      print("Revoked Notification")
+      self.isLogin = false
+    }
+    
+    return true
     FirebaseApp.configure()
     Messaging.messaging().delegate = self
     
@@ -59,6 +59,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UNUserNotificationCenter.current().requestAuthorization(options: authOptions,completionHandler: {_, _ in })
     application.registerForRemoteNotifications()
     return true
+  }
+  
+  func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    // 세로방향 고정
+    return UIInterfaceOrientationMask.portrait
   }
   
   func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

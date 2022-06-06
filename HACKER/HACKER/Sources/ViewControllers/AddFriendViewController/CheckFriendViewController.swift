@@ -143,6 +143,12 @@ extension CheckFriendViewController {
       popupVC.friendId = friendList?[index].id
       popupVC.username = friendList?[index].username
       popupVC.parentVC = self
+      
+      if let image = friendList?[index].profileImage {
+        popupVC.userImageView.updateServerImage(image)
+      } else {
+        popupVC.userImageView.image = UIImage(named: "200")
+      }
       popupVC.modalPresentationStyle = .overFullScreen
       self.present(popupVC, animated: false, completion: nil)
     }
