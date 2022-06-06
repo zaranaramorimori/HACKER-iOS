@@ -13,6 +13,9 @@ import Then
 //MARK: - AddFriendViewController
 class AddFriendViewController: UIViewController {
   
+  // MARK: - Properties
+  private var isInputValid = false
+  
   // MARK: - Components
   private let navigationBar = HackerNavigationBar()
   private let hackerImageView = UIImageView()
@@ -157,6 +160,34 @@ extension AddFriendViewController {
   /// 텍스트필드 값 바뀌었을 때
   @objc func textFieldDidChange() {
     if usernameTextField.hasText {
+      if let username = UserDefaults.standard.string(forKey: Const.UserDefaultsKey.username),
+         let typedText = usernameTextField.text {
+        if username != typedText {
+          /// 입력된 값이 자신의 username이 아닐 때 (정상적인 입력)
+          isInputValid = true
+          helloLabel.text = "친구를 찾아봐요!"
+          explainLabel.text = "추가할 Github 유저 네임을 적어주세요"
+          if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+            clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
+          }
+          setNextButtonActivated(true)
+        } else {
+          /// 입력된 값이 자신의 username일 때
+          isInputValid = false
+          helloLabel.text = "앗"
+          explainLabel.text = "자신은 친구로 등록할 수 없어요!"
+          if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+            clearButton.setImage(UIImage(named: "exclamationButton"), for: .normal)
+          }
+          setNextButtonActivated(false)
+        }
+      }
+    } else {
+      setNextButtonActivated(false)
+    }
+  }
+  private func setNextButtonActivated(_ isActivated: Bool) {
+    if isActivated {
       nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
       nextButton.isUserInteractionEnabled = true
@@ -199,7 +230,11 @@ extension AddFriendViewController: UITextFieldDelegate {
     textBorderView.backgroundColor = .black
     textField.textColor = .hackerWhite
     if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
-      clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
+      if isInputValid {
+        clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
+      } else {
+        clearButton.setImage(UIImage(named: "exclamationButton"), for: .normal)
+      }
     }
   }
   /// TextField 비활성화 되었을 때
@@ -207,7 +242,11 @@ extension AddFriendViewController: UITextFieldDelegate {
     textBorderView.backgroundColor = .white
     textField.textColor = .hackerBlack
     if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
-      clearButton.setImage(UIImage(named: "xBlack"), for: .normal)
+      if isInputValid {
+        clearButton.setImage(UIImage(named: "xBlack"), for: .normal)
+      } else {
+        clearButton.setImage(UIImage(named: "exclamationButton"), for: .normal)
+      }
     }
   }
 }
