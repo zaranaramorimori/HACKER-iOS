@@ -23,7 +23,7 @@ class FriendDetailViewController: UIViewController {
   let hairNumLabel = UILabel()
   let attackButton = UIButton()
   
-  var getuserID: Int = 0
+  var getuserID: Int?
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -139,10 +139,40 @@ extension FriendDetailViewController {
   }
   @objc func quituserButtonClicked() {
     //친구 취소 버튼 클릭 시
+    if let id = getuserID {
+      FriendAPI.shared.addFriend(requestBody: AddFriendRequest(friendId: id)) { (response) in
+        switch response {
+        case .success(let data):
+          if let userGithubInfo = data as? AddFriendResponse {
+            if userGithubInfo.isFriend {
+              self.quitUserButton.setImage(UIImage(named: "userAddedIcon"), for: .normal)
+            } else {
+              self.quitUserButton.setImage(UIImage(named: "addFriend"), for: .normal)
+            }
+          }
+        case .requestErr(let status):
+          if let statusCode = status as? Int {
+            switch statusCode {
+            case 400 :
+              print("[ERR] 필요한 값이 없습니다.")
+            default :
+              break
+            }
+          }
+          
+        case .pathErr:
+          print("addFriendAPI - pathErr")
+        case .serverErr:
+          print("addFriendAPI - serverErr")
+        case .networkFail:
+          print("addFriendAPI - networkFail")
+        }
+      }
+    }
   }
   @objc func attackButtonClicked(userID: Int) {
     LoadingHUD.show()
-    AttackAPI.shared.attackUser(userId: getuserID) { (response) in
+    AttackAPI.shared.attackUser(userId: getuserID ?? 0) { (response) in
       LoadingHUD.hide()
       switch response {
       case .success:
