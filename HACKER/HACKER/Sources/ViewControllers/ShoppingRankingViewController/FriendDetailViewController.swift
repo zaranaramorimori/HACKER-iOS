@@ -140,14 +140,18 @@ extension FriendDetailViewController {
   @objc func quituserButtonClicked() {
     //친구 취소 버튼 클릭 시
     if let id = getuserID {
+      LoadingHUD.show()
       FriendAPI.shared.addFriend(requestBody: AddFriendRequest(friendId: id)) { (response) in
+        LoadingHUD.hide()
         switch response {
         case .success(let data):
           if let userGithubInfo = data as? AddFriendResponse {
             if userGithubInfo.isFriend {
               self.quitUserButton.setImage(UIImage(named: "userAddedIcon"), for: .normal)
+              self.showToast(message: "친구로 추가했어요.")
             } else {
               self.quitUserButton.setImage(UIImage(named: "addFriend"), for: .normal)
+              self.showToast(message: "친구를 취소했어요.")
             }
           }
         case .requestErr(let status):
