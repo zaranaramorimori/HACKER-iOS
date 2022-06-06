@@ -75,7 +75,6 @@ extension CheckAddUserPopUpViewController {
     self.rectangleBackgroundView.add(userImageView) {
       $0.setBorder(borderColor: .hackerBlack, borderWidth: 3)
       $0.setRounded(radius: 34)
-      $0.image = UIImage(named: "200")
       $0.snp.makeConstraints {
         $0.top.equalToSuperview().offset(32)
         $0.centerX.equalToSuperview()
