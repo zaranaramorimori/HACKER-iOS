@@ -151,7 +151,9 @@ extension CheckAddUserPopUpViewController {
   }
   @objc func pushNickNameVC() {
     if let id = friendId {
+      LoadingHUD.show()
       FriendAPI.shared.addFriend(requestBody: AddFriendRequest(friendId: id)) { (response) in
+        LoadingHUD.hide()
         switch response {
         case .success(let data):
           if let userGithubInfo = data as? AddFriendResponse {

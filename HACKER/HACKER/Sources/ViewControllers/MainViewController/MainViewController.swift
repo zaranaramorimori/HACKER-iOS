@@ -269,7 +269,9 @@ extension MainViewController {
     self.navigationController?.pushViewController(alarmVC, animated: true)
   }
   @objc private func getAttackCouponTapped() {
+    LoadingHUD.show()
     AttackAPI.shared.getAttackCoupon { (response) in
+      LoadingHUD.hide()
       switch response {
       case .success:
         print("getAttackCoupon - 성공")
@@ -297,6 +299,7 @@ extension MainViewController {
   func userInfoWithAPI() {
     LoadingHUD.show()
     MainAPI.shared.userInfo { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let userInfo = data as? MainResponse {

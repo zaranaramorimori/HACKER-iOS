@@ -187,7 +187,9 @@ extension SignupViewController: UITextFieldDelegate {
 // MARK: - Network
 extension SignupViewController {
   func userGithubIDWithAPI(username: String) {
+    LoadingHUD.show()
     SignUpAPI.shared.userGithubName(username: username) { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let userGithubInfo = data as? SignUpResponse {

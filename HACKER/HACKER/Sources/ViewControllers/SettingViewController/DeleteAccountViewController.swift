@@ -130,7 +130,9 @@ class DeleteAccountViewController: UIViewController {
 // MARK: - Network
 extension DeleteAccountViewController {
   func deleteAccountWithAPI() {
+    LoadingHUD.show()
     SettingAPI.shared.deleteAccount() { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let message):
         print("deleteAccountWithAPI - success: \(message)")

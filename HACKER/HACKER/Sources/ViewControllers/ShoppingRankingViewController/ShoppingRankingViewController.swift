@@ -200,11 +200,12 @@ extension ShoppingRankingViewController {
   }
   // MARK: - Network
   func rankingWithAPI() {
+    LoadingHUD.show()
     RankingAPI.shared.totalRanking { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let rankInfo = data as? RankingResponse {
-          let rankingCollectionVC = RankingCollectionViewCell()
           self.rankList = rankInfo
           print(rankInfo)
           self.pageCollectionView.reloadData()
@@ -223,11 +224,12 @@ extension ShoppingRankingViewController {
   }
   // MARK: - Network
   func searchFriendWithAPI() {
+    LoadingHUD.show()
     SearchFriendAPI.shared.searchFriend { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let friendInfo = data as? [SearchFriendResponse] {
-          let shoppingCollectionviewCell = ShoppingCollectionViewCell()
           self.friendList = friendInfo
           self.pageCollectionView.reloadData()
         }

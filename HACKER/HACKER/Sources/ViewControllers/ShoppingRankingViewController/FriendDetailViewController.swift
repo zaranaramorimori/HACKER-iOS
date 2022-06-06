@@ -141,7 +141,9 @@ extension FriendDetailViewController {
     //친구 취소 버튼 클릭 시
   }
   @objc func attackButtonClicked(userID: Int) {
+    LoadingHUD.show()
     AttackAPI.shared.attackUser(userId: getuserID) { (response) in
+      LoadingHUD.hide()
       switch response {
       case .success:
         let lottieVC = AttackLottieViewController()

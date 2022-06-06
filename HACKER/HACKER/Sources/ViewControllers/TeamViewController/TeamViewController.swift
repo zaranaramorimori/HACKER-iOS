@@ -311,7 +311,9 @@ class TeamViewController: UIViewController {
   // MARK: - @objc
   
   @objc func touchAttackButton(_ sender: UIButton) {
+    LoadingHUD.show()
     AttackAPI.shared.attackTeam(teamId: teamId) { (response) in
+      LoadingHUD.hide()
       switch response {
       case .success:
         let lottieVC = AttackLottieViewController()

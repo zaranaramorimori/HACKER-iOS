@@ -215,7 +215,9 @@ extension AddFriendViewController: UITextFieldDelegate {
 // MARK: - Network
 extension AddFriendViewController {
   func searchGithubAPI(username: String) {
+    LoadingHUD.show()
     FriendAPI.shared.searchFriendGithub(username: username) { (response) in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let userGithubInfo = data as? [FriendGithubResponse] {

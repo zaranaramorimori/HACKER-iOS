@@ -34,10 +34,10 @@ class LoadingHUD {
       window.addSubview(backgroundView)
       
       backgroundView.frame = CGRect(x: 0, y: 0, width: window.frame.maxX, height: window.frame.maxY)
-      backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+      backgroundView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
       
-      sharedInstance.backgroundView = backgroundView
       sharedInstance.backgroundView?.removeFromSuperview()
+      sharedInstance.backgroundView = backgroundView
     }
   }
   

@@ -247,7 +247,9 @@ extension NicknameViewController: UITextFieldDelegate {
 // MARK: - Network
 extension NicknameViewController {
   func userNicknameWithAPI(nicknameRequest: NickNameRequest) {
+    LoadingHUD.show()
     NickNAmeAPI.shared.userNickname(nicknameRequest: nicknameRequest) { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         print("성공티비")

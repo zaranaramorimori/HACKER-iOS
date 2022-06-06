@@ -165,7 +165,9 @@ extension FightViewController: UITableViewDelegate {
 // MARK: - Network
 extension FightViewController {
   func ingSeasonWithAPI() {
+    LoadingHUD.show()
     FightAPI.shared.ingSeason { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let seasons = data as? SeasonResponse {
@@ -188,7 +190,9 @@ extension FightViewController {
   }
   
   func seasonTeamInfoWithAPI(seasonId: Int) {
+    LoadingHUD.show()
     FightAPI.shared.seasonTeamInfo(seasonId: seasonId) { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let teams = data as? SeasonTeamResponse {
