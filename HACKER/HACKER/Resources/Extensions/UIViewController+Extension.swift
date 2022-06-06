@@ -123,21 +123,22 @@ extension UIViewController {
   // MARK: 토스트 메시지
   func showToast(message: String) {
     let sideMargin: CGFloat = 55
-    let toastLabel = UILabel(frame: CGRect(x: sideMargin, y: self.view.frame.size.height-40, width: view.frame.size.width - 2 * sideMargin, height: 37))
+    let toastLabel = UILabel(frame: CGRect(x: sideMargin, y: self.view.frame.size.height-100, width: view.frame.size.width - 2 * sideMargin, height: 37))
     
     toastLabel.backgroundColor = .hackerBlack
     toastLabel.textColor = .hackerWhite
-    toastLabel.textAlignment = .center;
+    toastLabel.textAlignment = .center
     toastLabel.font = .bodyRegular(ofSize: 12)
     toastLabel.text = message
     toastLabel.alpha = 1.0
     toastLabel.layer.cornerRadius = 10
+    toastLabel.clipsToBounds = true
     
     self.view.addSubview(toastLabel)
     
     UIView.animate(withDuration: 2.0, delay: 1.0, options: .curveEaseOut, animations: {
       toastLabel.alpha = 0.0
-    }, completion: { (isCompleted) in
+    }, completion: { _ in
       toastLabel.removeFromSuperview()
     })
   }
