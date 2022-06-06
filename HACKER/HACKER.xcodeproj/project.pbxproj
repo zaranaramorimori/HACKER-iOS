@@ -68,6 +68,8 @@
 		86E4CF6D282B7E280069C048 /* FriendAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E4CF6C282B7E280069C048 /* FriendAPI.swift */; };
 		86E4CF6F282F41CB0069C048 /* FriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E4CF6E282F41CB0069C048 /* FriendService.swift */; };
 		86E4CF72282F46CD0069C048 /* FriendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E4CF71282F46CD0069C048 /* FriendResponse.swift */; };
+		86F2C23F284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json in Resources */ = {isa = PBXBuildFile; fileRef = 86F2C23E284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json */; };
+		86F2C241284E2B60002B13B8 /* LoadingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2C240284E2B60002B13B8 /* LoadingHUD.swift */; };
 		86F9EB2327E8D51100E1FEFD /* HACKERUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */; };
 		86F9EB3027E9D63000E1FEFD /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86F9EB3727E9DBB400E1FEFD /* TestErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB3427E9DBAE00E1FEFD /* TestErrorMessage.swift */; };
@@ -222,6 +224,8 @@
 		86E4CF6C282B7E280069C048 /* FriendAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAPI.swift; sourceTree = "<group>"; };
 		86E4CF6E282F41CB0069C048 /* FriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendService.swift; sourceTree = "<group>"; };
 		86E4CF71282F46CD0069C048 /* FriendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendResponse.swift; sourceTree = "<group>"; };
+		86F2C23E284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lf30_editor_kdpmpt6l.json; sourceTree = "<group>"; };
+		86F2C240284E2B60002B13B8 /* LoadingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
 		86F9EB2027E8D51100E1FEFD /* HACKERUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERUITests.swift; sourceTree = "<group>"; };
 		86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetIdentifier.swift; sourceTree = "<group>"; };
@@ -490,6 +494,7 @@
 			children = (
 				7789EBE72823A97700237036 /* pulledOut.json */,
 				7789EBE82823A97700237036 /* pullingOut.json */,
+				86F2C23E284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 			isa = PBXGroup;
 			children = (
 				86856D45283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift */,
+				86F2C240284E2B60002B13B8 /* LoadingHUD.swift */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -1068,6 +1074,7 @@
 				E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */,
 				86856D4F283FE98900F3B3BC /* GoogleService-Info.plist in Resources */,
 				E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */,
+				86F2C23F284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json in Resources */,
 				E8FF04FB27B212C000C7C3E5 /* NotoSansKR-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1305,6 +1312,7 @@
 				77233EBF2822DB78006B7903 /* FightService.swift in Sources */,
 				77576EC427EB88A0005AF6DA /* HackerNavigationBar.swift in Sources */,
 				E8E8477D279EF6E900D5A482 /* AppDelegate.swift in Sources */,
+				86F2C241284E2B60002B13B8 /* LoadingHUD.swift in Sources */,
 				86856D43283FCE1600F3B3BC /* AlarmCollectionViewCell.swift in Sources */,
 				77233E9E2821938D006B7903 /* FightViewController.swift in Sources */,
 				E855DD2D27EF0AF5003F3B34 /* RankingCollectionViewCell.swift in Sources */,

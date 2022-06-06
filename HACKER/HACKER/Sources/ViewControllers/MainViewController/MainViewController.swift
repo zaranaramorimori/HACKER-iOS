@@ -295,6 +295,7 @@ extension MainViewController {
 // MARK: - Network
 extension MainViewController {
   func userInfoWithAPI() {
+    LoadingHUD.show()
     MainAPI.shared.userInfo { response in
       switch response {
       case .success(let data):
