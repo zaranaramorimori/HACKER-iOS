@@ -105,7 +105,9 @@ extension AlarmViewController {
 // MARK: - Custom Methods
 extension AlarmViewController {
   private func getAlarmList() {
+    LoadingHUD.show()
     PushAPI.shared.fetchPushList { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let pushInfo = data as? PushResponse {

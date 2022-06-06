@@ -128,7 +128,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
 // MARK: - Network
 extension LoginViewController {
   func loginWithAPI(social: String) {
+    LoadingHUD.show()
     LoginAPI.shared.login(social: social) { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let loginData):
         if let userData = loginData as? LoginResponse {
@@ -154,7 +156,9 @@ extension LoginViewController {
     }
   }
   func loginNewWithAPI(social: String) {
+    LoadingHUD.show()
     LoginAPI.shared.login(social: social) { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let loginData):
         if let userData = loginData as? LoginNewResponse {

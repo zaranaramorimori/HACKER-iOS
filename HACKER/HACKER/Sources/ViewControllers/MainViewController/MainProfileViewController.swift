@@ -111,7 +111,9 @@ extension MainProfileViewController {
 // MARK: - Network
 extension MainProfileViewController {
   func userDetailInfoWithAPI() {
+    LoadingHUD.show()
     MainAPI.shared.userDetailInfo { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let userDetailInfo = data as? MainDetailResponse {

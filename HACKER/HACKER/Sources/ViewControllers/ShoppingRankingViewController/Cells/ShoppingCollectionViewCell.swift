@@ -71,7 +71,9 @@ extension ShoppingCollectionViewCell {
   }
   // MARK: - Network
   func shoppingWithAPI(userID: Int) {
+    LoadingHUD.show()
     ShoppingAPI.shared.friendDetail(userID: userID) { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let shoppingInfo = data as? ShoppingResponse {

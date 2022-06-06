@@ -252,7 +252,9 @@ extension RankingViewController: UITableViewDelegate {
 // MARK: - Network
 extension RankingViewController {
   func teamDetailInfoWithAPI(teamId: Int) {
+    LoadingHUD.show()
     FightAPI.shared.teamDetailInfo(teamId: teamId) { response in
+      LoadingHUD.hide()
       switch response {
       case .success(let data):
         if let teamInfo = data as? TeamDetailResponse {

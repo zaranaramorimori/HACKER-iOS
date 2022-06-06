@@ -171,7 +171,9 @@ extension FriendDetailViewController {
     }
   }
   @objc func attackButtonClicked(userID: Int) {
+    LoadingHUD.show()
     AttackAPI.shared.attackUser(userId: getuserID ?? 0) { (response) in
+      LoadingHUD.hide()
       switch response {
       case .success:
         let lottieVC = AttackLottieViewController()
