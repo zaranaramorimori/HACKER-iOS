@@ -371,7 +371,7 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UITableViewDataSource
 extension TeamViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return serverTeamDetailInfo?.logs[section].content.count ?? 0
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
