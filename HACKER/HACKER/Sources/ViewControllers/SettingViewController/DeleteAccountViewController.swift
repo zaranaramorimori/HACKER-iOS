@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Lottie
+
 class DeleteAccountViewController: UIViewController {
   
   // MARK: - Components
@@ -17,8 +19,11 @@ class DeleteAccountViewController: UIViewController {
     $0.numberOfLines = 3
   }
   
-  private let cryingManImageView = UIImageView().then {
-    $0.image = UIImage(named: "cryingManImage")
+  private let cryingManImageView = AnimationView().then {
+    $0.animation = Animation.named("cry_Lottie")
+    $0.contentMode = .scaleAspectFit
+    $0.loopMode = .loop
+    $0.play()
   }
   
   private let backButton = UIButton().then {

@@ -71,6 +71,7 @@
 		86F2C23F284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json in Resources */ = {isa = PBXBuildFile; fileRef = 86F2C23E284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json */; };
 		86F2C241284E2B60002B13B8 /* LoadingHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2C240284E2B60002B13B8 /* LoadingHUD.swift */; };
 		86F2C243285101DF002B13B8 /* UIScreen_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2C242285101DF002B13B8 /* UIScreen_Extension.swift */; };
+		86F2C245285131B5002B13B8 /* cry_Lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 86F2C244285131B5002B13B8 /* cry_Lottie.json */; };
 		86F9EB2327E8D51100E1FEFD /* HACKERUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */; };
 		86F9EB3027E9D63000E1FEFD /* TargetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */; };
 		86F9EB3727E9DBB400E1FEFD /* TestErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F9EB3427E9DBAE00E1FEFD /* TestErrorMessage.swift */; };
@@ -228,6 +229,7 @@
 		86F2C23E284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lf30_editor_kdpmpt6l.json; sourceTree = "<group>"; };
 		86F2C240284E2B60002B13B8 /* LoadingHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHUD.swift; sourceTree = "<group>"; };
 		86F2C242285101DF002B13B8 /* UIScreen_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen_Extension.swift; sourceTree = "<group>"; };
+		86F2C244285131B5002B13B8 /* cry_Lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cry_Lottie.json; sourceTree = "<group>"; };
 		86F9EB2027E8D51100E1FEFD /* HACKERUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACKERUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86F9EB2227E8D51100E1FEFD /* HACKERUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HACKERUITests.swift; sourceTree = "<group>"; };
 		86F9EB2B27E9CDF000E1FEFD /* TargetIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetIdentifier.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 			children = (
 				7789EBE72823A97700237036 /* pulledOut.json */,
 				7789EBE82823A97700237036 /* pullingOut.json */,
+				86F2C244285131B5002B13B8 /* cry_Lottie.json */,
 				86F2C23E284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json */,
 			);
 			path = Lottie;
@@ -1077,6 +1080,7 @@
 				E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */,
 				86856D4F283FE98900F3B3BC /* GoogleService-Info.plist in Resources */,
 				E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */,
+				86F2C245285131B5002B13B8 /* cry_Lottie.json in Resources */,
 				86F2C23F284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json in Resources */,
 				E8FF04FB27B212C000C7C3E5 /* NotoSansKR-Bold.otf in Resources */,
 			);
