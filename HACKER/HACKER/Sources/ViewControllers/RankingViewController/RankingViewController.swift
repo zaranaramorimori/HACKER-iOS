@@ -29,8 +29,7 @@ class RankingViewController: UIViewController {
     $0.backgroundColor = .hackerWhite
     $0.separatorStyle = .none
     $0.sectionFooterHeight = 0
-    $0.rowHeight = UITableView.automaticDimension
-    $0.estimatedRowHeight = 254
+    $0.rowHeight = 120
     $0.register(TeamRankingTableViewCell.self, forCellReuseIdentifier: TeamRankingTableViewCell.identifier)
     $0.register(RankingTableViewHeader.self, forHeaderFooterViewReuseIdentifier: RankingTableViewHeader.identifier)
     
