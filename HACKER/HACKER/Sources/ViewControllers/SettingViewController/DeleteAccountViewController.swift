@@ -107,7 +107,7 @@ class DeleteAccountViewController: UIViewController {
                      options: [.autoreverse, .repeat],
                      animations: {
         self.tearDropView.frame = CGRect(x: self.tearDropView.frame.origin.x,
-                                         y: self.tearDropView.frame.origin.y + 50,
+                                         y: self.tearDropView.frame.origin.y + 30,
                                          width: self.tearDropView.frame.width,
                                          height: tearMaxHeight)
       })
