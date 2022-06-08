@@ -152,6 +152,7 @@ class TeamViewController: UIViewController {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
     notificationView.isHidden = true
+    self.tabBarController?.tabBar.isTranslucent = false
   }
   
   private func collectionViewRegister() {
