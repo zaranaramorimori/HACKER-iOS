@@ -63,8 +63,8 @@ class RankingTableViewHeader: UITableViewHeaderFooterView {
   
   // MARK: - Setup Method
   private func setupAutoLayout() {
-    addSubviews([backgroundWithBorder, rankingFirstImage,
-                 faceImage, hairImage, nameLabel, commitLabel])
+    addSubviews([backgroundWithBorder,
+                 faceImage, hairImage, rankingFirstImage, nameLabel, commitLabel])
     
     backgroundWithBorder.snp.makeConstraints { make in
       make.top.bottom.equalToSuperview()
