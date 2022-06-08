@@ -44,12 +44,13 @@ class LogTableViewCell: UITableViewCell {
     addSubviews([backgroundWithBorder, logLabel])
     
     backgroundWithBorder.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
+      make.top.leading.trailing.equalToSuperview()
+      make.bottom.equalToSuperview().offset(-8)
     }
     
     logLabel.snp.makeConstraints { make in
-      make.top.bottom.equalToSuperview().inset(20)
-      make.leading.equalToSuperview().inset(20)
+      make.top.bottom.equalTo(self.backgroundWithBorder).inset(20)
+      make.leading.trailing.equalToSuperview().inset(20)
     }
   }
 }

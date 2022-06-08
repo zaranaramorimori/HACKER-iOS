@@ -119,6 +119,7 @@ class TeamViewController: UIViewController {
     $0.sectionFooterHeight = 0
     $0.rowHeight = UITableView.automaticDimension
     $0.estimatedRowHeight = 62
+    $0.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
     $0.isScrollEnabled = false
     $0.register(LogTableViewCell.self, forCellReuseIdentifier: LogTableViewCell.identifier)
     if #available(iOS 15, *) {
@@ -395,12 +396,17 @@ extension TeamViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension TeamViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let headerView = FightTableViewHeader()
-    headerView.setIngLabel(text: serverTeamDetailInfo?.logs[section].date ?? "")
+    let dateLabel = UILabel()
+    dateLabel.frame = CGRect(x: 5, y: 5, width: tableView.frame.width, height: 40)
+    dateLabel.setupLabel(text: serverTeamDetailInfo?.logs[section].date ?? "", color: .hackerBlack, font: .titleBold(ofSize: 16))
+    
+    let headerView = UIView()
+    headerView.addSubview(dateLabel)
+    
     return headerView
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-   return 20
+    return 40
   }
 }
