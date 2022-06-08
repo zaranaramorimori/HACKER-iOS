@@ -30,7 +30,7 @@ class RankingTableViewHeader: UITableViewHeaderFooterView {
   var faceImage = UIImageView().then {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
-    $0.image = UIImage(named: "teamCharacterImage")
+//    $0.image = UIImage(named: "teamCharacterImage")
   }
   
   var hairImage = UIImageView().then {

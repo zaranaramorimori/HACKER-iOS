@@ -36,7 +36,6 @@ class TeamRankingTableViewCell: UITableViewCell {
   var faceImage = UIImageView().then {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
-    $0.image = UIImage(named: "teamCharacterImage")
   }
   
   var hairImage = UIImageView().then {
