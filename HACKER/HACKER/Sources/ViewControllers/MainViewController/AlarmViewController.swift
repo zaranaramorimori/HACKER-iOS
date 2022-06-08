@@ -121,16 +121,16 @@ extension AlarmViewController {
           }
         }
       case .requestErr(let status):
-        print("userNicknameWithAPI - requestErr: \(status)")
+        print("PushAPI - requestErr: \(status)")
         self.layoutEmptyView()
       case .pathErr:
-        print("userNicknameWithAPI - pathErr")
+        print("PushAPI - pathErr")
         self.layoutEmptyView()
       case .serverErr:
-        print("userNicknameWithAPI - serverErr")
+        print("PushAPI - serverErr")
         self.layoutEmptyView()
       case .networkFail:
-        print("userNicknameWithAPI - networkFail")
+        print("PushAPI - networkFail")
         self.layoutEmptyView()
       }
     }
