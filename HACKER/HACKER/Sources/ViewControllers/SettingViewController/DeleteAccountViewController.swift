@@ -71,7 +71,8 @@ class DeleteAccountViewController: UIViewController {
     }
     cryingManImageView.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
-      make.top.equalTo(goodbyeLabel.snp.bottom).offset(97)
+      make.bottom.greaterThanOrEqualToSuperview()
+      make.top.lessThanOrEqualTo(goodbyeLabel.snp.bottom).offset(97)
     }
     tearDropView.snp.makeConstraints { make in
       make.leading.trailing.bottom.equalToSuperview()
@@ -89,8 +90,15 @@ class DeleteAccountViewController: UIViewController {
   }
   
   private func tearViewAnimation() {
-    let tearMaxHeight: CGFloat = 350
-    UIView.animate(withDuration: 5.0,
+    
+    var tearMaxHeight: CGFloat = 0
+    if UIScreen.main.hasNotch {
+      tearMaxHeight = 80
+    } else {
+      tearMaxHeight = 40
+    }
+    
+    UIView.animate(withDuration: 3.0,
                    delay: 0.1,
                    options: .curveEaseInOut,
                    animations: {
