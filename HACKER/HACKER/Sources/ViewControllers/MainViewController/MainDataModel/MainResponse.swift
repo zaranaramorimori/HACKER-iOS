@@ -9,17 +9,19 @@ import Foundation
 
 // MARK: - MainResponse
 struct MainResponse: Codable {
-    let user: User
-    let head: String?
-    let coupon: Coupon
+  let user: User
+  let head: String?
+  let face: String?
+  let coupon: Coupon
+  let isAlertExist: Bool
 }
 
 // MARK: - Coupon
 struct Coupon: Codable {
-    let todayCommit, couponCommit, couponCount: Int
+  let todayCommit, couponCommit, couponCount: Int
 }
 
 // MARK: - User
 struct User: Codable {
-    let nickname: String
+  let nickname: String
 }
