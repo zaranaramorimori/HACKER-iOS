@@ -77,7 +77,7 @@ class DeleteAccountViewController: UIViewController {
     cryingManImageView.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
       make.bottom.greaterThanOrEqualToSuperview()
-      make.top.lessThanOrEqualTo(goodbyeLabel.snp.bottom).offset(97)
+      make.top.lessThanOrEqualTo(goodbyeLabel.snp.bottom).offset(UIScreen.main.hasNotch ? 97 : 50)
     }
     tearDropView.snp.makeConstraints { make in
       make.leading.trailing.bottom.equalToSuperview()
