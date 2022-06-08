@@ -25,9 +25,9 @@ class LogTableViewCell: UITableViewCell {
     $0.textColor = .hackerBlack
     $0.font = .subtitleRegular(ofSize: 16)
     $0.numberOfLines = 0
-    $0.textAlignment = .center
+    $0.textAlignment = .left
     $0.sizeToFit()
-    $0.text = "대머리가 머리카락을 뽑아갔어요!"
+    $0.lineBreakMode = .byCharWrapping
   }
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

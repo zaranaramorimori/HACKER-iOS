@@ -278,7 +278,7 @@ class TeamViewController: UIViewController {
       make.width.equalTo(265)
       make.height.equalTo(72)
     }
-
+    
     notificationViewLabel.snp.makeConstraints { make in
       make.centerX.centerY.equalToSuperview()
     }
@@ -389,7 +389,14 @@ extension TeamViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print(indexPath.section)
+    if let data = serverTeamDetailInfo?.logs[indexPath.section].content[indexPath.row] {
+      if data.contains("머리카락을 뽑아갔어요!") {
+        let lottieVC = AttackLottieViewController()
+        lottieVC.attackType = .victim
+        lottieVC.modalPresentationStyle = .overCurrentContext
+        self.present(lottieVC, animated: false)
+      }
+    }
   }
 }
 
