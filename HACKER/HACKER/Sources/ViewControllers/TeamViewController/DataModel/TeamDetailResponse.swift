@@ -24,11 +24,11 @@ struct Log: Codable {
 // MARK: - Member
 struct Member: Codable {
     let userID: Int
-    let nickname, head: String
+    let nickname, head, face: String
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
-        case nickname, head
+        case nickname, head, face
     }
 }
 

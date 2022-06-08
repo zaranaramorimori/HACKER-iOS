@@ -240,8 +240,7 @@ class TeamViewController: UIViewController {
     }
     memberCollectionView.snp.makeConstraints { make in
       make.top.equalTo(memberLabel.snp.bottom).offset(12)
-      make.leading.equalToSuperview().inset(24)
-      make.trailing.equalToSuperview()
+      make.leading.trailing.equalToSuperview()
       make.height.equalTo(140)
     }
     memberEmptyView.snp.makeConstraints { make in
@@ -362,7 +361,7 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout {
     return CGSize(width: 101, height: collectionView.frame.height)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets.zero
+    return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return 12

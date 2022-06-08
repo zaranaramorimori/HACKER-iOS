@@ -33,7 +33,7 @@ class MemberCollectionViewCell: UICollectionViewCell {
   var nameLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .subtitleRegular(ofSize: 14)
-    $0.text = "두두두두두"
+    $0.textAlignment = .center
   }
   
   // MARK: - LifeCycles
@@ -44,26 +44,25 @@ class MemberCollectionViewCell: UICollectionViewCell {
   
   // MARK: - Setup Method
   private func setupLayout() {
-    addSubviews([backgroundWithBorder, nameLabel, characterImage, hairImage])
+    addSubviews([backgroundWithBorder, characterImage, hairImage, nameLabel])
     
     backgroundWithBorder.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
     
-    nameLabel.snp.makeConstraints { make in
-      make.centerX.equalToSuperview()
-      make.bottom.equalToSuperview().inset(7)
-    }
-    
     characterImage.snp.makeConstraints { make in
-      make.centerX.equalToSuperview()
-      make.top.equalToSuperview().inset(13)
-      make.leading.trailing.equalToSuperview().inset(3)
-      make.bottom.equalTo(nameLabel.snp.top).offset(-12)
+      make.centerY.equalToSuperview().offset(-10)
+      make.leading.trailing.equalToSuperview().inset(6.5)
     }
     
     hairImage.snp.makeConstraints { make in
       make.edges.equalTo(characterImage)
+    }
+    
+    nameLabel.snp.makeConstraints { make in
+      make.height.equalTo(20)
+      make.leading.trailing.equalToSuperview().inset(10)
+      make.bottom.equalToSuperview().inset(10)
     }
   }
 }
