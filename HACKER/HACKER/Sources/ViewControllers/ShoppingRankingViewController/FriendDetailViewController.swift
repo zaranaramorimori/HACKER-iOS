@@ -140,7 +140,9 @@ extension FriendDetailViewController {
   @objc func quituserButtonClicked() {
     //친구 취소 버튼 클릭 시
     if let id = getuserID {
+      LoadingHUD.show()
       FriendAPI.shared.addFriend(requestBody: AddFriendRequest(friendId: id)) { (response) in
+        LoadingHUD.hide()
         switch response {
         case .success(let data):
           if let userGithubInfo = data as? AddFriendResponse {
