@@ -139,11 +139,15 @@ class TeamViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configUI()
     setupAutoLayout()
     collectionViewRegister()
     updateTeamDetail()
     updateEmptyViewLabel()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    configUI()
   }
   
   // MARK: - Custom Method
@@ -153,6 +157,7 @@ class TeamViewController: UIViewController {
     self.navigationController?.navigationBar.isHidden = true
     notificationView.isHidden = true
     self.tabBarController?.tabBar.isTranslucent = false
+    self.tabBarController?.tabBar.isHidden = false
   }
   
   private func collectionViewRegister() {
@@ -334,7 +339,33 @@ class TeamViewController: UIViewController {
       }
     }
   }
-  
+  func fetchFriendDetail(userID: Int) {
+    LoadingHUD.show()
+    ShoppingAPI.shared.friendDetail(userID: userID) { response in
+      LoadingHUD.hide()
+      switch response {
+      case .success(let data):
+        if let shoppingInfo = data as? ShoppingResponse {
+          let friendDetailVC = FriendDetailViewController()
+          friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
+          friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+          friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
+          friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head ?? "")
+          friendDetailVC.getuserID = userID
+          friendDetailVC.isMyFriend = shoppingInfo.isMyFriend
+          self.navigationController?.pushViewController(friendDetailVC, animated: false)
+        }
+      case .requestErr(let status):
+        print("fetchFriendDetail - requestErr: \(status)")
+      case .pathErr:
+        print("fetchFriendDetail - pathErr")
+      case .serverErr:
+        print("fetchFriendDetail - serverErr")
+      case .networkFail:
+        print("fetchFriendDetail - networkFail")
+      }
+    }
+  }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -365,6 +396,18 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout {
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return 12
+  }
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if let selectedMember = serverTeamDetailInfo?.members[indexPath.item],
+       let myUsername = UserDefaults.standard.string(forKey: Const.UserDefaultsKey.username) {
+      // 내 얼굴 클릭했을 때
+      if selectedMember.nickname == myUsername {
+        let myDetailVC = MainProfileViewController()
+        self.navigationController?.pushViewController(myDetailVC, animated: true)
+      } else { // 다른 사람 얼굴 클릭
+        self.fetchFriendDetail(userID: selectedMember.userID)
+      }
+    }
   }
 }
 
