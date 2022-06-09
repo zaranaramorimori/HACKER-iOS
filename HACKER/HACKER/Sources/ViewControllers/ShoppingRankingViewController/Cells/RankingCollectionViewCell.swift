@@ -255,7 +255,13 @@ extension RankingCollectionViewCell {
     }
   }
   @objc func myrankingViewClicked() {
-    print("myrankingViewClicked")
+    if let myRank = rankList?.myRank?.rank {
+      if myRank < 4 {
+        rankingTableView.scrollToRow(at: IndexPath(row: NSNotFound, section: 0), at: .bottom, animated: true)
+      } else {
+        rankingTableView.scrollToRow(at: IndexPath(row: myRank-4, section: 0), at: .middle, animated: true)
+      }
+    }
   }
   func updateServerData() {
     if let rankList = rankList?.ranks {
