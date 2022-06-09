@@ -234,14 +234,14 @@ extension ShoppingRankingViewController {
           self.pageCollectionView.reloadData()
         }
       case .requestErr(let status):
-        print("RankingAPI - requestErr: \(status)")
+        print("SearchFriendAPI - requestErr: \(status)")
         
       case .pathErr:
-        print("RankingAPI - pathErr")
+        print("SearchFriendAPI - pathErr")
       case .serverErr:
-        print("RankingAPI - serverErr")
+        print("SearchFriendAPI - serverErr")
       case .networkFail:
-        print("RankingAPI - networkFail")
+        print("SearchFriendAPI - networkFail")
       }
     }
   }
