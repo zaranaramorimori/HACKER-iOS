@@ -24,6 +24,7 @@ class FriendDetailViewController: UIViewController {
   let attackButton = UIButton()
   
   var getuserID: Int?
+  var isMyFriend: Bool = true
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -63,7 +64,11 @@ extension FriendDetailViewController {
   }
   func layoutAddUserButton() {
     view.add(quitUserButton) {
-      $0.setImage(UIImage(named: "userAddedIcon"), for: .normal)
+      if self.isMyFriend {
+        $0.setImage(UIImage(named: "userAddedIcon"), for: .normal)
+      } else {
+        $0.setImage(UIImage(named: "addFriend"), for: .normal)
+      }
       $0.addTarget(self, action: #selector(self.quituserButtonClicked), for: .touchUpInside)
       $0.snp.makeConstraints { make in
         make.centerY.equalTo(self.backButton)
@@ -138,7 +143,7 @@ extension FriendDetailViewController {
     self.navigationController?.popViewController(animated: false)
   }
   @objc func quituserButtonClicked() {
-    //친구 취소 버튼 클릭 시
+    // 친구 취소 버튼 클릭 시
     if let id = getuserID {
       LoadingHUD.show()
       FriendAPI.shared.addFriend(requestBody: AddFriendRequest(friendId: id)) { (response) in

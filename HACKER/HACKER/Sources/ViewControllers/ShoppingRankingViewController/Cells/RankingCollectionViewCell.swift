@@ -25,7 +25,8 @@ class RankingCollectionViewCell: UICollectionViewCell {
   var userImageViews = [UIImageView]()
   var hairImageViews = [UIImageView]()
   var nameLabels = [UILabel]()
-  var commitLabel = [UILabel]()
+  var commitLabels = [UILabel]()
+  var detailButtons = [UIButton]()
   let separateView = UIView()
   let rankingTableView = UITableView()
   let myRankView = UIView()
@@ -64,6 +65,7 @@ extension RankingCollectionViewCell {
     layoutHairImageViews()
     layoutNameLabels()
     layoutCommitLabels()
+    layoutDetailButtons()
     layoutSeparateView()
     layoutRankingTableView()
     layoutMyRankView()
@@ -153,12 +155,25 @@ extension RankingCollectionViewCell {
   }
   func layoutCommitLabels() {
     for index in 0..<3 {
-      commitLabel.append(UILabel())
-      containerViews[index].addSubview(commitLabel[index])
-      commitLabel[index].setupLabel(text: "0 커밋", color: .hackerBlack, font: .bodyRegular(ofSize: 12))
-      commitLabel[index].snp.makeConstraints { make in
+      commitLabels.append(UILabel())
+      containerViews[index].addSubview(commitLabels[index])
+      commitLabels[index].setupLabel(text: "0 커밋", color: .hackerBlack, font: .bodyRegular(ofSize: 12))
+      commitLabels[index].snp.makeConstraints { make in
         make.top.equalTo(self.nameLabels[index].snp.bottom)
         make.centerX.equalToSuperview()
+      }
+    }
+  }
+  func layoutDetailButtons() {
+    for index in 0..<3 {
+      detailButtons.append(UIButton())
+      containerViews[index].addSubview(detailButtons[index])
+      detailButtons[index].tag = index + 1
+      detailButtons[index].addTarget(self, action: #selector(detailButtonClicked), for: .touchUpInside)
+      detailButtons[index].snp.makeConstraints { make in
+        make.top.equalTo(self.rankNumImageViews[index])
+        make.leading.trailing.equalToSuperview()
+        make.bottom.equalTo(self.commitLabels[index])
       }
     }
   }
@@ -232,15 +247,22 @@ extension RankingCollectionViewCell {
       }
     }
   }
+  @objc func detailButtonClicked(_ sender: UIButton) {
+    let rankOrder = [1, 0, 2] // 2nd, 1st, 3rd
+    if let rank = rankList?.ranks {
+      let userId = rank[rankOrder[sender.tag-1]].userID
+      moveToDetailView(userId: userId, row: 0)
+    }
+  }
   @objc func myrankingViewClicked() {
     print("myrankingViewClicked")
   }
   func updateServerData() {
     if let rankList = rankList?.ranks {
-      let rankOrder = [1, 0, 2]
+      let rankOrder = [1, 0, 2] // 2nd, 1st, 3rd
       for index in 0..<3 {
         nameLabels[index].text = rankList[rankOrder[index]].nickname
-        commitLabel[index].text = "\(rankList[rankOrder[index]].commitCount) 커밋"
+        commitLabels[index].text = "\(rankList[rankOrder[index]].commitCount) 커밋"
         hairImageViews[index].updateServerImage(rankList[rankOrder[index]].head ?? "")
       }
     }
@@ -248,11 +270,54 @@ extension RankingCollectionViewCell {
     self.myNameLabel.setupLabel(text: "\(rankList?.myRank?.nickname ?? "")", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
     self.myCommitLabel.setupLabel(text: "\(rankList?.myRank?.commitCount ?? 0)커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
   }
+  func moveToDetailView(userId: Int, row: Int) {
+    if let rankList = rankList {
+      // 내 얼굴 클릭했을 때
+      if rankList.myRank?.userID == userId {
+        let myDetailVC = MainProfileViewController()
+        self.parentViewController?.navigationController?.pushViewController(myDetailVC, animated: true)
+      } else { // 다른 사람 얼굴 클릭
+        self.fetchFriendDetail(userID: userId)
+      }
+    }
+  }
+  func fetchFriendDetail(userID: Int) {
+    LoadingHUD.show()
+    ShoppingAPI.shared.friendDetail(userID: userID) { response in
+      LoadingHUD.hide()
+      switch response {
+      case .success(let data):
+        if let shoppingInfo = data as? ShoppingResponse {
+          let friendDetailVC = FriendDetailViewController()
+          friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
+          friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+          friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
+          friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head ?? "")
+          friendDetailVC.getuserID = userID
+          friendDetailVC.isMyFriend = shoppingInfo.isMyFriend
+          self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
+        }
+      case .requestErr(let status):
+        print("fetchFriendDetail - requestErr: \(status)")
+      case .pathErr:
+        print("fetchFriendDetail - pathErr")
+      case .serverErr:
+        print("fetchFriendDetail - serverErr")
+      case .networkFail:
+        print("fetchFriendDetail - networkFail")
+      }
+    }
+  }
 }
 // MARK: - UITableViewDelegate, DataSource
 extension RankingCollectionViewCell: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 84
+  }
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let rank = rankList?.ranks {
+      moveToDetailView(userId: rank[indexPath.row+3].userID, row: indexPath.row+3)
+    }
   }
 }
 extension RankingCollectionViewCell: UITableViewDataSource {
