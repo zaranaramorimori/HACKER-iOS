@@ -26,7 +26,6 @@ class RankingCollectionViewCell: UICollectionViewCell {
   var hairImageViews = [UIImageView]()
   var nameLabels = [UILabel]()
   var commitLabel = [UILabel]()
-  
   let separateView = UIView()
   let rankingTableView = UITableView()
   let myRankView = UIView()
@@ -40,11 +39,10 @@ class RankingCollectionViewCell: UICollectionViewCell {
     super.awakeFromNib()
     register()
     attribute()
-    layout {
-      self.updateServerData()
-    }
+    layout()
     contentView.bringSubviewToFront(myRankView)
     contentView.sendSubviewToBack(rankingTableView)
+    updateServerData()
   }
 }
 // MARK: - Extensions
@@ -57,7 +55,7 @@ extension RankingCollectionViewCell {
     self.rankingTableView.dataSource = self
     self.rankingTableView.tableHeaderView = headerView
   }
-  func layout(completion: @escaping () -> Void) {
+  func layout() {
     layoutHeaderView()
     layoutHeaderStackView()
     layoutContainerViews()
@@ -66,7 +64,6 @@ extension RankingCollectionViewCell {
     layoutHairImageViews()
     layoutNameLabels()
     layoutCommitLabels()
-    
     layoutSeparateView()
     layoutRankingTableView()
     layoutMyRankView()
@@ -74,8 +71,6 @@ extension RankingCollectionViewCell {
     layoutMyNameLabel()
     layoutMyCommitLabel()
     layoutShortCutButton()
-    
-    completion()
   }
   func layoutHeaderView() {
     headerView.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: 325)
@@ -118,7 +113,6 @@ extension RankingCollectionViewCell {
       }
     }
   }
-  
   func layoutUserImageViews() {
     for index in 0..<3 {
       userImageViews.append(UIImageView())
@@ -133,7 +127,6 @@ extension RankingCollectionViewCell {
       }
     }
   }
-  
   func layoutHairImageViews() {
     for index in 0..<3 {
       hairImageViews.append(UIImageView())
@@ -147,7 +140,6 @@ extension RankingCollectionViewCell {
       }
     }
   }
-  
   func layoutNameLabels() {
     for index in 0..<3 {
       nameLabels.append(UILabel())
@@ -159,7 +151,6 @@ extension RankingCollectionViewCell {
       }
     }
   }
-  
   func layoutCommitLabels() {
     for index in 0..<3 {
       commitLabel.append(UILabel())
@@ -171,7 +162,6 @@ extension RankingCollectionViewCell {
       }
     }
   }
-  
   func layoutSeparateView() {
     self.headerView.add(separateView) {
       $0.backgroundColor = .hackerLightGray
