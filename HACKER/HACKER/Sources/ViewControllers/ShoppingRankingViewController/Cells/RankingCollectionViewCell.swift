@@ -40,7 +40,7 @@ class RankingCollectionViewCell: UICollectionViewCell {
     super.awakeFromNib()
     register()
     attribute()
-    layout() {
+    layout {
       self.updateServerData()
     }
     contentView.bringSubviewToFront(myRankView)
@@ -57,7 +57,7 @@ extension RankingCollectionViewCell {
     self.rankingTableView.dataSource = self
     self.rankingTableView.tableHeaderView = headerView
   }
-  func layout(completion: @escaping () -> ()) {
+  func layout(completion: @escaping () -> Void) {
     layoutHeaderView()
     layoutHeaderStackView()
     layoutContainerViews()
