@@ -133,7 +133,7 @@ extension FriendDetailViewController {
       $0.addTarget(self, action: #selector(self.attackButtonClicked), for: .touchUpInside)
       $0.snp.makeConstraints { make in
         make.centerX.equalToSuperview()
-        make.bottom.equalToSuperview().offset(-68)
+        make.top.equalTo(self.hairNumLabel.snp.bottom).offset(8)
         make.width.equalTo(181)
         make.height.equalTo(54)
       }
