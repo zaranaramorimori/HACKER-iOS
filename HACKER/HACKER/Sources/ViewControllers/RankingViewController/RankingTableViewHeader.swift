@@ -27,10 +27,21 @@ class RankingTableViewHeader: UITableViewHeaderFooterView {
     $0.image = UIImage(named: "rankingFirstImage")
   }
   
+  var teamStackView = UIStackView().then {
+    $0.axis = .horizontal
+    $0.spacing = 10
+    $0.alignment = .center
+  }
+  
+  var labelStackView = UIStackView().then {
+    $0.axis = .vertical
+    $0.spacing = 2
+    $0.alignment = .leading
+  }
+  
   var faceImage = UIImageView().then {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
-    $0.image = UIImage(named: "teamCharacterImage")
   }
   
   var hairImage = UIImageView().then {
@@ -41,7 +52,8 @@ class RankingTableViewHeader: UITableViewHeaderFooterView {
   var nameLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .titleBold(ofSize: 24)
-    $0.text = "FILL-IN"
+    $0.text = "HACKER iOS"
+    $0.numberOfLines = 2
   }
   
   var commitLabel = UILabel().then {
@@ -63,8 +75,11 @@ class RankingTableViewHeader: UITableViewHeaderFooterView {
   
   // MARK: - Setup Method
   private func setupAutoLayout() {
-    addSubviews([backgroundWithBorder, rankingFirstImage,
-                 faceImage, hairImage, nameLabel, commitLabel])
+    addSubviews([backgroundWithBorder, teamStackView, hairImage, rankingFirstImage])
+    teamStackView.addArrangedSubview(faceImage)
+    teamStackView.addArrangedSubview(labelStackView)
+    labelStackView.addArrangedSubview(nameLabel)
+    labelStackView.addArrangedSubview(commitLabel)
     
     backgroundWithBorder.snp.makeConstraints { make in
       make.top.bottom.equalToSuperview()
@@ -75,22 +90,19 @@ class RankingTableViewHeader: UITableViewHeaderFooterView {
       make.leading.equalToSuperview().inset(41)
       make.centerX.equalToSuperview()
     }
+    teamStackView.snp.makeConstraints { make in
+      make.centerX.equalToSuperview().offset(-10).priority(.high)
+      make.leading.greaterThanOrEqualTo(self.backgroundWithBorder).offset(15)
+      make.trailing.lessThanOrEqualTo(self.backgroundWithBorder).inset(15)
+      make.top.equalTo(self.rankingFirstImage.snp.bottom).offset(4)
+      make.bottom.equalTo(self.backgroundWithBorder).inset(10)
+    }
     faceImage.snp.makeConstraints { make in
-      make.bottom.equalToSuperview().inset(26)
-      make.leading.equalToSuperview().inset(62)
+      make.width.equalTo(101)
+      make.height.equalTo(111)
     }
     hairImage.snp.makeConstraints { make in
-//      make.bottom.equalToSuperview().inset(26)
-//      make.leading.equalToSuperview().inset(62)
       make.edges.equalTo(faceImage)
-    }
-    nameLabel.snp.makeConstraints { make in
-      make.top.equalTo(rankingFirstImage.snp.bottom).offset(23)
-      make.leading.equalTo(faceImage.snp.trailing).offset(20)
-    }
-    commitLabel.snp.makeConstraints { make in
-      make.leading.equalTo(faceImage.snp.trailing).offset(20)
-      make.bottom.equalToSuperview().inset(38)
     }
   }
 }

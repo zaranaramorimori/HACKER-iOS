@@ -25,9 +25,9 @@ class LogTableViewCell: UITableViewCell {
     $0.textColor = .hackerBlack
     $0.font = .subtitleRegular(ofSize: 16)
     $0.numberOfLines = 0
-    $0.textAlignment = .center
+    $0.textAlignment = .left
     $0.sizeToFit()
-    $0.text = "대머리가 머리카락을 뽑아갔어요!"
+    $0.lineBreakMode = .byCharWrapping
   }
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -44,12 +44,13 @@ class LogTableViewCell: UITableViewCell {
     addSubviews([backgroundWithBorder, logLabel])
     
     backgroundWithBorder.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
+      make.top.leading.trailing.equalToSuperview()
+      make.bottom.equalToSuperview().offset(-8)
     }
     
     logLabel.snp.makeConstraints { make in
-      make.top.bottom.equalToSuperview().inset(20)
-      make.leading.equalToSuperview().inset(20)
+      make.top.bottom.equalTo(self.backgroundWithBorder).inset(20)
+      make.leading.trailing.equalToSuperview().inset(20)
     }
   }
 }

@@ -119,6 +119,7 @@ class TeamViewController: UIViewController {
     $0.sectionFooterHeight = 0
     $0.rowHeight = UITableView.automaticDimension
     $0.estimatedRowHeight = 62
+    $0.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
     $0.isScrollEnabled = false
     $0.register(LogTableViewCell.self, forCellReuseIdentifier: LogTableViewCell.identifier)
     if #available(iOS 15, *) {
@@ -151,6 +152,7 @@ class TeamViewController: UIViewController {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
     notificationView.isHidden = true
+    self.tabBarController?.tabBar.isTranslucent = false
   }
   
   private func collectionViewRegister() {
@@ -238,8 +240,7 @@ class TeamViewController: UIViewController {
     }
     memberCollectionView.snp.makeConstraints { make in
       make.top.equalTo(memberLabel.snp.bottom).offset(12)
-      make.leading.equalToSuperview().inset(24)
-      make.trailing.equalToSuperview()
+      make.leading.trailing.equalToSuperview()
       make.height.equalTo(140)
     }
     memberEmptyView.snp.makeConstraints { make in
@@ -259,7 +260,7 @@ class TeamViewController: UIViewController {
       make.centerX.equalToSuperview()
       make.leading.equalToSuperview().inset(23)
       logTableView.layoutIfNeeded()
-      make.height.equalTo(logTableView.contentSize.height)
+      make.height.equalTo(logTableView.contentSize.height + 130)
       make.bottom.equalToSuperview().priority(.high)
     }
     logEmptyView.snp.makeConstraints { make in
@@ -277,7 +278,7 @@ class TeamViewController: UIViewController {
       make.width.equalTo(265)
       make.height.equalTo(72)
     }
-
+    
     notificationViewLabel.snp.makeConstraints { make in
       make.centerX.centerY.equalToSuperview()
     }
@@ -360,7 +361,7 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout {
     return CGSize(width: 101, height: collectionView.frame.height)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets.zero
+    return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return 12
@@ -370,7 +371,7 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UITableViewDataSource
 extension TeamViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return serverTeamDetailInfo?.logs[section].content.count ?? 0
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -388,19 +389,31 @@ extension TeamViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print(indexPath.section)
+    if let data = serverTeamDetailInfo?.logs[indexPath.section].content[indexPath.row] {
+      if data.contains("머리카락을 뽑아갔어요!") {
+        let lottieVC = AttackLottieViewController()
+        lottieVC.attackType = .victim
+        lottieVC.modalPresentationStyle = .overCurrentContext
+        self.present(lottieVC, animated: false)
+      }
+    }
   }
 }
 
 // MARK: - UITableViewDelegate
 extension TeamViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    let headerView = FightTableViewHeader()
-    headerView.setIngLabel(text: serverTeamDetailInfo?.logs[section].date ?? "")
+    let dateLabel = UILabel()
+    dateLabel.frame = CGRect(x: 5, y: 5, width: tableView.frame.width, height: 40)
+    dateLabel.setupLabel(text: serverTeamDetailInfo?.logs[section].date ?? "", color: .hackerBlack, font: .titleBold(ofSize: 16))
+    
+    let headerView = UIView()
+    headerView.addSubview(dateLabel)
+    
     return headerView
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-   return 20
+    return 40
   }
 }

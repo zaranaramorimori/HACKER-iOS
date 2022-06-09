@@ -29,8 +29,8 @@ class RankingViewController: UIViewController {
     $0.backgroundColor = .hackerWhite
     $0.separatorStyle = .none
     $0.sectionFooterHeight = 0
-    $0.rowHeight = UITableView.automaticDimension
-    $0.estimatedRowHeight = 254
+    $0.rowHeight = 120
+    $0.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     $0.register(TeamRankingTableViewCell.self, forCellReuseIdentifier: TeamRankingTableViewCell.identifier)
     $0.register(RankingTableViewHeader.self, forHeaderFooterViewReuseIdentifier: RankingTableViewHeader.identifier)
     
@@ -207,6 +207,7 @@ extension RankingViewController: UITableViewDataSource {
     cell.nameLabel.text = serverSeasonTeamInfo?.teams[indexPath.section+1].name
     cell.commitLabel.text = "\(serverSeasonTeamInfo?.teams[indexPath.section+1].commitCount ?? 0) 커밋"
     cell.hairImage.updateServerImage(serverSeasonTeamInfo?.teams[indexPath.section+1].head ?? "")
+    cell.faceImage.updateServerImage(serverSeasonTeamInfo?.teams[indexPath.section+1].face ?? "")
     return cell
   }
   
@@ -229,6 +230,7 @@ extension RankingViewController: UITableViewDelegate {
       }
       rankingTableViewHeader.nameLabel.text = serverSeasonTeamInfo?.teams.first?.name
       rankingTableViewHeader.commitLabel.text = "\(serverSeasonTeamInfo?.teams.first?.commitCount ?? 0) 커밋"
+      rankingTableViewHeader.faceImage.updateServerImage(serverSeasonTeamInfo?.teams.first?.face ?? "")
       rankingTableViewHeader.hairImage.updateServerImage(serverSeasonTeamInfo?.teams.first?.head ?? "")
       rankingTableViewHeader.addGestureRecognizer(tapGesture)
       return rankingTableViewHeader

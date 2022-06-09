@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Lottie
+
 class DeleteAccountViewController: UIViewController {
   
   // MARK: - Components
@@ -17,8 +19,11 @@ class DeleteAccountViewController: UIViewController {
     $0.numberOfLines = 3
   }
   
-  private let cryingManImageView = UIImageView().then {
-    $0.image = UIImage(named: "cryingManImage")
+  private let cryingManImageView = AnimationView().then {
+    $0.animation = Animation.named("cry_Lottie")
+    $0.contentMode = .scaleAspectFit
+    $0.loopMode = .loop
+    $0.play()
   }
   
   private let backButton = UIButton().then {
@@ -71,7 +76,8 @@ class DeleteAccountViewController: UIViewController {
     }
     cryingManImageView.snp.makeConstraints { make in
       make.centerX.equalToSuperview()
-      make.top.equalTo(goodbyeLabel.snp.bottom).offset(97)
+      make.bottom.greaterThanOrEqualToSuperview()
+      make.top.lessThanOrEqualTo(goodbyeLabel.snp.bottom).offset(UIScreen.main.hasNotch ? 97 : 50)
     }
     tearDropView.snp.makeConstraints { make in
       make.leading.trailing.bottom.equalToSuperview()
@@ -89,8 +95,15 @@ class DeleteAccountViewController: UIViewController {
   }
   
   private func tearViewAnimation() {
-    let tearMaxHeight: CGFloat = 350
-    UIView.animate(withDuration: 5.0,
+    
+    var tearMaxHeight: CGFloat = 0
+    if UIScreen.main.hasNotch {
+      tearMaxHeight = 80
+    } else {
+      tearMaxHeight = 40
+    }
+    
+    UIView.animate(withDuration: 3.0,
                    delay: 0.1,
                    options: .curveEaseInOut,
                    animations: {
@@ -107,7 +120,7 @@ class DeleteAccountViewController: UIViewController {
                      options: [.autoreverse, .repeat],
                      animations: {
         self.tearDropView.frame = CGRect(x: self.tearDropView.frame.origin.x,
-                                         y: self.tearDropView.frame.origin.y + 50,
+                                         y: self.tearDropView.frame.origin.y + 30,
                                          width: self.tearDropView.frame.width,
                                          height: tearMaxHeight)
       })

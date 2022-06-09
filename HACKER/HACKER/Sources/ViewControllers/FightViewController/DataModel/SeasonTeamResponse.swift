@@ -9,20 +9,21 @@ import Foundation
 
 // MARK: - SeasonTeamResponse
 struct SeasonTeamResponse: Codable {
-    let myTeam: Team?
-    let teams: [Team]
+  let myTeam: Team?
+  let teams: [Team]
 }
 
 // MARK: - Team
 struct Team: Codable {
-    let teamID, rank: Int
-    let name: String
-    let commitCount: Int
-    let hairCount: Int?
-    let head: String?
-
-    enum CodingKeys: String, CodingKey {
-        case teamID = "teamId"
-        case rank, name, commitCount, hairCount, head
-    }
+  let teamID, rank: Int
+  let name: String
+  let commitCount: Int
+  let hairCount: Int?
+  let head: String?
+  let face: String?
+  
+  enum CodingKeys: String, CodingKey {
+    case teamID = "teamId"
+    case rank, name, commitCount, hairCount, head, face
+  }
 }

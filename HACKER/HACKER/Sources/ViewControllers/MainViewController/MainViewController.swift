@@ -99,7 +99,7 @@ extension MainViewController {
   }
   func layoutAlarmButton() {
     view.add(alarmButton) {
-      $0.setImage(UIImage(named: "alarmIcon"), for: .normal)
+      $0.setImage(UIImage(named: "notificationIcon_no"), for: .normal)
       $0.addTarget(self, action: #selector(self.alarmButtonTapped), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.top.equalTo(self.nicknameLabel.snp.top)
@@ -126,7 +126,7 @@ extension MainViewController {
       $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(133)
+        $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(UIScreen.main.hasNotch ? 133 : 120)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
         $0.height.equalTo(UIScreen.main.bounds.width-48).multipliedBy(1.1)
@@ -308,6 +308,12 @@ extension MainViewController {
           self.todayCommitNumber = userInfo.coupon.todayCommit
           self.availableCouponNumber = userInfo.coupon.couponCommit
           self.attackNumber = userInfo.coupon.couponCount
+          
+          // 알람 버튼 업데이트
+          if userInfo.isAlertExist {
+            self.alarmButton.setImage(UIImage(named: "alarmIcon"), for: .normal)
+          }
+          
           self.setupLabel()
         }
       case .requestErr(let status):
