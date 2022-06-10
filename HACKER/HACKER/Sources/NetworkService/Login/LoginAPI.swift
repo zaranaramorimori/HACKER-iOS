@@ -22,7 +22,6 @@ public class LoginAPI {
         let statusCode = response.statusCode
         print(statusCode)
         let data = response.data
-        //로그인, 회원가입 구분
         switch statusCode {
         case 201:
           let networkResult = self.judgeLoginNewStatus(by: statusCode, data)
@@ -65,7 +64,7 @@ public class LoginAPI {
     
     switch statusCode {
     case 200:
-      return .success(decodedData.data ?? "None-Data")
+      return .loginSuccess(statusCode, decodedData.data ?? "None-Data")
     case 400..<500:
       return .requestErr(decodedData.message)
     case 500:
@@ -82,7 +81,8 @@ public class LoginAPI {
     
     switch statusCode {
     case 201:
-      return .success(decodedData.data ?? "None-Data")
+      print("hi")
+      return .loginSuccess(statusCode, decodedData.data ?? "None-Data")
     case 400..<500:
       return .requestErr(decodedData.message)
     case 500:

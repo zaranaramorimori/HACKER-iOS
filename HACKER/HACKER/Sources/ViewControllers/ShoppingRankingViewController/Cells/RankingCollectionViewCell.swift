@@ -277,14 +277,12 @@ extension RankingCollectionViewCell {
     self.myCommitLabel.setupLabel(text: "\(rankList?.myRank?.commitCount ?? 0)커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
   }
   func moveToDetailView(userId: Int, row: Int) {
-    if let rankList = rankList {
-      // 내 얼굴 클릭했을 때
-      if rankList.myRank?.userID == userId {
-        let myDetailVC = MainProfileViewController()
-        self.parentViewController?.navigationController?.pushViewController(myDetailVC, animated: true)
-      } else { // 다른 사람 얼굴 클릭
-        self.fetchFriendDetail(userID: userId)
-      }
+    // 내 얼굴 클릭했을 때
+    if UserDefaults.standard.integer(forKey: Const.UserDefaultsKey.userID) == userId {
+      let myDetailVC = MainProfileViewController()
+      self.parentViewController?.navigationController?.pushViewController(myDetailVC, animated: true)
+    } else { // 다른 사람 얼굴 클릭
+      self.fetchFriendDetail(userID: userId)
     }
   }
   func fetchFriendDetail(userID: Int) {
@@ -311,6 +309,8 @@ extension RankingCollectionViewCell {
         print("fetchFriendDetail - serverErr")
       case .networkFail:
         print("fetchFriendDetail - networkFail")
+      default:
+        break
       }
     }
   }

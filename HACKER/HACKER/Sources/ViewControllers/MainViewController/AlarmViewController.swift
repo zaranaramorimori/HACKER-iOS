@@ -132,6 +132,8 @@ extension AlarmViewController {
       case .networkFail:
         print("PushAPI - networkFail")
         self.layoutEmptyView()
+      default:
+        print("default!")
       }
     }
   }

@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       if UserDefaults.standard.bool(forKey: Const.UserDefaultsKey.isAppleLogin) {
         // 애플 로그인으로 연동되어 있을 때, -> 애플 ID와의 연동상태 확인 로직
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-        appleIDProvider.getCredentialState(forUserID: UserDefaults.standard.string(forKey: Const.UserDefaultsKey.username) ?? "") { (credentialState, error) in
+        appleIDProvider.getCredentialState(forUserID: UserDefaults.standard.string(forKey: Const.UserDefaultsKey.appleUserCredentialId) ?? "") { (credentialState, error) in
           switch credentialState {
           case .authorized:
             print("해당 ID는 연동되어있습니다.")
@@ -35,7 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.isLogin = false
           case .notFound:
             print("해당 ID를 찾을 수 없습니다.")
-            print(UserDefaults.standard.string(forKey: Const.UserDefaultsKey.username))
             self.isLogin = false
           default:
             break
@@ -49,7 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       self.isLogin = false
     }
     
-    return true
     FirebaseApp.configure()
     Messaging.messaging().delegate = self
     

@@ -112,6 +112,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
     case let appleIDCredential as ASAuthorizationAppleIDCredential:
       let userToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
       let userIdentifier = appleIDCredential.user
+      UserDefaults.standard.set(userIdentifier, forKey: Const.UserDefaultsKey.appleUserCredentialId)
       Const.socialToken = userToken
       loginWithAPI(social: "apple")
     default:
@@ -132,17 +133,27 @@ extension LoginViewController {
     LoginAPI.shared.login(social: social) { response in
       LoadingHUD.hide()
       switch response {
-      case .success(let loginData):
-        if let userData = loginData as? LoginResponse {
-          //data.type으로 로그인, 회원가입 구분
-          if userData.type == "signin" {
-            print("loginWithAPI - success")
+      case .loginSuccess(let statusCode, let loginData):
+        UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin) // TODO: 나중에 카카오 로그인 생기면 이거 case 201 안으로 옮겨놓기
+        switch statusCode {
+        case 200:
+          if let userData = loginData as? LoginResponse {
+            print("loginNewWithAPI - success 200")
             UserDefaults.standard.set(userData.accessToken, forKey: Const.UserDefaultsKey.accessToken)
             UserDefaults.standard.set(userData.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
+            UserDefaults.standard.set(userData.id, forKey: Const.UserDefaultsKey.userID)
+            UserDefaults.standard.set(userData.username, forKey: Const.UserDefaultsKey.username)
+            UserDefaults.standard.set(userData.nickname, forKey: Const.UserDefaultsKey.nickname)
             self.presentToMain()
-          } else {
-            self.loginNewWithAPI(social: "apple")
+            }
+        case 201:
+          if let userData = loginData as? LoginNewResponse {
+            print("loginNewWithAPI - success 201")
+//            UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin)
+            self.presentToSignup(userData: userData)
           }
+        default:
+          print("default")
         }
       case .requestErr(let message):
         print("loginWithAPI - requestErr: \(message)")
@@ -152,28 +163,8 @@ extension LoginViewController {
         print("loginWithAPI - serverErr")
       case .networkFail:
         print("loginWithAPI - networkFail")
-      }
-    }
-  }
-  func loginNewWithAPI(social: String) {
-    LoadingHUD.show()
-    LoginAPI.shared.login(social: social) { response in
-      LoadingHUD.hide()
-      switch response {
-      case .success(let loginData):
-        if let userData = loginData as? LoginNewResponse {
-          print("loginNewWithAPI - success")
-          UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin)
-          self.presentToSignup(userData: userData)
-        }
-      case .requestErr(let message):
-        print("loginWithAPI - requestErr: \(message)")
-      case .pathErr:
-        print("loginWithAPI - pathErr")
-      case .serverErr:
-        print("loginWithAPI - serverErr")
-      case .networkFail:
-        print("loginWithAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }

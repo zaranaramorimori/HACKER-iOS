@@ -273,6 +273,8 @@ extension RankingViewController {
         print("teamDetailInfoWithAPI - serverErr")
       case .networkFail:
         print("teamDetailInfoWithAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }
