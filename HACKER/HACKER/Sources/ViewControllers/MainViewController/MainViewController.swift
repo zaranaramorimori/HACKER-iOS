@@ -149,7 +149,7 @@ extension MainViewController {
     view.add(todayCommitLabel) {
       $0.setupLabel(text: "오늘 커밋 횟수", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.bottom).offset(28)
+        $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(UIScreen.main.hasNotch ? 144 : 120)
         $0.leading.equalToSuperview().offset(24)
       }
     }
@@ -158,7 +158,7 @@ extension MainViewController {
     view.add(todayCommitNumLabel) {
       $0.setupLabel(text: "(\(self.todayCommitNumber)/10)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.todayCommitLabel.snp.top)
+        $0.centerY.equalTo(self.todayCommitLabel.snp.centerY)
         $0.leading.equalTo(self.todayCommitLabel.snp.trailing).offset(4)
       }
     }
@@ -168,7 +168,7 @@ extension MainViewController {
       $0.setImage(UIImage(named: "refreshblackIcon"), for: .normal)
       $0.addTarget(self, action: #selector(self.refreshButtonTapped), for: .touchUpInside)
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.userCharacterImage.snp.bottom).offset(18)
+        $0.centerY.equalTo(self.todayCommitLabel.snp.centerY)
         $0.trailing.equalToSuperview().offset(-24)
         $0.width.equalTo(37)
         $0.height.equalTo(37)
