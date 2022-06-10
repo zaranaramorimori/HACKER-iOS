@@ -12,6 +12,7 @@ extension Const {
     static let accessToken = "accessToken"
     static let refreshToken = "refreshToken"
     static let username = "username"
+    static let nickname = "nickname"
     static let isAppleLogin = "isAppleLogin"
     static let userID = "userID"
   }

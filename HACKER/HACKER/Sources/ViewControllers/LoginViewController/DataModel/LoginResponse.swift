@@ -11,4 +11,6 @@ struct LoginResponse: Codable {
   var type: String
   var accessToken: String
   var refreshToken: String
+  let username, nickname: String
+  let userId: Int
 }
