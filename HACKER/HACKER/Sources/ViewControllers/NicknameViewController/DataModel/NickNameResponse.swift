@@ -9,5 +9,5 @@
 struct NickNameResponse: Codable {
   let accessToken, refreshToken: String
   let username, nickname: String
-  let userId: Int
+  let id: Int
 }

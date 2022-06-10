@@ -402,12 +402,11 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout {
     return 12
   }
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if let selectedMember = serverTeamDetailInfo?.members[indexPath.item],
-       let myUsername = UserDefaults.standard.string(forKey: Const.UserDefaultsKey.username) {
+    if let selectedMember = serverTeamDetailInfo?.members[indexPath.item] {
       // 내 얼굴 클릭했을 때
-      if selectedMember.nickname == myUsername {
+      if selectedMember.userID == UserDefaults.standard.integer(forKey: Const.UserDefaultsKey.userID) {
         let myDetailVC = MainProfileViewController()
-        self.navigationController?.pushViewController(myDetailVC, animated: true)
+        self.navigationController?.pushViewController(myDetailVC, animated: false)
       } else { // 다른 사람 얼굴 클릭
         self.fetchFriendDetail(userID: selectedMember.userID)
       }

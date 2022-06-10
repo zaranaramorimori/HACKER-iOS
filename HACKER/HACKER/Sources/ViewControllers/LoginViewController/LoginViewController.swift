@@ -141,7 +141,7 @@ extension LoginViewController {
             print("loginNewWithAPI - success 200")
             UserDefaults.standard.set(userData.accessToken, forKey: Const.UserDefaultsKey.accessToken)
             UserDefaults.standard.set(userData.refreshToken, forKey: Const.UserDefaultsKey.refreshToken)
-            UserDefaults.standard.set(userData.userId, forKey: Const.UserDefaultsKey.userID)
+            UserDefaults.standard.set(userData.id, forKey: Const.UserDefaultsKey.userID)
             UserDefaults.standard.set(userData.username, forKey: Const.UserDefaultsKey.username)
             UserDefaults.standard.set(userData.nickname, forKey: Const.UserDefaultsKey.nickname)
             self.presentToMain()
