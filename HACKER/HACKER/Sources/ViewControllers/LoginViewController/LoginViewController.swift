@@ -112,6 +112,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
     case let appleIDCredential as ASAuthorizationAppleIDCredential:
       let userToken = String(data: appleIDCredential.identityToken!, encoding: .utf8) ?? ""
       let userIdentifier = appleIDCredential.user
+      UserDefaults.standard.set(userIdentifier, forKey: Const.UserDefaultsKey.appleUserCredentialId)
       Const.socialToken = userToken
       loginWithAPI(social: "apple")
     default:
@@ -133,6 +134,7 @@ extension LoginViewController {
       LoadingHUD.hide()
       switch response {
       case .loginSuccess(let statusCode, let loginData):
+        UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin) // TODO: 나중에 카카오 로그인 생기면 이거 case 201 안으로 옮겨놓기
         switch statusCode {
         case 200:
           if let userData = loginData as? LoginResponse {
@@ -147,7 +149,7 @@ extension LoginViewController {
         case 201:
           if let userData = loginData as? LoginNewResponse {
             print("loginNewWithAPI - success 201")
-            UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin)
+//            UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isAppleLogin)
             self.presentToSignup(userData: userData)
           }
         default:
