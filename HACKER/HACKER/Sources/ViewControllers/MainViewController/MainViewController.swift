@@ -286,6 +286,8 @@ extension MainViewController {
         print("getAttackCoupon - serverErr")
       case .networkFail:
         print("getAttackCoupon - networkFail")
+      default:
+        print("default!")
       }
     }
   }
@@ -325,6 +327,8 @@ extension MainViewController {
         print("userNicknameWithAPI - serverErr")
       case .networkFail:
         print("userNicknameWithAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }

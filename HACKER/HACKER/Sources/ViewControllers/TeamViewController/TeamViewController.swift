@@ -336,6 +336,8 @@ class TeamViewController: UIViewController {
         print("attackUser - serverErr")
       case .networkFail:
         print("attackUser - networkFail")
+      default:
+        print("default!")
       }
     }
   }
@@ -363,6 +365,8 @@ class TeamViewController: UIViewController {
         print("fetchFriendDetail - serverErr")
       case .networkFail:
         print("fetchFriendDetail - networkFail")
+      default:
+        break
       }
     }
   }

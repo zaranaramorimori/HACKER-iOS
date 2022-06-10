@@ -185,6 +185,8 @@ extension FightViewController {
         print("ingSeasonWithAPI - serverErr")
       case .networkFail:
         print("ingSeasonWithAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }
@@ -208,6 +210,8 @@ extension FightViewController {
         print("seasonTeamInfoWithAPI - serverErr")
       case .networkFail:
         print("seasonTeamInfoWithAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }

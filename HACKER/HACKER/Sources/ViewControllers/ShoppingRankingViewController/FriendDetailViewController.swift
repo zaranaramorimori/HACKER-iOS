@@ -166,13 +166,14 @@ extension FriendDetailViewController {
               break
             }
           }
-          
         case .pathErr:
           print("addFriendAPI - pathErr")
         case .serverErr:
           print("addFriendAPI - serverErr")
         case .networkFail:
           print("addFriendAPI - networkFail")
+        default:
+          break
         }
       }
     }
@@ -197,6 +198,8 @@ extension FriendDetailViewController {
         print("attackUser - serverErr")
       case .networkFail:
         print("attackUser - networkFail")
+      default:
+        print("default!")
       }
     }
   }

@@ -130,6 +130,8 @@ extension MainProfileViewController {
         print("userNicknameWithAPI - serverErr")
       case .networkFail:
         print("userNicknameWithAPI - networkFail")
+      default:
+        print("default!")
       }
     }
   }

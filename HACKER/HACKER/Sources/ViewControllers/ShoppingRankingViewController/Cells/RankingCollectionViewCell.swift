@@ -311,6 +311,8 @@ extension RankingCollectionViewCell {
         print("fetchFriendDetail - serverErr")
       case .networkFail:
         print("fetchFriendDetail - networkFail")
+      default:
+        break
       }
     }
   }

@@ -60,10 +60,12 @@ extension SplashViewController {
   }
   // MARK: - Functions
   private func presentToMain() {
-    let mainVC = MainViewController()
-    mainVC.modalPresentationStyle = .fullScreen
-    mainVC.modalTransitionStyle = .crossDissolve
-    self.present(mainVC, animated: true, completion: nil)
+//    let mainVC = MainViewController()
+//    mainVC.modalPresentationStyle = .fullScreen
+//    mainVC.modalTransitionStyle = .crossDissolve
+//    self.present(mainVC, animated: true, completion: nil)
+    let tabbarVC = TabBarViewController()
+    self.changeRootViewController(tabbarVC)
   }
   
   private func presentToLogin() {
