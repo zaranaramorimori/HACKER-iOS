@@ -13,27 +13,20 @@ import Then
 // MARK: - RankingCollectionViewCell
 class RankingCollectionViewCell: UICollectionViewCell {
   
+  // MARK: - Properties
+  var rankList: RankingResponse?
+  let screenWidth = UIScreen.main.bounds.width - 48
+  
   // MARK: - Components
   let headerView = UIView()
   let headerStackView = UIStackView()
-  let firstContainerView = UIView()
-  let firstUser = UIImageView()
-  let firstUserImage = UIImageView()
-  let firstuserhairfirstImage = UIImageView()
-  let firstUserNameLabel = UILabel()
-  let firstUserCommitLabel = UILabel()
-  let secondContainerView = UIView()
-  let secondUser = UIImageView()
-  let secondUserImage = UIImageView()
-  let seconduserhairfirstImage = UIImageView()
-  let secondUserNameLabel = UILabel()
-  let secondUserCommitLabel = UILabel()
-  let thirdContainerView = UIView()
-  let thirdUser = UIImageView()
-  let thirdUserImage = UIImageView()
-  let thirduserhairfirstImage = UIImageView()
-  let thirdUserNameLabel = UILabel()
-  let thirdUserCommitLabel = UILabel()
+  var containerViews = [UIView]()
+  var rankNumImageViews = [UIImageView]()
+  var userImageViews = [UIImageView]()
+  var hairImageViews = [UIImageView]()
+  var nameLabels = [UILabel]()
+  var commitLabels = [UILabel]()
+  var detailButtons = [UIButton]()
   let separateView = UIView()
   let rankingTableView = UITableView()
   let myRankView = UIView()
@@ -42,17 +35,14 @@ class RankingCollectionViewCell: UICollectionViewCell {
   let myCommitLabel = UILabel()
   let shortCutButton = UIButton()
   
-  var rankList: RankingResponse?
-  let screenWidth = UIScreen.main.bounds.width-48
-  
   // MARK: - LifeCycle
   override func awakeFromNib() {
     super.awakeFromNib()
     register()
     attribute()
     layout()
-    self.contentView.bringSubviewToFront(myRankView)
-    self.contentView.sendSubviewToBack(rankingTableView)
+    contentView.bringSubviewToFront(myRankView)
+    contentView.sendSubviewToBack(rankingTableView)
     updateServerData()
   }
 }
@@ -69,24 +59,13 @@ extension RankingCollectionViewCell {
   func layout() {
     layoutHeaderView()
     layoutHeaderStackView()
-    layoutFirstContainerView()
-    layoutFirstUser()
-    layoutFirstUserImage()
-    layoutFirstUserFirstHairImage()
-    layoutFirstUserNameLabel()
-    layoutFirstUserCommitLabel()
-    layoutSecondContainerView()
-    layoutSecondUser()
-    layoutSecondUserImage()
-    layoutSecondUserFirstHairImage()
-    layoutSecondUserNameLabel()
-    layoutSecondUserCommitLabel()
-    layoutThirdContainerView()
-    layoutThirdUser()
-    layoutThirdUserImage()
-    layoutThirdUserFirstHairImage()
-    layoutThirdUserNameLabel()
-    layoutThirdUserCommitLabel()
+    layoutContainerViews()
+    layoutRankNumImageViews()
+    layoutUserImageViews()
+    layoutHairImageViews()
+    layoutNameLabels()
+    layoutCommitLabels()
+    layoutDetailButtons()
     layoutSeparateView()
     layoutRankingTableView()
     layoutMyRankView()
@@ -100,185 +79,101 @@ extension RankingCollectionViewCell {
     headerView.backgroundColor = .hackerWhite
   }
   func layoutHeaderStackView() {
+    headerStackView.axis = .horizontal
     headerStackView.distribution = .fillEqually
     headerStackView.alignment = .center
     headerStackView.spacing = 0
     self.headerView.add(headerStackView) {
       $0.backgroundColor = .clear
       $0.snp.makeConstraints { make in
+        make.leading.trailing.equalToSuperview().inset(24)
         make.top.centerX.equalToSuperview()
         make.height.equalTo(325)
       }
     }
   }
-  func layoutFirstContainerView() {
-    self.headerStackView.addArrangedSubview(firstContainerView)
-    firstContainerView.snp.makeConstraints { make in
-      make.width.equalTo(self.screenWidth/3)
-      make.height.equalTo(325)
+  func layoutContainerViews() {
+    for index in 0..<3 {
+      containerViews.append(UIView())
+      headerStackView.addArrangedSubview(containerViews[index])
+      containerViews[index].snp.makeConstraints { make in
+        make.width.equalTo(self.screenWidth/3)
+        make.height.equalTo(325)
+      }
     }
   }
-  func layoutFirstUser() {
-    self.firstContainerView.add(firstUser) {
-      $0.image = UIImage(named: "rankingSecondImage")
-      $0.snp.makeConstraints { make in
-        make.top.equalToSuperview().offset(96)
+  func layoutRankNumImageViews() {
+    let rankNumImageNames = ["rankingSecondImage", "rankingFirstImage", "rankingThirdImage"]
+    
+    for index in 0..<3 {
+      rankNumImageViews.append(UIImageView())
+      containerViews[index].addSubview(rankNumImageViews[index])
+      rankNumImageViews[index].image = UIImage(named: rankNumImageNames[index])
+      rankNumImageViews[index].snp.makeConstraints { make in
+        make.top.equalToSuperview().offset(index == 1 ? 22 : 96)
         make.centerX.equalToSuperview()
       }
     }
   }
-  func layoutFirstUserImage() {
-    self.firstContainerView.add(firstUserImage) {
-      $0.image = UIImage(named: "userCharacterImage")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.firstUser.snp.bottom)
+  func layoutUserImageViews() {
+    for index in 0..<3 {
+      userImageViews.append(UIImageView())
+      containerViews[index].addSubview(userImageViews[index])
+      userImageViews[index].image = UIImage(named: "userCharacterImage")
+      userImageViews[index].contentMode = .scaleAspectFit
+      userImageViews[index].snp.makeConstraints { make in
+        make.top.equalTo(self.rankNumImageViews[index].snp.bottom)
         make.centerX.equalToSuperview()
         make.width.equalTo(101)
         make.height.equalTo(110)
       }
     }
   }
-  func layoutFirstUserFirstHairImage() {
-    self.firstContainerView.add(firstuserhairfirstImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.firstUser.snp.bottom)
+  func layoutHairImageViews() {
+    for index in 0..<3 {
+      hairImageViews.append(UIImageView())
+      containerViews[index].addSubview(hairImageViews[index])
+      hairImageViews[index].contentMode = .scaleAspectFit
+      hairImageViews[index].snp.makeConstraints { make in
+        make.top.equalTo(self.rankNumImageViews[index].snp.bottom)
         make.centerX.equalToSuperview()
         make.width.equalTo(101)
         make.height.equalTo(110)
       }
     }
   }
-  func layoutFirstUserNameLabel() {
-    self.firstContainerView.add(firstUserNameLabel) {
-      $0.setupLabel(text: "지수", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.firstUserImage.snp.bottom).offset(8)
+  func layoutNameLabels() {
+    for index in 0..<3 {
+      nameLabels.append(UILabel())
+      containerViews[index].addSubview(nameLabels[index])
+      nameLabels[index].setupLabel(text: "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+      nameLabels[index].snp.makeConstraints { make in
+        make.top.equalTo(self.userImageViews[index].snp.bottom).offset(8)
         make.centerX.equalToSuperview()
       }
     }
   }
-  func layoutFirstUserCommitLabel() {
-    self.firstContainerView.add(firstUserCommitLabel) {
-      $0.setupLabel(text: "1,854 커밋", color: .hackerBlack, font: .bodyRegular(ofSize: 12))
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.firstUserNameLabel.snp.bottom)
+  func layoutCommitLabels() {
+    for index in 0..<3 {
+      commitLabels.append(UILabel())
+      containerViews[index].addSubview(commitLabels[index])
+      commitLabels[index].setupLabel(text: "0 커밋", color: .hackerBlack, font: .bodyRegular(ofSize: 12))
+      commitLabels[index].snp.makeConstraints { make in
+        make.top.equalTo(self.nameLabels[index].snp.bottom)
         make.centerX.equalToSuperview()
       }
     }
   }
-  func layoutSecondContainerView() {
-    self.headerStackView.addArrangedSubview(secondContainerView)
-    secondContainerView.snp.makeConstraints { make in
-      make.width.equalTo(self.screenWidth/3)
-      make.height.equalTo(325)
-    }
-  }
-  func layoutSecondUser() {
-    self.secondContainerView.add(secondUser) {
-      $0.image = UIImage(named: "rankingFirstImage")
-      $0.snp.makeConstraints { make in
-        make.top.equalToSuperview().offset(22)
-        make.centerX.equalToSuperview()
-      }
-    }
-  }
-  func layoutSecondUserImage() {
-    self.secondContainerView.add(secondUserImage) {
-      $0.image = UIImage(named: "userCharacterImage")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.secondUser.snp.bottom)
-        make.centerX.equalToSuperview()
-        make.width.equalTo(101)
-        make.height.equalTo(110)
-      }
-    }
-  }
-  func layoutSecondUserFirstHairImage() {
-    self.secondContainerView.add(seconduserhairfirstImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.secondUser.snp.bottom)
-        make.centerX.equalToSuperview()
-        make.width.equalTo(101)
-        make.height.equalTo(110)
-      }
-    }
-  }
-  func layoutSecondUserNameLabel() {
-    self.secondContainerView.add(secondUserNameLabel) {
-      $0.setupLabel(text: "지수", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.secondUserImage.snp.bottom).offset(8)
-        make.centerX.equalToSuperview()
-      }
-    }
-  }
-  func layoutSecondUserCommitLabel() {
-    self.secondContainerView.add(secondUserCommitLabel) {
-      $0.setupLabel(text: "1,854 커밋", color: .hackerBlack, font: .bodyRegular(ofSize: 12))
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.secondUserNameLabel.snp.bottom)
-        make.centerX.equalToSuperview()
-      }
-    }
-  }
-  func layoutThirdContainerView() {
-    self.headerStackView.addArrangedSubview(thirdContainerView)
-    thirdContainerView.snp.makeConstraints { make in
-      make.width.equalTo(self.screenWidth/3)
-      make.height.equalTo(325)
-    }
-  }
-  func layoutThirdUser() {
-    self.thirdContainerView.add(thirdUser) {
-      $0.image = UIImage(named: "rankingThirdImage")
-      $0.snp.makeConstraints { make in
-        make.top.equalToSuperview().offset(96)
-        make.centerX.equalToSuperview()
-      }
-    }
-  }
-  func layoutThirdUserImage() {
-    self.thirdContainerView.add(thirdUserImage) {
-      $0.image = UIImage(named: "userCharacterImage")
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.thirdUser.snp.bottom)
-        make.centerX.equalToSuperview()
-        make.width.equalTo(101)
-        make.height.equalTo(110)
-      }
-    }
-  }
-  func layoutThirdUserFirstHairImage() {
-    self.thirdContainerView.add(thirduserhairfirstImage) {
-      $0.contentMode = .scaleAspectFit
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.thirdUser.snp.bottom)
-        make.centerX.equalToSuperview()
-        make.width.equalTo(101)
-        make.height.equalTo(110)
-      }
-    }
-  }
-  func layoutThirdUserNameLabel() {
-    self.thirdContainerView.add(thirdUserNameLabel) {
-      $0.setupLabel(text: "지수", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.thirdUserImage.snp.bottom).offset(8)
-        make.centerX.equalToSuperview()
-      }
-    }
-  }
-  func layoutThirdUserCommitLabel() {
-    self.thirdContainerView.add(thirdUserCommitLabel) {
-      $0.setupLabel(text: "1,854 커밋", color: .hackerBlack, font: .bodyRegular(ofSize: 12))
-      $0.snp.makeConstraints { make in
-        make.top.equalTo(self.thirdUserNameLabel.snp.bottom)
-        make.centerX.equalToSuperview()
+  func layoutDetailButtons() {
+    for index in 0..<3 {
+      detailButtons.append(UIButton())
+      containerViews[index].addSubview(detailButtons[index])
+      detailButtons[index].tag = index + 1
+      detailButtons[index].addTarget(self, action: #selector(detailButtonClicked), for: .touchUpInside)
+      detailButtons[index].snp.makeConstraints { make in
+        make.top.equalTo(self.rankNumImageViews[index])
+        make.leading.trailing.equalToSuperview()
+        make.bottom.equalTo(self.commitLabels[index])
       }
     }
   }
@@ -352,28 +247,83 @@ extension RankingCollectionViewCell {
       }
     }
   }
+  @objc func detailButtonClicked(_ sender: UIButton) {
+    let rankOrder = [1, 0, 2] // 2nd, 1st, 3rd
+    if let rank = rankList?.ranks {
+      let userId = rank[rankOrder[sender.tag-1]].userID
+      moveToDetailView(userId: userId, row: 0)
+    }
+  }
   @objc func myrankingViewClicked() {
-    print("myrankingViewClicked")
+    if let myRank = rankList?.myRank?.rank {
+      if myRank < 4 {
+        rankingTableView.scrollToRow(at: IndexPath(row: NSNotFound, section: 0), at: .bottom, animated: true)
+      } else {
+        rankingTableView.scrollToRow(at: IndexPath(row: myRank-4, section: 0), at: .middle, animated: true)
+      }
+    }
   }
   func updateServerData() {
-    self.firstUserNameLabel.setupLabel(text: rankList?.ranks[1].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-    self.firstUserCommitLabel.setupLabel(text: "\(rankList?.ranks[1].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
-    self.secondUserNameLabel.setupLabel(text: rankList?.ranks[0].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-    self.secondUserCommitLabel.setupLabel(text: "\(rankList?.ranks[0].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
-    self.thirdUserNameLabel.setupLabel(text: rankList?.ranks[2].nickname ?? "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-    self.thirdUserCommitLabel.setupLabel(text: "\(rankList?.ranks[2].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
-    self.firstuserhairfirstImage.updateServerImage(rankList?.ranks[1].head ?? "")
-    self.seconduserhairfirstImage.updateServerImage(rankList?.ranks[0].head ?? "")
-    self.thirduserhairfirstImage.updateServerImage(rankList?.ranks[2].head ?? "")
+    if let rankList = rankList?.ranks {
+      let rankOrder = [1, 0, 2] // 2nd, 1st, 3rd
+      for index in 0..<3 {
+        nameLabels[index].text = rankList[rankOrder[index]].nickname
+        commitLabels[index].text = "\(rankList[rankOrder[index]].commitCount) 커밋"
+        hairImageViews[index].updateServerImage(rankList[rankOrder[index]].head ?? "")
+      }
+    }
     self.myRankLabel.setupLabel(text: "\(rankList?.myRank?.rank ?? 0)등", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
     self.myNameLabel.setupLabel(text: "\(rankList?.myRank?.nickname ?? "")", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
     self.myCommitLabel.setupLabel(text: "\(rankList?.myRank?.commitCount ?? 0)커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
+  }
+  func moveToDetailView(userId: Int, row: Int) {
+    if let rankList = rankList {
+      // 내 얼굴 클릭했을 때
+      if rankList.myRank?.userID == userId {
+        let myDetailVC = MainProfileViewController()
+        self.parentViewController?.navigationController?.pushViewController(myDetailVC, animated: true)
+      } else { // 다른 사람 얼굴 클릭
+        self.fetchFriendDetail(userID: userId)
+      }
+    }
+  }
+  func fetchFriendDetail(userID: Int) {
+    LoadingHUD.show()
+    ShoppingAPI.shared.friendDetail(userID: userID) { response in
+      LoadingHUD.hide()
+      switch response {
+      case .success(let data):
+        if let shoppingInfo = data as? ShoppingResponse {
+          let friendDetailVC = FriendDetailViewController()
+          friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
+          friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+          friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
+          friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head ?? "")
+          friendDetailVC.getuserID = userID
+          friendDetailVC.isMyFriend = shoppingInfo.isMyFriend
+          self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
+        }
+      case .requestErr(let status):
+        print("fetchFriendDetail - requestErr: \(status)")
+      case .pathErr:
+        print("fetchFriendDetail - pathErr")
+      case .serverErr:
+        print("fetchFriendDetail - serverErr")
+      case .networkFail:
+        print("fetchFriendDetail - networkFail")
+      }
+    }
   }
 }
 // MARK: - UITableViewDelegate, DataSource
 extension RankingCollectionViewCell: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 84
+  }
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let rank = rankList?.ranks {
+      moveToDetailView(userId: rank[indexPath.row+3].userID, row: indexPath.row+3)
+    }
   }
 }
 extension RankingCollectionViewCell: UITableViewDataSource {
