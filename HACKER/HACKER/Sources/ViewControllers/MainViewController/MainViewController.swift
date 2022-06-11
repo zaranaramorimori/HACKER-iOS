@@ -281,6 +281,7 @@ extension MainViewController {
       case .success:
         print("getAttackCoupon - 성공")
         self.attackNumber += 1
+        self.attackNum.text = "x\(self.attackNumber)"
       case .requestErr(let msg):
         if let errorMsg = msg as? String {
           self.makeAlertOnlyMessage(message: errorMsg, okAction: nil)
