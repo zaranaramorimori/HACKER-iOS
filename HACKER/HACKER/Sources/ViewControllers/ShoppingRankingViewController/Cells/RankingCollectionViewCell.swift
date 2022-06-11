@@ -191,9 +191,10 @@ extension RankingCollectionViewCell {
     self.contentView.add(rankingTableView) {
       $0.showsVerticalScrollIndicator = false
       $0.separatorStyle = .none
+      $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 70, right: 0)
       $0.snp.makeConstraints { make in
         make.top.leading.trailing.equalToSuperview()
-        make.bottom.equalTo(self.contentView.safeAreaLayoutGuide).offset(-68)
+        make.bottom.equalTo(self.contentView.safeAreaLayoutGuide)
       }
     }
   }
