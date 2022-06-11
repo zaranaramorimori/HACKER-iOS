@@ -58,7 +58,6 @@ extension MainProfileViewController {
   }
   func layoutUserCharacterImage() {
     view.add(userCharacterImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(133)
@@ -118,6 +117,7 @@ extension MainProfileViewController {
       case .success(let data):
         if let userDetailInfo = data as? MainDetailResponse {
           self.userhairfirstImage.updateServerImage(userDetailInfo.head ?? "")
+          self.userCharacterImage.updateServerImage(userDetailInfo.face ?? "")
           self.userNicknameLabel.setupLabel(text: "\(userDetailInfo.user.nickname)", color: .hackerBlack, font: .titleBold(ofSize: 24))
           self.userGithubNameLabel.setupLabel(text: "\(userDetailInfo.user.username)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
           self.hairNumLabel.setupLabel(text: "\(userDetailInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))

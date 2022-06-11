@@ -80,7 +80,6 @@ extension FriendDetailViewController {
   }
   func layoutUserCharacterImage() {
     view.add(userCharacterImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.backButton.snp.bottom).offset(77)

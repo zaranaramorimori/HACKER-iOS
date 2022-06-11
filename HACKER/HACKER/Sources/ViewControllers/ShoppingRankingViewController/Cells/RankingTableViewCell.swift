@@ -77,7 +77,6 @@ extension RankingTableViewCell {
   }
   func layoutUserHairImage() {
     self.contentView.add(userhairImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.snp.makeConstraints { make in
         make.centerY.equalToSuperview()
         make.trailing.equalToSuperview().offset(-43)

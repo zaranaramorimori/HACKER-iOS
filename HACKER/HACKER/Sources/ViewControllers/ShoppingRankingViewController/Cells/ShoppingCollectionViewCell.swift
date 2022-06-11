@@ -81,6 +81,7 @@ extension ShoppingCollectionViewCell {
           friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
           friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
           friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
+          friendDetailVC.userCharacterImage.updateServerImage(shoppingInfo.face ?? "")
           friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head ?? "")
           friendDetailVC.getuserID = userID 
           self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
@@ -123,6 +124,7 @@ extension ShoppingCollectionViewCell: UICollectionViewDataSource {
       print(friendList)
       friendCell.userNameLabel.setupLabel(text: friendList[indexPath.item-1].nickname ?? "", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
       friendCell.userhairfirstImage.updateServerImage(friendList[indexPath.item-1].head ?? "")
+      friendCell.userImageView.updateServerImage(friendList[indexPath.item-1].face ?? "")
       friendCell.awakeFromNib()
     }
     return friendCell

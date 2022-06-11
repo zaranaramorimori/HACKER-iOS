@@ -18,10 +18,10 @@ struct Rank: Codable {
   let userID, rank: Int
   let nickname: String
   let commitCount: Int
-  let head: String?
+  let head, face: String?
 
   enum CodingKeys: String, CodingKey {
       case userID = "userId"
-      case rank, nickname, commitCount, head
+      case rank, nickname, commitCount, head, face
   }
 }

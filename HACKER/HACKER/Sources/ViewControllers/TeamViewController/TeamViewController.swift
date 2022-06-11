@@ -40,7 +40,6 @@ class TeamViewController: UIViewController {
   var faceImage = UIImageView().then {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
-    $0.image = UIImage(named: "teamCharacterImage")
   }
   
   var hairImage = UIImageView().then {
@@ -51,7 +50,6 @@ class TeamViewController: UIViewController {
   var teamIcon = UIImageView().then {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
-    $0.image = UIImage(named: "teamCharacterImage")
     $0.layer.cornerRadius = 10
   }
   
@@ -290,6 +288,7 @@ class TeamViewController: UIViewController {
   }
   
   private func updateTeamDetail() {
+    faceImage.updateServerImage(serverTeamDetailInfo?.team.face ?? "")
     hairImage.updateServerImage(serverTeamDetailInfo?.team.head ?? "")
     teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
     nameLabel.text = serverTeamDetailInfo?.team.name
@@ -352,6 +351,7 @@ class TeamViewController: UIViewController {
           friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
           friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
           friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
+          friendDetailVC.userCharacterImage.updateServerImage(shoppingInfo.face ?? "")
           friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head ?? "")
           friendDetailVC.getuserID = userID
           friendDetailVC.isMyFriend = shoppingInfo.isMyFriend
@@ -387,6 +387,7 @@ extension TeamViewController: UICollectionViewDataSource {
     guard let memberCell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionViewCell.identifier, for: indexPath) as? MemberCollectionViewCell else {return UICollectionViewCell() }
     memberCell.awakeFromNib()
     memberCell.nameLabel.text = serverTeamDetailInfo?.members[indexPath.row].nickname
+    memberCell.characterImage.updateServerImage(serverTeamDetailInfo?.members[indexPath.row].face ?? "")
     memberCell.hairImage.updateServerImage(serverTeamDetailInfo?.members[indexPath.row].head ?? "")
     return memberCell
   }

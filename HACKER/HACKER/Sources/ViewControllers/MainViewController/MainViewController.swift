@@ -123,7 +123,6 @@ extension MainViewController {
   }
   func layoutUserCharacterImage() {
     view.add(userCharacterImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(UIScreen.main.hasNotch ? 133 : 120)
@@ -306,6 +305,7 @@ extension MainViewController {
       case .success(let data):
         if let userInfo = data as? MainResponse {
           self.userhairfirstImage.updateServerImage(userInfo.head ?? "")
+          self.userCharacterImage.updateServerImage(userInfo.face ?? "")
           self.userNickName = userInfo.user.nickname
           self.todayCommitNumber = userInfo.coupon.todayCommit
           self.availableCouponNumber = userInfo.coupon.couponCommit

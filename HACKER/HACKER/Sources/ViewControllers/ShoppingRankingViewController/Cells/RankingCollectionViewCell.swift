@@ -119,7 +119,6 @@ extension RankingCollectionViewCell {
     for index in 0..<3 {
       userImageViews.append(UIImageView())
       containerViews[index].addSubview(userImageViews[index])
-      userImageViews[index].image = UIImage(named: "userCharacterImage")
       userImageViews[index].contentMode = .scaleAspectFit
       userImageViews[index].snp.makeConstraints { make in
         make.top.equalTo(self.rankNumImageViews[index].snp.bottom)
@@ -270,6 +269,7 @@ extension RankingCollectionViewCell {
         nameLabels[index].text = rankList[rankOrder[index]].nickname
         commitLabels[index].text = "\(rankList[rankOrder[index]].commitCount) 커밋"
         hairImageViews[index].updateServerImage(rankList[rankOrder[index]].head ?? "")
+        userImageViews[index].updateServerImage(rankList[rankOrder[index]].face ?? "")
       }
     }
     self.myRankLabel.setupLabel(text: "\(rankList?.myRank?.rank ?? 0)등", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
@@ -297,6 +297,7 @@ extension RankingCollectionViewCell {
           friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
           friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
           friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head ?? "")
+          friendDetailVC.userCharacterImage.updateServerImage(shoppingInfo.face ?? "")
           friendDetailVC.getuserID = userID
           friendDetailVC.isMyFriend = shoppingInfo.isMyFriend
           self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
@@ -340,6 +341,7 @@ extension RankingCollectionViewCell: UITableViewDataSource {
     rankingCell.rankingLabel.setupLabel(text: "\(rankList?.ranks[indexPath.row+3].rank ?? 0)등", color: .hackerBlack, font: .subtitleMedium(ofSize: 20))
     rankingCell.usercommitLabel.setupLabel(text: "\(rankList?.ranks[indexPath.row+3].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
     rankingCell.userhairfirstImage.updateServerImage(rankList?.ranks[indexPath.row+3].head ?? "")
+    rankingCell.userhairImage.updateServerImage(rankList?.ranks[indexPath.row+3].face ?? "")
     rankingCell.awakeFromNib()
     rankingCell.selectionStyle = .none
     rankingCell.backgroundColor = .white

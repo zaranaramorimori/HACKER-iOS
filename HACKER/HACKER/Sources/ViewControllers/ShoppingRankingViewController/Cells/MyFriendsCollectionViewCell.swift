@@ -45,7 +45,6 @@ extension MyFriendsCollectionViewCell {
   }
   func layoutUserImageView() {
     self.lineborderView.add(userImageView) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints { make in
         make.top.equalToSuperview().offset(13)
