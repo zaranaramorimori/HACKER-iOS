@@ -29,6 +29,7 @@ class AttackLottieViewController: UIViewController {
 extension AttackLottieViewController {
   private func setStyle() {
     view.backgroundColor = .hackerBackgroundBlack
+    tabBarController?.tabBar.isHidden = true
   }
   
   private func setupLottie() {

@@ -15,6 +15,8 @@ class TeamViewController: UIViewController {
   
   var serverTeamDetailInfo: TeamDetailResponse?
   var teamId = 0
+  var hairCount = 0
+  var attackCouponCount = 0
   
   private let navigationBar = HackerNavigationBar()
   private let memberEmptyView = EmptyView()
@@ -56,13 +58,11 @@ class TeamViewController: UIViewController {
   var nameLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .titleBold(ofSize: 24)
-    $0.text = "FILL-IN"
   }
   
   var commitLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .subtitleRegular(ofSize: 18)
-    $0.text = "1,500 커밋  /  360가닥"
   }
   
   private let attackButton = UIButton().then {
@@ -76,7 +76,6 @@ class TeamViewController: UIViewController {
   var attackButtonCountLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .btnText(ofSize: 32)
-    $0.text = "X14"
   }
   
   private let teamInfoContainerView = UIView().then {
@@ -294,6 +293,9 @@ class TeamViewController: UIViewController {
     nameLabel.text = serverTeamDetailInfo?.team.name
     commitLabel.text = "\(serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(serverTeamDetailInfo?.team.hairCount ?? 0) 가닥"
     attackButtonCountLabel.text = "X\(serverTeamDetailInfo?.team.couponCount ?? 0)"
+    
+    hairCount = serverTeamDetailInfo?.team.hairCount ?? 0
+    attackCouponCount = serverTeamDetailInfo?.team.couponCount ?? 0
   }
   
   private func updateEmptyViewLabel() {
@@ -321,6 +323,12 @@ class TeamViewController: UIViewController {
       LoadingHUD.hide()
       switch response {
       case .success:
+        self.hairCount -= 1
+        self.commitLabel.text = "\(self.serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(self.hairCount) 가닥"
+        
+        self.attackCouponCount -= 1
+        self.attackButtonCountLabel.text = "X\(self.attackCouponCount)"
+        
         let lottieVC = AttackLottieViewController()
         lottieVC.attackType = .attacker
         lottieVC.modalPresentationStyle = .overCurrentContext
