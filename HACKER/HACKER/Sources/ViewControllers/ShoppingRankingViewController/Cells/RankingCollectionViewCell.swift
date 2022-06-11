@@ -239,7 +239,6 @@ extension RankingCollectionViewCell {
   }
   func layoutShortCutButton() {
     self.myRankView.add(shortCutButton) {
-      $0.isHidden = true
       $0.setupButton(title: "바로가기", color: .hackerBlack, font: .btnText(ofSize: 20), backgroundColor: .clear, state: .normal, radius: 0)
       $0.snp.makeConstraints { make in
         make.trailing.equalToSuperview().offset(-19)
