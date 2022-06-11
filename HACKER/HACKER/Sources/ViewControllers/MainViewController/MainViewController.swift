@@ -53,6 +53,8 @@ extension MainViewController {
   func setBackgrund() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
+//    hidesBottomBarWhenPushed = true
+    self.tabBarController?.tabBar.isHidden = false
   }
   func setImageViewTap() {
     self.navigationController?.navigationBar.isHidden = true
@@ -261,12 +263,14 @@ extension MainViewController {
   }
   @objc func settingButtonTapped() {
     let settingVC = SettingViewController()
+    settingVC.hidesBottomBarWhenPushed = true
     self.navigationController?.pushViewController(settingVC, animated: true)
   }
   @objc func alarmButtonTapped() {
     alarmButton.setImage(UIImage(named: "notificationIcon_no"), for: .normal)
     
     let alarmVC = AlarmViewController()
+    alarmVC.hidesBottomBarWhenPushed = true
     self.navigationController?.pushViewController(alarmVC, animated: true)
   }
   @objc private func getAttackCouponTapped() {

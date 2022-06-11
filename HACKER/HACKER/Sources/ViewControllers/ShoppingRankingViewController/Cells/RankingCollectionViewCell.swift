@@ -280,7 +280,7 @@ extension RankingCollectionViewCell {
     // 내 얼굴 클릭했을 때
     if UserDefaults.standard.integer(forKey: Const.UserDefaultsKey.userID) == userId {
       let myDetailVC = MainProfileViewController()
-      self.parentViewController?.navigationController?.pushViewController(myDetailVC, animated: true)
+      self.parentViewController?.navigationController?.pushViewController(myDetailVC, animated: false)
     } else { // 다른 사람 얼굴 클릭
       self.fetchFriendDetail(userID: userId)
     }
