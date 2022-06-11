@@ -264,6 +264,8 @@ extension MainViewController {
     self.navigationController?.pushViewController(settingVC, animated: true)
   }
   @objc func alarmButtonTapped() {
+    alarmButton.setImage(UIImage(named: "notificationIcon_no"), for: .normal)
+    
     let alarmVC = AlarmViewController()
     self.navigationController?.pushViewController(alarmVC, animated: true)
   }
