@@ -10,6 +10,7 @@ import Moya
 
 enum SettingService {
   case deleteAccount
+  case changeNickname(nickname: String)
 }
 
 extension SettingService: TargetType {
@@ -21,6 +22,8 @@ extension SettingService: TargetType {
     switch self {
     case .deleteAccount:
       return "/user"
+    case .changeNickname:
+      return "/user/nickname"
     }
   }
   
@@ -28,6 +31,8 @@ extension SettingService: TargetType {
     switch self {
     case .deleteAccount:
       return .delete
+    case .changeNickname:
+      return .put
     }
   }
   
@@ -39,6 +44,8 @@ extension SettingService: TargetType {
     switch self {
     case .deleteAccount:
       return .requestPlain
+    case .changeNickname:
+      return .requestPlain
     }
   }
   
@@ -46,6 +53,8 @@ extension SettingService: TargetType {
     switch self {
     case .deleteAccount:
       return Const.Header.tokenHeader()
+    case .changeNickname:
+      return Const.Header.basicHeader()
     }
   }
 }

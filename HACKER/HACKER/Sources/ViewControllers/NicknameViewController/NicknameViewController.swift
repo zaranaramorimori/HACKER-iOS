@@ -14,6 +14,7 @@ import Then
 class NicknameViewController: UIViewController {
   
   // MARK: - Components
+  private let navigationBar = HackerNavigationBar()
   let hackerImageView = UIImageView()
   let helloLabel = UILabel()
   let explainLabel = UILabel()
@@ -27,6 +28,7 @@ class NicknameViewController: UIViewController {
   var socialType = ""
   var uuid = ""
   
+  var isEditMode = false
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -49,6 +51,9 @@ extension NicknameViewController {
       self.navigationController?.navigationBar.isHidden = true
   }
   func layout() {
+    if isEditMode {
+      layoutNavigationBar()
+    }
     layoutHackerImageView()
     layoutHelloLabel()
     layoutExplainLabel()
@@ -60,6 +65,17 @@ extension NicknameViewController {
   func attribute() {
     self.usernameTextField.delegate = self
     self.view.accessibilityIdentifier = NicknameVCIdentifier.view
+  }
+  func layoutNavigationBar() {
+    view.addSubview(navigationBar)
+    navigationBar.iconLayout(isBack: true, logoImage: nil, rightImage: nil)
+    navigationBar.popViewController = {
+      self.navigationController?.popViewController(animated: true)
+    }
+    navigationBar.snp.makeConstraints { make in
+      make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+      make.height.equalTo(72)
+    }
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
@@ -83,7 +99,9 @@ extension NicknameViewController {
   }
   func layoutExplainLabel() {
     self.view.add(explainLabel) {
-      $0.setupLabel(text: "회원님을 뭐라고 부르면 좋을까요?", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+      $0.setupLabel(text: self.isEditMode ? "새로운 닉네임을 알려주세요" : "회원님을 뭐라고 부르면 좋을까요?",
+                    color: .hackerBlack,
+                    font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.helloLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
@@ -226,7 +244,7 @@ extension NicknameViewController: UITextFieldDelegate {
           let countNum = textField.text?.count ?? 0
           countTextLabel.text = "\(countNum)/6"
         } else {
-          explainLabel.text = "와 제법 멋진 이름이네요"
+          explainLabel.text = isEditMode ? "좋아요! 훨씬 멋진 이름이에요" : "와 제법 멋진 이름이네요"
           let countNum = textField.text?.count ?? 0
           countTextLabel.text = "\(countNum)/6"
         }
@@ -234,7 +252,7 @@ extension NicknameViewController: UITextFieldDelegate {
           explainLabel.text = "사용하실 닉네임을 입력해주세요"
         }
       }
-      self.explainLabel.text = "와 제법 멋진 이름이네요"
+      self.explainLabel.text = isEditMode ? "좋아요! 훨씬 멋진 이름이에요" : "와 제법 멋진 이름이네요"
       if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
         clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
       }
@@ -287,5 +305,9 @@ extension NicknameViewController {
         print("default!")
       }
     }
+  }
+  
+  func changeNicknameAPI(nickname: String) {
+    
   }
 }

@@ -35,7 +35,6 @@
 		77576ECC27ECDB26005AF6DA /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576ECB27ECDB26005AF6DA /* Const.swift */; };
 		775EC039283FA2AC00C3CA0B /* SettingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775EC038283FA2AC00C3CA0B /* SettingAPI.swift */; };
 		775EC03B283FA2B400C3CA0B /* SettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775EC03A283FA2B400C3CA0B /* SettingService.swift */; };
-		775EC03D283FA89400C3CA0B /* ChangeNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775EC03C283FA89400C3CA0B /* ChangeNicknameViewController.swift */; };
 		7789EBE92823A97700237036 /* pulledOut.json in Resources */ = {isa = PBXBuildFile; fileRef = 7789EBE72823A97700237036 /* pulledOut.json */; };
 		7789EBEA2823A97700237036 /* pullingOut.json in Resources */ = {isa = PBXBuildFile; fileRef = 7789EBE82823A97700237036 /* pullingOut.json */; };
 		77BA0E532822E1CF00EC41A5 /* SeasonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */; };
@@ -192,7 +191,6 @@
 		775BA15627E7783700A43516 /* HACKER.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HACKER.entitlements; sourceTree = "<group>"; };
 		775EC038283FA2AC00C3CA0B /* SettingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAPI.swift; sourceTree = "<group>"; };
 		775EC03A283FA2B400C3CA0B /* SettingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingService.swift; sourceTree = "<group>"; };
-		775EC03C283FA89400C3CA0B /* ChangeNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNicknameViewController.swift; sourceTree = "<group>"; };
 		7789EBE72823A97700237036 /* pulledOut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pulledOut.json; sourceTree = "<group>"; };
 		7789EBE82823A97700237036 /* pullingOut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pullingOut.json; sourceTree = "<group>"; };
 		77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonResponse.swift; sourceTree = "<group>"; };
@@ -462,7 +460,6 @@
 				773D93C727F09A2D0014DE3A /* LogoutViewController.swift */,
 				773D93C927F161300014DE3A /* DeleteAccountViewController.swift */,
 				77043D56283CABF80091A7D5 /* OpenSourceViewController.swift */,
-				775EC03C283FA89400C3CA0B /* ChangeNicknameViewController.swift */,
 				86B086CE2849023A0094F21C /* WebkitViewController.swift */,
 			);
 			path = SettingViewController;
@@ -1309,7 +1306,6 @@
 				E855DD2B27EF0AED003F3B34 /* ShoppingCollectionViewCell.swift in Sources */,
 				E876119A27A0396D00D238B3 /* UILabel+Extension.swift in Sources */,
 				E8DECE5A282F6FAC002B6E35 /* RankingResponse.swift in Sources */,
-				775EC03D283FA89400C3CA0B /* ChangeNicknameViewController.swift in Sources */,
 				E855DD3027EF1DC4003F3B34 /* identifiable.swift in Sources */,
 				E88D4C3427E44A27009F65E3 /* MainViewController.swift in Sources */,
 				86287D63283BAC9400391C4D /* FriendListCollectionViewCell.swift in Sources */,
