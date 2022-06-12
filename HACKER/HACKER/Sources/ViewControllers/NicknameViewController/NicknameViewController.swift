@@ -154,7 +154,7 @@ extension NicknameViewController {
   func layoutNextButton() {
     self.view.add(nextButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-      $0.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: self.isEditMode ? "변경" : "시작!", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.accessibilityIdentifier = NicknameVCIdentifier.nextButton
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
