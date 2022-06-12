@@ -44,8 +44,8 @@ extension SettingService: TargetType {
     switch self {
     case .deleteAccount:
       return .requestPlain
-    case .changeNickname:
-      return .requestPlain
+    case .changeNickname(let nickname):
+      return .requestJSONEncodable(ChangeNicknameRequest(nickname: nickname))
     }
   }
   
@@ -58,4 +58,3 @@ extension SettingService: TargetType {
     }
   }
 }
-

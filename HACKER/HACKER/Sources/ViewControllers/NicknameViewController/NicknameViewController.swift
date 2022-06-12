@@ -187,14 +187,18 @@ extension NicknameViewController {
     self.nextButton.transform = .identity
   }
   @objc func nextButtonClicked() {
-    userNicknameWithAPI(nicknameRequest: NickNameRequest(social: socialType,
-                                                         uuid: uuid,
-                                                         username: userGithubName ?? "",
-                                                         nickname: usernameTextField.text ?? ""))
     if !usernameTextField.hasText {
       self.makeAlertOnlyMessage(message: "닉네임을 입력하세요", okAction: nil)
     }
-
+    
+    if isEditMode {
+      changeNicknameAPI(nickname: usernameTextField.text ?? "")
+    } else {
+      userNicknameWithAPI(nicknameRequest: NickNameRequest(social: socialType,
+                                                           uuid: uuid,
+                                                           username: userGithubName ?? "",
+                                                           nickname: usernameTextField.text ?? ""))
+    }
   }
 }
 
@@ -287,7 +291,7 @@ extension NicknameViewController {
           case 409 :
             self.explainLabel.text = "앗! 이미 사용중인 이름이에요 :)"
             if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
-              clearButton.setImage(UIImage(named: "xRed"), for: .normal)
+              clearButton.setImage(UIImage(named: "XRed"), for: .normal)
             }
             self.nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
             self.nextButton.setTitleColor(.hackerDarkGray, for: .normal)
@@ -308,6 +312,41 @@ extension NicknameViewController {
   }
   
   func changeNicknameAPI(nickname: String) {
-    
+    LoadingHUD.show()
+    SettingAPI.shared.changeNickname(nickname: nickname) { response in
+      LoadingHUD.hide()
+      switch response {
+      case .success(let data):
+        if let nickNameInfo = data as? ChangeNicknameResponse {
+          UserDefaults.standard.set(nickNameInfo.nickname, forKey: Const.UserDefaultsKey.nickname)
+          UserDefaults.standard.set(nickNameInfo.id, forKey: Const.UserDefaultsKey.userID)
+          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "nicknameChanged"), object: nickNameInfo.nickname)
+          self.navigationController?.popToRootViewController(animated: true)
+        }
+      case .requestErr(let status):
+        print("changeNicknameWithAPI - requestErr: \(status)")
+        if let statusCode = status as? Int {
+          switch statusCode {
+          case 409 :
+            self.explainLabel.text = "앗! 이미 사용중인 이름이에요 :)"
+            if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+              clearButton.setImage(UIImage(named: "XRed"), for: .normal)
+            }
+            self.nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+            self.nextButton.setTitleColor(.hackerDarkGray, for: .normal)
+          default :
+            break
+          }
+        }
+      case .pathErr:
+        print("changeNicknameWithAPI - pathErr")
+      case .serverErr:
+        print("changeNicknameWithAPI - serverErr")
+      case .networkFail:
+        print("changeNicknameWithAPI - networkFail")
+      default:
+        print("default!")
+      }
+    }
   }
 }

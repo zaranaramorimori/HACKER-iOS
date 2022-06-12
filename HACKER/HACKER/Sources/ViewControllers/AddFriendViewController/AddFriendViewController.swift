@@ -177,7 +177,7 @@ extension AddFriendViewController {
           helloLabel.text = "앗"
           explainLabel.text = "자신은 친구로 등록할 수 없어요!"
           if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
-            clearButton.setImage(UIImage(named: "exclamationButton"), for: .normal)
+            clearButton.setImage(UIImage(named: "XRed"), for: .normal)
           }
           setNextButtonActivated(false)
         }
@@ -233,7 +233,7 @@ extension AddFriendViewController: UITextFieldDelegate {
       if isInputValid {
         clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
       } else {
-        clearButton.setImage(UIImage(named: "exclamationButton"), for: .normal)
+        clearButton.setImage(UIImage(named: "XRed"), for: .normal)
       }
     }
   }
@@ -245,7 +245,7 @@ extension AddFriendViewController: UITextFieldDelegate {
       if isInputValid {
         clearButton.setImage(UIImage(named: "xBlack"), for: .normal)
       } else {
-        clearButton.setImage(UIImage(named: "exclamationButton"), for: .normal)
+        clearButton.setImage(UIImage(named: "XRed"), for: .normal)
       }
     }
   }

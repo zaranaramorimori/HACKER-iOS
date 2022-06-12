@@ -68,14 +68,14 @@ public class SettingAPI {
   private func judgeChangeNicknameStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
     
     let decoder = JSONDecoder()
-    guard let decodedData = try? decoder.decode(GenericResponse<String>.self, from: data)
+    guard let decodedData = try? decoder.decode(GenericResponse<ChangeNicknameResponse>.self, from: data)
     else { return .pathErr }
     
     switch statusCode {
     case 200:
-      return .success(decodedData.message)
+      return .success(decodedData.data)
     case 400..<500:
-      return .requestErr(decodedData.message)
+      return .requestErr(decodedData.status)
     case 500:
       return .serverErr
     default:

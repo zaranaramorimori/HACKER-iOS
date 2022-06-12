@@ -55,6 +55,7 @@ extension MainViewController {
     self.navigationController?.navigationBar.isHidden = true
 //    hidesBottomBarWhenPushed = true
     self.tabBarController?.tabBar.isHidden = false
+    NotificationCenter.default.addObserver(self, selector: #selector(nicknameChanged), name: Notification.Name("nicknameChanged"), object: nil)
   }
   func setImageViewTap() {
     self.navigationController?.navigationBar.isHidden = true
@@ -230,7 +231,7 @@ extension MainViewController {
     attackContainerView.addArrangedSubview(attackNum)
     attackNum.setupLabel(text: "x\(self.attackNumber)", color: .hackerBlack, font: .btnText(ofSize: 32))
   }
-  func setupLabel() {
+  func setupNicknameLabel() {
     nicknameLabel.setupLabel(text: "\(self.userNickName) 님\n오늘도 커밋하세요!",
                   color: .hackerBlack,
                   font: .subtitleMedium(ofSize: 24))
@@ -241,6 +242,10 @@ extension MainViewController {
     self.nicknameLabel.attributedText = attributedStr
     todayCommitNumLabel.setupLabel(text: "(\(self.todayCommitNumber)/10)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
     attackNum.setupLabel(text: "x\(self.attackNumber)", color: .hackerBlack, font: .btnText(ofSize: 32))
+    
+  }
+  func setupLabel() {
+    setupNicknameLabel()
     
     /// couponCommit 수에 맞게 progress Bar 분기처리
     if self.availableCouponNumber < 10 {
@@ -256,6 +261,11 @@ extension MainViewController {
       self.attackCouponButton.setupButton(title: "교환하기 (\(self.exchangeCouponNumber))", color: .hackerWhite, font: .btnText(ofSize: 24), backgroundColor: .clear, state: .normal, radius: 0)
       attackCouponButton.isHidden = false
       }
+  }
+  @objc func nicknameChanged(_ noti: Notification) {
+    userNickName = noti.object as? String ?? ""
+    setupNicknameLabel()
+    showToast(message: "닉네임이 변경되었어요")
   }
   @objc func userCharacterViewTapped() {
     let mainProfileVC = MainProfileViewController()
