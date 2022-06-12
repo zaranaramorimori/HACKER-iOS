@@ -249,12 +249,18 @@ extension MainViewController {
     
     /// couponCommit 수에 맞게 progress Bar 분기처리
     if self.availableCouponNumber < 10 {
-      progressFrontView.snp.makeConstraints { make in
+      progressFrontView.snp.remakeConstraints { make in
+        make.top.equalTo(self.progressBackgroundView.snp.top)
+        make.leading.equalToSuperview().offset(24)
+        make.height.equalTo(self.screenWidth*0.12)
         make.width.equalTo((Int(self.screenWidth)/10)*self.availableCouponNumber)
       }
     } else {
       progressFrontView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
-      progressFrontView.snp.makeConstraints { make in
+      progressFrontView.snp.remakeConstraints { make in
+        make.top.equalTo(self.progressBackgroundView.snp.top)
+        make.leading.equalToSuperview().offset(24)
+        make.height.equalTo(self.screenWidth*0.12)
         make.width.equalTo(self.progressBackgroundView)
       }
       self.exchangeCouponNumber = (self.availableCouponNumber)/10
