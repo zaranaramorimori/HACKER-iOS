@@ -135,8 +135,7 @@ class DeleteAccountViewController: UIViewController {
   
   @objc func touchDeleteAccountButton(_ sender: UIButton) {
     print("deleteAccountButton")
-    // TODO: 서비스 탈퇴 서버
-//    deleteAccountWithAPI()
+    deleteAccountWithAPI()
   }
 }
 
@@ -151,7 +150,11 @@ extension DeleteAccountViewController {
         print("deleteAccountWithAPI - success: \(message)")
         UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.accessToken)
         UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.refreshToken)
-        //TODO: 또 유저디폴트에 저장해놓은거 있으면 여기서 없애주기
+        UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.nickname)
+        UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.userID)
+        UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.username)
+        UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.isAppleLogin)
+        UserDefaults.standard.removeObject(forKey: Const.UserDefaultsKey.appleUserCredentialId)
         let loginVC = LoginViewController()
         self.changeRootViewController(loginVC)
       case .requestErr(let message):
