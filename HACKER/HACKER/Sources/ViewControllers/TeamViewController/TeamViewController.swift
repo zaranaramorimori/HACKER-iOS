@@ -348,36 +348,6 @@ class TeamViewController: UIViewController {
       }
     }
   }
-  func fetchFriendDetail(userID: Int) {
-    LoadingHUD.show()
-    ShoppingAPI.shared.friendDetail(userID: userID) { response in
-      LoadingHUD.hide()
-      switch response {
-      case .success(let data):
-        if let shoppingInfo = data as? ShoppingResponse {
-          let friendDetailVC = FriendDetailViewController()
-          friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
-          friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-          friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
-          friendDetailVC.userCharacterImage.updateServerImage(shoppingInfo.face ?? "")
-          friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head ?? "")
-          friendDetailVC.getuserID = userID
-          friendDetailVC.isMyFriend = shoppingInfo.isMyFriend
-          self.navigationController?.pushViewController(friendDetailVC, animated: false)
-        }
-      case .requestErr(let status):
-        print("fetchFriendDetail - requestErr: \(status)")
-      case .pathErr:
-        print("fetchFriendDetail - pathErr")
-      case .serverErr:
-        print("fetchFriendDetail - serverErr")
-      case .networkFail:
-        print("fetchFriendDetail - networkFail")
-      default:
-        break
-      }
-    }
-  }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -417,7 +387,9 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout {
         let myDetailVC = MainProfileViewController()
         self.navigationController?.pushViewController(myDetailVC, animated: false)
       } else { // 다른 사람 얼굴 클릭
-        self.fetchFriendDetail(userID: selectedMember.userID)
+        let friendDetailVC = FriendDetailViewController()
+        friendDetailVC.userID = selectedMember.userID
+        self.navigationController?.pushViewController(friendDetailVC, animated: false)
       }
     }
   }

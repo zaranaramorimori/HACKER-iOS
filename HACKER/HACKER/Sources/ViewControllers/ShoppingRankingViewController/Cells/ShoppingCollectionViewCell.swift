@@ -69,36 +69,6 @@ extension ShoppingCollectionViewCell {
     let addFriendVC = AddFriendViewController()
     self.parentViewController?.navigationController?.pushViewController(addFriendVC, animated: false)
   }
-  // MARK: - Network
-  func shoppingWithAPI(userID: Int) {
-    LoadingHUD.show()
-    ShoppingAPI.shared.friendDetail(userID: userID) { response in
-      LoadingHUD.hide()
-      switch response {
-      case .success(let data):
-        if let shoppingInfo = data as? ShoppingResponse {
-          let friendDetailVC = FriendDetailViewController()
-          friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
-          friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-          friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
-          friendDetailVC.userCharacterImage.updateServerImage(shoppingInfo.face ?? "")
-          friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head ?? "")
-          friendDetailVC.getuserID = userID 
-          self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
-        }
-      case .requestErr(let status):
-        print("shoppingWithAPI - requestErr: \(status)")
-      case .pathErr:
-        print("userPhotosWithAPI - pathErr")
-      case .serverErr:
-        print("userPhotosWithAPI - serverErr")
-      case .networkFail:
-        print("userPhotosWithAPI - networkFail")
-      default:
-        print("default!")
-      }
-    }
-  }
 }
 // MARK: - UICollectionViewDataSource
 extension ShoppingCollectionViewCell: UICollectionViewDataSource {
@@ -109,7 +79,6 @@ extension ShoppingCollectionViewCell: UICollectionViewDataSource {
     } else {
       return 1
     }
-    
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -122,7 +91,7 @@ extension ShoppingCollectionViewCell: UICollectionViewDataSource {
     }
     if !friendList.isEmpty {
       print(friendList)
-      friendCell.userNameLabel.setupLabel(text: friendList[indexPath.item-1].nickname ?? "", color: .hackerBlack, font: .bodyRegular(ofSize: 14))
+      friendCell.userNameLabel.setupLabel(text: friendList[indexPath.item-1].nickname, color: .hackerBlack, font: .bodyRegular(ofSize: 14))
       friendCell.userhairfirstImage.updateServerImage(friendList[indexPath.item-1].head ?? "")
       friendCell.userImageView.updateServerImage(friendList[indexPath.item-1].face ?? "")
       friendCell.awakeFromNib()
@@ -133,7 +102,9 @@ extension ShoppingCollectionViewCell: UICollectionViewDataSource {
     if indexPath.item == 0 {
       self.setupNewFriend()
     } else {
-      self.shoppingWithAPI(userID: friendList[indexPath.item-1].id)
+      let friendDetailVC = FriendDetailViewController()
+      friendDetailVC.userID = friendList[indexPath.item-1].id
+      self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
     }
   }
 }

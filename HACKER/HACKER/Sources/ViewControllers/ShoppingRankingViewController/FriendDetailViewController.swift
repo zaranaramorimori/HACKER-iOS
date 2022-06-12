@@ -23,14 +23,14 @@ class FriendDetailViewController: UIViewController {
   let hairNumLabel = UILabel()
   let attackButton = UIButton()
   
-  var getuserID: Int?
-  var isMyFriend: Bool = true
+  var userID: Int?
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setBackground()
     layout()
+    fetchFriendDetail()
   }
 }
 // MARK: - Extensions
@@ -64,11 +64,6 @@ extension FriendDetailViewController {
   }
   func layoutAddUserButton() {
     view.add(quitUserButton) {
-      if self.isMyFriend {
-        $0.setImage(UIImage(named: "userAddedIcon"), for: .normal)
-      } else {
-        $0.setImage(UIImage(named: "addFriend"), for: .normal)
-      }
       $0.addTarget(self, action: #selector(self.quituserButtonClicked), for: .touchUpInside)
       $0.snp.makeConstraints { make in
         make.centerY.equalTo(self.backButton)
@@ -138,12 +133,45 @@ extension FriendDetailViewController {
       }
     }
   }
+  func fetchFriendDetail() {
+    guard let userId = userID else { return }
+    
+    LoadingHUD.show()
+    ShoppingAPI.shared.friendDetail(userID: userId) { response in
+      LoadingHUD.hide()
+      switch response {
+      case .success(let data):
+        if let friendDetailData = data as? ShoppingResponse {
+          self.userNicknameLabel.setupLabel(text: friendDetailData.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
+          self.userGithubNameLabel.setupLabel(text: friendDetailData.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+          self.hairNumLabel.setupLabel(text: "\(friendDetailData.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
+          self.userCharacterImage.updateServerImage(friendDetailData.face ?? "")
+          self.userhairfirstImage.updateServerImage(friendDetailData.head ?? "")
+          if friendDetailData.isMyFriend {
+            self.quitUserButton.setImage(UIImage(named: "userAddedIcon"), for: .normal)
+          } else {
+            self.quitUserButton.setImage(UIImage(named: "addFriend"), for: .normal)
+          }
+        }
+      case .requestErr(let status):
+        print("fetchFriendDetail - requestErr: \(status)")
+      case .pathErr:
+        print("fetchFriendDetail - pathErr")
+      case .serverErr:
+        print("fetchFriendDetail - serverErr")
+      case .networkFail:
+        print("fetchFriendDetail - networkFail")
+      default:
+        break
+      }
+    }
+  }
   @objc func backButtonTapped() {
     self.navigationController?.popViewController(animated: false)
   }
   @objc func quituserButtonClicked() {
     // 친구 취소 버튼 클릭 시
-    if let id = getuserID {
+    if let id = userID {
       LoadingHUD.show()
       FriendAPI.shared.addFriend(requestBody: AddFriendRequest(friendId: id)) { (response) in
         LoadingHUD.hide()
@@ -179,10 +207,12 @@ extension FriendDetailViewController {
   }
   @objc func attackButtonClicked(userID: Int) {
     LoadingHUD.show()
-    AttackAPI.shared.attackUser(userId: getuserID ?? 0) { (response) in
+    AttackAPI.shared.attackUser(userId: userID ?? 0) { (response) in
       LoadingHUD.hide()
       switch response {
       case .success:
+        
+        
         let lottieVC = AttackLottieViewController()
         lottieVC.attackType = .attacker
         lottieVC.modalPresentationStyle = .overCurrentContext
