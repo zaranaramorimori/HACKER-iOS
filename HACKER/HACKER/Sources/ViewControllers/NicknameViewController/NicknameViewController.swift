@@ -14,6 +14,7 @@ import Then
 class NicknameViewController: UIViewController {
   
   // MARK: - Components
+  private let navigationBar = HackerNavigationBar()
   let hackerImageView = UIImageView()
   let helloLabel = UILabel()
   let explainLabel = UILabel()
@@ -27,6 +28,7 @@ class NicknameViewController: UIViewController {
   var socialType = ""
   var uuid = ""
   
+  var isEditMode = false
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -49,6 +51,9 @@ extension NicknameViewController {
       self.navigationController?.navigationBar.isHidden = true
   }
   func layout() {
+    if isEditMode {
+      layoutNavigationBar()
+    }
     layoutHackerImageView()
     layoutHelloLabel()
     layoutExplainLabel()
@@ -60,6 +65,17 @@ extension NicknameViewController {
   func attribute() {
     self.usernameTextField.delegate = self
     self.view.accessibilityIdentifier = NicknameVCIdentifier.view
+  }
+  func layoutNavigationBar() {
+    view.addSubview(navigationBar)
+    navigationBar.iconLayout(isBack: true, logoImage: nil, rightImage: nil)
+    navigationBar.popViewController = {
+      self.navigationController?.popViewController(animated: true)
+    }
+    navigationBar.snp.makeConstraints { make in
+      make.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
+      make.height.equalTo(72)
+    }
   }
   func layoutHackerImageView() {
     self.view.add(hackerImageView) {
@@ -83,7 +99,9 @@ extension NicknameViewController {
   }
   func layoutExplainLabel() {
     self.view.add(explainLabel) {
-      $0.setupLabel(text: "회원님을 뭐라고 부르면 좋을까요?", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+      $0.setupLabel(text: self.isEditMode ? "새로운 닉네임을 알려주세요" : "회원님을 뭐라고 부르면 좋을까요?",
+                    color: .hackerBlack,
+                    font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.helloLabel.snp.bottom).offset(12)
         $0.centerX.equalToSuperview()
@@ -136,7 +154,7 @@ extension NicknameViewController {
   func layoutNextButton() {
     self.view.add(nextButton) {
       $0.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
-      $0.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.setupButton(title: self.isEditMode ? "변경" : "시작!", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.accessibilityIdentifier = NicknameVCIdentifier.nextButton
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
@@ -169,14 +187,18 @@ extension NicknameViewController {
     self.nextButton.transform = .identity
   }
   @objc func nextButtonClicked() {
-    userNicknameWithAPI(nicknameRequest: NickNameRequest(social: socialType,
-                                                         uuid: uuid,
-                                                         username: userGithubName ?? "",
-                                                         nickname: usernameTextField.text ?? ""))
     if !usernameTextField.hasText {
       self.makeAlertOnlyMessage(message: "닉네임을 입력하세요", okAction: nil)
     }
-
+    
+    if isEditMode {
+      changeNicknameAPI(nickname: usernameTextField.text ?? "")
+    } else {
+      userNicknameWithAPI(nicknameRequest: NickNameRequest(social: socialType,
+                                                           uuid: uuid,
+                                                           username: userGithubName ?? "",
+                                                           nickname: usernameTextField.text ?? ""))
+    }
   }
 }
 
@@ -226,7 +248,7 @@ extension NicknameViewController: UITextFieldDelegate {
           let countNum = textField.text?.count ?? 0
           countTextLabel.text = "\(countNum)/6"
         } else {
-          explainLabel.text = "와 제법 멋진 이름이네요"
+          explainLabel.text = isEditMode ? "좋아요! 훨씬 멋진 이름이에요" : "와 제법 멋진 이름이네요"
           let countNum = textField.text?.count ?? 0
           countTextLabel.text = "\(countNum)/6"
         }
@@ -234,7 +256,7 @@ extension NicknameViewController: UITextFieldDelegate {
           explainLabel.text = "사용하실 닉네임을 입력해주세요"
         }
       }
-      self.explainLabel.text = "와 제법 멋진 이름이네요"
+      self.explainLabel.text = isEditMode ? "좋아요! 훨씬 멋진 이름이에요" : "와 제법 멋진 이름이네요"
       if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
         clearButton.setImage(UIImage(named: "xWhite"), for: .normal)
       }
@@ -269,7 +291,7 @@ extension NicknameViewController {
           case 409 :
             self.explainLabel.text = "앗! 이미 사용중인 이름이에요 :)"
             if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
-              clearButton.setImage(UIImage(named: "xRed"), for: .normal)
+              clearButton.setImage(UIImage(named: "XRed"), for: .normal)
             }
             self.nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
             self.nextButton.setTitleColor(.hackerDarkGray, for: .normal)
@@ -283,6 +305,45 @@ extension NicknameViewController {
         print("userNicknameWithAPI - serverErr")
       case .networkFail:
         print("userNicknameWithAPI - networkFail")
+      default:
+        print("default!")
+      }
+    }
+  }
+  
+  func changeNicknameAPI(nickname: String) {
+    LoadingHUD.show()
+    SettingAPI.shared.changeNickname(nickname: nickname) { response in
+      LoadingHUD.hide()
+      switch response {
+      case .success(let data):
+        if let nickNameInfo = data as? ChangeNicknameResponse {
+          UserDefaults.standard.set(nickNameInfo.nickname, forKey: Const.UserDefaultsKey.nickname)
+          UserDefaults.standard.set(nickNameInfo.id, forKey: Const.UserDefaultsKey.userID)
+          NotificationCenter.default.post(name: NSNotification.Name(rawValue: "nicknameChanged"), object: nickNameInfo.nickname)
+          self.navigationController?.popToRootViewController(animated: true)
+        }
+      case .requestErr(let status):
+        print("changeNicknameWithAPI - requestErr: \(status)")
+        if let statusCode = status as? Int {
+          switch statusCode {
+          case 409 :
+            self.explainLabel.text = "앗! 이미 사용중인 이름이에요 :)"
+            if let clearButton = self.usernameTextField.value(forKeyPath: "_clearButton") as? UIButton {
+              clearButton.setImage(UIImage(named: "XRed"), for: .normal)
+            }
+            self.nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+            self.nextButton.setTitleColor(.hackerDarkGray, for: .normal)
+          default :
+            break
+          }
+        }
+      case .pathErr:
+        print("changeNicknameWithAPI - pathErr")
+      case .serverErr:
+        print("changeNicknameWithAPI - serverErr")
+      case .networkFail:
+        print("changeNicknameWithAPI - networkFail")
       default:
         print("default!")
       }
