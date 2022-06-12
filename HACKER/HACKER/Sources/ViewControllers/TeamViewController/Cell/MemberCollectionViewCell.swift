@@ -22,7 +22,6 @@ class MemberCollectionViewCell: UICollectionViewCell {
   var characterImage = UIImageView().then {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
-    $0.image = UIImage(named: "mainHead")
   }
   
   var hairImage = UIImageView().then {

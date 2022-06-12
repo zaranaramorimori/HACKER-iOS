@@ -11,5 +11,5 @@ import Foundation
 struct SearchFriendResponse: Codable {
   let id: Int
   let nickname: String
-  let head: String?
+  let head, face: String?
 }

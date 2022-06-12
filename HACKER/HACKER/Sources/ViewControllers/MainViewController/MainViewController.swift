@@ -53,6 +53,8 @@ extension MainViewController {
   func setBackgrund() {
     self.view.backgroundColor = .hackerWhite
     self.navigationController?.navigationBar.isHidden = true
+//    hidesBottomBarWhenPushed = true
+    self.tabBarController?.tabBar.isHidden = false
   }
   func setImageViewTap() {
     self.navigationController?.navigationBar.isHidden = true
@@ -123,7 +125,6 @@ extension MainViewController {
   }
   func layoutUserCharacterImage() {
     view.add(userCharacterImage) {
-      $0.image = UIImage(named: "userCharacterImage")
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
         $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(UIScreen.main.hasNotch ? 133 : 120)
@@ -262,10 +263,14 @@ extension MainViewController {
   }
   @objc func settingButtonTapped() {
     let settingVC = SettingViewController()
+    settingVC.hidesBottomBarWhenPushed = true
     self.navigationController?.pushViewController(settingVC, animated: true)
   }
   @objc func alarmButtonTapped() {
+    alarmButton.setImage(UIImage(named: "notificationIcon_no"), for: .normal)
+    
     let alarmVC = AlarmViewController()
+    alarmVC.hidesBottomBarWhenPushed = true
     self.navigationController?.pushViewController(alarmVC, animated: true)
   }
   @objc private func getAttackCouponTapped() {
@@ -276,6 +281,7 @@ extension MainViewController {
       case .success:
         print("getAttackCoupon - 성공")
         self.attackNumber += 1
+        self.attackNum.text = "x\(self.attackNumber)"
       case .requestErr(let msg):
         if let errorMsg = msg as? String {
           self.makeAlertOnlyMessage(message: errorMsg, okAction: nil)
@@ -306,6 +312,7 @@ extension MainViewController {
       case .success(let data):
         if let userInfo = data as? MainResponse {
           self.userhairfirstImage.updateServerImage(userInfo.head ?? "")
+          self.userCharacterImage.updateServerImage(userInfo.face ?? "")
           self.userNickName = userInfo.user.nickname
           self.todayCommitNumber = userInfo.coupon.todayCommit
           self.availableCouponNumber = userInfo.coupon.couponCommit

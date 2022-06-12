@@ -11,7 +11,7 @@ import Foundation
 struct MainDetailResponse: Codable {
     let isMyFriend: Bool?
     let user: DetailUser
-    let head: String?
+    let head, face: String?
 }
 
 // MARK: - User

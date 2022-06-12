@@ -9,10 +9,10 @@ import Foundation
 
 // MARK: - TeamDetailResponse
 struct TeamDetailResponse: Codable {
-    let isMyTeam: Bool
-    let team: TeamInfo
-    let members: [Member]
-    let logs: [Log]
+  let isMyTeam: Bool
+  let team: TeamInfo
+  let members: [Member]
+  let logs: [Log]
 }
 
 // MARK: - Log
@@ -23,24 +23,24 @@ struct Log: Codable {
 
 // MARK: - Member
 struct Member: Codable {
-    let userID: Int
-    let nickname, head, face: String
-
-    enum CodingKeys: String, CodingKey {
-        case userID = "userId"
-        case nickname, head, face
-    }
+  let userID: Int
+  let nickname, head, face: String
+  
+  enum CodingKeys: String, CodingKey {
+    case userID = "userId"
+    case nickname, head, face
+  }
 }
 
 // MARK: - TeamInfo
 struct TeamInfo: Codable {
-    let name, imageURL: String
-    let commitCount, hairCount, couponCount: Int
-  let head: String?
-
-    enum CodingKeys: String, CodingKey {
-        case name
-        case imageURL = "imageUrl"
-      case commitCount, hairCount, couponCount, head
-    }
+  let name, imageURL: String
+  let commitCount, hairCount, couponCount: Int
+  let head, face: String?
+  
+  enum CodingKeys: String, CodingKey {
+    case name
+    case imageURL = "imageUrl"
+    case commitCount, hairCount, couponCount, head, face
+  }
 }

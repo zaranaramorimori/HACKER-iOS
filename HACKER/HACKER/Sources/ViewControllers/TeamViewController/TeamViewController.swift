@@ -15,6 +15,8 @@ class TeamViewController: UIViewController {
   
   var serverTeamDetailInfo: TeamDetailResponse?
   var teamId = 0
+  var hairCount = 0
+  var attackCouponCount = 0
   
   private let navigationBar = HackerNavigationBar()
   private let memberEmptyView = EmptyView()
@@ -40,7 +42,6 @@ class TeamViewController: UIViewController {
   var faceImage = UIImageView().then {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
-    $0.image = UIImage(named: "teamCharacterImage")
   }
   
   var hairImage = UIImageView().then {
@@ -51,20 +52,17 @@ class TeamViewController: UIViewController {
   var teamIcon = UIImageView().then {
     $0.contentMode = .scaleAspectFit
     $0.clipsToBounds = true
-    $0.image = UIImage(named: "teamCharacterImage")
     $0.layer.cornerRadius = 10
   }
   
   var nameLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .titleBold(ofSize: 24)
-    $0.text = "FILL-IN"
   }
   
   var commitLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .subtitleRegular(ofSize: 18)
-    $0.text = "1,500 커밋  /  360가닥"
   }
   
   private let attackButton = UIButton().then {
@@ -78,7 +76,6 @@ class TeamViewController: UIViewController {
   var attackButtonCountLabel = UILabel().then {
     $0.textColor = .hackerBlack
     $0.font = .btnText(ofSize: 32)
-    $0.text = "X14"
   }
   
   private let teamInfoContainerView = UIView().then {
@@ -290,11 +287,15 @@ class TeamViewController: UIViewController {
   }
   
   private func updateTeamDetail() {
+    faceImage.updateServerImage(serverTeamDetailInfo?.team.face ?? "")
     hairImage.updateServerImage(serverTeamDetailInfo?.team.head ?? "")
     teamIcon.updateServerImage(serverTeamDetailInfo?.team.imageURL ?? "")
     nameLabel.text = serverTeamDetailInfo?.team.name
     commitLabel.text = "\(serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(serverTeamDetailInfo?.team.hairCount ?? 0) 가닥"
     attackButtonCountLabel.text = "X\(serverTeamDetailInfo?.team.couponCount ?? 0)"
+    
+    hairCount = serverTeamDetailInfo?.team.hairCount ?? 0
+    attackCouponCount = serverTeamDetailInfo?.team.couponCount ?? 0
   }
   
   private func updateEmptyViewLabel() {
@@ -322,6 +323,12 @@ class TeamViewController: UIViewController {
       LoadingHUD.hide()
       switch response {
       case .success:
+        self.hairCount -= 1
+        self.commitLabel.text = "\(self.serverTeamDetailInfo?.team.commitCount ?? 0) 커밋  /  \(self.hairCount) 가닥"
+        
+        self.attackCouponCount -= 1
+        self.attackButtonCountLabel.text = "X\(self.attackCouponCount)"
+        
         let lottieVC = AttackLottieViewController()
         lottieVC.attackType = .attacker
         lottieVC.modalPresentationStyle = .overCurrentContext
@@ -338,35 +345,6 @@ class TeamViewController: UIViewController {
         print("attackUser - networkFail")
       default:
         print("default!")
-      }
-    }
-  }
-  func fetchFriendDetail(userID: Int) {
-    LoadingHUD.show()
-    ShoppingAPI.shared.friendDetail(userID: userID) { response in
-      LoadingHUD.hide()
-      switch response {
-      case .success(let data):
-        if let shoppingInfo = data as? ShoppingResponse {
-          let friendDetailVC = FriendDetailViewController()
-          friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
-          friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-          friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
-          friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head ?? "")
-          friendDetailVC.getuserID = userID
-          friendDetailVC.isMyFriend = shoppingInfo.isMyFriend
-          self.navigationController?.pushViewController(friendDetailVC, animated: false)
-        }
-      case .requestErr(let status):
-        print("fetchFriendDetail - requestErr: \(status)")
-      case .pathErr:
-        print("fetchFriendDetail - pathErr")
-      case .serverErr:
-        print("fetchFriendDetail - serverErr")
-      case .networkFail:
-        print("fetchFriendDetail - networkFail")
-      default:
-        break
       }
     }
   }
@@ -387,6 +365,7 @@ extension TeamViewController: UICollectionViewDataSource {
     guard let memberCell = collectionView.dequeueReusableCell(withReuseIdentifier: MemberCollectionViewCell.identifier, for: indexPath) as? MemberCollectionViewCell else {return UICollectionViewCell() }
     memberCell.awakeFromNib()
     memberCell.nameLabel.text = serverTeamDetailInfo?.members[indexPath.row].nickname
+    memberCell.characterImage.updateServerImage(serverTeamDetailInfo?.members[indexPath.row].face ?? "")
     memberCell.hairImage.updateServerImage(serverTeamDetailInfo?.members[indexPath.row].head ?? "")
     return memberCell
   }
@@ -408,7 +387,9 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout {
         let myDetailVC = MainProfileViewController()
         self.navigationController?.pushViewController(myDetailVC, animated: false)
       } else { // 다른 사람 얼굴 클릭
-        self.fetchFriendDetail(userID: selectedMember.userID)
+        let friendDetailVC = FriendDetailViewController()
+        friendDetailVC.userID = selectedMember.userID
+        self.navigationController?.pushViewController(friendDetailVC, animated: false)
       }
     }
   }

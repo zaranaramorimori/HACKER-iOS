@@ -119,7 +119,6 @@ extension RankingCollectionViewCell {
     for index in 0..<3 {
       userImageViews.append(UIImageView())
       containerViews[index].addSubview(userImageViews[index])
-      userImageViews[index].image = UIImage(named: "userCharacterImage")
       userImageViews[index].contentMode = .scaleAspectFit
       userImageViews[index].snp.makeConstraints { make in
         make.top.equalTo(self.rankNumImageViews[index].snp.bottom)
@@ -191,9 +190,10 @@ extension RankingCollectionViewCell {
     self.contentView.add(rankingTableView) {
       $0.showsVerticalScrollIndicator = false
       $0.separatorStyle = .none
+      $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 70, right: 0)
       $0.snp.makeConstraints { make in
         make.top.leading.trailing.equalToSuperview()
-        make.bottom.equalTo(self.contentView.safeAreaLayoutGuide).offset(-68)
+        make.bottom.equalTo(self.contentView.safeAreaLayoutGuide)
       }
     }
   }
@@ -239,8 +239,8 @@ extension RankingCollectionViewCell {
   }
   func layoutShortCutButton() {
     self.myRankView.add(shortCutButton) {
-      $0.isHidden = true
       $0.setupButton(title: "바로가기", color: .hackerBlack, font: .btnText(ofSize: 20), backgroundColor: .clear, state: .normal, radius: 0)
+      $0.isUserInteractionEnabled = false
       $0.snp.makeConstraints { make in
         make.trailing.equalToSuperview().offset(-19)
         make.centerY.equalToSuperview()
@@ -270,6 +270,7 @@ extension RankingCollectionViewCell {
         nameLabels[index].text = rankList[rankOrder[index]].nickname
         commitLabels[index].text = "\(rankList[rankOrder[index]].commitCount) 커밋"
         hairImageViews[index].updateServerImage(rankList[rankOrder[index]].head ?? "")
+        userImageViews[index].updateServerImage(rankList[rankOrder[index]].face ?? "")
       }
     }
     self.myRankLabel.setupLabel(text: "\(rankList?.myRank?.rank ?? 0)등", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
@@ -280,38 +281,11 @@ extension RankingCollectionViewCell {
     // 내 얼굴 클릭했을 때
     if UserDefaults.standard.integer(forKey: Const.UserDefaultsKey.userID) == userId {
       let myDetailVC = MainProfileViewController()
-      self.parentViewController?.navigationController?.pushViewController(myDetailVC, animated: true)
+      self.parentViewController?.navigationController?.pushViewController(myDetailVC, animated: false)
     } else { // 다른 사람 얼굴 클릭
-      self.fetchFriendDetail(userID: userId)
-    }
-  }
-  func fetchFriendDetail(userID: Int) {
-    LoadingHUD.show()
-    ShoppingAPI.shared.friendDetail(userID: userID) { response in
-      LoadingHUD.hide()
-      switch response {
-      case .success(let data):
-        if let shoppingInfo = data as? ShoppingResponse {
-          let friendDetailVC = FriendDetailViewController()
-          friendDetailVC.userNicknameLabel.setupLabel(text: shoppingInfo.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
-          friendDetailVC.userGithubNameLabel.setupLabel(text: shoppingInfo.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-          friendDetailVC.hairNumLabel.setupLabel(text: "\(shoppingInfo.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
-          friendDetailVC.userhairfirstImage.updateServerImage(shoppingInfo.head ?? "")
-          friendDetailVC.getuserID = userID
-          friendDetailVC.isMyFriend = shoppingInfo.isMyFriend
-          self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
-        }
-      case .requestErr(let status):
-        print("fetchFriendDetail - requestErr: \(status)")
-      case .pathErr:
-        print("fetchFriendDetail - pathErr")
-      case .serverErr:
-        print("fetchFriendDetail - serverErr")
-      case .networkFail:
-        print("fetchFriendDetail - networkFail")
-      default:
-        break
-      }
+      let friendDetailVC = FriendDetailViewController()
+      friendDetailVC.userID = userId
+      self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
     }
   }
 }
@@ -340,6 +314,7 @@ extension RankingCollectionViewCell: UITableViewDataSource {
     rankingCell.rankingLabel.setupLabel(text: "\(rankList?.ranks[indexPath.row+3].rank ?? 0)등", color: .hackerBlack, font: .subtitleMedium(ofSize: 20))
     rankingCell.usercommitLabel.setupLabel(text: "\(rankList?.ranks[indexPath.row+3].commitCount ?? 0) 커밋", color: .hackerBlack, font: .subtitleRegular(ofSize: 12))
     rankingCell.userhairfirstImage.updateServerImage(rankList?.ranks[indexPath.row+3].head ?? "")
+    rankingCell.userhairImage.updateServerImage(rankList?.ranks[indexPath.row+3].face ?? "")
     rankingCell.awakeFromNib()
     rankingCell.selectionStyle = .none
     rankingCell.backgroundColor = .white
