@@ -240,12 +240,12 @@ extension MainViewController {
     attributedStr.addAttribute(.font, value: UIFont.titleBold(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "\(self.userNickName)"))
     attributedStr.addAttribute(.font, value: UIFont.subtitleMedium(ofSize: 30), range: (self.nicknameLabel.text! as NSString).range(of: "님"))
     self.nicknameLabel.attributedText = attributedStr
-    todayCommitNumLabel.setupLabel(text: "(\(self.todayCommitNumber)/10)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-    attackNum.setupLabel(text: "x\(self.attackNumber)", color: .hackerBlack, font: .btnText(ofSize: 32))
-    
   }
   func setupLabel() {
     setupNicknameLabel()
+    
+    todayCommitNumLabel.setupLabel(text: "(\(self.todayCommitNumber)/10)", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
+    attackNum.setupLabel(text: "x\(self.attackNumber)", color: .hackerBlack, font: .btnText(ofSize: 32))
     
     /// couponCommit 수에 맞게 progress Bar 분기처리
     if self.availableCouponNumber < 10 {
@@ -255,6 +255,7 @@ extension MainViewController {
         make.height.equalTo(self.screenWidth*0.12)
         make.width.equalTo((Int(self.screenWidth)/10)*self.availableCouponNumber)
       }
+      attackCouponButton.isHidden = true
     } else {
       progressFrontView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
       progressFrontView.snp.remakeConstraints { make in
@@ -298,6 +299,9 @@ extension MainViewController {
         print("getAttackCoupon - 성공")
         self.attackNumber += 1
         self.attackNum.text = "x\(self.attackNumber)"
+        
+        self.availableCouponNumber -= 10
+        self.setupLabel()
       case .requestErr(let msg):
         if let errorMsg = msg as? String {
           self.makeAlertOnlyMessage(message: errorMsg, okAction: nil)
