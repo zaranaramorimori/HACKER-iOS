@@ -24,6 +24,7 @@ class FriendDetailViewController: UIViewController {
   let attackButton = UIButton()
   
   var userID: Int?
+  var hairCount: Int = 0
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -97,6 +98,7 @@ extension FriendDetailViewController {
   }
   func layoutUserNickNameLabel() {
     view.add(userNicknameLabel) {
+      $0.setupLabel(text: "", color: .hackerBlack, font: .titleBold(ofSize: 24))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userCharacterImage.snp.bottom).offset(20)
         $0.centerX.equalToSuperview()
@@ -105,6 +107,7 @@ extension FriendDetailViewController {
   }
   func layoutUserGithubNameLabel() {
     view.add(userGithubNameLabel) {
+      $0.setupLabel(text: "", color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userNicknameLabel.snp.bottom).offset(8)
         $0.centerX.equalToSuperview()
@@ -113,6 +116,7 @@ extension FriendDetailViewController {
   }
   func layoutHairNumLabel() {
     view.add(hairNumLabel) {
+      $0.setupLabel(text: "", color: .hackerBlack, font: .btnText(ofSize: 40))
       $0.snp.makeConstraints {
         $0.top.equalTo(self.userGithubNameLabel.snp.bottom).offset(38)
         $0.centerX.equalToSuperview()
@@ -142,9 +146,10 @@ extension FriendDetailViewController {
       switch response {
       case .success(let data):
         if let friendDetailData = data as? ShoppingResponse {
-          self.userNicknameLabel.setupLabel(text: friendDetailData.user.nickname, color: .hackerBlack, font: .titleBold(ofSize: 24))
-          self.userGithubNameLabel.setupLabel(text: friendDetailData.user.username, color: .hackerBlack, font: .subtitleMedium(ofSize: 16))
-          self.hairNumLabel.setupLabel(text: "\(friendDetailData.user.hairCount)가닥", color: .hackerBlack, font: .btnText(ofSize: 40))
+          self.hairCount = friendDetailData.user.hairCount
+          self.userNicknameLabel.text = "\(friendDetailData.user.nickname)"
+          self.userGithubNameLabel.text = "\(friendDetailData.user.username)"
+          self.hairNumLabel.text = "\(self.hairCount)가닥"
           self.userCharacterImage.updateServerImage(friendDetailData.face ?? "")
           self.userhairfirstImage.updateServerImage(friendDetailData.head ?? "")
           if friendDetailData.isMyFriend {
@@ -205,18 +210,20 @@ extension FriendDetailViewController {
       }
     }
   }
-  @objc func attackButtonClicked(userID: Int) {
+  @objc func attackButtonClicked() {
     LoadingHUD.show()
     AttackAPI.shared.attackUser(userId: userID ?? 0) { (response) in
       LoadingHUD.hide()
       switch response {
       case .success:
-        
-        
         let lottieVC = AttackLottieViewController()
         lottieVC.attackType = .attacker
         lottieVC.modalPresentationStyle = .overCurrentContext
         self.present(lottieVC, animated: false)
+        
+        self.hairCount -= 1
+        self.hairNumLabel.text = "\(self.hairCount)가닥"
+        
       case .requestErr(let msg):
         if let errorMsg = msg as? String {
           self.makeAlertOnlyMessage(message: errorMsg, okAction: nil)
