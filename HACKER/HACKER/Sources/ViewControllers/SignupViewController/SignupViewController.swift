@@ -88,7 +88,7 @@ extension SignupViewController {
       $0.setRounded(radius: 10)
       $0.backgroundColor = .clear
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.explainLabel.snp.bottom).offset(52)
+        $0.top.equalTo(self.explainLabel.snp.bottom).offset(UIScreen.main.hasNotch ? 52 : 12)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
         $0.height.equalTo(50)
