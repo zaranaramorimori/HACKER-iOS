@@ -64,8 +64,7 @@ extension CheckAddUserPopUpViewController {
       $0.backgroundColor = .white
       $0.setRounded(radius: 40)
       $0.snp.makeConstraints {
-        $0.top.equalToSuperview().offset(201)
-        $0.centerX.equalToSuperview()
+        $0.centerX.centerY.equalToSuperview()
         $0.width.equalTo(306)
         $0.height.equalTo(323)
       }

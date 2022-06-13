@@ -87,7 +87,7 @@ extension SignupViewController {
       $0.setRounded(radius: 10)
       $0.backgroundColor = .clear
       $0.snp.makeConstraints {
-        $0.top.equalTo(self.explainLabel.snp.bottom).offset(52)
+        $0.top.equalTo(self.explainLabel.snp.bottom).offset(UIScreen.main.hasNotch ? 52 : 12)
         $0.centerX.equalToSuperview()
         $0.leading.equalToSuperview().offset(24)
         $0.height.equalTo(50)
@@ -119,6 +119,7 @@ extension SignupViewController {
       $0.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
+      $0.isUserInteractionEnabled = false
       $0.addTarget(self, action: #selector(self.touchNextButton), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
@@ -171,6 +172,7 @@ extension SignupViewController: UITextFieldDelegate {
     textField.textColor = .hackerWhite
     nextButton.setupButton(title: "다음", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
+    nextButton.isUserInteractionEnabled = true
   }
   /// TextField 비활성화 되었을 때
   func textFieldDidEndEditing(_ textField: UITextField) {
@@ -181,6 +183,7 @@ extension SignupViewController: UITextFieldDelegate {
     }
     nextButton.setupButton(title: "다음", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+    nextButton.isUserInteractionEnabled = false
   }
 }
 
