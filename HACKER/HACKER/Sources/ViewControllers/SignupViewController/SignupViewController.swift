@@ -32,6 +32,7 @@ class SignupViewController: UIViewController {
     layout()
     attribute()
     setKeyboardObserver()
+    dismissKeyboardWhenTappedAround()
   }
 }
 

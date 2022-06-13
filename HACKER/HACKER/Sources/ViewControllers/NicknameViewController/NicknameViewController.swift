@@ -37,6 +37,7 @@ class NicknameViewController: UIViewController {
     layout()
     attribute()
     setKeyboardObserver()
+    dismissKeyboardWhenTappedAround()
     NotificationCenter.default.addObserver(self,
                                            selector: #selector(textDidChange(_:)),
                                            name: UITextField.textDidChangeNotification,
