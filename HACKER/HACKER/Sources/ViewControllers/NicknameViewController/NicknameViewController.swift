@@ -37,7 +37,6 @@ class NicknameViewController: UIViewController {
     layout()
     attribute()
     setKeyboardObserver()
-    dismissKeyboardWhenTappedAround()
     NotificationCenter.default.addObserver(self,
                                            selector: #selector(textDidChange(_:)),
                                            name: UITextField.textDidChangeNotification,
@@ -159,6 +158,7 @@ extension NicknameViewController {
       $0.accessibilityIdentifier = NicknameVCIdentifier.nextButton
       $0.titleLabel?.textAlignment = .center
       $0.addTextSpacing(10)
+      $0.isUserInteractionEnabled = false
       $0.addTarget(self, action: #selector(self.nextButtonClicked), for: .touchUpInside)
       $0.snp.makeConstraints {
         $0.centerX.equalToSuperview()
@@ -218,6 +218,7 @@ extension NicknameViewController: UITextFieldDelegate {
     nextButton.setupButton(title: "시작!", color: .hackerWhite, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtnBlack"), for: .normal)
     countTextLabel.textColor = .hackerBlack
+    nextButton.isUserInteractionEnabled = true
   }
   /// TextField 비활성화 되었을 때
   func textFieldDidEndEditing(_ textField: UITextField) {
@@ -228,6 +229,7 @@ extension NicknameViewController: UITextFieldDelegate {
     }
     nextButton.setupButton(title: "시작!", color: .hackerDarkGray, font: .btnText(ofSize: 32), backgroundColor: .clear, state: .normal, radius: 0)
     nextButton.setBackgroundImage(UIImage(named: "nextBtn"), for: .normal)
+    nextButton.isUserInteractionEnabled = false
   }
   /// nameTextField 글자수 세기, 제한
   @objc private func textDidChange(_ notification: Notification) {

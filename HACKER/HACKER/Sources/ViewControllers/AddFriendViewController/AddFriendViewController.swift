@@ -32,7 +32,6 @@ class AddFriendViewController: UIViewController {
     layout()
     attribute()
     setKeyboardObserver()
-    dismissKeyboardWhenTappedAround()
   }
   
   override func viewWillAppear(_ animated: Bool) {
