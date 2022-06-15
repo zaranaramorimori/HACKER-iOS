@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (5.5.0)
+  - Firebase/Analytics (8.14.0):
+    - Firebase/Core
   - Firebase/Core (8.14.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (~> 8.14.0)
@@ -120,6 +122,7 @@ PODS:
   - Then (2.7.0)
 
 DEPENDENCIES:
+  - Firebase/Analytics
   - Firebase/Core
   - Firebase/Crashlytics
   - Firebase/Messaging
@@ -176,6 +179,6 @@ SPEC CHECKSUMS:
   SwiftLint: 06ac37e4d38c7068e0935bb30cda95f093bec761
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: b7a01b4f29fdfec43dd6d1fca957bcff2d15473c
+PODFILE CHECKSUM: f38037a3b9c6f45c6f8117d60821e070569538fa
 
 COCOAPODS: 1.11.2
