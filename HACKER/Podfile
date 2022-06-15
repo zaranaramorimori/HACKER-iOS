@@ -13,6 +13,8 @@ def pods
   pod 'lottie-ios'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
 end
 
 target 'HACKER' do

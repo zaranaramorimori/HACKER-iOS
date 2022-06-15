@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 class SettingViewController: UIViewController {
-    
+
     // MARK: - Components
     private let navigationBar = HackerNavigationBar()
     private lazy var settingsTableView = UITableView(frame: .zero, style: .grouped).then {
@@ -32,6 +32,7 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         configUI()
         setupAutoLayout()
+      
     }
     
     // MARK: - Custom Method
