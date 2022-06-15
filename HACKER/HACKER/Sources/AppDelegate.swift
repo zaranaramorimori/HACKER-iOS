@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    FirebaseApp.configure()
     
     let acToken = UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken)
     
@@ -48,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       self.isLogin = false
     }
     
-    FirebaseApp.configure()
     Messaging.messaging().delegate = self
     
     UNUserNotificationCenter.current().delegate = self
