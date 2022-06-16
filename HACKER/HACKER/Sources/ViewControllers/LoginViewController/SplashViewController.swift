@@ -132,7 +132,6 @@ extension SplashViewController {
     print("nowVersionArr", nowVersionArr)
     print("newVersionArr", storeVersionArr)
     
-    
   }
   func presentUpdateAlert() {
     if needUpdate() {
