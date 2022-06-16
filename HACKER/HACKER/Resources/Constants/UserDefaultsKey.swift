@@ -12,6 +12,7 @@ extension Const {
     // 인증 토큰
     static let accessToken = "accessToken"
     static let refreshToken = "refreshToken"
+    static let deviceToken = "deviceToken"
     
     // 사용자 정보
     static let username = "username" /// 사용자의 깃허브 유저네임
