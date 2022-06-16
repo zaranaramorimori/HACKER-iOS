@@ -43,6 +43,7 @@ class MainViewController: UIViewController {
     layout()
     setImageViewTap()
     userInfoWithAPI()
+    deviceTokenWithAPI(deviceToken: UserDefaults.standard.string(forKey: Const.UserDefaultsKey.deviceToken) ?? "")
   }
   override func viewWillAppear(_ animated: Bool) {
     self.tabBarController?.tabBar.isHidden = false
@@ -354,6 +355,26 @@ extension MainViewController {
         print("userNicknameWithAPI - serverErr")
       case .networkFail:
         print("userNicknameWithAPI - networkFail")
+      default:
+        print("default!")
+      }
+    }
+  }
+  func deviceTokenWithAPI(deviceToken: String) {
+    MainAPI.shared.deviceTokenInfo(deviceToken: deviceToken) { response in
+      switch response {
+      case .success(let data):
+        if let teamInfo = data as? DeviceResponse {
+          print(teamInfo)
+        }
+      case .requestErr(let message):
+        print("deviceTokenWithAPI - requestErr: \(message)")
+      case .pathErr:
+        print("deviceTokenWithAPI - pathErr")
+      case .serverErr:
+        print("deviceTokenWithAPI - serverErr")
+      case .networkFail:
+        print("deviceTokenWithAPI - networkFail")
       default:
         print("default!")
       }
