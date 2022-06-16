@@ -43,7 +43,8 @@ class MainViewController: UIViewController {
     layout()
     setImageViewTap()
     userInfoWithAPI()
-    deviceTokenWithAPI(deviceToken: UserDefaults.standard.string(forKey: Const.UserDefaultsKey.deviceToken) ?? "")
+    deviceTokenWithAPI(deviceToken: DeviceRequest(deviceToken: UserDefaults.standard.string(forKey: Const.UserDefaultsKey.deviceToken) ?? ""))
+    //print(UserDefaults.standard.string(forKey: Const.UserDefaultsKey.deviceToken) ?? "")
   }
   override func viewWillAppear(_ animated: Bool) {
     self.tabBarController?.tabBar.isHidden = false
@@ -360,7 +361,7 @@ extension MainViewController {
       }
     }
   }
-  func deviceTokenWithAPI(deviceToken: String) {
+  func deviceTokenWithAPI(deviceToken: DeviceRequest) {
     MainAPI.shared.deviceTokenInfo(deviceToken: deviceToken) { response in
       switch response {
       case .success(let data):

@@ -11,7 +11,7 @@ import Moya
 enum MainService {
   case userInfo
   case userDetailInfo
-  case deviceToken(deviceToken: String)
+  case deviceToken(deviceToken: DeviceRequest)
 }
 
 extension MainService: TargetType {

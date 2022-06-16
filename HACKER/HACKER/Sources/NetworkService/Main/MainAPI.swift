@@ -43,7 +43,7 @@ public class MainAPI {
       }
     }
   }
-  func deviceTokenInfo(deviceToken: String, completion: @escaping(NetworkResult<Any>) -> Void) {
+  func deviceTokenInfo(deviceToken: DeviceRequest, completion: @escaping(NetworkResult<Any>) -> Void) {
     mainProvider.request(.deviceToken(deviceToken: deviceToken)) { (result) in
       switch result {
       case .success(let response):
