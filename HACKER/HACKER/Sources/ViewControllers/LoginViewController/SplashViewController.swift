@@ -94,23 +94,66 @@ extension SplashViewController {
     remoteConfig.fetch { (status, error) -> Void in
       if status == .success {
         remoteConfig.activate { changed, error in
-          print("")
-          print("===============================")
-          print("[AppDelegate >> checkUpdateMobileVersion]")
-          print("설명 :: 파이어베이스 리모트 앱 최신 버전 체크 성공")
-          print("version :: \(remoteConfig.configValue(forKey: "\(key)").stringValue ?? "")")
-          print("===============================")
-          print("")
+          self.appStoreVersion = remoteConfig.configValue(forKey: "\(key)").stringValue ?? ""
+          print(remoteConfig.configValue(forKey: "\(key)").stringValue ?? "")
+          print(self.appStoreVersion)
+          self.needUpdated()
         }
       }
-      else {
-        print("")
-        print("===============================")
-        print("[AppDelegate >> checkUpdateMobileVersion]")
-        print("설명 :: 파이어베이스 리모트 앱 최신 버전 체크 에러")
-        print("error :: \(error?.localizedDescription)")
-        print("===============================")
-        print("")
+    }
+  }
+  
+  func needUpdate() -> Bool {
+    let nowVersionArr = currentVersion.split(separator: ".").map { $0 }
+    let storeVersionArr = appStoreVersion.split(separator: ".").map { $0 }
+    
+    print("nowVersionArr", nowVersionArr)
+    print("newVersionArr", storeVersionArr)
+    
+//    if nowVersionArr[0] != storeVersionArr[0] {
+//      return true
+//    }
+//    else if nowVersionArr[1] != storeVersionArr[1] {
+//      return true
+//    }
+//    else if nowVersionArr[2] != storeVersionArr[2] {
+//      return true
+//    }
+//    else {
+//      return false
+//    }
+    
+    return true
+  }
+  func needUpdated() {
+    let nowVersionArr = currentVersion.split(separator: ".").map { $0 }
+    let storeVersionArr = appStoreVersion.split(separator: ".").map { $0 }
+    
+    print("nowVersionArr", nowVersionArr)
+    print("newVersionArr", storeVersionArr)
+    
+    
+  }
+  func presentUpdateAlert() {
+    if needUpdate() {
+      // 업데이트 필요한 경우
+      print("yes")
+//      let popupViewController = VersionUpdatePopupVC()
+//      popupViewController.modalTransitionStyle = .crossDissolve
+//      popupViewController.modalPresentationStyle = .overCurrentContext
+//      self.present(popupViewController, animated: true, completion: nil)
+    } else {
+      // 업데이트 필요하지 않은 경우
+      print("no")
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+        let loginNVC = UINavigationController(rootViewController: LoginViewController())
+        
+        if UserDefaults.standard.value(forKey: Const.UserDefaultsKey.accessToken) != nil && UserDefaults.standard.value(forKey: Const.UserDefaultsKey.refreshToken) != nil{
+          self.changeRootViewController(TabBarViewController())
+        }
+        else {
+          self.changeRootViewController(loginNVC)
+        }
       }
     }
   }
