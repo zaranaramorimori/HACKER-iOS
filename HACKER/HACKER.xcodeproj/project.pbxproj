@@ -42,6 +42,7 @@
 		77BA0E572822F07D00EC41A5 /* SeasonTeamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E562822F07D00EC41A5 /* SeasonTeamResponse.swift */; };
 		77BA0E5A2823095500EC41A5 /* TeamDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E592823095500EC41A5 /* TeamDetailResponse.swift */; };
 		77BA0E5C2823720700EC41A5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E5B2823720700EC41A5 /* EmptyView.swift */; };
+		77EE5FD8285B970700D2C892 /* DeviceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EE5FD7285B970700D2C892 /* DeviceResponse.swift */; };
 		86287D63283BAC9400391C4D /* FriendListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86287D62283BAC9400391C4D /* FriendListCollectionViewCell.swift */; };
 		86287D65283E411900391C4D /* AddFriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86287D64283E411900391C4D /* AddFriendRequest.swift */; };
 		86287D67283E427400391C4D /* AddFriendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86287D66283E427400391C4D /* AddFriendResponse.swift */; };
@@ -200,6 +201,7 @@
 		77BA0E562822F07D00EC41A5 /* SeasonTeamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTeamResponse.swift; sourceTree = "<group>"; };
 		77BA0E592823095500EC41A5 /* TeamDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailResponse.swift; sourceTree = "<group>"; };
 		77BA0E5B2823720700EC41A5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		77EE5FD7285B970700D2C892 /* DeviceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceResponse.swift; sourceTree = "<group>"; };
 		834AE9E2D5646B5161A239D4 /* Pods-HACKERUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HACKERUITests.debug.xcconfig"; path = "Target Support Files/Pods-HACKERUITests/Pods-HACKERUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		86287D62283BAC9400391C4D /* FriendListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListCollectionViewCell.swift; sourceTree = "<group>"; };
 		86287D64283E411900391C4D /* AddFriendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendRequest.swift; sourceTree = "<group>"; };
@@ -671,6 +673,7 @@
 				E80282D12823A70D00268A5A /* MainResponse.swift */,
 				E80282DF28241A6C00268A5A /* MainDetailResponse.swift */,
 				86856D4C283FDE3000F3B3BC /* PushResponse.swift */,
+				77EE5FD7285B970700D2C892 /* DeviceResponse.swift */,
 			);
 			path = MainDataModel;
 			sourceTree = "<group>";
@@ -1369,6 +1372,7 @@
 				E876119E27A0398000D238B3 /* UIFont+Extension.swift in Sources */,
 				86E4CF6D282B7E280069C048 /* FriendAPI.swift in Sources */,
 				E8C731712827509D00431E5F /* NotHackerUserPopUpViewController.swift in Sources */,
+				77EE5FD8285B970700D2C892 /* DeviceResponse.swift in Sources */,
 				E8DECE5D282F71C3002B6E35 /* RankingAPI.swift in Sources */,
 				E88D4C3B27E44E34009F65E3 /* TabBarViewController.swift in Sources */,
 				86DF9A7827ECF61E00C7D493 /* TargetIdentifier.swift in Sources */,
