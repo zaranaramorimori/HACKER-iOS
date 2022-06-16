@@ -15,6 +15,7 @@ def pods
   pod 'Firebase/Messaging'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
+  pod 'Firebase/RemoteConfig'
 end
 
 target 'HACKER' do

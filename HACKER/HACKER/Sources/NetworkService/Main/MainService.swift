@@ -11,6 +11,7 @@ import Moya
 enum MainService {
   case userInfo
   case userDetailInfo
+  case deviceToken(deviceToken: DeviceRequest)
 }
 
 extension MainService: TargetType {
@@ -25,6 +26,8 @@ extension MainService: TargetType {
           return "/user"
         case .userDetailInfo:
           return "/user/detail"
+        case .deviceToken:
+          return "/user/devicetoken"
         }
     }
     
@@ -34,6 +37,8 @@ extension MainService: TargetType {
           return .get
         case .userDetailInfo:
           return .get
+        case .deviceToken:
+          return .post
         }
     }
     
@@ -47,6 +52,8 @@ extension MainService: TargetType {
           return .requestPlain
         case .userDetailInfo:
           return .requestPlain
+        case .deviceToken(let deviceToken):
+          return .requestJSONEncodable(deviceToken)
         }
     }
     
@@ -55,6 +62,8 @@ extension MainService: TargetType {
         case .userInfo :
           return Const.Header.basicHeader()
         case .userDetailInfo :
+          return Const.Header.basicHeader()
+        case .deviceToken:
           return Const.Header.basicHeader()
         }
     }
