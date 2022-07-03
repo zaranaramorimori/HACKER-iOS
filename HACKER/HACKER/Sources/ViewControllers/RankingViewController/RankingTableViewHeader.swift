@@ -29,7 +29,7 @@ class RankingTableViewHeader: UITableViewHeaderFooterView {
   
   var teamStackView = UIStackView().then {
     $0.axis = .horizontal
-    $0.spacing = 10
+    $0.spacing = 30
     $0.alignment = .center
   }
   
