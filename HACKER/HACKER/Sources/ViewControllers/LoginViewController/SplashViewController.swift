@@ -29,18 +29,20 @@ class SplashViewController: UIViewController {
     super.viewDidLoad()
     setBackground()
     layout()
-    getStoreVersion()
+    DispatchQueue.main.async {
+      self.presentUpdateAlert()
+    }
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-      if self.appDelegate?.isLogin == true {
-        self.presentToMain()
-      } else {
-        self.presentToLogin()
-      }
-    }
+//    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+//      if self.appDelegate?.isLogin == true {
+//        self.presentToMain()
+//      } else {
+//        self.presentToLogin()
+//      }
+//    }
   }
 }
 
@@ -76,82 +78,57 @@ extension SplashViewController {
     self.present(loginVC, animated: true, completion: nil)
   }
   
-  func getStoreVersion() {
-    currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-
-    let key = "min_version"
-    let value = "0.0"
+  func needUpdate() -> Bool {
     
-    var remoteConfig = RemoteConfig.remoteConfig()
-    var settings = RemoteConfigSettings()
-    settings.minimumFetchInterval = 0
-    remoteConfig.configSettings = settings
+    guard
+      let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+      let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String ?? "")"),
+      let data = try? Data(contentsOf: url),
+      let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
+      let results = json["results"] as? [[String: Any]],
+      !results.isEmpty,
+      let appStoreVersion = results[0]["version"] as? String
+        
+    else { return false }
     
-    // [해당 키값이 없을 경우 디폴트 값 삽입]
-    let defaultDic: NSDictionary = ["\(key)":"\(value)"]
-    remoteConfig.setDefaults(defaultDic as? [String : NSObject])
+    let nowVersionArr = version.split(separator: ".").map { $0 }
+    let storeVersionArr = appStoreVersion.split(separator: ".").map { $0 }
     
-    remoteConfig.fetch { (status, error) -> Void in
-      if status == .success {
-        remoteConfig.activate { changed, error in
-          self.appStoreVersion = remoteConfig.configValue(forKey: "\(key)").stringValue ?? ""
-          print(remoteConfig.configValue(forKey: "\(key)").stringValue ?? "")
-          print(self.appStoreVersion)
-          self.needUpdated()
-        }
-      }
+    print("nowVersionArr", nowVersionArr)
+    print("newVersionArr", storeVersionArr)
+    
+    if nowVersionArr[0] != storeVersionArr[0] {
+      return true
+    }
+    else if nowVersionArr[1] != storeVersionArr[1] {
+      return true
+    }
+    else if nowVersionArr[2] != storeVersionArr[2] {
+      return true
+    }
+    else {
+      return false
     }
   }
   
-  func needUpdate() -> Bool {
-    let nowVersionArr = currentVersion.split(separator: ".").map { $0 }
-    let storeVersionArr = appStoreVersion.split(separator: ".").map { $0 }
-    
-    print("nowVersionArr", nowVersionArr)
-    print("newVersionArr", storeVersionArr)
-    
-//    if nowVersionArr[0] != storeVersionArr[0] {
-//      return true
-//    }
-//    else if nowVersionArr[1] != storeVersionArr[1] {
-//      return true
-//    }
-//    else if nowVersionArr[2] != storeVersionArr[2] {
-//      return true
-//    }
-//    else {
-//      return false
-//    }
-    
-    return true
-  }
-  func needUpdated() {
-    let nowVersionArr = currentVersion.split(separator: ".").map { $0 }
-    let storeVersionArr = appStoreVersion.split(separator: ".").map { $0 }
-    
-    print("nowVersionArr", nowVersionArr)
-    print("newVersionArr", storeVersionArr)
-    
-  }
   func presentUpdateAlert() {
     if needUpdate() {
       // 업데이트 필요한 경우
-      print("yes")
-//      let popupViewController = VersionUpdatePopupVC()
-//      popupViewController.modalTransitionStyle = .crossDissolve
-//      popupViewController.modalPresentationStyle = .overCurrentContext
-//      self.present(popupViewController, animated: true, completion: nil)
+      // 이후 아래는 커스텀 팝업으로 변경
+      self.makeAlertOnlyMessage(message: "앱을 이용하기 위해서는 업데이트가 필요합니다.",
+                                okAction: { _ in
+        guard let url = URL(string: "itms-apps://itunes.apple.com/app/1627056721") else { return }
+        if UIApplication.shared.canOpenURL(url) {
+          UIApplication.shared.open(url)
+        }
+      })
     } else {
       // 업데이트 필요하지 않은 경우
-      print("no")
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-        let loginNVC = UINavigationController(rootViewController: LoginViewController())
-        
-        if UserDefaults.standard.value(forKey: Const.UserDefaultsKey.accessToken) != nil && UserDefaults.standard.value(forKey: Const.UserDefaultsKey.refreshToken) != nil{
-          self.changeRootViewController(TabBarViewController())
-        }
-        else {
-          self.changeRootViewController(loginNVC)
+      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+        if self.appDelegate?.isLogin == true {
+          self.presentToMain()
+        } else {
+          self.presentToLogin()
         }
       }
     }
