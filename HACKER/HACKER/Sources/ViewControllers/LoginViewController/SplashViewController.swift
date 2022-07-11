@@ -103,7 +103,7 @@ extension SplashViewController {
     else if nowVersionArr[1] != storeVersionArr[1] {
       return true
     }
-    else if nowVersionArr[2] != storeVersionArr[2] {
+    else if nowVersionArr[2] < storeVersionArr[2] {
       return true
     }
     else {
