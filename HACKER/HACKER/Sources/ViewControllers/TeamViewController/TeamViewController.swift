@@ -411,7 +411,7 @@ extension TeamViewController: UITableViewDataSource {
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
     
-    cell.logLabel.text = serverTeamDetailInfo?.logs[indexPath.section].content.first
+    cell.logLabel.text = serverTeamDetailInfo?.logs[indexPath.section].content[indexPath.row]
     return cell
   }
   
