@@ -30,7 +30,7 @@ class RankingViewController: UIViewController {
     $0.separatorStyle = .none
     $0.sectionFooterHeight = 0
     $0.rowHeight = 120
-    $0.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    $0.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 50, right: 0)
     $0.register(TeamRankingTableViewCell.self, forCellReuseIdentifier: TeamRankingTableViewCell.identifier)
     $0.register(RankingTableViewHeader.self, forHeaderFooterViewReuseIdentifier: RankingTableViewHeader.identifier)
     
