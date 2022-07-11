@@ -262,7 +262,7 @@ class TeamViewController: UIViewController {
       make.centerX.equalToSuperview()
       make.leading.equalToSuperview().inset(23)
       logTableView.layoutIfNeeded()
-      make.height.equalTo(logTableView.contentSize.height + 130)
+      make.height.equalTo(logTableView.contentSize.height + CGFloat((serverTeamDetailInfo?.logs.count ?? 0) * 110))
       make.bottom.equalToSuperview().priority(.high)
     }
     logEmptyView.snp.makeConstraints { make in
@@ -411,7 +411,7 @@ extension TeamViewController: UITableViewDataSource {
     cell.backgroundColor = .hackerWhite
     cell.selectionStyle = .none
     
-    cell.logLabel.text = serverTeamDetailInfo?.logs[indexPath.section].content.first
+    cell.logLabel.text = serverTeamDetailInfo?.logs[indexPath.section].content[indexPath.row]
     return cell
   }
   
