@@ -281,9 +281,11 @@ extension RankingCollectionViewCell {
     // 내 얼굴 클릭했을 때
     if UserDefaults.standard.integer(forKey: Const.UserDefaultsKey.userID) == userId {
       let myDetailVC = MainProfileViewController()
+      myDetailVC.hidesBottomBarWhenPushed = true
       self.parentViewController?.navigationController?.pushViewController(myDetailVC, animated: false)
     } else { // 다른 사람 얼굴 클릭
       let friendDetailVC = FriendDetailViewController()
+      friendDetailVC.hidesBottomBarWhenPushed = true
       friendDetailVC.userID = userId
       self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
     }

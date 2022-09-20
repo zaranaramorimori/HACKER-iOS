@@ -103,6 +103,7 @@ extension ShoppingCollectionViewCell: UICollectionViewDataSource {
       self.setupNewFriend()
     } else {
       let friendDetailVC = FriendDetailViewController()
+      friendDetailVC.hidesBottomBarWhenPushed = true
       friendDetailVC.userID = friendList[indexPath.item-1].id
       self.parentViewController?.navigationController?.pushViewController(friendDetailVC, animated: false)
     }
