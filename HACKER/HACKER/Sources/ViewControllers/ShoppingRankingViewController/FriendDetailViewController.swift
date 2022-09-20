@@ -78,7 +78,7 @@ extension FriendDetailViewController {
     view.add(userCharacterImage) {
       $0.contentMode = .scaleAspectFit
       $0.snp.makeConstraints {
-        if UIScreen.main.bounds.width < 667 {
+        if UIScreen.main.bounds.width <= 375 {
           $0.top.equalTo(self.backButton.snp.bottom).offset(10)
         }
         $0.top.equalTo(self.backButton.snp.bottom).offset(77)
