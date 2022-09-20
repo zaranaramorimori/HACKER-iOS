@@ -120,9 +120,9 @@ extension ShoppingCollectionViewCell: UICollectionViewDelegateFlowLayout {
     return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 12
+    return 11
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    return 12
+    return 11
   }
 }
