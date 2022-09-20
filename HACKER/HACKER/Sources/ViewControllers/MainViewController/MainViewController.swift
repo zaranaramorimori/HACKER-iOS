@@ -278,6 +278,7 @@ extension MainViewController {
   }
   @objc func userCharacterViewTapped() {
     let mainProfileVC = MainProfileViewController()
+    mainProfileVC.hidesBottomBarWhenPushed = true
     self.navigationController?.pushViewController(mainProfileVC, animated: false)
   }
   @objc func settingButtonTapped() {
