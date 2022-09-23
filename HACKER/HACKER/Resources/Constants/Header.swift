@@ -18,6 +18,12 @@ extension Const {
        "Authorization": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
     }
     
+    static func retokenHeader() -> [String: String] {
+      ["Content-Type": "application/json",
+       "accesstoken": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? "",
+       "refreshtoken": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.refreshToken) ?? ""]
+    }
+    
     static func socialHeader() -> [String: String] {
       ["Content-Type": "application/x-www-form-urlencoded",
        "token": Const.socialToken]
