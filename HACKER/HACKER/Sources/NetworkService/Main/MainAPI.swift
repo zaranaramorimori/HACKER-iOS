@@ -11,7 +11,7 @@ import Moya
 public class MainAPI {
   
   static let shared = MainAPI()
-  var mainProvider = MoyaProvider<MainService>()
+  var mainProvider = MoyaProvider<MainService>(plugins: [MoyaLoggerPlugin()])
   
   public init() { }
   
