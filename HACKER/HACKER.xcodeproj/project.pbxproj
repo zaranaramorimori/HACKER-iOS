@@ -35,6 +35,7 @@
 		77576ECC27ECDB26005AF6DA /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77576ECB27ECDB26005AF6DA /* Const.swift */; };
 		775EC039283FA2AC00C3CA0B /* SettingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775EC038283FA2AC00C3CA0B /* SettingAPI.swift */; };
 		775EC03B283FA2B400C3CA0B /* SettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775EC03A283FA2B400C3CA0B /* SettingService.swift */; };
+		7768B89A28DDB8E000D03C93 /* RetokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768B89928DDB8E000D03C93 /* RetokenResponse.swift */; };
 		7789EBE92823A97700237036 /* pulledOut.json in Resources */ = {isa = PBXBuildFile; fileRef = 7789EBE72823A97700237036 /* pulledOut.json */; };
 		7789EBEA2823A97700237036 /* pullingOut.json in Resources */ = {isa = PBXBuildFile; fileRef = 7789EBE82823A97700237036 /* pullingOut.json */; };
 		77BA0E532822E1CF00EC41A5 /* SeasonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */; };
@@ -195,6 +196,7 @@
 		775BA15627E7783700A43516 /* HACKER.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HACKER.entitlements; sourceTree = "<group>"; };
 		775EC038283FA2AC00C3CA0B /* SettingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAPI.swift; sourceTree = "<group>"; };
 		775EC03A283FA2B400C3CA0B /* SettingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingService.swift; sourceTree = "<group>"; };
+		7768B89928DDB8E000D03C93 /* RetokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetokenResponse.swift; sourceTree = "<group>"; };
 		7789EBE72823A97700237036 /* pulledOut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pulledOut.json; sourceTree = "<group>"; };
 		7789EBE82823A97700237036 /* pullingOut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pullingOut.json; sourceTree = "<group>"; };
 		77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonResponse.swift; sourceTree = "<group>"; };
@@ -904,6 +906,7 @@
 			children = (
 				E8CEF7E1284259FF007AAB0A /* LoginResponse.swift */,
 				E89BA859284285640016A2E3 /* LoginNewResponse.swift */,
+				7768B89928DDB8E000D03C93 /* RetokenResponse.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -1330,6 +1333,7 @@
 				E87ED83A2823637400775A85 /* SignUpAPI.swift in Sources */,
 				E8C7316F28274E2100431E5F /* AddFriendViewController.swift in Sources */,
 				E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */,
+				7768B89A28DDB8E000D03C93 /* RetokenResponse.swift in Sources */,
 				E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */,
 				77233E9528182861006B7903 /* HowTo.swift in Sources */,
 				86856D46283FD3B000F3B3BC /* DynamicHeightFlowLayout.swift in Sources */,

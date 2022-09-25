@@ -38,6 +38,29 @@ public class LoginAPI {
     }
   }
   
+  func retoken(completion: @escaping (NetworkResult<Any>) -> Void) {
+    loginProvider.request(.retoken) { (result) in
+      switch result {
+      case .success(let response):
+        let statusCode = response.statusCode
+        print(statusCode)
+        let data = response.data
+        switch statusCode {
+        case 201:
+          let networkResult = self.judgeRetokenStatus(by: statusCode, data)
+          completion(networkResult)
+          
+        default:
+          let networkResult = self.judgeRetokenStatus(by: statusCode, data)
+          completion(networkResult)
+        }
+        
+      case .failure(let err):
+        print(err)
+      }
+    }
+  }
+  
   private func judgeStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
     
     let decoder = JSONDecoder()
@@ -83,6 +106,23 @@ public class LoginAPI {
     case 201:
       print("hi")
       return .loginSuccess(statusCode, decodedData.data ?? "None-Data")
+    case 400..<500:
+      return .requestErr(decodedData.message)
+    case 500:
+      return .serverErr
+    default:
+      return .networkFail
+    }
+  }
+  private func judgeRetokenStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
+    
+    let decoder = JSONDecoder()
+    guard let decodedData = try? decoder.decode(GenericResponse<RetokenResponse>.self, from: data)
+    else { return .pathErr }
+    
+    switch statusCode {
+    case 200:
+      return .success(decodedData)
     case 400..<500:
       return .requestErr(decodedData.message)
     case 500:
