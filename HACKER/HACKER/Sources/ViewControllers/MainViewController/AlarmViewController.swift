@@ -15,7 +15,7 @@ class AlarmViewController: UIViewController {
   // MARK: - Components
   private let navigationBar = HackerNavigationBar()
   private lazy var alarmTableView: UITableView = { createAlarmTableView() }()
-  private var loadingImg: UIImageView!
+  private var loadingImg = UIImageView()
   private let emptyView = UIStackView()
   private let emptyImage = UIImageView()
   private let emptyTitle = UILabel()
