@@ -15,6 +15,7 @@ class AlarmViewController: UIViewController {
   // MARK: - Components
   private let navigationBar = HackerNavigationBar()
   private lazy var alarmTableView: UITableView = { createAlarmTableView() }()
+  private var loadingImg: UIImageView!
   private let emptyView = UIStackView()
   private let emptyImage = UIImageView()
   private let emptyTitle = UILabel()
@@ -50,6 +51,7 @@ extension AlarmViewController {
   
   private func layout() {
     layoutNavigationBar()
+    layoutRefreshControl()
   }
   
   private func attribute() {
@@ -80,6 +82,30 @@ extension AlarmViewController {
     }
   }
   
+  private func layoutRefreshControl() {
+    alarmTableView.refreshControl = UIRefreshControl()
+    
+    guard let refresh = alarmTableView.refreshControl else { return }
+    
+    refresh.addTarget(self, action: #selector(getAlarmList), for: .valueChanged)
+    
+    loadingImg = UIImageView(image: UIImage(named: "youthHead"))
+    
+    refresh.tintColor = .clear
+    refresh.addSubview(self.loadingImg)
+    
+    loadingImg.snp.makeConstraints { make in
+      make.centerX.equalToSuperview()
+      make.width.height.equalTo(40)
+    }
+    
+    let offset: CGFloat = -20
+    refresh.bounds = CGRect(x: refresh.bounds.minX,
+                            y: offset,
+                            width: refresh.bounds.width,
+                            height: refresh.bounds.height)
+  }
+  
   private func layoutEmptyView() {
     emptyImage.image = UIImage(named: "logoIcon")
     emptyTitle.setupLabel(text: "아이고!", color: .hackerBlack, font: .titleBold(ofSize: 24))
@@ -104,10 +130,11 @@ extension AlarmViewController {
 
 // MARK: - Custom Methods
 extension AlarmViewController {
-  private func getAlarmList() {
+  @objc private func getAlarmList() {
     LoadingHUD.show()
     PushAPI.shared.fetchPushList { response in
       LoadingHUD.hide()
+      self.alarmTableView.refreshControl?.endRefreshing()
       switch response {
       case .success(let data):
         if let pushInfo = data as? PushResponse {
@@ -183,5 +210,15 @@ extension AlarmViewController: UITableViewDelegate {
         self.present(lottieVC, animated: false)
       }
     }
+  }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    guard let refreshControl = alarmTableView.refreshControl?.frame.origin.y else { return }
+    
+    let distance = max(0.0, -refreshControl)
+    self.loadingImg.center.y = distance / 2
+    
+    let transform = CGAffineTransform(rotationAngle: CGFloat(distance / 20))
+    self.loadingImg.transform = transform
   }
 }
