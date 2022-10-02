@@ -41,22 +41,39 @@ extension Const {
       ["Content-Type": "multipart/form-data",
        "Authorization": UserDefaults.standard.string(forKey: Const.UserDefaultsKey.accessToken) ?? ""]
     }
-//    static func basicHeader() -> [String: String] {
-//      ["Content-Type": "application/json",
-//       "Authorization": Const.accessToken]
-//    }
+      
+    //여기서 부터 비상용 토큰 주입 헤더
+//      static func applicationJsonHeader() -> [String: String] {
+//        ["Content-Type": "application/json"]
+//      }
 //
-//    static func tokenHeader() -> [String: String] {
-//      ["Authorization": Const.accessToken]
-//    }
+//      static func basicHeader() -> [String: String] {
+//        ["Content-Type": "application/json",
+//         "Authorization": Const.accessToken]
+//      }
 //
-//    static func urlEncodedHeader() -> [String: String] {
-//      ["Content-Type": Const.accessToken]
-//    }
+//      static func retokenHeader() -> [String: String] {
+//        ["Content-Type": "application/json",
+//         "accesstoken": Const.accessToken,
+//         "refreshtoken": Const.refreshToken]
+//      }
 //
-//    static func multipartFormHeader() -> [String: String] {
-//      ["Content-Type": "multipart/form-data",
-//       "Authorization": Const.accessToken]
-//    }
+//      static func socialHeader() -> [String: String] {
+//        ["Content-Type": "application/x-www-form-urlencoded",
+//         "token": Const.socialToken]
+//      }
+//
+//      static func tokenHeader() -> [String: String] {
+//        ["Authorization": Const.accessToken]
+//      }
+//
+//      static func urlEncodedHeader() -> [String: String] {
+//        ["Content-Type": "application/x-www-form-urlencoded"]
+//      }
+//
+//      static func multipartFormHeader() -> [String: String] {
+//        ["Content-Type": "multipart/form-data",
+//         "Authorization":Const.accessToken]
+//      }
   }
 }
