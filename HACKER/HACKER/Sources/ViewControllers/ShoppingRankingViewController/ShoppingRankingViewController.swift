@@ -63,6 +63,9 @@ class ShoppingRankingViewController: UIViewController {
     self.tabBarController?.tabBar.isHidden = false
     searchFriendWithAPI()
   }
+  override func viewDidDisappear(_ animated: Bool) {
+    NotificationCenter.default.removeObserver(self, name: Notification.Name("friendsListRefresh"), object: nil)
+  }
 }
 // MARK: - Extensions
 extension ShoppingRankingViewController {
@@ -82,6 +85,7 @@ extension ShoppingRankingViewController {
     self.pageCollectionView.register(TabbarCollectionViewCell.self, forCellWithReuseIdentifier: TabbarCollectionViewCell.identifier)
     self.pageCollectionView.register(ShoppingCollectionViewCell.self, forCellWithReuseIdentifier: ShoppingCollectionViewCell.identifier)
     self.pageCollectionView.register(RankingCollectionViewCell.self, forCellWithReuseIdentifier: RankingCollectionViewCell.identifier)
+    NotificationCenter.default.addObserver(self, selector: #selector(searchFriendWithAPI), name: Notification.Name("friendsListRefresh"), object: nil)
     
   }
   func layout() {
@@ -226,7 +230,7 @@ extension ShoppingRankingViewController {
     }
   }
   // MARK: - Network
-  func searchFriendWithAPI() {
+  @objc func searchFriendWithAPI() {
     LoadingHUD.show()
     SearchFriendAPI.shared.searchFriend { response in
       LoadingHUD.hide()

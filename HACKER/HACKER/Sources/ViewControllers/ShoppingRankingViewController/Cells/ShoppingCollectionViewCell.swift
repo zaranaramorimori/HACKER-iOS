@@ -24,6 +24,7 @@ class ShoppingCollectionViewCell: UICollectionViewCell {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     return collectionView
   }()
+  private var loadingImg = UIImageView()
   
   var friendList = [SearchFriendResponse]() {
     didSet {
@@ -51,6 +52,7 @@ extension ShoppingCollectionViewCell {
   }
   func layout() {
     layoutMyFriendsCollectionView()
+    layoutRefreshControl()
   }
   func layoutMyFriendsCollectionView() {
     self.contentView.add(myFriendsCollectionView) {
@@ -65,9 +67,37 @@ extension ShoppingCollectionViewCell {
       }
     }
   }
+  private func layoutRefreshControl() {
+    myFriendsCollectionView.refreshControl = UIRefreshControl()
+    
+    guard let refresh = myFriendsCollectionView.refreshControl else { return }
+    
+    refresh.addTarget(self, action: #selector(getFriendsList), for: .valueChanged)
+    
+    loadingImg = UIImageView(image: UIImage(named: "youthHead"))
+    
+    refresh.tintColor = .clear
+    refresh.addSubview(self.loadingImg)
+    
+    loadingImg.snp.makeConstraints { make in
+      make.centerX.equalToSuperview()
+      make.width.height.equalTo(40)
+    }
+    
+    let offset: CGFloat = -20
+    refresh.bounds = CGRect(x: refresh.bounds.minX,
+                            y: offset,
+                            width: refresh.bounds.width,
+                            height: refresh.bounds.height)
+  }
   func setupNewFriend() {
     let addFriendVC = AddFriendViewController()
     self.parentViewController?.navigationController?.pushViewController(addFriendVC, animated: false)
+  }
+  @objc func getFriendsList() {
+    NotificationCenter.default.post(name: NSNotification.Name("friendsListRefresh"), object: nil)
+    myFriendsCollectionView.reloadData()
+    myFriendsCollectionView.refreshControl?.endRefreshing()
   }
 }
 // MARK: - UICollectionViewDataSource
@@ -125,5 +155,14 @@ extension ShoppingCollectionViewCell: UICollectionViewDelegateFlowLayout {
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return 11
+  }
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    guard let refreshControl = myFriendsCollectionView.refreshControl?.frame.origin.y else { return }
+    
+    let distance = max(0.0, -refreshControl)
+    self.loadingImg.center.y = distance / 2
+    
+    let transform = CGAffineTransform(rotationAngle: CGFloat(distance / 20))
+    self.loadingImg.transform = transform
   }
 }
