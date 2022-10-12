@@ -91,6 +91,9 @@
 		E80282CF2823A67200268A5A /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282CE2823A67200268A5A /* MainService.swift */; };
 		E80282D22823A70D00268A5A /* MainResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282D12823A70D00268A5A /* MainResponse.swift */; };
 		E80282E028241A6C00268A5A /* MainDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80282DF28241A6C00268A5A /* MainDetailResponse.swift */; };
+		E808D7F428F67C31009F909F /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808D7F328F67C31009F909F /* OnboardingViewController.swift */; };
+		E808D7F728F67DC0009F909F /* OnboardingDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808D7F628F67DC0009F909F /* OnboardingDataModel.swift */; };
+		E808D7FA28F67DE8009F909F /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808D7F928F67DE8009F909F /* OnboardingCollectionViewCell.swift */; };
 		E833EEF127C2479C00107741 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF027C2479C00107741 /* LoginViewController.swift */; };
 		E833EEF327C247A400107741 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF227C247A400107741 /* SplashViewController.swift */; };
 		E833EEF527C24D7E00107741 /* UnknownUserPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */; };
@@ -256,6 +259,9 @@
 		E80282CE2823A67200268A5A /* MainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
 		E80282D12823A70D00268A5A /* MainResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainResponse.swift; sourceTree = "<group>"; };
 		E80282DF28241A6C00268A5A /* MainDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailResponse.swift; sourceTree = "<group>"; };
+		E808D7F328F67C31009F909F /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		E808D7F628F67DC0009F909F /* OnboardingDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDataModel.swift; sourceTree = "<group>"; };
+		E808D7F928F67DE8009F909F /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		E833EEF027C2479C00107741 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E833EEF227C247A400107741 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		E833EEF427C24D7E00107741 /* UnknownUserPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownUserPopUpViewController.swift; sourceTree = "<group>"; };
@@ -683,6 +689,32 @@
 			path = MainDataModel;
 			sourceTree = "<group>";
 		};
+		E808D7F228F67C1C009F909F /* OnboardingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E808D7F828F67DD0009F909F /* Cells */,
+				E808D7F528F67DB0009F909F /* DataModel */,
+				E808D7F328F67C31009F909F /* OnboardingViewController.swift */,
+			);
+			path = OnboardingViewController;
+			sourceTree = "<group>";
+		};
+		E808D7F528F67DB0009F909F /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				E808D7F628F67DC0009F909F /* OnboardingDataModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		E808D7F828F67DD0009F909F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E808D7F928F67DE8009F909F /* OnboardingCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		E833EEEE27C2477900107741 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,6 +826,7 @@
 		E8761190279EFE7C00D238B3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E808D7F228F67C1C009F909F /* OnboardingViewController */,
 				E8C7316D28274E0400431E5F /* AddFriendViewController */,
 				77233EB0282231C3006B7903 /* TeamViewController */,
 				77233EA62821AEAF006B7903 /* RankingViewController */,
@@ -1332,6 +1365,7 @@
 				77233EA128219AE4006B7903 /* FightTableViewCell.swift in Sources */,
 				E87ED83A2823637400775A85 /* SignUpAPI.swift in Sources */,
 				E8C7316F28274E2100431E5F /* AddFriendViewController.swift in Sources */,
+				E808D7F428F67C31009F909F /* OnboardingViewController.swift in Sources */,
 				E855DD3827EF65EB003F3B34 /* RankingTableViewCell.swift in Sources */,
 				7768B89A28DDB8E000D03C93 /* RetokenResponse.swift in Sources */,
 				E855DD3227EF422C003F3B34 /* AddFriendCollectionViewCell.swift in Sources */,
@@ -1365,6 +1399,7 @@
 				77233E9E2821938D006B7903 /* FightViewController.swift in Sources */,
 				E855DD2D27EF0AF5003F3B34 /* RankingCollectionViewCell.swift in Sources */,
 				77233EAD2821B17A006B7903 /* TeamRankingTableViewCell.swift in Sources */,
+				E808D7FA28F67DE8009F909F /* OnboardingCollectionViewCell.swift in Sources */,
 				E8DECE6C282F7A40002B6E35 /* SearchFriendService.swift in Sources */,
 				E87611A027A0398B00D238B3 /* UIButton+Extension.swift in Sources */,
 				E8C73175282751B700431E5F /* CheckFriendViewController.swift in Sources */,
@@ -1389,6 +1424,7 @@
 				86856D49283FDD1E00F3B3BC /* PushAPI.swift in Sources */,
 				E855DD2927EF0AE4003F3B34 /* TabbarCollectionViewCell.swift in Sources */,
 				77233E9B281830FC006B7903 /* UserDefaultsKey.swift in Sources */,
+				E808D7F728F67DC0009F909F /* OnboardingDataModel.swift in Sources */,
 				E89BA85A284285640016A2E3 /* LoginNewResponse.swift in Sources */,
 				86E4CF6F282F41CB0069C048 /* FriendService.swift in Sources */,
 				E80282BD2823764B00268A5A /* SignUpResponse.swift in Sources */,
