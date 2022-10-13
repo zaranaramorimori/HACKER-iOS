@@ -6,8 +6,11 @@
 //
 
 import UIKit
-import Lottie
 
+import SnapKit
+import Then
+
+// MARK: - OnboardingCollectionViewCell
 class OnboardingCollectionViewCell: UICollectionViewCell {
   static let cellId = String(describing: OnboardingCollectionViewCell.self)
   
@@ -17,7 +20,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
   // MARK: - Life Cycles
   override func awakeFromNib() {
     super.awakeFromNib()
-    contentView.backgroundColor = .hackerBlack
+    contentView.backgroundColor = .hackerWhite
     layout()
   }
   // MARK: - Custom Functions
@@ -35,9 +38,10 @@ extension OnboardingCollectionViewCell {
   }
   func layoutOnboardingImageView() {
     self.contentView.add(onboardingImageView) {
-      $0.image = UIImage(named: "")
+      $0.image = UIImage(named: "onboarding_1")
       $0.snp.makeConstraints { make in
-        make.top.leading.trailing.bottom.equalToSuperview()
+        make.top.bottom.equalToSuperview()
+        make.centerX.equalToSuperview()
       }
     }
   }

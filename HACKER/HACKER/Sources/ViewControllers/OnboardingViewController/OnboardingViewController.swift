@@ -17,6 +17,7 @@ class OnboardingViewController: UIViewController {
   let onboardingCollectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
+    layout.minimumLineSpacing = 0
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.isScrollEnabled = true
     collectionView.isPagingEnabled = true
@@ -32,14 +33,14 @@ class OnboardingViewController: UIViewController {
   var currentPage: Int = 0 {
     didSet {
       pageControl.currentPage = currentPage
-      
-      if currentPage == onboardingData.count - 1 {
+      if currentPage == onboardingData.count-1 {
         nextButton.setupButton(title: "시작하기",
                                color: .hackerBlack,
                                font: .btnText(ofSize: 24),
                                backgroundColor: .clear,
                                state: .normal,
                                radius: 0)
+        nextButton.setUnderline()
       } else {
         nextButton.setupButton(title: "다음으로",
                                color: .hackerBlack,
@@ -47,6 +48,7 @@ class OnboardingViewController: UIViewController {
                                backgroundColor: .clear,
                                state: .normal,
                                radius: 0)
+        nextButton.setUnderline()
       }
     }
   }
@@ -55,6 +57,8 @@ class OnboardingViewController: UIViewController {
     super.viewDidLoad()
     layout()
     setUI()
+    setCollectionView()
+    setOnboardingData()
   }
 }
 // MARK: - Extension
@@ -72,8 +76,8 @@ extension OnboardingViewController {
       $0.contentInsetAdjustmentBehavior = .never
       $0.snp.makeConstraints { make in
         make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(57)
-        make.centerX.equalToSuperview()
-        make.leading.equalToSuperview().offset(24)
+        make.leading.trailing.equalToSuperview()
+        make.bottom.equalToSuperview().offset(-112)
       }
     }
   }
@@ -81,9 +85,9 @@ extension OnboardingViewController {
     self.view.add(containerView) {
       $0.backgroundColor = .clear
       $0.snp.makeConstraints { make in
-        make.top.equalTo(self.onboardingCollectionView.snp.bottom).offset(40)
         make.centerX.equalToSuperview()
         make.leading.equalToSuperview().offset(26)
+        make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-14)
         make.height.equalTo(24)
       }
     }
@@ -105,7 +109,7 @@ extension OnboardingViewController {
   }
   func layoutPageControl() {
     self.containerView.add(pageControl) {
-      $0.numberOfPages = 3
+      $0.numberOfPages = 5
       $0.pageIndicatorTintColor = .lightGray
       $0.currentPageIndicatorTintColor = .hackerBlack
       $0.snp.makeConstraints { make in
@@ -114,13 +118,13 @@ extension OnboardingViewController {
     }
   }
   func layoutNextButton() {
-    self.containerView.add(skipButton) {
+    self.containerView.add(nextButton) {
       $0.setupButton(title: "다음으로",
-                     color: .hackerBlack,
-                     font: .btnText(ofSize: 24),
-                     backgroundColor: .clear,
-                     state: .normal,
-                     radius: 0)
+                             color: .hackerBlack,
+                             font: .btnText(ofSize: 24),
+                             backgroundColor: .clear,
+                             state: .normal,
+                             radius: 0)
       $0.setUnderline()
       $0.addTarget(self, action: #selector(self.nextButtonClicked), for: .touchUpInside)
       $0.snp.makeConstraints {
@@ -137,22 +141,24 @@ extension OnboardingViewController {
   private func setCollectionView() {
     onboardingCollectionView.delegate = self
     onboardingCollectionView.dataSource = self
-    self.onboardingCollectionView.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: OnboardingCollectionViewCell.cellId)
+    self.onboardingCollectionView.register(OnboardingCollectionViewCell.self, forCellWithReuseIdentifier: OnboardingCollectionViewCell.identifier)
+    onboardingCollectionView.contentInsetAdjustmentBehavior = .never
   }
   
   private func setOnboardingData() {
     onboardingData.append(contentsOf: [
-      OnboardingDataModel(imageName: "intro1"),
-      OnboardingDataModel(imageName: "intro2"),
-      OnboardingDataModel(imageName: "intro3")
+      OnboardingDataModel(imageName: "onboarding_1"),
+      OnboardingDataModel(imageName: "onboarding_2"),
+      OnboardingDataModel(imageName: "onboarding_3"),
+      OnboardingDataModel(imageName: "onboarding_4"),
+      OnboardingDataModel(imageName: "onboarding_5")
     ])
   }
   @objc func skipButtonClicked() {
-    print("skipButtonClicked")
-//    let loginVC = LoginViewController()
-//    loginVC.modalPresentationStyle = .fullScreen
-//    loginVC.modalTransitionStyle = .crossDissolve
-//    self.present(loginVC, animated: true, completion: nil)
+    let loginVC = LoginViewController()
+    loginVC.modalPresentationStyle = .fullScreen
+    loginVC.modalTransitionStyle = .crossDissolve
+    self.present(loginVC, animated: true, completion: nil)
   }
   @objc func nextButtonClicked() {
     print("nextButtonClicked")
@@ -177,7 +183,7 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let width = scrollView.frame.width
-    currentPage = lroundl(scrollView.contentOffset.x / width)
+    currentPage = Int(scrollView.contentOffset.x / width)
   }
 }
 
