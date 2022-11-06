@@ -154,18 +154,29 @@ extension OnboardingViewController {
       OnboardingDataModel(imageName: "onboarding_5")
     ])
   }
-  @objc func skipButtonClicked() {
+  
+  private func presentLogin() {
     let loginVC = LoginViewController()
     loginVC.modalPresentationStyle = .fullScreen
     loginVC.modalTransitionStyle = .crossDissolve
     self.present(loginVC, animated: true, completion: nil)
   }
+  
+  @objc func skipButtonClicked() {
+    UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isOnboarding)
+    presentLogin()
+  }
+  
   @objc func nextButtonClicked() {
-    print("nextButtonClicked")
-//    let loginVC = LoginViewController()
-//    loginVC.modalPresentationStyle = .fullScreen
-//    loginVC.modalTransitionStyle = .crossDissolve
-//    self.present(loginVC, animated: true, completion: nil)
+    // print("nextButtonClicked")
+    if currentPage == onboardingData.count-1 {
+      // 시작하기 일때는 로그인뷰로
+      UserDefaults.standard.set(true, forKey: Const.UserDefaultsKey.isOnboarding)
+      presentLogin()
+    } else {
+      // 다음으로 일때는 컬렉션뷰 스크롤
+      onboardingCollectionView.scrollToItem(at: IndexPath(item: self.currentPage+1, section: 0), at: .right, animated: true)
+    }
   }
 }
 // MARK: - CollectionView Delegate, DataSource
