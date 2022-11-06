@@ -71,6 +71,13 @@ extension SplashViewController {
     self.changeRootViewController(tabbarVC)
   }
   
+  private func presentToOnboarding() {
+    let loginVC = OnboardingViewController()
+    loginVC.modalPresentationStyle = .fullScreen
+    loginVC.modalTransitionStyle = .crossDissolve
+    self.present(loginVC, animated: true, completion: nil)
+  }
+  
   private func presentToLogin() {
     let loginVC = LoginViewController()
     loginVC.modalPresentationStyle = .fullScreen
@@ -128,7 +135,11 @@ extension SplashViewController {
         if self.appDelegate?.isLogin == true {
           self.presentToMain()
         } else {
-          self.presentToLogin()
+          if UserDefaults.standard.bool(forKey: Const.UserDefaultsKey.isOnboarding) {
+            self.presentToLogin()
+          } else {
+            self.presentToOnboarding()
+          }
         }
       }
     }
