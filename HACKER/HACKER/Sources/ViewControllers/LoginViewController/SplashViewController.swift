@@ -71,6 +71,13 @@ extension SplashViewController {
     self.changeRootViewController(tabbarVC)
   }
   
+  private func presentToOnboarding() {
+    let loginVC = OnboardingViewController()
+    loginVC.modalPresentationStyle = .fullScreen
+    loginVC.modalTransitionStyle = .crossDissolve
+    self.present(loginVC, animated: true, completion: nil)
+  }
+  
   private func presentToLogin() {
     let loginVC = LoginViewController()
     loginVC.modalPresentationStyle = .fullScreen
@@ -124,11 +131,26 @@ extension SplashViewController {
       })
     } else {
       // 업데이트 필요하지 않은 경우
+//      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+//        if self.appDelegate?.isLogin == true {
+//          self.presentToMain()
+//        } else {
+//          if UserDefaults.standard.bool(forKey: Const.UserDefaultsKey.isOnboarding) {
+//            self.presentToLogin()
+//          } else {
+//            self.presentToOnboarding()
+//          }
+//        }
+//      }
       DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-        if self.appDelegate?.isLogin == true {
-          self.presentToMain()
+        if UserDefaults.standard.bool(forKey: Const.UserDefaultsKey.isOnboarding) {
+          if self.appDelegate?.isLogin == true {
+            self.presentToMain()
+          } else {
+            self.presentToLogin()
+          }
         } else {
-          self.presentToLogin()
+          self.presentToOnboarding()
         }
       }
     }

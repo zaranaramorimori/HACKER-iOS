@@ -22,5 +22,8 @@ extension Const {
     // 애플 로그인
     static let isAppleLogin = "isAppleLogin" /// 애플 로그인으로 로그인 한 사용자인가?
     static let appleUserCredentialId = "appleUserCredentialId" /// 애플 로그인 시 부여되는 고유 user identifier
+    
+    //온보딩
+    static let isOnboarding = "isOnboarding"
   }
 }
