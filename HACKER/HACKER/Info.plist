@@ -32,5 +32,20 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>Winter</key>
+			<dict>
+				<key>AppIcon-Winter</key>
+				<string></string>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>AppIcon-Winter</string>
+				</array>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>
