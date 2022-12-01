@@ -24,6 +24,7 @@ class RankingCollectionViewCell: UICollectionViewCell {
   var rankNumImageViews = [UIImageView]()
   var userImageViews = [UIImageView]()
   var hairImageViews = [UIImageView]()
+  var loadingImg = UIImageView()
   var nameLabels = [UILabel]()
   var commitLabels = [UILabel]()
   var detailButtons = [UIButton]()
@@ -73,6 +74,7 @@ extension RankingCollectionViewCell {
     layoutMyNameLabel()
     layoutMyCommitLabel()
     layoutShortCutButton()
+    layoutRefreshControl()
   }
   func layoutHeaderView() {
     headerView.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: 325)
@@ -247,6 +249,29 @@ extension RankingCollectionViewCell {
       }
     }
   }
+  private func layoutRefreshControl() {
+    rankingTableView.refreshControl = UIRefreshControl()
+    
+    guard let refresh = rankingTableView.refreshControl else { return }
+    
+    refresh.addTarget(self, action: #selector(getRankingList), for: .valueChanged)
+    
+    loadingImg = UIImageView(image: UIImage(named: "youthHead"))
+    
+    refresh.tintColor = .clear
+    refresh.addSubview(self.loadingImg)
+    
+    loadingImg.snp.makeConstraints { make in
+      make.centerX.equalToSuperview()
+      make.width.height.equalTo(40)
+    }
+    
+    let offset: CGFloat = -20
+    refresh.bounds = CGRect(x: refresh.bounds.minX,
+                            y: offset,
+                            width: refresh.bounds.width,
+                            height: refresh.bounds.height)
+  }
   @objc func detailButtonClicked(_ sender: UIButton) {
     let rankOrder = [1, 0, 2] // 2nd, 1st, 3rd
     if let rank = rankList?.ranks {
@@ -262,6 +287,12 @@ extension RankingCollectionViewCell {
         rankingTableView.scrollToRow(at: IndexPath(row: myRank-4, section: 0), at: .middle, animated: true)
       }
     }
+  }
+  @objc func getRankingList() {
+    NotificationCenter.default.post(name: NSNotification.Name("rankingListRefresh"), object: nil)
+    rankingTableView.reloadData()
+    updateServerData()
+    rankingTableView.refreshControl?.endRefreshing()
   }
   func updateServerData() {
     if let rankList = rankList?.ranks {
@@ -300,6 +331,15 @@ extension RankingCollectionViewCell: UITableViewDelegate {
     if let rank = rankList?.ranks {
       moveToDetailView(userId: rank[indexPath.row+3].userID, row: indexPath.row+3)
     }
+  }
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    guard let refreshControl = rankingTableView.refreshControl?.frame.origin.y else { return }
+
+    let distance = max(0.0, -refreshControl)
+    self.loadingImg.center.y = distance / 2
+
+    let transform = CGAffineTransform(rotationAngle: CGFloat(distance / 20))
+    self.loadingImg.transform = transform
   }
 }
 extension RankingCollectionViewCell: UITableViewDataSource {
