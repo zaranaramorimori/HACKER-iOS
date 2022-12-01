@@ -1674,7 +1674,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D43D251F9FBD31ADDBC63F1C /* Pods-HACKER.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Winter";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HACKER/HACKERDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -1708,7 +1708,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D64BBA392CA295A2C82DAB1C /* Pods-HACKER.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Winter";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HACKER/HACKER.entitlements;
 				CODE_SIGN_STYLE = Automatic;
