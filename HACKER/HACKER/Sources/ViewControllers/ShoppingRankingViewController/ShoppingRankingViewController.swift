@@ -65,6 +65,7 @@ class ShoppingRankingViewController: UIViewController {
   }
   override func viewDidDisappear(_ animated: Bool) {
     NotificationCenter.default.removeObserver(self, name: Notification.Name("friendsListRefresh"), object: nil)
+    NotificationCenter.default.removeObserver(self, name: Notification.Name("rankingListRefresh"), object: nil)
   }
 }
 // MARK: - Extensions
@@ -86,7 +87,7 @@ extension ShoppingRankingViewController {
     self.pageCollectionView.register(ShoppingCollectionViewCell.self, forCellWithReuseIdentifier: ShoppingCollectionViewCell.identifier)
     self.pageCollectionView.register(RankingCollectionViewCell.self, forCellWithReuseIdentifier: RankingCollectionViewCell.identifier)
     NotificationCenter.default.addObserver(self, selector: #selector(searchFriendWithAPI), name: Notification.Name("friendsListRefresh"), object: nil)
-    
+    NotificationCenter.default.addObserver(self, selector: #selector(rankingWithAPI), name: Notification.Name("rankingListRefresh"), object: nil)
   }
   func layout() {
     layoutPageLogoImage()
@@ -204,7 +205,7 @@ extension ShoppingRankingViewController {
     }
   }
   // MARK: - Network
-  func rankingWithAPI() {
+  @objc func rankingWithAPI() {
     LoadingHUD.show()
     RankingAPI.shared.totalRanking { response in
       LoadingHUD.hide()
