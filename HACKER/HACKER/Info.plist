@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>Winter</key>
+			<dict>
+				<key>AppIcon-Winter</key>
+				<string></string>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>AppIcon-Winter</string>
+				</array>
+			</dict>
+		</dict>
+	</dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>UIAppFonts</key>
@@ -32,20 +47,5 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
-	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundleAlternateIcons</key>
-		<dict>
-			<key>Winter</key>
-			<dict>
-				<key>AppIcon-Winter</key>
-				<string></string>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>AppIcon-Winter</string>
-				</array>
-			</dict>
-		</dict>
-	</dict>
 </dict>
 </plist>
