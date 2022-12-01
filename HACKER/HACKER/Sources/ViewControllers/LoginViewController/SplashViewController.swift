@@ -85,8 +85,49 @@ extension SplashViewController {
     self.present(loginVC, animated: true, completion: nil)
   }
   
-  func needUpdate() -> Bool {
+  func setApplicationIconName(_ iconName: String?) {
+    if UIApplication.shared.responds(to: #selector(getter: UIApplication.supportsAlternateIcons)) && UIApplication.shared.supportsAlternateIcons {
+      
+      typealias SetAlternateIconName = @convention(c) (NSObject, Selector, NSString?, @escaping (NSError) -> ()) -> ()
+      
+      let selectorString = "_setAlternateIconName:completionHandler:"
+      
+      let selector = NSSelectorFromString(selectorString)
+      let imp = UIApplication.shared.method(for: selector)
+      let method = unsafeBitCast(imp, to: SetAlternateIconName.self)
+      method(UIApplication.shared, selector, iconName as NSString?, { _ in })
+    }
+  }
+  
+  private func changeAppIcon() {
+    print(Date())
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MM"
+    let currentMonth = formatter.string(from: Date())
+    print(currentMonth)
     
+    if currentMonth == "12" || currentMonth == "01" {
+      UIApplication.shared.setAlternateIconName("Winter") { error in
+        guard error == nil else {
+          print(error?.localizedDescription)
+          return
+        }
+        print("Winter icon updated")
+      }
+      //setApplicationIconName("AppIcon-Winter")
+    } else {
+      UIApplication.shared.setAlternateIconName(nil) { error in
+        guard error == nil else {
+          print(error?.localizedDescription)
+          return
+        }
+        print("Default icon updated")
+      }
+     // setApplicationIconName(nil)
+    }
+  }
+  
+  func needUpdate() -> Bool {
     guard
       let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
       let url = URL(string: "https://itunes.apple.com/lookup?bundleId=\(Bundle.main.infoDictionary?["CFBundleIdentifier"] as? String ?? "")"),
@@ -143,6 +184,7 @@ extension SplashViewController {
 //        }
 //      }
       DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+        //self.changeAppIcon()
         if UserDefaults.standard.bool(forKey: Const.UserDefaultsKey.isOnboarding) {
           if self.appDelegate?.isLogin == true {
             self.presentToMain()
