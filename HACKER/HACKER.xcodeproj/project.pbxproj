@@ -38,6 +38,7 @@
 		7768B89A28DDB8E000D03C93 /* RetokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7768B89928DDB8E000D03C93 /* RetokenResponse.swift */; };
 		7789EBE92823A97700237036 /* pulledOut.json in Resources */ = {isa = PBXBuildFile; fileRef = 7789EBE72823A97700237036 /* pulledOut.json */; };
 		7789EBEA2823A97700237036 /* pullingOut.json in Resources */ = {isa = PBXBuildFile; fileRef = 7789EBE82823A97700237036 /* pullingOut.json */; };
+		77B884CB29386355007FA509 /* AppIcon-Winter.png in Resources */ = {isa = PBXBuildFile; fileRef = 77B884CA29386355007FA509 /* AppIcon-Winter.png */; };
 		77BA0E532822E1CF00EC41A5 /* SeasonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */; };
 		77BA0E552822ED1900EC41A5 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E542822ED1900EC41A5 /* UIImageView+Extension.swift */; };
 		77BA0E572822F07D00EC41A5 /* SeasonTeamResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA0E562822F07D00EC41A5 /* SeasonTeamResponse.swift */; };
@@ -202,6 +203,7 @@
 		7768B89928DDB8E000D03C93 /* RetokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetokenResponse.swift; sourceTree = "<group>"; };
 		7789EBE72823A97700237036 /* pulledOut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pulledOut.json; sourceTree = "<group>"; };
 		7789EBE82823A97700237036 /* pullingOut.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pullingOut.json; sourceTree = "<group>"; };
+		77B884CA29386355007FA509 /* AppIcon-Winter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon-Winter.png"; sourceTree = "<group>"; };
 		77BA0E522822E1CF00EC41A5 /* SeasonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonResponse.swift; sourceTree = "<group>"; };
 		77BA0E542822ED1900EC41A5 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		77BA0E562822F07D00EC41A5 /* SeasonTeamResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonTeamResponse.swift; sourceTree = "<group>"; };
@@ -799,6 +801,7 @@
 		E876118E279EFE4B00D238B3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				77B884CA29386355007FA509 /* AppIcon-Winter.png */,
 				77BA0E5D2823A88A00EC41A5 /* Lottie */,
 				E855DD2E27EF1DB3003F3B34 /* Protocols */,
 				E8761194279EFEF900D238B3 /* Constants */,
@@ -1134,6 +1137,7 @@
 				E8E84786279EF6EC00D5A482 /* Assets.xcassets in Resources */,
 				86856D4F283FE98900F3B3BC /* GoogleService-Info.plist in Resources */,
 				E8FF04FC27B212C000C7C3E5 /* NotoSansKR-Regular.otf in Resources */,
+				77B884CB29386355007FA509 /* AppIcon-Winter.png in Resources */,
 				86F2C245285131B5002B13B8 /* cry_Lottie.json in Resources */,
 				86F2C23F284E2B28002B13B8 /* lf30_editor_kdpmpt6l.json in Resources */,
 				E8FF04FB27B212C000C7C3E5 /* NotoSansKR-Bold.otf in Resources */,
